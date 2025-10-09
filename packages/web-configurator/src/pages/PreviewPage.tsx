@@ -1,17 +1,6 @@
-import { useState } from 'react';
-import { useSchema } from '../context/SchemaContext';
-import type { Component } from '@gcg/schema';
-import TogglePreview from '../components/preview/TogglePreview';
-import ButtonPreview from '../components/preview/ButtonPreview';
-import DimmerPreview from '../components/preview/DimmerPreview';
 import styles from './NewPreviewPage.module.css';
 
-type Theme = 'light' | 'dark' | 'dusk';
-
 export default function PreviewPage() {
-  const { schema, validationResult } = useSchema();
-  const [activeTabId, setActiveTabId] = useState(schema?.tabs[0]?.id);
-  const [theme, setTheme] = useState<Theme>('light');
 
   // Coming Soon state
   return (

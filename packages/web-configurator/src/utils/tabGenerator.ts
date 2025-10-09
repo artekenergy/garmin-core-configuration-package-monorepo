@@ -93,6 +93,7 @@ function generatePowerTab(schema: UISchema): Section[] {
   sections.push({
     id: generateId('section-battery'),
     title: 'Battery',
+    enabled: true,
     components: [
       {
         id: generateId('gauge-battery-voltage'),
@@ -174,6 +175,7 @@ function generatePowerTab(schema: UISchema): Section[] {
     sections.push({
       id: generateId('section-dc-charging'),
       title: 'DC Charging',
+      enabled: true,
       components: chargingComponents,
     });
   }
@@ -486,6 +488,7 @@ function generatePlumbingTab(schema: UISchema): Section[] {
   sections.push({
     id: generateId('section-tank-levels'),
     title: 'Tank Levels',
+    enabled: true,
     components: tankComponents,
   });
 
@@ -536,6 +539,7 @@ export function regenerateTabContent(schema: UISchema): UISchema {
         {
           id: generateId('section-placeholder'),
           title: 'No Content',
+          enabled: true,
           components: [
             {
               id: generateId('placeholder-text'),

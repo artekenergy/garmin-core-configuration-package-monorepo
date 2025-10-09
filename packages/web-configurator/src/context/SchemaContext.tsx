@@ -46,10 +46,6 @@ const defaultSchema: UISchema = {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
-  home: {
-    section1: { enabled: true, type: 'switching', title: 'Quick Controls' },
-    section2: { enabled: true, type: 'signal-values', title: 'Status' },
-  },
   hardware: {
     systemType: 'core',
     outputs: [],
@@ -179,11 +175,13 @@ const defaultSchema: UISchema = {
         {
           id: 'section-home-1',
           title: 'Quick Controls',
+          enabled: true,
           components: [],
         },
         {
           id: 'section-home-2',
           title: 'Status',
+          enabled: true,
           components: [],
         },
       ],
@@ -197,11 +195,13 @@ const defaultSchema: UISchema = {
         {
           id: 'section-lighting-interior',
           title: 'Interior Lights',
+          enabled: true,
           components: [],
         },
         {
           id: 'section-lighting-exterior',
           title: 'Exterior Lights',
+          enabled: true,
           components: [],
         },
       ],
@@ -215,6 +215,7 @@ const defaultSchema: UISchema = {
         {
           id: 'section-power',
           title: 'Power Status',
+          enabled: true,
           components: [],
         },
       ],
@@ -228,6 +229,7 @@ const defaultSchema: UISchema = {
         {
           id: 'section-climate',
           title: 'Climate Control',
+          enabled: true,
           components: [],
         },
       ],
@@ -241,6 +243,7 @@ const defaultSchema: UISchema = {
         {
           id: 'section-switches',
           title: 'Switches',
+          enabled: true,
           components: [],
         },
       ],
@@ -254,6 +257,7 @@ const defaultSchema: UISchema = {
         {
           id: 'section-tanks',
           title: 'Tank Levels',
+          enabled: true,
           components: [],
         },
       ],
