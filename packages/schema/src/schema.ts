@@ -196,7 +196,7 @@ export const SectionSchema = z.object({
   collapsible: z.boolean().optional(),
   collapsed: z.boolean().optional(),
   imageUrl: z.string().optional(), // For image type home sections
-  components: z.array(ComponentSchema).min(1),
+  components: z.array(ComponentSchema),
 });
 
 /**

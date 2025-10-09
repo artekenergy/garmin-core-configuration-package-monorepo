@@ -2,6 +2,83 @@
   "systemType": "core",
   "outputs": [
     {
+      "id": "battery-voltage",
+      "source": "bms",
+      "channel": "battery-voltage",
+      "control": "signal-value",
+      "label": "Battery Voltage",
+      "icon": "/icons/Battery.svg",
+      "signals": {
+        "value": 197
+      }
+    },
+    {
+      "id": "battery-soc",
+      "source": "bms",
+      "channel": "battery-soc",
+      "control": "signal-value",
+      "label": "Battery State of Charge",
+      "icon": "/icons/Battery.svg",
+      "signals": {
+        "value": 149
+      }
+    },
+    {
+      "id": "tank-fresh-1",
+      "source": "sensors",
+      "channel": "tank-fresh-1",
+      "control": "signal-value",
+      "label": "Fresh Water Tank",
+      "icon": "/icons/Tank.svg",
+      "signals": {
+        "value": 201
+      }
+    },
+    {
+      "id": "tank-waste-2",
+      "source": "sensors",
+      "channel": "tank-waste-2",
+      "control": "signal-value",
+      "label": "Waste Water Tank",
+      "icon": "/icons/Tank.svg",
+      "signals": {
+        "value": 202
+      }
+    },
+    {
+      "id": "tank-black-3",
+      "source": "sensors",
+      "channel": "tank-black-3",
+      "control": "signal-value",
+      "label": "Black Water Tank",
+      "icon": "/icons/Tank.svg",
+      "signals": {
+        "value": 203
+      }
+    },
+    {
+      "id": "alternator-current",
+      "source": "alternator",
+      "channel": "alternator-current",
+      "control": "signal-value",
+      "label": "Alternator Current",
+      "icon": "/icons/Alternator.svg",
+      "signals": {
+        "value": 339
+      }
+    },
+    {
+      "id": "orion-current",
+      "source": "orion",
+      "channel": "orion-current",
+      "control": "signal-value",
+      "label": "Orion DC-DC Current",
+      "icon": "/icons/Charger.svg",
+      "signals": {
+        "value": 340
+      }
+    },
+    {
       "id": "core-01",
       "source": "core",
       "channel": 1,

@@ -1,4 +1,4 @@
-import type { UISchema, Tab, Section, Component } from '@gcg/schema';
+import type { UISchema, Tab, Section } from '@gcg/schema';
 
 /**
  * Generates sections and components for tabs based on system configuration
@@ -85,98 +85,32 @@ function generatePowerTab(schema: UISchema): Section[] {
   const sections: Section[] = [];
 
   if (!schema.power) {
-    // No power config - should always have at least battery monitoring
-    return [];
+    // No power config - return empty sections to avoid errors
+    return [
+      {
+        id: generateId('section-battery'),
+        title: 'Battery',
+        enabled: true,
+        components: [],
+      },
+    ];
   }
 
-  // Battery section - always include for power tab
+  // Battery section - empty by default, user can add components via component palette
   sections.push({
     id: generateId('section-battery'),
     title: 'Battery',
     enabled: true,
-    components: [
-      {
-        id: generateId('gauge-battery-voltage'),
-        type: 'gauge',
-        label: 'Battery Voltage',
-        variant: 'numeric' as const,
-        bindings: {
-          value: {
-            type: 'empirbus' as const,
-            channel: 'battery-voltage',
-          },
-        },
-        min: 0,
-        max: 16,
-        decimals: 1,
-        unit: 'V',
-      },
-      {
-        id: generateId('gauge-battery-soc'),
-        type: 'gauge',
-        label: 'State of Charge',
-        variant: 'circular' as const,
-        bindings: {
-          value: {
-            type: 'empirbus' as const,
-            channel: 'battery-soc',
-          },
-        },
-        min: 0,
-        max: 100,
-        decimals: 0,
-        unit: '%',
-      },
-    ],
+    components: [],
   });
 
-  // DC Charging section (optional)
+  // DC Charging section - empty by default, user can add components if needed
   if (schema.power.dcCharging.secondAlternator || schema.power.dcCharging.orionXs) {
-    const chargingComponents: Component[] = [];
-
-    if (schema.power.dcCharging.secondAlternator) {
-      chargingComponents.push({
-        id: generateId('gauge-alternator-current'),
-        type: 'gauge',
-        label: 'Alternator',
-        variant: 'linear' as const,
-        bindings: {
-          value: {
-            type: 'empirbus' as const,
-            channel: 'alternator-current',
-          },
-        },
-        min: 0,
-        max: 100,
-        decimals: 1,
-        unit: 'A',
-      });
-    }
-
-    if (schema.power.dcCharging.orionXs) {
-      chargingComponents.push({
-        id: generateId('gauge-orion-current'),
-        type: 'gauge',
-        label: 'Orion XS',
-        variant: 'linear' as const,
-        bindings: {
-          value: {
-            type: 'empirbus' as const,
-            channel: 'orion-current',
-          },
-        },
-        min: 0,
-        max: 50,
-        decimals: 1,
-        unit: 'A',
-      });
-    }
-
     sections.push({
       id: generateId('section-dc-charging'),
       title: 'DC Charging',
       enabled: true,
-      components: chargingComponents,
+      components: [],
     });
   }
 
@@ -187,137 +121,28 @@ function generatePowerTab(schema: UISchema): Section[] {
 // HVAC TAB
 // ============================================================================
 
-function generateHVACTab(schema: UISchema): Section[] {
-  // Always return all three sections with stable IDs
-  // Components will be populated based on hvac config
-
-  const heatingComponents: Component[] = [];
-  const coolingComponents: Component[] = [];
-  const ventilationComponents: Component[] = [];
-
-  if (schema.hvac) {
-    // HEATING SUBTAB
-    if (schema.hvac.heating.enabled) {
-      // Temperature gauge
-      heatingComponents.push({
-        id: generateId('gauge-interior-temp'),
-        type: 'gauge',
-        label: 'Interior Temp',
-        variant: 'numeric' as const,
-        bindings: {
-          value: {
-            type: 'empirbus' as const,
-            channel: 'interior-temperature',
-          },
-        },
-        min: -20,
-        max: 50,
-        decimals: 1,
-        unit: '°C',
-      });
-
-      // Heat source controls
-      if (schema.hvac.heating.sources.diesel) {
-        heatingComponents.push({
-          id: generateId('toggle-diesel-heat'),
-          type: 'toggle',
-          label: 'Diesel Heat',
-          bindings: {
-            state: {
-              type: 'empirbus' as const,
-              channel: 'diesel-heater',
-            },
-          },
-        });
-      }
-
-      if (schema.hvac.heating.sources.electric) {
-        heatingComponents.push({
-          id: generateId('toggle-electric-heat'),
-          type: 'toggle',
-          label: 'Electric Heat',
-          bindings: {
-            state: {
-              type: 'empirbus' as const,
-              channel: 'electric-heater',
-            },
-          },
-        });
-      }
-
-      // Heat distribution fan
-      if (schema.hvac.heating.distribution.fans) {
-        heatingComponents.push({
-          id: generateId('dimmer-heat-fan'),
-          type: 'dimmer',
-          label: 'Heat Fan Speed',
-          min: 0,
-          max: 100,
-          step: 1,
-          bindings: {
-            intensity: {
-              type: 'empirbus' as const,
-              channel: 'heat-fan',
-            },
-          },
-        });
-      }
-    }
-
-    // COOLING SUBTAB
-    if (schema.hvac.cooling.enabled) {
-      coolingComponents.push({
-        id: generateId('toggle-ac'),
-        type: 'toggle',
-        label: 'Air Conditioning',
-        bindings: {
-          state: {
-            type: 'empirbus' as const,
-            channel: 'air-conditioner',
-          },
-        },
-      });
-    }
-
-    // VENTILATION SUBTAB
-    if (schema.hvac.ventilation.enabled && schema.hvac.ventilation.fans > 0) {
-      for (let i = 0; i < schema.hvac.ventilation.fans; i++) {
-        ventilationComponents.push({
-          id: generateId(`dimmer-vent-fan-${i + 1}`),
-          type: 'dimmer',
-          label: `Vent Fan ${i + 1}`,
-          min: 0,
-          max: 100,
-          step: 1,
-          bindings: {
-            intensity: {
-              type: 'empirbus' as const,
-              channel: `vent-fan-${i + 1}`,
-            },
-          },
-        });
-      }
-    }
-  }
-
+function generateHVACTab(_schema: UISchema): Section[] {
+  // Always return all three sections with stable IDs and empty components
+  // User can add components via component palette
+  
   return [
     {
-      id: 'section-hvac-heating',
+      id: generateId('section-hvac-heating'),
       title: 'Heating',
       enabled: true,
-      components: heatingComponents,
+      components: [],
     },
     {
-      id: 'section-hvac-cooling',
+      id: generateId('section-hvac-cooling'),
       title: 'Cooling',
       enabled: true,
-      components: coolingComponents,
+      components: [],
     },
     {
-      id: 'section-hvac-ventilation',
+      id: generateId('section-hvac-ventilation'),
       title: 'Ventilation',
       enabled: true,
-      components: ventilationComponents,
+      components: [],
     },
   ];
 }
@@ -326,132 +151,21 @@ function generateHVACTab(schema: UISchema): Section[] {
 // SWITCHING TAB
 // ============================================================================
 
-function generateSwitchingTab(schema: UISchema): Section[] {
-  const switchComponents: Component[] = [];
-  const accessoryComponents: Component[] = [];
-
-  // SWITCHES SUBTAB - Group outputs that are toggles or buttons
-  if (schema.hardware && schema.hardware.outputs.length > 0) {
-    const toggleOutputs = schema.hardware.outputs.filter(
-      (out) => out.control === 'toggle-button' || out.control === 'push-button'
-    );
-
-    toggleOutputs.forEach((output) => {
-      if (output.control === 'push-button') {
-        switchComponents.push({
-          id: generateId(`button-${output.id}`),
-          type: 'button' as const,
-          action: 'momentary' as const,
-          label: output.label || output.id,
-          bindings: {
-            action: {
-              type: 'empirbus' as const,
-              channel: output.id,
-            },
-          },
-        });
-      } else {
-        switchComponents.push({
-          id: generateId(`toggle-${output.id}`),
-          type: 'toggle' as const,
-          label: output.label || output.id,
-          bindings: {
-            state: {
-              type: 'empirbus' as const,
-              channel: output.id,
-            },
-          },
-        });
-      }
-    });
-  }
-
-  // ACCESSORIES SUBTAB - Accessories section
-  if (schema.accessories) {
-    if (schema.accessories.awning.enabled) {
-      accessoryComponents.push({
-        id: generateId('button-awning-extend'),
-        type: 'button',
-        action: 'momentary' as const,
-        label: 'Awning Extend',
-        bindings: {
-          action: {
-            type: 'empirbus' as const,
-            channel: 'awning-extend',
-          },
-        },
-      });
-
-      accessoryComponents.push({
-        id: generateId('button-awning-retract'),
-        type: 'button',
-        action: 'momentary' as const,
-        label: 'Awning Retract',
-        bindings: {
-          action: {
-            type: 'empirbus' as const,
-            channel: 'awning-retract',
-          },
-        },
-      });
-
-      if (schema.accessories.awning.light) {
-        accessoryComponents.push({
-          id: generateId('toggle-awning-light'),
-          type: 'toggle',
-          label: 'Awning Light',
-          bindings: {
-            state: {
-              type: 'empirbus' as const,
-              channel: 'awning-light',
-            },
-          },
-        });
-      }
-    }
-
-    if (schema.accessories.slides.enabled) {
-      accessoryComponents.push({
-        id: generateId('button-slides-extend'),
-        type: 'button',
-        action: 'momentary' as const,
-        label: 'Slides Extend',
-        bindings: {
-          action: {
-            type: 'empirbus' as const,
-            channel: 'slides-extend',
-          },
-        },
-      });
-
-      accessoryComponents.push({
-        id: generateId('button-slides-retract'),
-        type: 'button',
-        action: 'momentary' as const,
-        label: 'Slides Retract',
-        bindings: {
-          action: {
-            type: 'empirbus' as const,
-            channel: 'slides-retract',
-          },
-        },
-      });
-    }
-  }
-
-  // Always return both sections with stable IDs
+function generateSwitchingTab(_schema: UISchema): Section[] {
+  // Always return both sections with stable IDs and empty components
+  // User can add components via component palette
   return [
     {
       id: 'section-switching-switches',
       title: 'Switches',
       enabled: true,
-      components: switchComponents,
+      components: [],
     },
     {
       id: 'section-switching-accessories',
       title: 'Accessories',
       enabled: true,
-      components: accessoryComponents,
+      components: [],
     },
   ];
 }
@@ -464,32 +178,23 @@ function generatePlumbingTab(schema: UISchema): Section[] {
   const sections: Section[] = [];
 
   if (!schema.plumbing || !schema.plumbing.enabled) {
-    // No plumbing configured
-    return [];
+    // No plumbing configured - return empty section to avoid errors
+    return [
+      {
+        id: generateId('section-tank-levels'),
+        title: 'Tank Levels',
+        enabled: true,
+        components: [],
+      },
+    ];
   }
 
-  const tankComponents: Component[] = schema.plumbing.tanks.map((tank, index) => ({
-    id: generateId(`gauge-tank-${tank.type}-${index}`),
-    type: 'gauge',
-    label: tank.name || `${tank.type.charAt(0).toUpperCase() + tank.type.slice(1)} Tank`,
-    variant: 'linear' as const,
-    bindings: {
-      value: {
-        type: 'empirbus' as const,
-        channel: `tank-${tank.type}-${index + 1}`,
-      },
-    },
-    min: 0,
-    max: 100,
-    decimals: 0,
-    unit: '%',
-  }));
-
+  // Tank levels section - empty by default, user can add components via component palette
   sections.push({
     id: generateId('section-tank-levels'),
     title: 'Tank Levels',
     enabled: true,
-    components: tankComponents,
+    components: [],
   });
 
   return sections;
