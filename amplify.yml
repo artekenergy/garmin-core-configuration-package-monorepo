@@ -4,7 +4,7 @@ frontend:
     preBuild:
       commands:
         - echo "Installing pnpm..."
-        - npm install -g pnpm@8.10.0
+        - npm install -g pnpm@9.15.9
         - echo "Installing dependencies..."
         - pnpm install --frozen-lockfile
     build:
