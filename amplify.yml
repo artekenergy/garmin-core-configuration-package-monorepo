@@ -13,6 +13,10 @@ frontend:
         - cd packages/schema
         - pnpm build
         - cd ../..
+        - echo "Building hmi-ui package..."
+        - cd packages/hmi-ui
+        - pnpm build
+        - cd ../..
         - echo "Building web-configurator..."
         - cd packages/web-configurator
         - pnpm build
