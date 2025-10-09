@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Minimal Test Schema",
+    "version": "1.0.0"
+  },
+  "tabs": [
+    {
+      "id": "tab-lighting",
+      "title": "Lighting",
+      "sections": [
+        {
+          "id": "section-nav",
+          "title": "Navigation Lights",
+          "components": [
+            {
+              "id": "toggle-nav-lights",
+              "type": "toggle",
+              "label": "Nav Lights",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-1"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

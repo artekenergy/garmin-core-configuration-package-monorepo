@@ -1,0 +1,212 @@
+.componentWrapper {
+  width: 100%;
+}
+
+/* Toggle Component */
+.toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--preview-component-bg);
+  border: 2px solid var(--preview-component-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.toggle:hover {
+  background: var(--preview-component-hover);
+  border-color: var(--preview-primary);
+}
+
+.toggleOn {
+  background: var(--preview-toggle-on-bg);
+  border-color: var(--preview-primary);
+}
+
+.toggleOff {
+  background: var(--preview-component-bg);
+}
+
+.toggleIndicator {
+  margin-left: auto;
+  width: 48px;
+  height: 26px;
+  background: var(--color-toggle-off);
+  border-radius: 13px;
+  position: relative;
+  transition: all 0.3s;
+  border: 1px solid var(--color-toggle-off-strong);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.toggleIndicator.indicatorOn {
+  background: var(--preview-primary);
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  box-shadow: inset 0 2px 8px rgba(var(--color-primary-rgb), 0.25);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-toggle-thumb);
+  border-radius: 50%;
+  transition: all 0.3s;
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.indicatorOn .toggleThumb {
+  transform: translateX(22px);
+  background: var(--color-background);
+  box-shadow:
+    0 3px 8px rgba(var(--color-primary-rgb), 0.28),
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* Button Component */
+.button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.button-primary {
+  background: var(--preview-primary);
+  color: white;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(var(--color-accent-rgb), 0.3);
+}
+
+.button-secondary {
+  background: var(--preview-component-bg);
+  color: var(--preview-text);
+  border: 2px solid var(--preview-component-border);
+}
+
+.button-secondary:hover {
+  background: var(--preview-component-hover);
+  border-color: var(--preview-primary);
+}
+
+.button-danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+.button-danger:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.buttonPressed {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+/* Dimmer Component */
+.dimmer {
+  width: 100%;
+  padding: 1rem;
+  background: var(--preview-component-bg);
+  border: 2px solid var(--preview-component-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dimmerHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dimmerValue {
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--preview-primary);
+  font-size: 1.125rem;
+  min-width: 50px;
+  text-align: right;
+}
+
+.dimmerSlider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--preview-slider-bg);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.dimmerSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--preview-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+
+.dimmerSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.4);
+}
+
+.dimmerSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--preview-primary);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+
+.dimmerSlider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px rgba(var(--color-accent-rgb), 0.4);
+}
+
+/* Common Styles */
+.icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.label {
+  color: var(--preview-text);
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}

@@ -1,0 +1,69 @@
+{
+  "components": [
+    {
+      "id": "comp-core-01",
+      "type": "dimmer",
+      "label": "Core 1",
+      "bindings": {
+        "intensity": {
+          "type": "empirbus",
+          "channel": "core-01"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "id": "comp-core-02",
+      "type": "dimmer",
+      "label": "Core 2",
+      "bindings": {
+        "intensity": {
+          "type": "empirbus",
+          "channel": "core-02"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "id": "comp-core-03",
+      "type": "toggle",
+      "label": "Core 3",
+      "bindings": {
+        "state": {
+          "type": "empirbus",
+          "channel": "core-03"
+        }
+      }
+    },
+    {
+      "id": "comp-core-04",
+      "type": "toggle",
+      "label": "Core 4",
+      "bindings": {
+        "state": {
+          "type": "empirbus",
+          "channel": "core-04"
+        }
+      }
+    },
+    {
+      "id": "comp-core-05",
+      "type": "dimmer",
+      "label": "Core 5",
+      "bindings": {
+        "intensity": {
+          "type": "empirbus",
+          "channel": "core-05"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "note": "These are example components for the first 5 channels. Copy and modify as needed."
+}

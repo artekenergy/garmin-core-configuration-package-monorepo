@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Duplicate Component IDs",
+    "version": "1.0.0"
+  },
+  "tabs": [
+    {
+      "id": "tab-1",
+      "title": "Tab 1",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Section 1",
+          "components": [
+            {
+              "id": "duplicate-id",
+              "type": "toggle",
+              "label": "First",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-2",
+          "title": "Section 2",
+          "components": [
+            {
+              "id": "duplicate-id",
+              "type": "button",
+              "label": "Second",
+              "action": "momentary",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "out-channel-2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

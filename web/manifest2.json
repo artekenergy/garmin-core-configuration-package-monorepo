@@ -1,0 +1,12 @@
+{
+  "short_name": "Test",
+  "name": "Test",
+  "icons": [
+    {
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index2.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}

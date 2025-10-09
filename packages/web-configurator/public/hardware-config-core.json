@@ -1,0 +1,265 @@
+{
+  "systemType": "core",
+  "outputs": [
+    {
+      "id": "core-01",
+      "source": "core",
+      "channel": 1,
+      "control": "dimmer",
+      "label": "Core 1",
+      "icon": "/icons/Dimmer.svg",
+      "signals": {
+        "toggle": 15,
+        "momentary": 14,
+        "dimmer": 16
+      }
+    },
+    {
+      "id": "core-02",
+      "source": "core",
+      "channel": 2,
+      "control": "dimmer",
+      "label": "Core 2",
+      "icon": "/icons/Dimmer.svg",
+      "signals": {
+        "toggle": 72,
+        "momentary": 71,
+        "dimmer": 73
+      }
+    },
+    {
+      "id": "core-03",
+      "source": "core",
+      "channel": 3,
+      "control": "toggle-button",
+      "label": "Core 3",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-04",
+      "source": "core",
+      "channel": 4,
+      "control": "toggle-button",
+      "label": "Core 4",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-05",
+      "source": "core",
+      "channel": 5,
+      "control": "dimmer",
+      "label": "Core 5",
+      "icon": "/icons/Dimmer.svg",
+      "signals": {
+        "toggle": 75,
+        "momentary": 74,
+        "dimmer": 76
+      }
+    },
+    {
+      "id": "core-06",
+      "source": "core",
+      "channel": 6,
+      "control": "toggle-button",
+      "label": "Core 6",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-07",
+      "source": "core",
+      "channel": 7,
+      "control": "toggle-button",
+      "label": "Core 7",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-08",
+      "source": "core",
+      "channel": 8,
+      "control": "toggle-button",
+      "label": "Core 8",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-09",
+      "source": "core",
+      "channel": 9,
+      "control": "toggle-button",
+      "label": "Core 9",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-10",
+      "source": "core",
+      "channel": 10,
+      "control": "toggle-button",
+      "label": "Core 10",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-11",
+      "source": "core",
+      "channel": 11,
+      "control": "toggle-button",
+      "label": "Core 11",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-12",
+      "source": "core",
+      "channel": 12,
+      "control": "toggle-button",
+      "label": "Core 12",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-13",
+      "source": "core",
+      "channel": 13,
+      "control": "toggle-button",
+      "label": "Core 13",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-14",
+      "source": "core",
+      "channel": 14,
+      "control": "toggle-button",
+      "label": "Core 14",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-15",
+      "source": "core",
+      "channel": 15,
+      "control": "toggle-button",
+      "label": "Core 15",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-16",
+      "source": "core",
+      "channel": 16,
+      "control": "toggle-button",
+      "label": "Core 16",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-17",
+      "source": "core",
+      "channel": 17,
+      "control": "toggle-button",
+      "label": "Core 17",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-18",
+      "source": "core",
+      "channel": 18,
+      "control": "toggle-button",
+      "label": "Core 18",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-19",
+      "source": "core",
+      "channel": 19,
+      "control": "toggle-button",
+      "label": "Core 19",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    },
+    {
+      "id": "core-20",
+      "source": "core",
+      "channel": 20,
+      "control": "toggle-button",
+      "label": "Core 20",
+      "icon": "/icons/Light.svg",
+      "signals": {
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      }
+    }
+  ]
+}

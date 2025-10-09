@@ -1,0 +1,266 @@
+/**
+ * CSS Grid System for Tab Content Sections
+ * 
+ * Responsive grid layout that adapts to display size:
+ * - Default (>1084px): 4 columns
+ * - Serv 10 (1084x606): 3 columns  
+ * - Serv 7 (958x489): 2 columns
+ * 
+ * Component spanning rules:
+ * - Small (Toggle, Button, Indicator): 1 cell
+ * - Wide (Dimmer, Slider): 2 cells
+ * - Full (Gauge, Chart): all cells
+ * 
+ * Compatible with: WebView 83 (Chrome 83) - CSS Grid Level 1
+ */
+
+/* ===========================
+   Section Container
+   =========================== */
+
+.gcg-section {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; - Not supported in Chrome 83 flexbox */
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.gcg-section > * + * {
+  margin-top: 1rem; /* Fallback for gap */
+}
+
+.gcg-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ===========================
+   Section Title
+   =========================== */
+
+.gcg-section__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--theme-primary);
+  margin: 0;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.025em;
+}
+
+/* ===========================
+   Base Grid Layout (4 columns)
+   =========================== */
+
+.gcg-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  align-items: start; /* Align items to top of grid cells */
+}
+
+/* ===========================
+   Component Spanning Rules
+   =========================== */
+
+/* Small components: 1 cell (default) */
+.gcg-button,
+.gcg-indicator {
+  grid-column: span 1;
+}
+
+/* Medium components: 2 cells */
+.gcg-toggle,
+.gcg-round-toggle,
+.gcg-round-button,
+.gcg-dimmer,
+.gcg-slider {
+  grid-column: span 2;
+}
+
+/* Full-width components: all cells */
+.gcg-gauge,
+.gcg-chart {
+  grid-column: 1 / -1;
+}
+
+/* ===========================
+   Component Minimum Sizes
+   =========================== */
+
+/* Base minimum for touch targets */
+.gcg-section__grid > * {
+  min-height: 60px;
+}
+
+/* Round components maintain 1:1 aspect ratio */
+.gcg-round-toggle,
+.gcg-round-button {
+  /* aspect-ratio: 1 / 1; - Not supported in Chrome 83 */
+  /* Use fixed sizing to maintain square shape */
+  min-height: 120px;
+  max-height: 180px;
+  height: 100%;
+}
+
+/* Indicators can be smaller */
+.gcg-indicator {
+  min-height: 40px;
+}
+
+/* ===========================
+   Serv 10 Display (1084 x 606)
+   =========================== */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  /* 3-column grid */
+  .gcg-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+
+  .gcg-section__title {
+    font-size: 1.125rem;
+    padding-bottom: 0.625rem;
+  }
+
+  .gcg-section {
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Round components slightly smaller */
+  .gcg-round-toggle,
+  .gcg-round-button {
+    min-height: 70px;
+  }
+}
+
+/* ===========================
+   Serv 7 Display (958 x 489)
+   =========================== */
+
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  /* 2-column grid */
+  .gcg-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .gcg-section__title {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .gcg-section {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Dimmers span full width on small displays */
+  .gcg-dimmer,
+  .gcg-slider {
+    grid-column: span 2;
+  }
+
+  /* Reduce minimum sizes for compact display */
+  .gcg-section__grid > * {
+    min-height: 50px;
+  }
+
+  .gcg-round-toggle,
+  .gcg-round-button {
+    min-height: 60px;
+  }
+
+  .gcg-indicator {
+    min-height: 36px;
+  }
+}
+
+/* ===========================
+   Empty State
+   =========================== */
+
+.gcg-section--empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--theme-primary);
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+/* ===========================
+   Grid Layout Optimization
+   =========================== */
+
+/* CSS containment for better performance */
+.gcg-section {
+  contain: layout style;
+}
+
+/* Prevent layout shifts */
+.gcg-section__grid {
+  grid-auto-rows: minmax(60px, auto);
+}
+
+/* Dense packing to fill gaps */
+.gcg-section__grid {
+  grid-auto-flow: row dense;
+}
+
+/* ===========================
+   Home Tab Layout
+   =========================== */
+
+/* Home layout container */
+.gcg-home-layout {
+  width: 100%;
+  height: 100%;
+}
+
+/* Empty state */
+.gcg-home-layout--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-primary);
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+/* Single section: Full width */
+.gcg-home-layout--single {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dual sections: Side-by-side (50/50) */
+.gcg-home-layout--dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.gcg-home-layout__section {
+  min-width: 0; /* Prevent grid blowout */
+  overflow: hidden;
+}
+
+/* Serv 10: Slightly smaller gap */
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  .gcg-home-layout--dual {
+    gap: 1.25rem;
+  }
+}
+
+/* Serv 7: Stack vertically on smallest display */
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-home-layout--dual {
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: 1fr 1fr; /* Two rows */
+    gap: 1rem;
+  }
+}

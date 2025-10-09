@@ -1,0 +1,26 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "Installing pnpm..."
+        - npm install -g pnpm@8.10.0
+        - echo "Installing dependencies..."
+        - pnpm install --frozen-lockfile
+    build:
+      commands:
+        - echo "Building schema package..."
+        - cd packages/schema
+        - pnpm build
+        - cd ../..
+        - echo "Building web-configurator..."
+        - cd packages/web-configurator
+        - pnpm build
+  artifacts:
+    baseDirectory: packages/web-configurator/dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - packages/*/node_modules/**/*

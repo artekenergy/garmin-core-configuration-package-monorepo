@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Complete Component Showcase",
+    "description": "Demonstrates all component types with all features",
+    "version": "2.5.0",
+    "author": "Garmin Test Team",
+    "createdAt": "2025-01-15T10:30:00Z",
+    "updatedAt": "2025-01-20T14:45:00Z"
+  },
+  "tabs": [
+    {
+      "id": "tab-lighting",
+      "title": "Lighting",
+      "icon": "icon-lightbulb",
+      "sections": [
+        {
+          "id": "section-nav-lights",
+          "title": "Navigation Lights",
+          "icon": "icon-anchor",
+          "collapsible": true,
+          "collapsed": false,
+          "components": [
+            {
+              "id": "toggle-nav-lights",
+              "type": "toggle",
+              "label": "Navigation Lights",
+              "icon": "icon-nav",
+              "tooltip": "Turn navigation lights on/off",
+              "variant": "switch",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-1",
+                  "property": "state"
+                }
+              }
+            },
+            {
+              "id": "btn-anchor-light",
+              "type": "button",
+              "label": "Anchor Light",
+              "action": "toggle",
+              "variant": "primary",
+              "tooltip": "Toggle anchor light",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-5"
+                }
+              }
+            },
+            {
+              "id": "dimmer-cabin",
+              "type": "dimmer",
+              "label": "Cabin Lights",
+              "icon": "icon-dimmer",
+              "min": 0,
+              "max": 100,
+              "step": 5,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "pwm-channel-3",
+                  "property": "intensity"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-controls",
+      "title": "Controls",
+      "icon": "icon-controls",
+      "sections": [
+        {
+          "id": "section-buttons",
+          "title": "Buttons & Actions",
+          "components": [
+            {
+              "id": "btn-horn",
+              "type": "button",
+              "label": "Horn",
+              "action": "momentary",
+              "variant": "danger",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "out-channel-10"
+                }
+              }
+            },
+            {
+              "id": "btn-wiper",
+              "type": "button",
+              "label": "Wiper",
+              "action": "toggle",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-12"
+                },
+                "action": {
+                  "type": "empirbus",
+                  "channel": "out-channel-12"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-sliders",
+          "title": "Adjustable Controls",
+          "components": [
+            {
+              "id": "slider-volume",
+              "type": "slider",
+              "label": "Volume",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "%",
+              "orientation": "horizontal",
+              "showValue": true,
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "analog-input-1",
+                  "property": "value"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-monitoring",
+      "title": "Monitoring",
+      "sections": [
+        {
+          "id": "section-gauges",
+          "title": "Gauges",
+          "components": [
+            {
+              "id": "gauge-fuel",
+              "type": "gauge",
+              "label": "Fuel Level",
+              "variant": "circular",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "nmea2000",
+                  "pgn": 127505,
+                  "field": "fuelLevel",
+                  "instance": 0
+                }
+              }
+            },
+            {
+              "id": "gauge-speed",
+              "type": "gauge",
+              "label": "Speed",
+              "variant": "linear",
+              "min": 0,
+              "max": 50,
+              "unit": "kts",
+              "decimals": 2,
+              "bindings": {
+                "value": {
+                  "type": "nmea2000",
+                  "pgn": 128259,
+                  "field": "speedWaterReferenced"
+                }
+              }
+            },
+            {
+              "id": "gauge-depth",
+              "type": "gauge",
+              "label": "Depth",
+              "variant": "numeric",
+              "unit": "ft",
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 42.5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-indicators",
+          "title": "Status Indicators",
+          "components": [
+            {
+              "id": "ind-bilge-pump",
+              "type": "indicator",
+              "label": "Bilge Pump",
+              "variant": "led",
+              "color": "red",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "in-channel-7"
+                }
+              }
+            },
+            {
+              "id": "ind-battery",
+              "type": "indicator",
+              "label": "Battery OK",
+              "variant": "badge",
+              "color": "green",
+              "bindings": {
+                "state": {
+                  "type": "static",
+                  "value": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "id": "icon-lightbulb",
+      "type": "svg",
+      "data": "<svg>...</svg>"
+    },
+    {
+      "id": "icon-anchor",
+      "type": "png",
+      "url": "https://example.com/anchor.png"
+    },
+    {
+      "id": "icon-nav",
+      "type": "svg",
+      "data": "<svg>...</svg>"
+    },
+    {
+      "id": "icon-dimmer",
+      "type": "svg",
+      "data": "<svg>...</svg>"
+    },
+    {
+      "id": "icon-controls",
+      "type": "svg",
+      "data": "<svg>...</svg>"
+    }
+  ]
+}

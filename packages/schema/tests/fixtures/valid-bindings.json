@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Bindings Showcase",
+    "version": "1.0.0"
+  },
+  "tabs": [
+    {
+      "id": "tab-bindings",
+      "title": "All Binding Types",
+      "sections": [
+        {
+          "id": "section-empirbus",
+          "title": "EmpirBus Bindings",
+          "components": [
+            {
+              "id": "toggle-empirbus-basic",
+              "type": "toggle",
+              "label": "Basic Channel",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-1"
+                }
+              }
+            },
+            {
+              "id": "toggle-empirbus-state",
+              "type": "toggle",
+              "label": "With State Property",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "out-channel-2",
+                  "property": "state"
+                }
+              }
+            },
+            {
+              "id": "dimmer-empirbus-intensity",
+              "type": "dimmer",
+              "label": "With Intensity Property",
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "pwm-channel-1",
+                  "property": "intensity"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-nmea2000",
+          "title": "NMEA2000 Bindings",
+          "components": [
+            {
+              "id": "gauge-nmea-basic",
+              "type": "gauge",
+              "label": "Basic PGN",
+              "bindings": {
+                "value": {
+                  "type": "nmea2000",
+                  "pgn": 127505,
+                  "field": "fuelLevel"
+                }
+              }
+            },
+            {
+              "id": "gauge-nmea-instance",
+              "type": "gauge",
+              "label": "With Instance",
+              "bindings": {
+                "value": {
+                  "type": "nmea2000",
+                  "pgn": 128259,
+                  "field": "speedWaterReferenced",
+                  "instance": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-static",
+          "title": "Static Bindings",
+          "components": [
+            {
+              "id": "gauge-static-number",
+              "type": "gauge",
+              "label": "Static Number",
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 42.5
+                }
+              }
+            },
+            {
+              "id": "toggle-static-bool",
+              "type": "toggle",
+              "label": "Static Boolean",
+              "bindings": {
+                "state": {
+                  "type": "static",
+                  "value": true
+                }
+              }
+            },
+            {
+              "id": "gauge-static-string",
+              "type": "gauge",
+              "label": "Static String",
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": "Test Value"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

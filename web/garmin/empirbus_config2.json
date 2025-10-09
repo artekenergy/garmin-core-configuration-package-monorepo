@@ -1,0 +1,10 @@
+{
+  "id": "386b6870-9a5b-11f0-8eeb-d53fa4cea68a",
+  "path": "index2.html",
+  "title": "Test",
+  "icon": "/images/icon-default.png",
+  "devices": [
+    "APP"
+  ],
+  "main": false
+}

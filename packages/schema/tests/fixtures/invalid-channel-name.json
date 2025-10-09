@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Invalid Channel Name",
+    "version": "1.0.0"
+  },
+  "tabs": [
+    {
+      "id": "tab-1",
+      "title": "Tab 1",
+      "sections": [
+        {
+          "id": "section-1",
+          "title": "Section 1",
+          "components": [
+            {
+              "id": "toggle-1",
+              "type": "toggle",
+              "label": "Test",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "INVALID-CHANNEL"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

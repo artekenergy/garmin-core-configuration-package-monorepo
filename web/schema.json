@@ -1,0 +1,330 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "Test HMI Configuration",
+    "version": "1.0.0",
+    "author": "HMI UI Developer",
+    "created": "2025-10-03T00:00:00.000Z",
+    "modified": "2025-10-03T00:00:00.000Z",
+    "description": "Test schema for HMI UI development"
+  },
+  "hardware": {
+    "systemType": "core",
+    "outputs": [
+      {
+        "id": "core-01",
+        "source": "core",
+        "channel": 1,
+        "control": "dimmer",
+        "label": "Core 1",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-02",
+        "source": "core",
+        "channel": 2,
+        "control": "dimmer",
+        "label": "Core 2",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-03",
+        "source": "core",
+        "channel": 3,
+        "control": "toggle-button",
+        "label": "Core 3",
+        "icon": "/icons/Light.svg"
+      },
+      {
+        "id": "core-04",
+        "source": "core",
+        "channel": 4,
+        "control": "toggle-button",
+        "label": "Core 4",
+        "icon": "/icons/Light.svg"
+      },
+      {
+        "id": "core-05",
+        "source": "core",
+        "channel": 5,
+        "control": "dimmer",
+        "label": "Core 5",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-06",
+        "source": "core",
+        "channel": 6,
+        "control": "toggle-button",
+        "label": "Core 6",
+        "icon": "/icons/Light.svg"
+      },
+      {
+        "id": "core-07",
+        "source": "core",
+        "channel": 7,
+        "control": "toggle-button",
+        "label": "Core 7",
+        "icon": "/icons/Light.svg"
+      },
+      {
+        "id": "core-08",
+        "source": "core",
+        "channel": 8,
+        "control": "toggle-button",
+        "label": "Core 8",
+        "icon": "/icons/Light.svg"
+      },
+      {
+        "id": "core-09",
+        "source": "core",
+        "channel": 9,
+        "control": "dimmer",
+        "label": "Core 9",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-10",
+        "source": "core",
+        "channel": 10,
+        "control": "dimmer",
+        "label": "Core 10",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-11",
+        "source": "core",
+        "channel": 11,
+        "control": "special-function",
+        "label": "Core 11",
+        "icon": "/icons/Settings.svg"
+      },
+      {
+        "id": "core-12",
+        "source": "core",
+        "channel": 12,
+        "control": "special-function",
+        "label": "Core 12",
+        "icon": "/icons/Settings.svg"
+      },
+      {
+        "id": "core-13",
+        "source": "core",
+        "channel": 13,
+        "control": "dimmer",
+        "label": "Core 13",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-17",
+        "source": "core",
+        "channel": 17,
+        "control": "dimmer",
+        "label": "Core 17",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-18",
+        "source": "core",
+        "channel": 18,
+        "control": "dimmer",
+        "label": "Core 18",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-19",
+        "source": "core",
+        "channel": 19,
+        "control": "dimmer",
+        "label": "Core 19",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-20",
+        "source": "core",
+        "channel": 20,
+        "control": "dimmer",
+        "label": "Core 20",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-21",
+        "source": "core",
+        "channel": 21,
+        "control": "dimmer",
+        "label": "Core 21",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-25",
+        "source": "core",
+        "channel": 25,
+        "control": "dimmer",
+        "label": "Core 25",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-26",
+        "source": "core",
+        "channel": 26,
+        "control": "dimmer",
+        "label": "Core 26",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-27",
+        "source": "core",
+        "channel": 27,
+        "control": "dimmer",
+        "label": "Core 27",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-28",
+        "source": "core",
+        "channel": 28,
+        "control": "dimmer",
+        "label": "Core 28",
+        "icon": "/icons/Dimmer.svg"
+      },
+      {
+        "id": "core-29",
+        "source": "core",
+        "channel": 29,
+        "control": "dimmer",
+        "label": "Core 29",
+        "icon": "/icons/Dimmer.svg"
+      }
+    ]
+  },
+  "power": {
+    "dcCharging": {
+      "secondAlternator": false,
+      "orionXs": false
+    },
+    "acLegs": 1,
+    "multiplus": {
+      "l1": true,
+      "l2": false
+    }
+  },
+  "hvac": {
+    "heating": {
+      "enabled": false,
+      "sources": {
+        "diesel": false,
+        "electric": false,
+        "engine": false
+      },
+      "distribution": {
+        "floor": false,
+        "fans": false
+      },
+      "hotWater": false,
+      "auxZone": false
+    },
+    "cooling": {
+      "enabled": false,
+      "brand": ""
+    },
+    "ventilation": {
+      "enabled": false,
+      "maxAirFan": false,
+      "roofFan": false
+    }
+  },
+  "plumbing": {
+    "enabled": false,
+    "freshWaterTanks": 1,
+    "grayWaterTanks": 1,
+    "blackWaterTanks": 1,
+    "waterPump": false,
+    "waterHeater": false
+  },
+  "accessories": {
+    "keypad": {
+      "enabled": false,
+      "count": 1,
+      "buttonsPerKeypad": 5
+    },
+    "awning": {
+      "enabled": false,
+      "light": false,
+      "controlType": "rvc"
+    },
+    "slides": {
+      "enabled": false,
+      "controlType": "rvc",
+      "keypadSecured": false
+    }
+  },
+  "lighting": {
+    "enabled": false,
+    "modules": 0,
+    "zonesPerModule": 2
+  },
+  "theme": {
+    "preset": "blue"
+  },
+  "tabs": [
+    {
+      "id": "tab-main",
+      "title": "Main",
+      "sections": [
+        {
+          "id": "section-controls",
+          "title": "Controls",
+          "components": [
+            {
+              "id": "comp-light-1",
+              "type": "toggle",
+              "label": "Test Light 1",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-01"
+                }
+              }
+            },
+            {
+              "id": "comp-light-2",
+              "type": "toggle",
+              "label": "Test Light 2",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-02"
+                }
+              }
+            },
+            {
+              "id": "comp-button-1",
+              "type": "button",
+              "label": "Test Button",
+              "action": "momentary",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-03"
+                }
+              }
+            },
+            {
+              "id": "comp-indicator-1",
+              "type": "indicator",
+              "label": "System Status",
+              "color": "green",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-01"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "icons": []
+}
