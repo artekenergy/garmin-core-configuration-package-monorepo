@@ -336,6 +336,21 @@ This package includes the complete HMI UI application and is ready for direct de
     URL.revokeObjectURL(url);
   };
 
+  const handleDownloadDebugSchema = () => {
+    if (!schema) return;
+
+    const schemaJson = JSON.stringify(schema, null, 2);
+    const dataBlob = new Blob([schemaJson], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${schema.metadata.name.replace(/\s+/g, '-').toLowerCase()}-debug-schema.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -348,6 +363,18 @@ This package includes the complete HMI UI application and is ready for direct de
       {hasErrors && (
         <div className={styles.errorBanner}>
           ⚠️ Schema has validation errors. Fix them before compiling.
+          <div style={{ marginTop: '10px' }}>
+            <button 
+              className={styles.buttonSecondary} 
+              onClick={handleDownloadDebugSchema}
+              style={{ fontSize: '14px' }}
+            >
+              🐛 Download Debug Schema
+            </button>
+            <span style={{ marginLeft: '10px', fontSize: '14px', opacity: 0.7 }}>
+              Export current configuration for debugging (includes validation errors)
+            </span>
+          </div>
         </div>
       )}
 

@@ -274,6 +274,88 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
   const [hardwareChannels, setHardwareChannels] = useState<HardwareChannel[]>([]);
   const [channelErrors, setChannelErrors] = useState<ChannelValidationError[]>([]);
 
+  // Debug helper: Expose schema to browser console for debugging
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).__GCG_DEBUG__ = {
+        schema,
+        validationResult,
+        hardwareChannels,
+        channelErrors,
+        downloadSchema: () => {
+          if (!schema) {
+            console.warn('No schema available');
+            return;
+          }
+          const schemaJson = JSON.stringify(schema, null, 2);
+          const dataBlob = new Blob([schemaJson], { type: 'application/json' });
+          const url = URL.createObjectURL(dataBlob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `debug-schema-${Date.now()}.json`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          console.log('✅ Schema downloaded!');
+        },
+        copySchemaToClipboard: async () => {
+          if (!schema) {
+            console.warn('No schema available');
+            return;
+          }
+          try {
+            const schemaJson = JSON.stringify(schema, null, 2);
+            await navigator.clipboard.writeText(schemaJson);
+            console.log('✅ Schema copied to clipboard!');
+          } catch (err) {
+            console.error('❌ Failed to copy to clipboard:', err);
+            console.log('Schema JSON:', JSON.stringify(schema, null, 2));
+          }
+        },
+        exportDOMSnapshot: () => {
+          const snapshot = {
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            url: window.location.href,
+            schema: schema,
+            validationResult: validationResult,
+            hardwareChannels: hardwareChannels,
+            channelErrors: channelErrors,
+            domSnapshot: {
+              title: document.title,
+              forms: Array.from(document.forms).map(form => ({
+                name: form.name,
+                action: form.action,
+                method: form.method,
+                elements: Array.from(form.elements).map(el => ({
+                  name: (el as any).name,
+                  type: (el as any).type,
+                  value: (el as any).value,
+                  checked: (el as any).checked
+                }))
+              })),
+              localStorage: { ...localStorage },
+              sessionStorage: { ...sessionStorage }
+            }
+          };
+          
+          const snapshotJson = JSON.stringify(snapshot, null, 2);
+          const dataBlob = new Blob([snapshotJson], { type: 'application/json' });
+          const url = URL.createObjectURL(dataBlob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `dom-snapshot-${Date.now()}.json`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          console.log('✅ DOM snapshot downloaded!');
+        }
+      };
+    }
+  }, [schema, validationResult, hardwareChannels, channelErrors]);
+
   // Validate schema whenever it changes
   useEffect(() => {
     if (schema) {
