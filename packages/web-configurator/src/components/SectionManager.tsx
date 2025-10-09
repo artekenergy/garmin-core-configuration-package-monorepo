@@ -41,6 +41,7 @@ export default function SectionManager({
     const newSection: Section = {
       id: `section-${Date.now()}`,
       title: newSectionTitle.trim(),
+      enabled: true,
       components: [],
     };
 

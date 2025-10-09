@@ -36,6 +36,14 @@ export default function SwitchingSectionManager({
       enabled: true,
       title: 'Custom Controls',
     },
+    switches: {
+      enabled: true,
+      title: 'Switches',
+    },
+    accessories: {
+      enabled: true,
+      title: 'Accessories',
+    },
   };
 
   // Get sections from the tab
@@ -63,6 +71,8 @@ export default function SwitchingSectionManager({
   };
 
   const updateCustomSection = (updates: Partial<typeof switchingConfig.customSection>) => {
+    if (!switchingConfig.customSection) return;
+    
     updateSwitchingConfig({
       customSection: {
         ...switchingConfig.customSection,
@@ -123,7 +133,7 @@ export default function SwitchingSectionManager({
       </div>
 
       {/* Custom Configurable Section */}
-      {customSection && (
+      {customSection && switchingConfig.customSection && (
         <div className={styles.sectionGroup}>
           <div className={styles.groupHeader}>
             <h4>📝 Configurable Section</h4>
