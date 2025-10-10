@@ -13,6 +13,7 @@ import { Button } from './Button';
 import { Dimmer } from './Dimmer';
 import { Indicator } from './Indicator';
 import { Gauge } from './Gauge';
+import { Slider } from './Slider';
 
 interface ComponentRendererProps {
   component: Component;
@@ -41,12 +42,7 @@ export function ComponentRenderer(props: ComponentRendererProps) {
       return <Indicator component={component} />;
 
     case 'slider':
-      // TODO: Implement Slider component
-      return (
-        <div style={{ padding: '1rem', background: 'rgba(255, 255, 0, 0.1)' }}>
-          Slider: {component.label} (not implemented yet)
-        </div>
-      );
+      return <Slider component={component} />;
 
     default:
       return (

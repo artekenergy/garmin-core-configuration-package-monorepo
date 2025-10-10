@@ -146,19 +146,35 @@ export default function HardwareConfigPage() {
       if (!schema?.hardware) return;
 
       const systemType = schema.hardware.systemType;
-      const configPath =
-        systemType === 'core' ? '/hardware-config-core.json' : '/hardware-config-core-lite.json';
+      // Prefer the new validation configs; fall back to legacy names
+      const candidates =
+        systemType === 'core'
+          ? [
+              '/configuration/core-config.json',
+              '/core-config.json',
+              '/hardware-config-core.json',
+            ]
+          : [
+              '/configuration/lite-config.json',
+              '/lite-config.json',
+              '/hardware-config-core-lite.json',
+            ];
 
-      try {
-        const response = await fetch(configPath);
-        if (response.ok) {
-          const hardwareConfig = await response.json();
-          loadHardwareConfig(hardwareConfig);
-          console.log(`✅ Auto-loaded ${systemType.toUpperCase()} hardware config for validation`);
+      for (const url of candidates) {
+        try {
+          const response = await fetch(url);
+          if (response.ok) {
+            const hardwareConfig = await response.json();
+            loadHardwareConfig(hardwareConfig);
+            console.log(`✅ Auto-loaded ${systemType.toUpperCase()} hardware config from ${url}`);
+            return; // Stop after first success
+          }
+        } catch (e) {
+          // Try next candidate
         }
-      } catch (error) {
-        console.warn('Could not auto-load hardware config:', error);
       }
+
+      console.warn('Could not auto-load any hardware validation config');
     };
 
     autoLoadHardwareConfig();

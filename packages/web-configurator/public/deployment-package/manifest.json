@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2025-10-09T06:30:59.952Z",
-  "totalFiles": 112,
+  "generatedAt": "2025-10-09T22:59:45.953Z",
+  "totalFiles": 113,
   "files": [
     "configuration/CHANNEL_UPDATE_COMPLETE.md",
     "configuration/ServPlusTest_v-1+.ebp",
@@ -24,7 +24,6 @@
     "services/garmin_empirbus_html2.service",
     "services/garmin_empirbus_html3.service",
     "services/raymarine.service",
-    "web/.DS_Store",
     "web/appselector.js",
     "web/b0a0bdae520210e3569b.TTF",
     "web/css/custom-style-1-867e05d2-3182-4cda-8259-2498ac766867.css",
@@ -38,10 +37,10 @@
     "web/garmin/empirbus_config1.json",
     "web/garmin/empirbus_config2.json",
     "web/garmin/empirbus_config3.json",
-    "web/hmi-assets/index-DZ2lDoKR.js",
-    "web/hmi-assets/index-DZyIlvRq.css",
-    "web/hmi-assets/signals-hO7aJ5Gq.js",
-    "web/hmi-assets/vendor-azMIOUfB.js",
+    "web/hmi-assets/index-Bs6ACjXq.js",
+    "web/hmi-assets/index-DtQEtt2f.css",
+    "web/hmi-assets/signals-0dQTJ-mX.js",
+    "web/hmi-assets/vendor-CJMu0MV0.js",
     "web/icons/AC In.svg",
     "web/icons/AC Out.svg",
     "web/icons/AC.svg",
@@ -109,14 +108,16 @@
     "web/manifest.json",
     "web/manifest1.json",
     "web/manifest2.json",
+    "web/new-hmi-configuration-schema-2.json",
     "web/projectinfo.json",
     "web/schema.json",
     "web/signal-info.json",
+    "web/test-deployment.html",
     "web/unit-info.json",
     "web/wduSettings.json"
   ],
   "directories": {
-    "web": 90,
+    "web": 91,
     "configuration": 10,
     "services": 12
   }

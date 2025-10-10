@@ -135,8 +135,11 @@ export default function ExportPage() {
 
       // 4. Update web/schema.json with user's configuration (overwrite the template)
       zip.file('web/schema.json', schemaJson);
+      
+      // 5. Also update the HMI UI schema file so it loads the user's configuration
+      zip.file('web/new-hmi-configuration-schema-2.json', schemaJson);
 
-      // 5. Note: Icons are already included in the deployment package
+      // 6. Note: Icons are already included in the deployment package
       // The /web/icons/ directory was copied with all icons
       let libraryIconCount = 0;
       let customIconCount = 0;
@@ -154,7 +157,7 @@ export default function ExportPage() {
         });
       }
 
-      // 6. Create README with deployment instructions
+      // 7. Create README with deployment instructions
       const readme = `# ${schema.metadata.name} - Deployment Package
 
 ## Contents
@@ -162,7 +165,8 @@ export default function ExportPage() {
 - \`web/\` - Complete HMI UI application
   - \`index1.html\` - HMI UI entry point  
   - \`hmi-assets/\` - JavaScript and CSS bundles
-  - \`schema.json\` - Your custom configuration
+  - \`schema.json\` - Your custom configuration (legacy)
+  - \`new-hmi-configuration-schema-2.json\` - Your custom configuration (HMI UI)
   - \`icons/\` - All icon files (${libraryIconCount + customIconCount} total)
   - Essential data files (manifest, signals, etc.)
 - \`services/\` - Backend services (if available)

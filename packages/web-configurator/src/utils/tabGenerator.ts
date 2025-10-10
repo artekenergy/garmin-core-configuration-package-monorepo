@@ -1,4 +1,5 @@
-import type { UISchema, Tab, Section } from '@gcg/schema';
+import type { UISchema, Tab, Section, Component } from '@gcg/schema';
+import { generateTabComponents, generateDefaultComponents } from './hardwareComponentGenerator';
 
 /**
  * Generates sections and components for tabs based on system configuration
@@ -15,7 +16,6 @@ function generateId(prefix: string): string {
 
 function generateHomeTab(schema: UISchema): Section[] {
   // Home tab has two configurable sections with stable IDs
-  // The sections are managed via tabs[].sections[], not schema.home
   const homeTab = schema.tabs.find((t) => t.preset === 'home' || t.id === 'tab-home');
 
   // If home tab exists and has sections, use those
@@ -23,21 +23,21 @@ function generateHomeTab(schema: UISchema): Section[] {
     return homeTab.sections;
   }
 
-  // Otherwise return default structure (shouldn't happen in normal usage)
+  // Generate default structure with smart components
   return [
     {
       id: 'section-home-1',
       title: 'Quick Controls',
       enabled: true,
       type: 'switching',
-      components: [],
+      components: generateTabComponents(schema, 'home', 'section-home-1'),
     },
     {
       id: 'section-home-2',
       title: 'Status',
       enabled: true,
       type: 'signal-values',
-      components: [],
+      components: generateDefaultComponents('home', 'section-home-2'),
     },
   ];
 }
@@ -48,7 +48,6 @@ function generateHomeTab(schema: UISchema): Section[] {
 
 function generateLightingTab(schema: UISchema): Section[] {
   // Lighting tab has three configurable subtab sections with stable IDs
-  // The content is managed by LightingSectionManager
   const lightingTabConfig = schema.lightingTab || {
     interior: { enabled: true, title: 'Interior' },
     exterior: { enabled: true, title: 'Exterior' },
@@ -59,19 +58,19 @@ function generateLightingTab(schema: UISchema): Section[] {
     {
       id: 'section-lighting-interior',
       title: lightingTabConfig.interior?.title || 'Interior',
-      components: [],
+      components: generateTabComponents(schema, 'lighting', 'section-lighting-interior'),
       enabled: true,
     },
     {
       id: 'section-lighting-exterior',
       title: lightingTabConfig.exterior?.title || 'Exterior',
-      components: [],
+      components: generateTabComponents(schema, 'lighting', 'section-lighting-exterior'),
       enabled: true,
     },
     {
       id: 'section-lighting-rgb',
       title: lightingTabConfig.rgb?.title || 'RGB',
-      components: [],
+      components: generateTabComponents(schema, 'lighting', 'section-lighting-rgb'),
       enabled: true,
     },
   ];
@@ -96,22 +95,97 @@ function generatePowerTab(schema: UISchema): Section[] {
     ];
   }
 
-  // Battery section - empty by default, user can add components via component palette
+  // Battery section - generate components from hardware
   sections.push({
-    id: generateId('section-battery'),
+    id: 'section-battery',
     title: 'Battery',
     enabled: true,
-    components: [],
+    components: generateTabComponents(schema, 'power', 'section-battery'),
   });
 
-  // DC Charging section - empty by default, user can add components if needed
+  // DC Charging section - generate components if hardware is present
   if (schema.power.dcCharging.secondAlternator || schema.power.dcCharging.orionXs) {
     sections.push({
-      id: generateId('section-dc-charging'),
+      id: 'section-dc-charging',
       title: 'DC Charging',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'power', 'section-dc-charging'),
     });
+  }
+
+  // Solar section - auto-generate gauges/indicator when enabled
+  const solarCfg = schema.power.solar;
+  if (solarCfg?.enabled) {
+    const solarComponents: Component[] = [];
+
+    // Optional: solar status indicator
+    solarComponents.push(createIndicatorComponent(
+      'comp-solar-indicator',
+      'Solar Status',
+      'signal-solar-indicator'
+    ));
+
+    // Primary array signals
+    if (solarCfg.primaryArray) {
+      solarComponents.push(
+        createGaugeComponent(
+          'comp-solar-primary-amperage',
+          'PRIMARY AMPERAGE',
+          'A',
+          -100,
+          100,
+          1,
+          'signal-primary-solar-amperage'
+        )
+      );
+      solarComponents.push(
+        createGaugeComponent(
+          'comp-solar-primary-voltage',
+          'PRIMARY VOLTAGE',
+          'V',
+          0,
+          16,
+          2,
+          'signal-primary-solar-voltage'
+        )
+      );
+    }
+
+    // Auxiliary array signals
+    if (solarCfg.auxiliaryArray) {
+      solarComponents.push(
+        createGaugeComponent(
+          'comp-solar-aux-amperage',
+          'AUXILIARY AMPERAGE',
+          'A',
+          -100,
+          100,
+          1,
+          'signal-aux-solar-amperage'
+        )
+      );
+      solarComponents.push(
+        createGaugeComponent(
+          'comp-solar-aux-voltage',
+          'AUXILIARY VOLTAGE',
+          'V',
+          0,
+          16,
+          2,
+          'signal-aux-solar-voltage'
+        )
+      );
+    }
+
+    // Only add section if we created at least one component
+    if (solarComponents.length > 0) {
+      sections.push({
+        id: 'section-solar',
+        title: 'Solar',
+        enabled: true,
+        components: solarComponents,
+      });
+    }
   }
 
   return sections;
@@ -121,28 +195,26 @@ function generatePowerTab(schema: UISchema): Section[] {
 // HVAC TAB
 // ============================================================================
 
-function generateHVACTab(_schema: UISchema): Section[] {
-  // Always return all three sections with stable IDs and empty components
-  // User can add components via component palette
-  
+function generateHVACTab(schema: UISchema): Section[] {
+  // Generate sections with hardware-driven components
   return [
     {
-      id: generateId('section-hvac-heating'),
+      id: 'section-hvac-heating',
       title: 'Heating',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'hvac', 'section-hvac-heating'),
     },
     {
-      id: generateId('section-hvac-cooling'),
+      id: 'section-hvac-cooling',
       title: 'Cooling',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'hvac', 'section-hvac-cooling'),
     },
     {
-      id: generateId('section-hvac-ventilation'),
+      id: 'section-hvac-ventilation',
       title: 'Ventilation',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'hvac', 'section-hvac-ventilation'),
     },
   ];
 }
@@ -151,21 +223,20 @@ function generateHVACTab(_schema: UISchema): Section[] {
 // SWITCHING TAB
 // ============================================================================
 
-function generateSwitchingTab(_schema: UISchema): Section[] {
-  // Always return both sections with stable IDs and empty components
-  // User can add components via component palette
+function generateSwitchingTab(schema: UISchema): Section[] {
+  // Generate sections with hardware-driven components
   return [
     {
       id: 'section-switching-switches',
       title: 'Switches',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'switching', 'section-switching-switches'),
     },
     {
       id: 'section-switching-accessories',
       title: 'Accessories',
       enabled: true,
-      components: [],
+      components: generateTabComponents(schema, 'switching', 'section-switching-accessories'),
     },
   ];
 }
@@ -189,12 +260,12 @@ function generatePlumbingTab(schema: UISchema): Section[] {
     ];
   }
 
-  // Tank levels section - empty by default, user can add components via component palette
+  // Tank levels section - generate components from hardware
   sections.push({
-    id: generateId('section-tank-levels'),
+    id: 'section-tank-levels',
     title: 'Tank Levels',
     enabled: true,
-    components: [],
+    components: generateTabComponents(schema, 'plumbing', 'section-tank-levels'),
   });
 
   return sections;
@@ -317,4 +388,53 @@ export function autoEnableTabs(schema: UISchema): UISchema {
     ...schema,
     tabs: updatedTabs,
   };
+}
+
+// ============================================================================
+// Helpers: Component creators for power tab
+// ============================================================================
+
+function createGaugeComponent(
+  id: string,
+  label: string,
+  unit: string,
+  min: number | undefined,
+  max: number | undefined,
+  decimals: number | undefined,
+  channel: string
+): Component {
+  return {
+    id,
+    type: 'gauge',
+    label,
+    variant: 'numeric',
+    unit,
+    min,
+    max,
+    decimals,
+    bindings: {
+      value: {
+        type: 'empirbus',
+        channel,
+        property: 'value',
+      },
+    },
+  } as Component;
+}
+
+function createIndicatorComponent(id: string, label: string, channel: string): Component {
+  return {
+    id,
+    type: 'indicator',
+    label,
+    variant: 'badge',
+    color: 'green',
+    bindings: {
+      state: {
+        type: 'empirbus',
+        channel,
+        property: 'state',
+      },
+    },
+  } as Component;
 }

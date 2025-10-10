@@ -1,0 +1,1167 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "New HMI Configuration",
+    "version": "1.0.0",
+    "description": "Created with Garmin Core Graphics Configurator",
+    "author": "",
+    "createdAt": "2025-10-07T22:23:36.476Z",
+    "updatedAt": "2025-10-07T22:30:18.544Z"
+  },
+  "icons": [
+    {
+      "id": "hot-air",
+      "type": "svg",
+      "data": "<svg width=\"44\" height=\"24\" viewBox=\"0 0 44 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M31.4562 1H8.66246C8.1116 1 7.66504 1.44656 7.66504 1.99742V21.9535C7.66504 22.5044 8.1116 22.951 8.66246 22.951H31.4562C32.0071 22.951 32.4536 22.5044 32.4536 21.9535V1.99742C32.4536 1.44656 32.0071 1 31.4562 1Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M7.66504 11.9795H32.4536\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12.6211 22.951V1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M17.585 22.951V1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M22.541 22.951V1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M27.4976 22.951V1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M1 7.32471H17.585\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M32.4536 7.32473H38.3531L35.8325 4.79639\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M38.3532 7.32471L36.2578 9.42006\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M1 17.0283H22.5412\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M32.4536 17.0283H43L40.4794 14.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M42.9997 17.0283L40.9043 19.1237\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    },
+    {
+      "id": "inverter",
+      "type": "svg",
+      "data": "<svg width=\"37\" height=\"28\" viewBox=\"0 0 37 28\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12.5291 5.43799H1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M35.9998 16.3525H24.4707\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12.5292 9.3374H11.687\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M7.46783 9.3374H3.95605\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M1.84215 9.3374H1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M35.9997 21.1526C35.2754 21.6157 34.5596 22.0873 33.1195 22.0873C30.2393 22.0873 30.2393 20.2178 27.3592 20.2178C25.9191 20.2178 25.1948 20.681 24.479 21.1526\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12.3018 26.1972L24.0498 1\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+    }
+  ],
+  "home": {
+    "section1": {
+      "enabled": true,
+      "type": "switching",
+      "title": "Quick Controls"
+    },
+    "section2": {
+      "enabled": true,
+      "type": "signal-values",
+      "title": "Status"
+    }
+  },
+  "hardware": {
+    "systemType": "core",
+    "outputs": [
+      {
+        "id": "core-01",
+        "source": "core",
+        "channel": 1,
+        "control": "toggle-button",
+        "icon": "/icons/Hot Air.svg",
+        "label": "Hot Air",
+        "signals": {
+          "toggle": 15,
+          "momentary": 14,
+          "dimmer": 16
+        }
+      },
+      {
+        "id": "core-02",
+        "source": "core",
+        "channel": 2,
+        "control": "push-button",
+        "icon": "/icons/Inverter.svg",
+        "label": "Wavy Lines",
+        "signals": {
+          "toggle": 72,
+          "momentary": 71,
+          "dimmer": 73
+        }
+      },
+      {
+        "id": "core-03",
+        "source": "core",
+        "channel": 3,
+        "control": "half-bridge",
+        "icon": "/icons/Fan.svg",
+        "label": "Fan Burb",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-04",
+        "source": "core",
+        "channel": 4,
+        "control": "half-bridge",
+        "icon": "/icons/Water Pump.svg",
+        "label": "Water Burn",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-05",
+        "source": "core",
+        "channel": 5,
+        "control": "slider",
+        "label": "Front Lights",
+        "signals": {
+          "toggle": 75,
+          "momentary": 74,
+          "dimmer": 76
+        }
+      },
+      {
+        "id": "core-09",
+        "source": "core",
+        "channel": 9,
+        "control": "slider",
+        "label": "Rear Lights",
+        "signals": {
+          "toggle": 78,
+          "momentary": 77,
+          "dimmer": 79
+        }
+      },
+      {
+        "id": "core-10",
+        "source": "core",
+        "channel": 10,
+        "control": "push-button",
+        "icon": "/icons/Water Pump.svg",
+        "label": "Water Pump",
+        "signals": {
+          "toggle": 81,
+          "momentary": 80,
+          "dimmer": 82
+        }
+      },
+      {
+        "id": "core-11",
+        "source": "core",
+        "channel": 11,
+        "control": "toggle-button",
+        "icon": "/icons/Heater.svg",
+        "label": "Floor Heat",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-12",
+        "source": "core",
+        "channel": 12,
+        "control": "half-bridge",
+        "icon": "/icons/Alternator.svg",
+        "label": "Engine Cool",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-13",
+        "source": "core",
+        "channel": 13,
+        "control": "half-bridge",
+        "icon": "/icons/Power.svg",
+        "label": "Box Fan",
+        "signals": {
+          "toggle": 84,
+          "momentary": 83,
+          "dimmer": 85
+        }
+      },
+      {
+        "id": "core-17",
+        "source": "core",
+        "channel": 17,
+        "control": "slider",
+        "label": "Awning Lights",
+        "signals": {
+          "toggle": 87,
+          "momentary": 86,
+          "dimmer": 88
+        }
+      },
+      {
+        "id": "core-18",
+        "source": "core",
+        "channel": 18,
+        "control": "slider",
+        "label": "Dinnette Lights",
+        "signals": {
+          "toggle": 90,
+          "momentary": 89,
+          "dimmer": 91
+        }
+      },
+      {
+        "id": "core-19",
+        "source": "core",
+        "channel": 19,
+        "control": "toggle-button",
+        "icon": "/icons/Time.svg",
+        "label": "Neon Sign",
+        "signals": {
+          "toggle": 93,
+          "momentary": 92,
+          "dimmer": 94
+        }
+      },
+      {
+        "id": "core-20",
+        "source": "core",
+        "channel": 20,
+        "control": "push-button",
+        "icon": "/icons/AC In.svg",
+        "label": "Outlets",
+        "signals": {
+          "toggle": 96,
+          "momentary": 95,
+          "dimmer": 97
+        }
+      },
+      {
+        "id": "core-21",
+        "source": "core",
+        "channel": 21,
+        "control": "slider",
+        "label": "Kitchen Light",
+        "signals": {
+          "toggle": 99,
+          "momentary": 98,
+          "dimmer": 100
+        }
+      },
+      {
+        "id": "core-25",
+        "source": "core",
+        "channel": 25,
+        "control": "push-button",
+        "icon": "/icons/Engine.svg",
+        "label": "Block Baby",
+        "signals": {
+          "toggle": 102,
+          "momentary": 101,
+          "dimmer": 103
+        }
+      },
+      {
+        "id": "core-26",
+        "source": "core",
+        "channel": 26,
+        "control": "slider",
+        "label": "Kick Lights",
+        "signals": {
+          "toggle": 105,
+          "momentary": 104,
+          "dimmer": 106
+        }
+      },
+      {
+        "id": "core-27",
+        "source": "core",
+        "channel": 27,
+        "control": "toggle-button",
+        "icon": "/icons/DC Power.svg",
+        "label": "Positive Hi",
+        "signals": {
+          "toggle": 108,
+          "momentary": 107,
+          "dimmer": 109
+        }
+      },
+      {
+        "id": "core-28",
+        "source": "core",
+        "channel": 28,
+        "control": "slider",
+        "label": "Undercab",
+        "signals": {
+          "toggle": 111,
+          "momentary": 110,
+          "dimmer": 112
+        }
+      },
+      {
+        "id": "core-29",
+        "source": "core",
+        "channel": 29,
+        "control": "slider",
+        "label": "Front Lights",
+        "signals": {
+          "toggle": 114,
+          "momentary": 113,
+          "dimmer": 115
+        }
+      }
+    ],
+    "halfBridgePairs": [
+      {
+        "source": "core",
+        "channelA": 3,
+        "channelB": 4,
+        "enabled": true
+      },
+      {
+        "source": "core",
+        "channelA": 12,
+        "channelB": 13,
+        "enabled": true
+      }
+    ],
+    "signalMap": {},
+    "genesisBoards": 0
+  },
+  "power": {
+    "dcCharging": {
+      "secondAlternator": true,
+      "orionXs": true
+    },
+    "solar": {
+      "enabled": true,
+      "primaryArray": true,
+      "auxiliaryArray": true
+    },
+    "batteryManagement": "expion",
+    "acLegs": 2,
+    "multiplus": {
+      "l1": true,
+      "l2": true
+    }
+  },
+  "hvac": {
+    "heating": {
+      "enabled": true,
+      "sources": {
+        "diesel": true,
+        "electric": true,
+        "engine": true
+      },
+      "distribution": {
+        "floor": true,
+        "fans": true
+      },
+      "hotWater": true,
+      "auxZone": true
+    },
+    "cooling": {
+      "enabled": true,
+      "brand": "recpro"
+    },
+    "ventilation": {
+      "enabled": true,
+      "fans": 2
+    }
+  },
+  "plumbing": {
+    "enabled": true,
+    "monitoringSource": "cerbo-gx",
+    "count": 4,
+    "tanks": [
+      {
+        "type": "fresh",
+        "name": ""
+      },
+      {
+        "type": "waste",
+        "name": ""
+      },
+      {
+        "type": "black",
+        "name": ""
+      },
+      {
+        "type": "fresh",
+        "name": ""
+      }
+    ]
+  },
+  "accessories": {
+    "keypad": {
+      "enabled": true,
+      "count": 4,
+      "buttonsPerKeypad": 12
+    },
+    "awning": {
+      "enabled": true,
+      "light": true,
+      "controlType": "analog"
+    },
+    "slides": {
+      "enabled": true,
+      "controlType": "analog",
+      "keypadSecured": true
+    },
+    "itcLighting": {
+      "enabled": true,
+      "modules": 2,
+      "zonesPerModule": 4
+    }
+  },
+  "tabs": [
+    {
+      "id": "tab-home",
+      "title": "Home",
+      "preset": "home",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-home-1",
+          "title": "Quick Controls",
+          "components": [
+            {
+              "id": "comp-home-interior-lights",
+              "type": "toggle",
+              "label": "Interior Lights",
+              "variant": "round",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-01"
+                }
+              }
+            },
+            {
+              "id": "comp-home-water-pump",
+              "type": "toggle",
+              "label": "Water Pump",
+              "variant": "round",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-04"
+                }
+              }
+            },
+            {
+              "id": "comp-home-inverter",
+              "type": "toggle",
+              "label": "Inverter",
+              "variant": "round",
+              "icon": "inverter",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-02"
+                }
+              }
+            },
+            {
+              "id": "comp-home-awning-lights",
+              "type": "toggle",
+              "label": "Awning Lights",
+              "variant": "round",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-05"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-home-2",
+          "title": "Status",
+          "components": [
+            {
+              "id": "comp-home-battery-voltage",
+              "type": "gauge",
+              "label": "Battery Voltage",
+              "min": 10,
+              "max": 16,
+              "unit": "V",
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 12.8
+                }
+              }
+            },
+            {
+              "id": "comp-home-battery-soc",
+              "type": "gauge",
+              "label": "State of Charge",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "decimals": 0,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 85
+                }
+              }
+            },
+            {
+              "id": "comp-home-fresh-water",
+              "type": "gauge",
+              "label": "Fresh Water",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "decimals": 0,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 65
+                }
+              }
+            },
+            {
+              "id": "comp-home-interior-temp",
+              "type": "gauge",
+              "label": "Interior Temp",
+              "min": 40,
+              "max": 120,
+              "unit": "°F",
+              "decimals": 0,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 72
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-lighting",
+      "title": "Lighting",
+      "preset": "lighting",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-lighting-interior",
+          "title": "Interior",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-interior-cabin-lights",
+              "type": "dimmer",
+              "label": "Cabin Lights",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "cabin-lights"
+                }
+              }
+            },
+            {
+              "id": "comp-interior-reading-lights",
+              "type": "toggle",
+              "label": "Reading Lights",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "reading-lights"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-lighting-exterior",
+          "title": "Exterior",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-exterior-patio-lights",
+              "type": "toggle",
+              "label": "Patio Lights",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "patio-lights"
+                }
+              }
+            },
+            {
+              "id": "comp-exterior-accent-lights",
+              "type": "dimmer",
+              "label": "Accent Lights",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "accent-lights"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-lighting-rgb",
+          "title": "RGB",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-rgb-mood-lighting",
+              "type": "toggle",
+              "label": "Mood Lighting",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "rgb-mood"
+                }
+              }
+            },
+            {
+              "id": "comp-rgb-accent-strip",
+              "type": "dimmer",
+              "label": "RGB Accent Strip",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "rgb-accent"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-power",
+      "title": "Power",
+      "preset": "power",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-battery-1759876190559-xjduqsu9l",
+          "title": "Battery",
+          "components": [
+            {
+              "id": "gauge-battery-voltage-1759876190560-vk1isjs45",
+              "type": "gauge",
+              "label": "Battery Voltage",
+              "variant": "numeric",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "battery-voltage"
+                }
+              },
+              "min": 0,
+              "max": 16,
+              "decimals": 1,
+              "unit": "V"
+            },
+            {
+              "id": "gauge-battery-soc-1759876190560-slnh3qv4j",
+              "type": "gauge",
+              "label": "State of Charge",
+              "variant": "circular",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "battery-soc"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 0,
+              "unit": "%"
+            }
+          ]
+        },
+        {
+          "id": "section-dc-charging-1759876190560-g95ytscm4",
+          "title": "DC Charging",
+          "components": [
+            {
+              "id": "gauge-alternator-current-1759876190560-bvcunrq9p",
+              "type": "gauge",
+              "label": "Alternator",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "alternator-current"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 1,
+              "unit": "A"
+            },
+            {
+              "id": "gauge-orion-current-1759876190560-og7zkl5g1",
+              "type": "gauge",
+              "label": "Orion XS",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "orion-current"
+                }
+              },
+              "min": 0,
+              "max": 50,
+              "decimals": 1,
+              "unit": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-hvac",
+      "title": "HVAC",
+      "preset": "hvac",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-hvac-heating",
+          "title": "Heating",
+          "components": [
+            {
+              "id": "gauge-interior-temp-1759876190560-tf2tigx94",
+              "type": "gauge",
+              "label": "Interior Temp",
+              "variant": "numeric",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "interior-temperature"
+                }
+              },
+              "min": -20,
+              "max": 50,
+              "decimals": 1,
+              "unit": "°C"
+            },
+            {
+              "id": "toggle-diesel-heat-1759876190560-zke0zn58g",
+              "type": "toggle",
+              "label": "Diesel Heat",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "diesel-heater"
+                }
+              }
+            },
+            {
+              "id": "toggle-electric-heat-1759876190560-12tknxrnh",
+              "type": "toggle",
+              "label": "Electric Heat",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "electric-heater"
+                }
+              }
+            },
+            {
+              "id": "dimmer-heat-fan-1759876190560-t3su9iz7q",
+              "type": "dimmer",
+              "label": "Heat Fan Speed",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "heat-fan"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-hvac-cooling",
+          "title": "Cooling",
+          "components": [
+            {
+              "id": "toggle-ac-1759876190560-m66xrb7m7",
+              "type": "toggle",
+              "label": "Air Conditioning",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "air-conditioner"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-hvac-ventilation",
+          "title": "Ventilation",
+          "components": [
+            {
+              "id": "dimmer-vent-fan-1-1759876190561-w8fu9zgnh",
+              "type": "dimmer",
+              "label": "Vent Fan 1",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "vent-fan-1"
+                }
+              }
+            },
+            {
+              "id": "dimmer-vent-fan-2-1759876190561-8h758m5he",
+              "type": "dimmer",
+              "label": "Vent Fan 2",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "vent-fan-2"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-switching",
+      "title": "Switching",
+      "preset": "switching",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-switching-switches",
+          "title": "Switches",
+          "components": [
+            {
+              "id": "toggle-core-01-1759876190561-6mlmew9b2",
+              "type": "toggle",
+              "label": "Hot Air",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-01"
+                }
+              }
+            },
+            {
+              "id": "button-core-02-1759876190561-n2dl4it6k",
+              "type": "button",
+              "action": "momentary",
+              "label": "Wavy Lines",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-02"
+                }
+              }
+            },
+            {
+              "id": "button-core-10-1759876190561-1q0lah9au",
+              "type": "button",
+              "action": "momentary",
+              "label": "Water Pump",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-10"
+                }
+              }
+            },
+            {
+              "id": "toggle-core-11-1759876190561-2k0jb9j4e",
+              "type": "toggle",
+              "label": "Floor Heat",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-11"
+                }
+              }
+            },
+            {
+              "id": "toggle-core-19-1759876190561-ealiiu8r8",
+              "type": "toggle",
+              "label": "Neon Sign",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-19"
+                }
+              }
+            },
+            {
+              "id": "button-core-20-1759876190561-4mp7f1n47",
+              "type": "button",
+              "action": "momentary",
+              "label": "Outlets",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-20"
+                }
+              }
+            },
+            {
+              "id": "button-core-25-1759876190561-o0c201zkx",
+              "type": "button",
+              "action": "momentary",
+              "label": "Block Baby",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-25"
+                }
+              }
+            },
+            {
+              "id": "toggle-core-27-1759876190561-qpst8skx7",
+              "type": "toggle",
+              "label": "Positive Hi",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-27"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-switching-accessories",
+          "title": "Accessories",
+          "components": [
+            {
+              "id": "button-awning-extend-1759876190561-x3euc4w6z",
+              "type": "button",
+              "action": "momentary",
+              "label": "Awning Extend",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "awning-extend"
+                }
+              }
+            },
+            {
+              "id": "button-awning-retract-1759876190561-0oxmzmzg0",
+              "type": "button",
+              "action": "momentary",
+              "label": "Awning Retract",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "awning-retract"
+                }
+              }
+            },
+            {
+              "id": "toggle-awning-light-1759876190561-777g9y8wq",
+              "type": "toggle",
+              "label": "Awning Light",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "awning-light"
+                }
+              }
+            },
+            {
+              "id": "button-slides-extend-1759876190561-wsro69tya",
+              "type": "button",
+              "action": "momentary",
+              "label": "Slides Extend",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "slides-extend"
+                }
+              }
+            },
+            {
+              "id": "button-slides-retract-1759876190561-e8d7pmbss",
+              "type": "button",
+              "action": "momentary",
+              "label": "Slides Retract",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "slides-retract"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-plumbing",
+      "title": "Plumbing",
+      "preset": "plumbing",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-tank-levels-1759876190562-ah686gj13",
+          "title": "Tank Levels",
+          "components": [
+            {
+              "id": "gauge-tank-fresh-0-1759876190561-gihfib8h1",
+              "type": "gauge",
+              "label": "Fresh Tank",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "tank-fresh-1"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 0,
+              "unit": "%"
+            },
+            {
+              "id": "gauge-tank-waste-1-1759876190562-dujge0z81",
+              "type": "gauge",
+              "label": "Waste Tank",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "tank-waste-2"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 0,
+              "unit": "%"
+            },
+            {
+              "id": "gauge-tank-black-2-1759876190562-3x0m5h805",
+              "type": "gauge",
+              "label": "Black Tank",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "tank-black-3"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 0,
+              "unit": "%"
+            },
+            {
+              "id": "gauge-tank-fresh-3-1759876190562-imzp3lmtu",
+              "type": "gauge",
+              "label": "Fresh Tank",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "tank-fresh-4"
+                }
+              },
+              "min": 0,
+              "max": 100,
+              "decimals": 0,
+              "unit": "%"
+            }
+          ]
+        },
+        {
+          "id": "section-water-system-1759876190562-8ks2im7d8",
+          "title": "Water System",
+          "components": [
+            {
+              "id": "toggle-water-pump-1759876190562-yksh5l2ol",
+              "type": "toggle",
+              "label": "Water Pump",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "water-pump"
+                }
+              }
+            },
+            {
+              "id": "gauge-water-pressure-1759876190562-63y8m12n3",
+              "type": "gauge",
+              "label": "Water Pressure",
+              "variant": "linear",
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "water-pressure"
+                }
+              },
+              "min": 0,
+              "max": 60,
+              "decimals": 0,
+              "unit": "PSI"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "theme": {
+    "preset": "orange"
+  },
+  "lightingTab": {
+    "interior": {
+      "enabled": true,
+      "title": "Interior",
+      "icon": "💡"
+    },
+    "exterior": {
+      "enabled": true,
+      "title": "Exterior",
+      "icon": "🌟"
+    },
+    "rgb": {
+      "enabled": true,
+      "title": "RGB",
+      "icon": "🌈"
+    }
+  },
+  "hvacTab": {
+    "heating": {
+      "enabled": true,
+      "title": "Heating",
+      "icon": "🔥"
+    },
+    "cooling": {
+      "enabled": true,
+      "title": "Cooling",
+      "icon": "❄️"
+    },
+    "ventilation": {
+      "enabled": true,
+      "title": "Ventilation",
+      "icon": "💨"
+    }
+  },
+  "switchingTab": {
+    "switches": {
+      "enabled": true,
+      "title": "Switches",
+      "icon": "🔌"
+    },
+    "accessories": {
+      "enabled": true,
+      "title": "Accessories",
+      "icon": "⚡"
+    }
+  },
+  "plumbingTab": {
+    "switchingSection": {
+      "enabled": true,
+      "title": "Plumbing Controls"
+    }
+  }
+}

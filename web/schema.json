@@ -16,8 +16,7 @@
         "source": "core",
         "channel": 1,
         "control": "dimmer",
-        "label": "Core 1",
-        "icon": "/icons/Dimmer.svg"
+        "label": "Core 1"
       },
       {
         "id": "core-02",
@@ -276,9 +275,11 @@
           "title": "Controls",
           "components": [
             {
-              "id": "comp-light-1",
+              "id": "comp-toggle-default",
               "type": "toggle",
-              "label": "Test Light 1",
+              "label": "Default Toggle",
+              "variant": "default",
+              "tooltip": "Default horizontal switch variant",
               "bindings": {
                 "state": {
                   "type": "empirbus",
@@ -287,13 +288,97 @@
               }
             },
             {
-              "id": "comp-light-2",
+              "id": "comp-toggle-switch",
               "type": "toggle",
-              "label": "Test Light 2",
+              "label": "Switch Toggle (ON)",
+              "variant": "switch",
+              "tooltip": "iOS-style switch variant - displays as ON",
+              "bindings": {
+                "state": {
+                  "type": "static",
+                  "value": true
+                }
+              }
+            },
+            {
+              "id": "comp-toggle-round",
+              "type": "toggle",
+              "label": "Pantry Light",
+              "variant": "round",
+              "tooltip": "Circular button variant with light bulb icon (💡)",
               "bindings": {
                 "state": {
                   "type": "empirbus",
-                  "channel": "core-02"
+                  "channel": "core-03"
+                }
+              }
+            },
+            {
+              "id": "comp-toggle-checkbox",
+              "type": "toggle",
+              "label": "Checkbox Toggle (ON)",
+              "variant": "checkbox",
+              "tooltip": "Traditional checkbox variant - displays as ON",
+              "bindings": {
+                "state": {
+                  "type": "static",
+                  "value": true
+                }
+              }
+            },
+            {
+              "id": "comp-button-secondary",
+              "type": "button",
+              "label": "Secondary Button",
+              "action": "momentary",
+              "variant": "secondary",
+              "tooltip": "Standard rectangular momentary button",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-05"
+                }
+              }
+            },
+            {
+              "id": "comp-button-primary",
+              "type": "button",
+              "label": "Primary Button",
+              "action": "momentary",
+              "variant": "primary",
+              "tooltip": "Primary action button (blue)",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-06"
+                }
+              }
+            },
+            {
+              "id": "comp-button-danger",
+              "type": "button",
+              "label": "Danger Button",
+              "action": "momentary",
+              "variant": "danger",
+              "tooltip": "Critical action button (red)",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-07"
+                }
+              }
+            },
+            {
+              "id": "comp-button-round",
+              "type": "button",
+              "label": "Water Pump",
+              "action": "momentary",
+              "variant": "round",
+              "tooltip": "Circular momentary button with water drop icon (💧)",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-08"
                 }
               }
             },
@@ -326,5 +411,16 @@
       ]
     }
   ],
-  "icons": []
+  "icons": [
+    {
+      "id": "light-bulb",
+      "type": "svg",
+      "data": "<svg viewBox='0 0 24 24' fill='currentColor'><path d='M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z'/></svg>"
+    },
+    {
+      "id": "water-drop",
+      "type": "svg",
+      "data": "<svg viewBox='0 0 24 24' fill='currentColor'><path d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'/></svg>"
+    }
+  ]
 }
