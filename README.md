@@ -456,28 +456,29 @@ See [SESSION_SUMMARY_OCT_2_2025.md](./SESSION_SUMMARY_OCT_2_2025.md) for latest 
 
 ## 🚀 Deployment
 
-### AWS Amplify (Recommended)
+### Fly.io (Recommended)
 
-The web configurator can be deployed to AWS Amplify for easy hosting and continuous deployment.
+The web configurator can be deployed to Fly.io for easy hosting and continuous deployment.
 
 **Quick Start**:
 
-1. Connect your repository to AWS Amplify Console
-2. Amplify auto-detects `amplify.yml` configuration
-3. Deploy automatically on every push
+1. Install Fly.io CLI: `iwr https://fly.io/install.ps1 -useb | iex` (Windows)
+2. Login: `flyctl auth login`
+3. Deploy: `flyctl deploy`
 
 **Build Configuration**:
 
-- ✅ `amplify.yml` - Pre-configured for pnpm monorepo
-- ✅ Builds dependencies in order (schema → web-configurator)
-- ✅ Outputs to `packages/web-configurator/dist`
+- ✅ `fly.toml` - Pre-configured for the monorepo
+- ✅ `Dockerfile` - Multi-stage build with nginx
+- ✅ Auto-scaling and global CDN included
+- ✅ HTTPS automatically enabled
 
 **Documentation**:
 
-- [AMPLIFY_QUICK_START.md](./AMPLIFY_QUICK_START.md) - 5-minute setup guide
-- [docs/AWS_AMPLIFY_DEPLOYMENT.md](./docs/AWS_AMPLIFY_DEPLOYMENT.md) - Complete deployment guide
+- [FLY_IO_QUICK_START.md](./FLY_IO_QUICK_START.md) - 5-minute setup guide
+- [docs/FLY_IO_DEPLOYMENT.md](./docs/FLY_IO_DEPLOYMENT.md) - Complete deployment guide
 
-**Cost**: ~$5-20/month (includes free tier)
+**Cost**: ~$0-10/month (scales to $0 when idle)
 
 ### Alternative Deployment Options
 
