@@ -2,11 +2,17 @@
 node_modules/
 .pnpm-store/
 .pnpm-debug.log*
+.pnpm-cache/
+
+# Task runners/build caches
+.turbo/
+.cache/
 
 # Build outputs
 dist/
 build/
 *.tsbuildinfo
+packages/web-configurator/public/deployment-package/
 
 # Testing
 coverage/
@@ -29,6 +35,13 @@ coverage/
 *~
 .DS_Store
 
+# VS Code workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # OS
 Thumbs.db
 Desktop.ini
@@ -36,7 +49,9 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.temp
-.cache/
+# Local web assets (copied from device or built output)
+web/
+garmin-bundle/
 
 # Debug
 npm-debug.log*

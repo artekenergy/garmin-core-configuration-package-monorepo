@@ -52,6 +52,7 @@ This system replaces Garmin's locked-down graphics editor with a flexible, versi
 │         ↓                                                              │
 │  5. Create .ebp Package (EmpirBus format)                              │
 │     └─ [Currently manual - uses Garmin tools]                         │
+│     - Source the content from `garmin-bundle/web/` locally, but ensure it is packaged under the `web/` directory in the `.ebp` file
 │         ↓                                                              │
 │  6. Upload to Garmin Display                                           │
 │     └─ Display loads index1.html → Renders your custom UI             │
@@ -338,7 +339,7 @@ async function handleCompilePackage() {
 
 **What's in the deployment package**:
 
-```
+```text
 config.zip (downloaded)
 ├── web/
 │   ├── index1.html               ← HMI UI entry point (built Preact app)
@@ -494,13 +495,15 @@ pnpm build
 1. **Hardware Outputs** define the physical channels (Core/Genesis boards)
 2. **UI Components** reference outputs via **bindings**
 3. **Bindings** link UI to hardware:
-   ```typescript
+
+```typescript
    bindings: {
      state: { type: "empirbus", id: "core-01" }
    }
    // This tells the toggle: "Your state comes from core-01 channel"
-   ```
-4. **Signal IDs** map to EmpirBus protocol:
+```
+
+1. **Signal IDs** map to EmpirBus protocol:
    - Type 16, Cmd 1 = Toggle state (on/off)
    - Channel 1 = 3841 (calculated signal ID)
 
@@ -642,7 +645,7 @@ websocket.on('message', (data) => {
 
 **Phase 6 (Future)**: Implement WebSocket adapter to connect UI to EmpirBus controller.
 
-### How it will work:
+### How it will work
 
 ```typescript
 // websocket-adapter.ts (future implementation)
@@ -675,7 +678,7 @@ ws.onmessage = (event) => {
 
 **Required backend** (runs on Garmin display):
 
-```
+```text
 /services/websocket-server.service (systemd service)
   ↓
 Node.js WebSocket Server (port 9001)
@@ -690,7 +693,7 @@ Node.js WebSocket Server (port 9001)
 
 ## 📊 Component Type Reference
 
-### Current Implementation Status:
+### Current Implementation Status
 
 | Component     | Status             | Purpose                | Example                      |
 | ------------- | ------------------ | ---------------------- | ---------------------------- |
@@ -701,7 +704,7 @@ Node.js WebSocket Server (port 9001)
 | **Dimmer**    | ✅ Working         | Brightness control     | Lighting zones               |
 | **Slider**    | ⏸️ Not Implemented | Generic value control  | Volume, flow rate            |
 
-### Component Variants:
+### Component Variants
 
 ```typescript
 // Toggle variants:
@@ -724,21 +727,21 @@ variant: 'numeric'; // Just the number value
 
 You're currently working on **refining the HMI UI components** to match the web-configurator styling:
 
-### Completed:
+### Completed
 
 - ✅ Round buttons: 100px size, blue inactive/white active colors
 - ✅ Icon system: Inline SVG with `currentColor` inheritance
 - ✅ Icon OR text rendering (mutually exclusive)
 - ✅ Schema switched to `new-hmi-configuration-schema-2.json`
 
-### In Progress:
+### In Progress
 
 - 🔧 **Indicator component**: Added to schema but not rendering
   - Issue: ComponentRenderer was hardcoding `value={false}`
   - Fix: Removed hardcoded value prop
   - Next: Verify indicators appear and review styling
 
-### Next Steps:
+### Next Steps
 
 1. Fix indicators (just completed)
 2. Review Gauge component (3 variants)

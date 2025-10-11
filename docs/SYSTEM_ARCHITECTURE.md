@@ -35,7 +35,7 @@
 │                                                                  │
 │  3. DEPLOY FILES TO GARMIN HMI                                  │
 │     ↓                                                            │
-│  Copy to: /web/                                                 │
+│  Copy to: garmin-bundle/web/                                    │
 │     ├── index1.html        ← HMI UI entry point (our app)      │
 │     ├── assets/            ← Our Preact bundle                  │
 │     ├── schema.json        ← UI configuration                   │
@@ -142,7 +142,7 @@
 - Handles user interactions
 - Updates UI based on real hardware state
 
-**Output**: Built to `/web/` folder:
+**Output**: Built to `garmin-bundle/web/` folder:
 
 - `index1.html` - Entry point
 - `assets/*.js` - Preact bundle (ES2017)
@@ -157,7 +157,7 @@
 ### Existing Garmin Files (Don't Modify)
 
 ```
-/web/
+garmin-bundle/web/
 ├── index.html                    # App selector (Garmin's, keep as-is)
 ├── appselector.js                # App selector logic
 ├── manifest.json                 # App selector manifest
@@ -399,13 +399,13 @@ pnpm build
 
 ```bash
 # Copy HMI UI build
-cp -r packages/hmi-ui/dist/* /path/to/device/web/
+cp -r packages/hmi-ui/dist/* garmin-bundle/web/
 
 # Rename entry point
-mv /path/to/device/web/index.html /path/to/device/web/index1.html
+mv garmin-bundle/web/index.html garmin-bundle/web/index1.html
 
 # Extract config.zip
-unzip config.zip -d /path/to/device/web/
+unzip config.zip -d garmin-bundle/web/
 ```
 
 ### Step 4: Restart HMI

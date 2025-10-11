@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Deploy HMI UI to /web/ directory
-# This script builds the HMI UI and copies it to the web directory for device deployment
+# Deploy HMI UI to garmin-bundle/web directory
+# This script builds the HMI UI and copies it to the garmin-bundle/web directory for device deployment
 
 set -e  # Exit on error
 
@@ -9,11 +9,12 @@ echo "🔨 Building HMI UI..."
 pnpm build
 
 echo ""
-echo "📦 Deploying to /web/ directory..."
+echo "📦 Deploying to garmin-bundle/web directory..."
 
-# Define paths
+\# Define paths
 DIST_DIR="./dist"
-WEB_DIR="../../web"
+WEB_DIR="../../garmin-bundle/web"
+GARMIN_BUNDLE_DIR="../../garmin-bundle"
 
 # Copy the main HTML file to index1.html
 echo "  → Copying index.html to index1.html"
@@ -54,10 +55,10 @@ PROJECT_ROOT=$(dirname "$ABS_WEB_DIR")
 ZIP_FILE="$PROJECT_ROOT/$ZIP_FILENAME"
 
 # Create zip file including web, services, and configuration directories
-echo "  → Packaging web/ directory..."
-echo "  → Packaging services/ directory..."
-echo "  → Packaging configuration/ directory..."
-(cd "$PROJECT_ROOT" && zip -r "$ZIP_FILE" \
+echo "  → Packaging garmin-bundle/web directory..."
+echo "  → Packaging garmin-bundle/services directory..."
+echo "  → Packaging garmin-bundle/configuration directory..."
+(cd "$GARMIN_BUNDLE_DIR" && zip -r "$ZIP_FILE" \
   web \
   services \
   configuration \
@@ -89,7 +90,7 @@ echo ""
 echo "📦 Deployment package created:"
 echo "  - Location: $ZIP_FILE"
 echo "  - Size: $ZIP_SIZE"
-echo "  - Includes: web/, services/, configuration/"
+echo "  - Includes: garmin-bundle/web/, garmin-bundle/services/, garmin-bundle/configuration/"
 echo ""
 echo "🔄 Web-configurator export package synced with latest HMI UI"
 echo ""

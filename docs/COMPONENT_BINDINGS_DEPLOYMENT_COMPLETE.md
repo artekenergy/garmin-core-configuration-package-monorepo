@@ -154,10 +154,10 @@ dist/assets/index-D0qw2ifZ.js    78.94 kB │ gzip: 19.59 kB
 
 ## 🚀 Deployment Status
 
-**Files Deployed to `/web/`**:
+**Files Deployed (local staging at `garmin-bundle/web/`)**:
 
-```
-/web/
+```text
+garmin-bundle/web/
 ├── index1.html              ← Your HMI UI (UPDATED)
 ├── hmi-assets/              ← Built assets (UPDATED)
 │   ├── index-D0qw2ifZ.js    ← Main bundle with WebSocket

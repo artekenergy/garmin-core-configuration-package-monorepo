@@ -1,7 +1,7 @@
 /**
  * TabBar Component
  *
- * Bottom navigation bar with icon-based tabs.
+ * Bottom navigation bar.
  * Displays tabs from schema with icon support.
  *
  * ES2017 compliant.
@@ -47,13 +47,13 @@ export function TabBar(props: TabBarProps) {
               <div className="gcg-tab-bar__icon" aria-hidden="true">
                 {/* TODO: Icon resolver - for now just show emoji placeholder */}
                 <span style={{ fontSize: '1.5rem' }}>
-                  {tab.preset === 'home' && '🏠'}
-                  {tab.preset === 'lighting' && '💡'}
-                  {tab.preset === 'power' && '⚡'}
-                  {tab.preset === 'hvac' && '❄️'}
-                  {tab.preset === 'switching' && '🔀'}
-                  {tab.preset === 'plumbing' && '💧'}
-                  {!tab.preset && '📄'}
+                  {tab.preset === 'home'}
+                  {tab.preset === 'lighting'}
+                  {tab.preset === 'power'}
+                  {tab.preset === 'hvac'}
+                  {tab.preset === 'switching'}
+                  {tab.preset === 'plumbing'}
+                  {!tab.preset}
                 </span>
               </div>
             )}

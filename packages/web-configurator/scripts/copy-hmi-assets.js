@@ -13,9 +13,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const HMI_DIST = path.join(__dirname, '../../hmi-ui/dist');
-const WEB_ROOT = path.join(__dirname, '../../../web');
-const CONFIG_ROOT = path.join(__dirname, '../../../configuration');
-const SERVICES_ROOT = path.join(__dirname, '../../../services');
+const GARMIN_BUNDLE_ROOT = path.join(__dirname, '../../../garmin-bundle');
+const WEB_ROOT = path.join(GARMIN_BUNDLE_ROOT, 'web');
+const CONFIG_ROOT = path.join(GARMIN_BUNDLE_ROOT, 'configuration');
+const SERVICES_ROOT = path.join(GARMIN_BUNDLE_ROOT, 'services');
 const PUBLIC_DEPLOYMENT = path.join(__dirname, '../public/deployment-package');
 
 console.log('📦 Copying complete deployment package for web configurator export...\n');
@@ -30,8 +31,9 @@ if (!fs.existsSync(HMI_DIST)) {
 
 // Check if web directory exists (deployed HMI)
 if (!fs.existsSync(WEB_ROOT)) {
-  console.error('❌ /web directory not found!');
+  console.error('❌ garmin-bundle/web directory not found!');
   console.error('   Run: pnpm --filter @gcg/hmi-ui deploy:web');
+  console.error(`   Expected at: ${WEB_ROOT}`);
   process.exit(1);
 }
 
@@ -70,35 +72,35 @@ function copyDirectory(src, dest) {
 // Copy complete deployment package structure
 let totalFiles = 0;
 
-console.log('📁 Copying complete /web directory...');
+console.log('📁 Copying complete garmin-bundle/web directory...');
 const webDest = path.join(PUBLIC_DEPLOYMENT, 'web');
 fs.mkdirSync(webDest, { recursive: true });
 const webFileCount = copyDirectory(WEB_ROOT, webDest);
-console.log(`   ✓ Copied ${webFileCount} files from /web\n`);
+console.log(`   ✓ Copied ${webFileCount} files from garmin-bundle/web\n`);
 totalFiles += webFileCount;
 
 // Copy configuration directory
 if (fs.existsSync(CONFIG_ROOT)) {
-  console.log('📁 Copying /configuration directory...');
+  console.log('📁 Copying garmin-bundle/configuration directory...');
   const configDest = path.join(PUBLIC_DEPLOYMENT, 'configuration');
   fs.mkdirSync(configDest, { recursive: true });
   const configFileCount = copyDirectory(CONFIG_ROOT, configDest);
-  console.log(`   ✓ Copied ${configFileCount} files from /configuration\n`);
+  console.log(`   ✓ Copied ${configFileCount} files from garmin-bundle/configuration\n`);
   totalFiles += configFileCount;
 } else {
-  console.warn('⚠️  /configuration directory not found, skipping\n');
+  console.warn('⚠️  garmin-bundle/configuration directory not found, skipping\n');
 }
 
 // Copy services directory
 if (fs.existsSync(SERVICES_ROOT)) {
-  console.log('📁 Copying /services directory...');
+  console.log('📁 Copying garmin-bundle/services directory...');
   const servicesDest = path.join(PUBLIC_DEPLOYMENT, 'services');
   fs.mkdirSync(servicesDest, { recursive: true });
   const servicesFileCount = copyDirectory(SERVICES_ROOT, servicesDest);
-  console.log(`   ✓ Copied ${servicesFileCount} files from /services\n`);
+  console.log(`   ✓ Copied ${servicesFileCount} files from garmin-bundle/services\n`);
   totalFiles += servicesFileCount;
 } else {
-  console.warn('⚠️  /services directory not found, skipping\n');
+  console.warn('⚠️  garmin-bundle/services directory not found, skipping\n');
 }
 
 // Create manifest file listing all files for easy packaging
