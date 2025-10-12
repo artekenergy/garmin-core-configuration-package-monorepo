@@ -1,0 +1,206 @@
+# CodeRabbit Configuration for Garmin Core Configuration Package Monorepo
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+# Language & Framework Settings
+language: en-US
+early_access: false
+enable_free_tier: true
+
+# Review Settings
+reviews:
+  # Review profile - balanced for comprehensive reviews
+  profile: chill
+  
+  # Request changes workflow - ensures issues are addressed
+  request_changes_workflow: true
+  
+  # High-level summary for quick overview
+  high_level_summary: true
+  
+  # Poem style summary disabled for professional context
+  poem: false
+  
+  # Review levels - configure depth of review per file type
+  review_status: true
+  
+  # Collapse walkthrough section to keep PR description clean
+  collapse_walkthrough: false
+  
+  # Auto-review settings
+  auto_review:
+    enabled: true
+    
+    # Ignore specific file patterns
+    ignore_title_keywords:
+      - "WIP"
+      - "DO NOT REVIEW"
+      - "DRAFT"
+    
+    # Auto-approve simple changes (optional - uncomment if desired)
+    # auto_incremental_review: false
+    
+    # Drafts handling
+    drafts: false
+  
+  # Path-based instructions for different parts of the monorepo
+  path_instructions:
+    - path: "packages/hmi-ui/**"
+      instructions: |
+        - This is the React-based HMI UI package
+        - Focus on React best practices, hooks usage, and component patterns
+        - Ensure accessibility (a11y) standards are met
+        - Check for proper TypeScript types and interfaces
+        - Verify proper state management patterns
+    
+    - path: "packages/web-configurator/**"
+      instructions: |
+        - This is the web-based configurator application
+        - Review for proper form validation and user input handling
+        - Check API integration patterns
+        - Ensure error handling is comprehensive
+    
+    - path: "packages/schema/**"
+      instructions: |
+        - This contains schema definitions
+        - Validate JSON schema correctness
+        - Ensure backward compatibility with existing schemas
+        - Check for comprehensive documentation
+    
+    - path: "configuration/**"
+      instructions: |
+        - These are configuration files for hardware and channels
+        - Validate JSON structure and required fields
+        - Check for consistency across related config files
+        - Ensure no breaking changes to existing configurations
+    
+    - path: "**/*.ts"
+      instructions: |
+        - Enforce strict TypeScript standards
+        - Check for proper type safety, no 'any' types unless necessary
+        - Verify proper error handling with try-catch blocks
+        - Ensure async/await is used correctly
+    
+    - path: "**/*.tsx"
+      instructions: |
+        - Review React component structure and patterns
+        - Check for proper prop types and interfaces
+        - Ensure hooks are used correctly following Rules of Hooks
+        - Verify accessibility attributes (aria-*, role, etc.)
+        - Check for proper key props in lists
+    
+    - path: "docs/**"
+      instructions: |
+        - Check for clarity and completeness of documentation
+        - Verify markdown formatting
+        - Ensure code examples are accurate and working
+        - Check for broken links
+    
+    - path: "**/test/**"
+      instructions: |
+        - Verify test coverage for new features
+        - Check for proper test naming and organization
+        - Ensure tests are testing behavior, not implementation
+        - Verify edge cases are covered
+    
+    - path: "Dockerfile"
+      instructions: |
+        - Check for security best practices
+        - Verify multi-stage builds are used efficiently
+        - Check for proper layer caching
+        - Ensure minimal image size
+    
+    - path: "fly.toml"
+      instructions: |
+        - Validate Fly.io deployment configuration
+        - Check resource limits are appropriate
+        - Verify environment variables are properly configured
+
+# Chat Settings
+chat:
+  # Enable AI chat assistant in PRs
+  auto_reply: true
+
+# Code Quality Checks
+checks:
+  # Check for potential security issues
+  security: true
+  
+  # Check for common code smells
+  code_quality: true
+  
+  # Check for performance issues
+  performance: true
+  
+  # Check for accessibility issues in UI code
+  accessibility: true
+  
+  # Check for proper error handling
+  error_handling: true
+
+# Tools Integration
+tools:
+  # GitHub Actions integration
+  github-actions:
+    enabled: true
+  
+  # Shellcheck for shell scripts
+  shellcheck:
+    enabled: true
+  
+  # Prettier for code formatting
+  prettier:
+    enabled: true
+  
+  # ESLint for JavaScript/TypeScript
+  eslint:
+    enabled: true
+  
+  # TypeScript compiler
+  tsc:
+    enabled: true
+
+# File-level settings
+ignore:
+  # Don't review these paths
+  paths:
+    - "pnpm-lock.yaml"
+    - "*.lock"
+    - "dist/**"
+    - "build/**"
+    - "coverage/**"
+    - "node_modules/**"
+    - "**/*.min.js"
+    - "**/*.bundle.js"
+    - "web/hmi-assets/*.js"  # Generated/bundled files
+    - "*.TTF"
+    - "*.ttf"
+    - "*.woff"
+    - "*.woff2"
+    - "*.png"
+    - "*.jpg"
+    - "*.jpeg"
+    - "*.gif"
+    - "*.svg"
+    - "*.ico"
+    - "*.ebp"  # Binary package files
+  
+  # Don't review files matching these patterns
+  patterns:
+    - "vendor-*.js"
+    - "*.generated.*"
+    - "*.d.ts"  # TypeScript declaration files (usually auto-generated)
+
+# Tone and style
+tone_instructions: "Be professional, constructive, and focus on security, performance, and maintainability. Provide code examples when helpful."
+
+# Custom review checklist
+checklist:
+  - "Are all new features properly documented?"
+  - "Are TypeScript types properly defined (no 'any' unless necessary)?"
+  - "Are error cases properly handled?"
+  - "Is the code following the project's coding standards?"
+  - "Are there any security vulnerabilities?"
+  - "Is the performance acceptable?"
+  - "Are there sufficient tests for new functionality?"
+  - "Does the change maintain backward compatibility?"
+  - "Are configuration changes properly validated?"
