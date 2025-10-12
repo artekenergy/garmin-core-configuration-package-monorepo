@@ -46,7 +46,7 @@
         "channel": 3,
         "control": "toggle-button",
         "label": "Kitchen Dimmer",
-        "icon": "all-lights",
+        "icon": "/icons/All Lights.svg",
         "signals": {
           "toggle": null,
           "momentary": null,
@@ -59,7 +59,7 @@
         "channel": 4,
         "control": "toggle-button",
         "label": "Cabinet Light",
-        "icon": "water-dump",
+        "icon": "/icons/Water Dump.svg",
         "signals": {
           "toggle": null,
           "momentary": null,
@@ -72,7 +72,7 @@
         "channel": 5,
         "control": "push-button",
         "label": "Tank Heater",
-        "icon": "wifi",
+        "icon": "/icons/WiFi.svg",
         "signals": {
           "toggle": 75,
           "momentary": 74,
@@ -85,7 +85,7 @@
         "channel": 9,
         "control": "toggle-button",
         "label": "Slide Motor",
-        "icon": "plumbing",
+        "icon": "/icons/Plumbing.svg",
         "signals": {
           "toggle": 78,
           "momentary": 77,
@@ -138,7 +138,7 @@
         "channel": 13,
         "control": "toggle-button",
         "label": "Tank Heater",
-        "icon": "alternator",
+        "icon": "/icons/Alternator.svg",
         "signals": {
           "toggle": 84,
           "momentary": 83,
@@ -169,7 +169,7 @@
         "channel": 18,
         "control": "push-button",
         "label": "Reading Lamp",
-        "icon": "power",
+        "icon": "/icons/Power.svg",
         "signals": {
           "toggle": 90,
           "momentary": 89,
@@ -269,7 +269,7 @@
         "channel": 28,
         "control": "toggle-button",
         "label": "Kitchen Dimmer",
-        "icon": "group",
+        "icon": "/icons/Group.svg",
         "signals": {
           "toggle": 111,
           "momentary": 110,
@@ -451,7 +451,7 @@
               "type": "toggle",
               "variant": "round",
               "label": "Slide Motor",
-              "icon": "plumbing",
+              "icon": "/icons/Plumbing.svg",
               "bindings": {
                 "state": {
                   "type": "empirbus",
@@ -785,42 +785,5 @@
       "enabled": true,
       "title": "Plumbing Controls"
     }
-  },
-  "icons": [
-    {
-      "id": "all-lights",
-      "type": "svg",
-      "url": "/icons/All Lights.svg"
-    },
-    {
-      "id": "water-dump",
-      "type": "svg",
-      "url": "/icons/Water Dump.svg"
-    },
-    {
-      "id": "wifi",
-      "type": "svg",
-      "url": "/icons/WiFi.svg"
-    },
-    {
-      "id": "plumbing",
-      "type": "svg",
-      "url": "/icons/Plumbing.svg"
-    },
-    {
-      "id": "alternator",
-      "type": "svg",
-      "url": "/icons/Alternator.svg"
-    },
-    {
-      "id": "power",
-      "type": "svg",
-      "url": "/icons/Power.svg"
-    },
-    {
-      "id": "group",
-      "type": "svg",
-      "url": "/icons/Group.svg"
-    }
-  ]
+  }
 }

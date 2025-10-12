@@ -44,24 +44,21 @@ export function Icon(props: IconProps) {
 
   // Resolve icon spec
   let iconSpec: IconSpec | undefined = icon;
+
+  // If no direct icon spec, try to resolve from registry or handle special cases
   if (!iconSpec && iconId) {
-    // Try to get from registry first
-    iconSpec = getIcon(iconId);
-    
-    // If not in registry, check if it's a direct path/URL
-    if (!iconSpec && iconId) {
-      // Direct file path (e.g., "/icons/Plumbing.svg")
-      if (iconId.startsWith('/')) {
-        iconSpec = { id: iconId, url: iconId };
-      }
-      // Full URL (e.g., "http://example.com/icon.svg")
-      else if (iconId.startsWith('http://') || iconId.startsWith('https://')) {
-        iconSpec = { id: iconId, url: iconId };
-      }
-      // Short strings (emoji, single characters) - treat as inline SVG text
-      else if (iconId.length <= 3) {
-        iconSpec = { id: iconId, svg: '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="20">' + iconId + '</text>' };
-      }
+    // Emoji or short text (1-3 characters) - render directly
+    if (iconId.length <= 3) {
+      iconSpec = {
+        id: iconId,
+        svg:
+          '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="20">' +
+          iconId +
+          '</text>',
+      };
+    } else {
+      // Try registry lookup
+      iconSpec = getIcon(iconId);
     }
   }
 
@@ -69,7 +66,6 @@ export function Icon(props: IconProps) {
   const sizeClass = 'gcg-icon--' + size;
 
   let content: h.JSX.Element;
-
   if (iconSpec) {
     // Use resolved icon from registry or direct spec
     if (iconSpec.svg) {

@@ -2,6 +2,7 @@ import { useSchema } from '../context/SchemaContext';
 import styles from './ExportPage.module.css';
 import JSZip from 'jszip';
 import { useState } from 'react';
+import { updateSchemaIcons } from '../utils/iconRegistry';
 
 export default function ExportPage() {
   const { schema, validationResult } = useSchema();
@@ -42,10 +43,10 @@ export default function ExportPage() {
     try {
       const zip = new JSZip();
 
-      // 1. Prepare schema.json content with signal mappings
-      let enhancedSchema = { ...schema };
+      // 1. Build icons array and update schema with icon registry
+      const enhancedSchema = updateSchemaIcons(schema);
 
-      // Fetch hardware config with signal mappings
+      // 2. Fetch hardware config with signal mappings
       try {
         const hwConfigResponse = await fetch(
           '/deployment-package/configuration/hardware-config.json'
@@ -82,7 +83,7 @@ export default function ExportPage() {
 
       const schemaJson = JSON.stringify(enhancedSchema, null, 2);
 
-      // 2. Try to fetch complete deployment package from public/deployment-package
+      // 3. Try to fetch complete deployment package from public/deployment-package
       // These are copied during build by copy-hmi-assets.js script
       try {
         // Fetch manifest to get list of all deployment files
@@ -135,7 +136,7 @@ export default function ExportPage() {
 
       // 4. Update web/schema.json with user's configuration (overwrite the template)
       zip.file('web/schema.json', schemaJson);
-      
+
       // 5. Also update the HMI UI schema file so it loads the user's configuration
       zip.file('web/new-hmi-configuration-schema-2.json', schemaJson);
 
@@ -368,8 +369,8 @@ This package includes the complete HMI UI application and is ready for direct de
         <div className={styles.errorBanner}>
           ⚠️ Schema has validation errors. Fix them before compiling.
           <div style={{ marginTop: '10px' }}>
-            <button 
-              className={styles.buttonSecondary} 
+            <button
+              className={styles.buttonSecondary}
               onClick={handleDownloadDebugSchema}
               style={{ fontSize: '14px' }}
             >
