@@ -60,7 +60,7 @@ const defaultSchema: UISchema = {
     },
     solar: {
       enabled: false,
-      primaryArray: true,
+      primaryArray: false,
       auxiliaryArray: false,
     },
     batteryManagement: 'victron',
@@ -88,13 +88,11 @@ const defaultSchema: UISchema = {
     },
   },
   plumbing: {
-    enabled: true,
+    enabled: false,
     monitoringSource: 'cerbo-gx',
-    count: 3,
+    count: 1,
     tanks: [
       { type: 'fresh', name: '' },
-      { type: 'waste', name: '' },
-      { type: 'black', name: '' },
     ],
   },
   accessories: {
@@ -119,69 +117,23 @@ const defaultSchema: UISchema = {
       zonesPerModule: 2,
     },
   },
-  lightingTab: {
-    interior: {
-      enabled: true,
-      title: 'Interior',
-      icon: '💡',
-    },
-    exterior: {
-      enabled: true,
-      title: 'Exterior',
-      icon: '🌟',
-    },
-    rgb: {
-      enabled: false,
-      title: 'RGB',
-      icon: '🌈',
-    },
-  },
-  hvacTab: {
-    heating: {
-      enabled: false,
-      title: 'Heating',
-      icon: '🔥',
-    },
-    cooling: {
-      enabled: false,
-      title: 'Cooling',
-      icon: '❄️',
-    },
-    ventilation: {
-      enabled: false,
-      title: 'Ventilation',
-      icon: '💨',
-    },
-  },
-  switchingTab: {
-    switches: {
-      enabled: true,
-      title: 'Switches',
-      icon: '🔌',
-    },
-    accessories: {
-      enabled: true,
-      title: 'Accessories',
-      icon: '⚡',
-    },
-  },
   tabs: [
     {
       id: 'tab-home',
       title: 'Home',
       preset: 'home',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-home-1',
           title: 'Quick Controls',
-          enabled: true,
+          enabled: false,
           components: [],
         },
         {
           id: 'section-home-2',
           title: 'Status',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -190,18 +142,18 @@ const defaultSchema: UISchema = {
       id: 'tab-lighting',
       title: 'Lighting',
       preset: 'lighting',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-lighting-interior',
           title: 'Interior Lights',
-          enabled: true,
+          enabled: false,
           components: [],
         },
         {
           id: 'section-lighting-exterior',
           title: 'Exterior Lights',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -210,12 +162,12 @@ const defaultSchema: UISchema = {
       id: 'tab-power',
       title: 'Power',
       preset: 'power',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-power',
           title: 'Power Status',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -238,12 +190,12 @@ const defaultSchema: UISchema = {
       id: 'tab-switching',
       title: 'Switching',
       preset: 'switching',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-switches',
           title: 'Switches',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],

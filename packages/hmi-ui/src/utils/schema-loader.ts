@@ -2,6 +2,7 @@ import { validateSchema } from '@gcg/schema';
 import type { UISchema } from '@gcg/schema';
 import { schemaSignal, isLoadingSignal, errorSignal } from '../state/schema-signal';
 import { setupAutoSubscription } from './schema-signals';
+import { regenerateTabContent } from './tabGenerator';
 
 /**
  * Schema loader configuration
@@ -60,13 +61,14 @@ export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void>
       throw new Error('Schema validation failed: ' + errorMessages);
     }
 
-    // Success! Store the validated schema
+    // Success! Store the validated schema with derived tab metadata
     const validatedSchema = result.data as UISchema;
-    schemaSignal.value = validatedSchema;
+    const derivedSchema = regenerateTabContent(validatedSchema);
+    schemaSignal.value = derivedSchema;
 
     // Setup auto-subscription to signals
-    if (autoSubscribe && validatedSchema.hardware) {
-      setupAutoSubscription(validatedSchema);
+    if (autoSubscribe && derivedSchema.hardware) {
+      setupAutoSubscription(derivedSchema);
     }
   } catch (err) {
     // Handle any errors
