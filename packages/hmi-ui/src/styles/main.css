@@ -1,53 +1,35 @@
 /* Base styles for HMI UI */
 
-/* Import component styles first */
+/* Import tokens first - single source of truth */
+@import './tokens.css';
+
+/* Then import component styles */
 @import './components.css';
 @import './responsive.css';
 @import './grid.css';
 
 :root {
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
+  /* Legacy aliases for backward compatibility */
+  /* These map old token names to new ones */
+  --theme-primary: var(--color-primary);
+  --theme-secondary: var(--color-secondary);
+  --theme-accent: var(--color-accent);
+  --theme-background: var(--color-bg);
+  --theme-text: var(--color-text);
 
-  /* Colors (will be overridden by theme) */
-  --color-primary: #2563eb;
-  --color-secondary: #1e40af;
-  --color-accent: #3b82f6;
-  --color-background: #1e293b;
-  --color-surface: #334155;
-  --color-text: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-border: #475569;
-
-  /* Aliases for components */
+  /* Component-specific aliases */
   --primary-color: var(--color-primary);
-  --surface-color: var(--color-surface);
-  --surface-hover: #3f4f66;
+  --surface-color: var(--color-secondary-light);
+  --surface-hover: var(--color-secondary);
   --border-color: var(--color-border);
   --text-primary: var(--color-text);
-  --text-secondary: var(--color-text-secondary);
+  --text-secondary: var(--color-text-muted);
 
   /* Component sizes */
   --toggle-width: 60px;
   --toggle-height: 34px;
   --button-height: 48px;
   --gauge-size: 120px;
-
-  /* Border radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
 }
 
 * {
@@ -70,7 +52,7 @@ body {
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
+  background-color: var(--theme-secondary);
   color: var(--color-text);
   overflow: hidden;
   position: fixed;

@@ -22,11 +22,7 @@ interface SchemaLoaderConfig {
  * @returns Promise that resolves when schema is loaded and validated
  */
 export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void> {
-  const {
-    schemaPath = '/new-hmi-configuration-schema-2.json',
-    schema: providedSchema,
-    autoSubscribe = true,
-  } = config;
+  const { schemaPath = '/schema.json', schema: providedSchema, autoSubscribe = true } = config;
 
   // Set loading state
   isLoadingSignal.value = true;

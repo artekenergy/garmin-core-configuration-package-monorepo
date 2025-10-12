@@ -9,6 +9,44 @@
  */
 
 /* ===========================
+   Icon Component
+   =========================== */
+
+.gcg-icon {
+  display: inline-block;
+  line-height: 0;
+  color: inherit;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.gcg-icon--sm {
+  width: 20px;
+  height: 20px;
+}
+
+.gcg-icon--md {
+  width: 24px;
+  height: 24px;
+}
+
+.gcg-icon--lg {
+  width: 32px;
+  height: 32px;
+}
+
+.gcg-icon svg,
+.gcg-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gcg-icon svg {
+  fill: currentColor;
+}
+
+/* ===========================
    StatusBar Component
    =========================== */
 
@@ -219,7 +257,7 @@
 
 .gcg-component-tooltip {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--color-text);
   padding-left: 0.5rem;
 }
 
@@ -509,7 +547,7 @@
 .gcg-dimmer__value {
   font-weight: 400;
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--color-text);
   min-width: 3rem;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -923,7 +961,7 @@
 
 /* Indicator Value (optional) */
 .gcg-indicator__value {
-  color: var(--text-secondary);
+  color: var(--color-text);
   font-family: monospace;
   font-size: 0.875rem;
 }
@@ -962,7 +1000,7 @@
 
 .gcg-gauge__label {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--color-text);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -983,7 +1021,7 @@
 
 .gcg-gauge__unit {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--color-text);
   font-weight: 500;
 }
 

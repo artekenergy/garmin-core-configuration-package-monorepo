@@ -17,7 +17,7 @@ import type { ToggleComponent } from '@gcg/schema';
 import { getWebSocketAdapter } from '../state/websocket-state';
 import { createToggleMessage, resolveBindingToChannelId } from '../utils/binding-resolver';
 import { getSignalState, type ToggleState } from '../state/signal-state';
-import { schemaSignal } from '../state/schema-signal';
+import { Icon } from './Icon';
 
 interface ToggleProps {
   component: ToggleComponent;
@@ -45,18 +45,7 @@ export function Toggle(props: ToggleProps) {
     }
   }
 
-  // 2. RESOLVE ICON DATA
-  let iconSvg: string | null = null;
-  if (component.icon && schemaSignal.value && schemaSignal.value.icons) {
-    const iconDef = schemaSignal.value.icons.find(function (icon) {
-      return icon.id === component.icon;
-    });
-    if (iconDef && iconDef.data) {
-      iconSvg = iconDef.data;
-    }
-  }
-
-  // 3. SUBSCRIBE TO SIGNAL STATE
+  // 2. SUBSCRIBE TO SIGNAL STATE
   // Get reactive signal that updates when WebSocket receives Type 16 Cmd 1 messages
   const signalState = signalId !== null ? getSignalState(signalId) : null;
 
@@ -162,8 +151,10 @@ export function Toggle(props: ToggleProps) {
         {/* Round variant - icon OR "ON/OFF" text inside button */}
         {variant === 'round' && (
           <>
-            {iconSvg ? (
-              <div className="gcg-toggle__icon" dangerouslySetInnerHTML={{ __html: iconSvg }} />
+            {component.icon ? (
+              <div className="gcg-toggle__icon">
+                <Icon iconId={component.icon} size="md" />
+              </div>
             ) : (
               <span className="gcg-toggle__text">ON/OFF</span>
             )}

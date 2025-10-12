@@ -8,6 +8,7 @@
  */
 
 import type { Tab } from '@gcg/schema';
+import { Icon } from './Icon';
 
 export interface TabBarProps {
   tabs: Tab[];
@@ -42,21 +43,10 @@ export function TabBar(props: TabBarProps) {
             aria-label={tab.title}
             aria-current={isActive ? 'page' : undefined}
           >
-            {/* Icon - if tab has icon reference, render it */}
-            {tab.icon && (
-              <div className="gcg-tab-bar__icon" aria-hidden="true">
-                {/* TODO: Icon resolver - for now just show emoji placeholder */}
-                <span style={{ fontSize: '1.5rem' }}>
-                  {tab.preset === 'home'}
-                  {tab.preset === 'lighting'}
-                  {tab.preset === 'power'}
-                  {tab.preset === 'hvac'}
-                  {tab.preset === 'switching'}
-                  {tab.preset === 'plumbing'}
-                  {!tab.preset}
-                </span>
-              </div>
-            )}
+            {/* Icon - resolved from registry or fallback to preset */}
+            <div className="gcg-tab-bar__icon">
+              <Icon iconId={tab.icon} preset={tab.preset} size="md" />
+            </div>
 
             {/* Label - optional, can be hidden on small screens */}
             <span className="gcg-tab-bar__label">{tab.title}</span>

@@ -7,6 +7,8 @@
  * ES2017 compliant.
  */
 
+import { Icon } from './Icon';
+
 export interface SubtabConfig {
   id: string;
   title: string;
@@ -52,10 +54,10 @@ export function SubtabBar(props: SubtabBarProps) {
             aria-label={subtab.title}
             aria-current={isActive ? 'page' : undefined}
           >
-            {/* Icon (emoji or SVG) */}
+            {/* Icon - resolved from registry */}
             {subtab.icon && (
-              <span className="gcg-subtab-bar__icon" aria-hidden="true">
-                {subtab.icon}
+              <span className="gcg-subtab-bar__icon">
+                <Icon iconId={subtab.icon} size="sm" />
               </span>
             )}
 

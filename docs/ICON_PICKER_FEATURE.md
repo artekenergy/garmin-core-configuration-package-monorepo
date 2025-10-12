@@ -43,7 +43,6 @@ Located at `web/icons/` with 28 icons:
 - Time
 - Water Dump, Water Pump
 - WiFi
-- Kind12, Kind12-1
 
 Icons are cataloged in `icon-manifest.json` for easy loading.
 

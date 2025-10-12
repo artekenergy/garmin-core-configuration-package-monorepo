@@ -46,7 +46,26 @@ export function validateUniqueComponentIds(schema: UISchema): ValidationError["e
 }
 
 /**
+ * Check if an icon string is a direct reference (path, URL, or emoji)
+ * rather than an ID that needs to be looked up in schema.icons
+ */
+function isDirectIconReference(icon: string): boolean {
+  // Direct file paths
+  if (icon.startsWith('/')) return true;
+  
+  // URLs
+  if (icon.startsWith('http://') || icon.startsWith('https://')) return true;
+  
+  // Emoji or other Unicode characters (single character or short strings)
+  // This is a simple heuristic - if it's 1-3 characters, likely emoji/text
+  if (icon.length <= 3) return true;
+  
+  return false;
+}
+
+/**
  * Check that all icon references point to defined icons
+ * Note: Direct paths (/, http://, https://) and emoji don't need to be in schema.icons
  */
 export function validateIconReferences(schema: UISchema): ValidationError["errors"] {
   const errors: ValidationError["errors"] = [];
@@ -54,7 +73,7 @@ export function validateIconReferences(schema: UISchema): ValidationError["error
   
   // Check tab icons
   schema.tabs.forEach((tab, tabIndex) => {
-    if (tab.icon && !definedIcons.has(tab.icon)) {
+    if (tab.icon && !isDirectIconReference(tab.icon) && !definedIcons.has(tab.icon)) {
       errors.push(
         createError(
           ["tabs", String(tabIndex), "icon"],
@@ -66,7 +85,7 @@ export function validateIconReferences(schema: UISchema): ValidationError["error
     
     // Check section icons
     tab.sections.forEach((section, sectionIndex) => {
-      if (section.icon && !definedIcons.has(section.icon)) {
+      if (section.icon && !isDirectIconReference(section.icon) && !definedIcons.has(section.icon)) {
         errors.push(
           createError(
             ["tabs", String(tabIndex), "sections", String(sectionIndex), "icon"],
@@ -78,7 +97,7 @@ export function validateIconReferences(schema: UISchema): ValidationError["error
       
       // Check component icons
       section.components.forEach((component, componentIndex) => {
-        if (component.icon && !definedIcons.has(component.icon)) {
+        if (component.icon && !isDirectIconReference(component.icon) && !definedIcons.has(component.icon)) {
           errors.push(
             createError(
               ["tabs", String(tabIndex), "sections", String(sectionIndex), "components", String(componentIndex), "icon"],

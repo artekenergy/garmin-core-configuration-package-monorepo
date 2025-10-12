@@ -196,6 +196,7 @@ export default function EditorPage() {
           type: 'button',
           variant: 'round',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           action: mapping.action,
           bindings: {
             action: {
@@ -210,6 +211,7 @@ export default function EditorPage() {
           type: 'toggle',
           variant: 'round',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           bindings: {
             state: {
               type: 'empirbus',
@@ -222,6 +224,7 @@ export default function EditorPage() {
           id: componentId,
           type: 'dimmer',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           min: channel.range?.min ?? 0,
           max: channel.range?.max ?? 100,
           step: channel.range?.step ?? 1,

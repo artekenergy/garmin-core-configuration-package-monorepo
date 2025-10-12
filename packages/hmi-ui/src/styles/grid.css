@@ -39,6 +39,7 @@
    =========================== */
 
 .gcg-section__title {
+  text-align: left;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--theme-primary);

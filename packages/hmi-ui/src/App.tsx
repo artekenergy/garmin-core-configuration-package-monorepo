@@ -3,11 +3,13 @@ import { useEffect } from 'preact/hooks';
 import { useSignal } from '@preact/signals';
 import { schemaSignal, isLoadingSignal, errorSignal } from './state/schema-signal';
 import { loadSchema } from './utils/schema-loader';
+import { registerIcons } from './utils/icon-registry';
 import { Section } from './components/Section';
 import { HomeLayout } from './components/HomeLayout';
 import { StatusBar } from './components/StatusBar';
 import { TabBar } from './components/TabBar';
 import { SubtabBar, SubtabConfig } from './components/SubtabBar';
+import './styles/tokens.css';
 import './styles/responsive.css';
 
 export const App: FunctionComponent = () => {
@@ -29,32 +31,52 @@ export const App: FunctionComponent = () => {
   const isLoading = isLoadingSignal.value;
   const error = errorSignal.value;
 
-  // Apply theme colors to CSS variables when schema loads or changes
+  // Load icons from schema into registry
+  useEffect(
+    function () {
+      if (schema && schema.icons) {
+        registerIcons(schema.icons);
+      }
+    },
+    [schema]
+  );
+
+  // Apply theme from schema to data attribute and custom colors
   useEffect(
     function () {
       if (schema && schema.theme) {
         const theme = schema.theme;
         const root = document.documentElement;
 
-        // Apply custom colors if they exist, otherwise use preset defaults
+        // Apply theme preset via data attribute (if present)
+        if (theme.preset) {
+          root.setAttribute('data-theme', theme.preset);
+        } else {
+          // Default to blue if no preset
+          root.setAttribute('data-theme', 'blue');
+        }
+
+        // Apply custom color overrides (if present)
         if (theme.customColors) {
           if (theme.customColors.primary) {
-            root.style.setProperty('--theme-primary', theme.customColors.primary);
+            root.style.setProperty('--color-primary', theme.customColors.primary);
           }
           if (theme.customColors.secondary) {
-            root.style.setProperty('--theme-secondary', theme.customColors.secondary);
+            root.style.setProperty('--color-secondary', theme.customColors.secondary);
           }
           if (theme.customColors.accent) {
-            root.style.setProperty('--theme-accent', theme.customColors.accent);
+            root.style.setProperty('--color-accent', theme.customColors.accent);
           }
           if (theme.customColors.background) {
-            root.style.setProperty('--theme-background', theme.customColors.background);
+            root.style.setProperty('--color-bg', theme.customColors.background);
           }
           if (theme.customColors.text) {
-            root.style.setProperty('--theme-text', theme.customColors.text);
+            root.style.setProperty('--color-text', theme.customColors.text);
           }
         }
-        // If no custom colors, preset fallback is handled by CSS defaults
+      } else {
+        // No theme in schema - use default
+        document.documentElement.setAttribute('data-theme', 'blue');
       }
     },
     [schema]
@@ -392,7 +414,7 @@ export const App: FunctionComponent = () => {
 
                 return (
                   <div
-                    style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-secondary)' }}
+                    style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text)' }}
                   >
                     No content available for this section
                   </div>

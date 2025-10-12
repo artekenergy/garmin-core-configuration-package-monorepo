@@ -239,7 +239,7 @@ export function Slider(props: SliderProps) {
         <div
           style={{
             fontSize: '0.75rem',
-            color: 'var(--text-secondary)',
+            color: 'var(--color-text)',
             fontFamily: 'monospace',
             minWidth: '60px',
             textAlign: 'center',
