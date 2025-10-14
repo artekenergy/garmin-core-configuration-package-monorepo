@@ -351,9 +351,10 @@
   flex-direction: column;
   gap: 0;
   justify-content: center;
-  background: transparent;
-  border: 2px solid var(--theme-primary, #e8ecf0);
-  color: var(--theme-primary, #e8ecf0);
+  /* Inactive state: primary background, secondary border */
+  background: var(--theme-primary, #e8ecf0);
+  border: 2px solid var(--theme-secondary, #1d3a52);
+  color: var(--theme-secondary, #1d3a52);
   font-family: inherit;
   user-select: none;
   -webkit-user-select: none;
@@ -372,19 +373,18 @@
   display: none;
 }
 
-/* Round Toggle ON state - filled background */
+/* Round Toggle ON state: secondary background, primary border and icon */
 .gcg-toggle--round.gcg-toggle--on {
-  background: var(--theme-primary, #e8ecf0);
-  color: var(--theme-secondary, #1d3a52);
+  background: var(--theme-secondary, #1d3a52);
   border-color: var(--theme-primary, #e8ecf0);
+  color: var(--theme-primary, #e8ecf0);
 }
 
 .gcg-toggle--round:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
+  opacity: 0.9;
 }
 
 .gcg-toggle--round.gcg-toggle--on:hover:not(:disabled) {
-  background: var(--theme-primary, #e8ecf0);
   opacity: 0.9;
 }
 

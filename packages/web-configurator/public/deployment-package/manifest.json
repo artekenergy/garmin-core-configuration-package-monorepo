@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2025-10-14T00:18:40.790Z",
-  "totalFiles": 101,
+  "generatedAt": "2025-10-14T16:19:26.220Z",
+  "totalFiles": 103,
   "files": [
     "configuration/applications.json",
+    "configuration/hardware-config-core-lite.json",
+    "configuration/hardware-config.json",
     "services/garmin1.service",
     "services/garmin2.service",
     "services/garmin3.service",
@@ -29,10 +31,10 @@
     "web/garmin/empirbus_config1.json",
     "web/garmin/empirbus_config2.json",
     "web/garmin/empirbus_config3.json",
-    "web/hmi-assets/index-DZdYO8QE.css",
-    "web/hmi-assets/index-Do1Qn_qB.js",
-    "web/hmi-assets/signals-0dQTJ-mX.js",
-    "web/hmi-assets/vendor-CJMu0MV0.js",
+    "web/hmi-assets/index-D3DT_qPS.js",
+    "web/hmi-assets/index-DaXXE8hK.css",
+    "web/hmi-assets/signals-Bt6fiQq5.js",
+    "web/hmi-assets/vendor-YOiOz27F.js",
     "web/icons/AC In.svg",
     "web/icons/AC Out.svg",
     "web/icons/AC.svg",
@@ -106,7 +108,7 @@
   ],
   "directories": {
     "web": 88,
-    "configuration": 1,
+    "configuration": 3,
     "services": 12
   }
 }

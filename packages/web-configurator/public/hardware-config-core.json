@@ -97,13 +97,14 @@
       "source": "core",
       "channel": 2,
       "control": "dimmer",
-      "label": "Core 2",
+      "label": "Core 2 (Not Configured)",
       "icon": "/icons/Dimmer.svg",
       "signals": {
-        "toggle": 72,
-        "momentary": 71,
-        "dimmer": 73
-      }
+        "toggle": null,
+        "momentary": null,
+        "dimmer": null
+      },
+      "_comment": "Hardware signals 71,72,73 not responding - may need hardware configuration"
     },
     {
       "id": "core-03",

@@ -25,6 +25,13 @@ interface SchemaLoaderConfig {
 export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void> {
   const { schemaPath = '/schema.json', schema: providedSchema, autoSubscribe = true } = config;
 
+  console.log(
+    '[Schema-Loader] Starting schema load, path:',
+    schemaPath,
+    'autoSubscribe:',
+    autoSubscribe
+  );
+
   // Set loading state
   isLoadingSignal.value = true;
   errorSignal.value = null;
@@ -66,9 +73,22 @@ export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void>
     const derivedSchema = regenerateTabContent(validatedSchema);
     schemaSignal.value = derivedSchema;
 
+    console.log(
+      '[Schema-Loader] Schema loaded successfully, outputs:',
+      derivedSchema.hardware?.outputs?.length || 0
+    );
+
     // Setup auto-subscription to signals
     if (autoSubscribe && derivedSchema.hardware) {
+      console.log('[Schema-Loader] Calling setupAutoSubscription');
       setupAutoSubscription(derivedSchema);
+    } else {
+      console.log(
+        '[Schema-Loader] Skipping auto-subscription, autoSubscribe:',
+        autoSubscribe,
+        'has hardware:',
+        !!derivedSchema.hardware
+      );
     }
   } catch (err) {
     // Handle any errors

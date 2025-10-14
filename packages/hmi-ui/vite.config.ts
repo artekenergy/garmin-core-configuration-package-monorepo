@@ -15,16 +15,16 @@ export default defineConfig({
     // Clear output directory before build
     emptyOutDir: true,
 
-    // Minification
-    minify: 'terser',
-    terserOptions: {
-      ecma: 2017,
-      compress: {
-        // Remove console logs in production
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    // Minification - DISABLED FOR DEBUGGING
+    minify: false,
+    // terserOptions: {
+    //   ecma: 2017,
+    //   compress: {
+    //     // Remove console logs in production
+    //     drop_console: false, // Temporarily enabled for debugging
+    //     drop_debugger: false, // Temporarily enabled for debugging
+    //   },
+    // },
 
     // Disable source maps in production (not needed on device)
     sourcemap: false,

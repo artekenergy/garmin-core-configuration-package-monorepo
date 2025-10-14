@@ -72,7 +72,10 @@ export function handleMfdStatusMessage(msg: EmpirBusMessage): void {
     return;
   }
 
+  console.log('[Signal-State] Processing Type 16 message:', msg);
+
   if (!msg.data || msg.data.length < 2) {
+    console.warn('[Signal-State] Invalid Type 16 message - insufficient data');
     return;
   }
 
@@ -90,6 +93,7 @@ export function handleMfdStatusMessage(msg: EmpirBusMessage): void {
       // data: [lo, hi, state]
       if (msg.data.length >= 3) {
         const stateValue = msg.data[2] === 1;
+        console.log(`[Signal-State] Signal ${signalId} Toggle: ${stateValue ? 'ON' : 'OFF'}`);
         const state: ToggleState = {
           state: stateValue,
           lastUpdated: Date.now(),
@@ -112,6 +116,8 @@ export function handleMfdStatusMessage(msg: EmpirBusMessage): void {
           const percent = rawValue > 100 ? rawValue / 10 : rawValue;
           const clampedPercent = Math.max(0, Math.min(100, percent));
 
+          console.log(`[Signal-State] Signal ${signalId} Dimmer: ${clampedPercent}%`);
+          
           const state: DimmerState = {
             index: index,
             value: clampedPercent,

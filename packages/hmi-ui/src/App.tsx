@@ -14,6 +14,8 @@ import './styles/tokens.css';
 import './styles/responsive.css';
 
 export const App: FunctionComponent = () => {
+  console.log('[App] HMI UI App component mounting...');
+
   // Active tab state
   const activeTabId = useSignal<string | null>(null);
   // Active subtab state - using a map for different tabs
@@ -21,6 +23,7 @@ export const App: FunctionComponent = () => {
 
   // Load schema on mount
   useEffect(function () {
+    console.log('[App] Loading schema...');
     loadSchema();
   }, []);
 

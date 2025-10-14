@@ -29,6 +29,18 @@ cp -r "$DIST_DIR/assets" "$WEB_DIR/hmi-assets"
 echo "  → Copying schema.json"
 cp "$DIST_DIR/schema.json" "$WEB_DIR/schema.json"
 
+# Copy hardware configs to configuration directory
+CONFIG_DIR="$GARMIN_BUNDLE_DIR/configuration"
+mkdir -p "$CONFIG_DIR"
+HW_CONFIG_SOURCE="../web-configurator/public"
+if [ -f "$HW_CONFIG_SOURCE/hardware-config-core.json" ]; then
+  echo "  → Copying hardware configs to configuration directory"
+  cp "$HW_CONFIG_SOURCE/hardware-config-core.json" "$CONFIG_DIR/hardware-config.json"
+  cp "$HW_CONFIG_SOURCE/hardware-config-core-lite.json" "$CONFIG_DIR/hardware-config-core-lite.json" 2>/dev/null || true
+else
+  echo "  ⚠ Hardware config files not found at $HW_CONFIG_SOURCE - skipping"
+fi
+
 # Copy icon library from web-configurator
 ICONS_SOURCE="../web-configurator/public/icons"
 if [ -d "$ICONS_SOURCE" ]; then

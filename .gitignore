@@ -8,12 +8,6 @@ node_modules/
 .turbo/
 .cache/
 
-# Build outputs
-dist/
-build/
-*.tsbuildinfo
-packages/web-configurator/public/deployment-package/
-
 # Testing
 coverage/
 *.log
@@ -50,8 +44,6 @@ Desktop.ini
 *.tmp
 *.temp
 # Local web assets (copied from device or built output)
-web/
-garmin-bundle/
 
 # Debug
 npm-debug.log*
