@@ -70,10 +70,11 @@ function createIconDefinition(iconRef: string): Icon | null {
     const ext = extMatch[1].toLowerCase();
     const type = (ext === 'svg' ? 'svg' : ext === 'png' ? 'png' : 'jpg') as 'svg' | 'png' | 'jpg';
 
+    // Use relative path as URL - will be resolved from deployment package root
     return {
       id,
       type,
-      url: iconRef,
+      url: iconRef, // Keep as relative path like "/icons/Hot Air.svg"
     };
   }
 
@@ -122,12 +123,27 @@ export function buildIconsArray(schema: UISchema): Icon[] {
 }
 
 /**
- * Update schema with generated icons array
+ * Update schema with generated icons array and normalize component icon references
  */
 export function updateSchemaIcons(schema: UISchema): UISchema {
   const icons = buildIconsArray(schema);
+
+  // Normalize icon references in all components to use icon IDs
+  const updatedTabs = schema.tabs.map((tab) => ({
+    ...tab,
+    sections: tab.sections.map((section) => ({
+      ...section,
+      components: section.components.map((component) => ({
+        ...component,
+        // Convert icon path (e.g., "/icons/Hot Air.svg") to icon ID (e.g., "hot-air")
+        icon: component.icon ? iconRefToId(component.icon) : undefined,
+      })),
+    })),
+  }));
+
   return {
     ...schema,
+    tabs: updatedTabs,
     icons: icons.length > 0 ? icons : undefined,
   };
 }

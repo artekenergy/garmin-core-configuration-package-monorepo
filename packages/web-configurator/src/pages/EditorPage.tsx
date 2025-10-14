@@ -11,6 +11,7 @@ import ComponentPalette from '../components/ComponentPalette';
 import type { Component } from '@gcg/schema';
 import { CONTROL_COMPONENT_MAP } from '../constants/hardware';
 import { regenerateTabContent } from '../utils/tabGenerator';
+import { debug } from '../utils/debug';
 import styles from './EditorPage.module.css';
 
 export default function EditorPage() {
@@ -48,7 +49,7 @@ export default function EditorPage() {
       const currentTab = schema.tabs.find((t) => t.id === selectedTabId);
       const section = currentTab?.sections.find((s) => s.id === selectedSectionId);
 
-      console.log('[DEBUG] Home tab section matching:', {
+      debug.log('[DEBUG] Home tab section matching:', {
         sectionId: section?.id,
         selectedSectionId,
         sectionType: section?.type,
@@ -56,7 +57,7 @@ export default function EditorPage() {
 
       // Return the section's type property (or null if not set)
       const type = section?.type || null;
-      console.log('[DEBUG] Section selected, returning type:', type);
+      debug.log('[DEBUG] Section selected, returning type:', type);
       return type;
     }
 

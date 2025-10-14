@@ -159,7 +159,7 @@ export const App: FunctionComponent = () => {
       return firstEnabled.id;
     }
 
-    return subtabs[0].id;
+    return subtabs[0]?.id || subtabs[0]?.id || '';
   };
 
   const activeTab = schema

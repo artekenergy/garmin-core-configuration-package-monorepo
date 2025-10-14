@@ -1,5 +1,6 @@
 import { useSchema } from '../context/SchemaContext';
 import styles from './ExportPage.module.css';
+import { debug } from '../utils/debug';
 import JSZip from 'jszip';
 import { useState } from 'react';
 import { updateSchemaIcons } from '../utils/iconRegistry';
@@ -74,11 +75,11 @@ export default function ExportPage() {
               return userOutput;
             });
 
-            console.log('✓ Added signal mappings to schema for export');
+            debug.log('✓ Added signal mappings to schema for export');
           }
         }
       } catch (error) {
-        console.warn('Could not fetch hardware config for signal mappings:', error);
+        debug.warn('Could not fetch hardware config for signal mappings:', error);
       }
 
       const schemaJson = JSON.stringify(enhancedSchema, null, 2);
@@ -91,10 +92,10 @@ export default function ExportPage() {
 
         if (manifestResponse.ok) {
           const manifest = await manifestResponse.json();
-          console.log(`Loading complete deployment package: ${manifest.totalFiles} files`);
-          console.log(`  - web/: ${manifest.directories.web} files`);
-          console.log(`  - configuration/: ${manifest.directories.configuration} files`);
-          console.log(`  - services/: ${manifest.directories.services} files`);
+          debug.log(`Loading complete deployment package: ${manifest.totalFiles} files`);
+          debug.log(`  - web/: ${manifest.directories.web} files`);
+          debug.log(`  - configuration/: ${manifest.directories.configuration} files`);
+          debug.log(`  - services/: ${manifest.directories.services} files`);
 
           // Fetch all files listed in manifest
           for (const file of manifest.files) {
@@ -124,14 +125,14 @@ export default function ExportPage() {
             }
           }
 
-          console.log(`✓ Loaded complete deployment package (${manifest.totalFiles} files)`);
+          debug.log(`✓ Loaded complete deployment package (${manifest.totalFiles} files)`);
         } else {
-          console.warn('Deployment package manifest not found - package will contain schema only');
-          console.warn('Run: pnpm --filter @gcg/web-configurator prebuild');
+          debug.warn('Deployment package manifest not found - package will contain schema only');
+          debug.warn('Run: pnpm --filter @gcg/web-configurator prebuild');
         }
       } catch (error) {
-        console.warn('Could not fetch deployment package files:', error);
-        console.warn('The export package will contain only the schema and icons.');
+        debug.warn('Could not fetch deployment package files:', error);
+        debug.warn('The export package will contain only the schema and icons.');
       }
 
       // 4. Update web/schema.json with user's configuration (overwrite the template)
@@ -298,9 +299,9 @@ This package includes the complete HMI UI application and is ready for direct de
         },
       });
 
-      console.log('✅ Package compiled successfully!');
+      debug.log('✅ Package compiled successfully!');
     } catch (error) {
-      console.error('Failed to compile deployment package:', error);
+      debug.error('Failed to compile deployment package:', error);
       setCompilationError(
         error instanceof Error ? error.message : 'Unknown error occurred during compilation'
       );

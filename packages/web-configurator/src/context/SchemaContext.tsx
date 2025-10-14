@@ -5,6 +5,7 @@ import {
   validateAllChannelBindings,
   type ChannelValidationError,
 } from '../utils/channelValidation';
+import { debug } from '../utils/debug';
 
 /**
  * Hardware channel info extracted from hardware-config.json
@@ -91,9 +92,7 @@ const defaultSchema: UISchema = {
     enabled: false,
     monitoringSource: 'cerbo-gx',
     count: 1,
-    tanks: [
-      { type: 'fresh', name: '' },
-    ],
+    tanks: [{ type: 'fresh', name: '' }],
   },
   accessories: {
     keypad: {
@@ -236,7 +235,7 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
         channelErrors,
         downloadSchema: () => {
           if (!schema) {
-            console.warn('No schema available');
+            debug.warn('No schema available');
             return;
           }
           const schemaJson = JSON.stringify(schema, null, 2);
@@ -249,20 +248,20 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
           link.click();
           document.body.removeChild(link);
           URL.revokeObjectURL(url);
-          console.log('✅ Schema downloaded!');
+          debug.log('✅ Schema downloaded!');
         },
         copySchemaToClipboard: async () => {
           if (!schema) {
-            console.warn('No schema available');
+            debug.warn('No schema available');
             return;
           }
           try {
             const schemaJson = JSON.stringify(schema, null, 2);
             await navigator.clipboard.writeText(schemaJson);
-            console.log('✅ Schema copied to clipboard!');
+            debug.log('✅ Schema copied to clipboard!');
           } catch (err) {
-            console.error('❌ Failed to copy to clipboard:', err);
-            console.log('Schema JSON:', JSON.stringify(schema, null, 2));
+            debug.error('❌ Failed to copy to clipboard:', err);
+            debug.log('Schema JSON:', JSON.stringify(schema, null, 2));
           }
         },
         exportDOMSnapshot: () => {
@@ -276,22 +275,22 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
             channelErrors: channelErrors,
             domSnapshot: {
               title: document.title,
-              forms: Array.from(document.forms).map(form => ({
+              forms: Array.from(document.forms).map((form) => ({
                 name: form.name,
                 action: form.action,
                 method: form.method,
-                elements: Array.from(form.elements).map(el => ({
+                elements: Array.from(form.elements).map((el) => ({
                   name: (el as any).name,
                   type: (el as any).type,
                   value: (el as any).value,
-                  checked: (el as any).checked
-                }))
+                  checked: (el as any).checked,
+                })),
               })),
               localStorage: { ...localStorage },
-              sessionStorage: { ...sessionStorage }
-            }
+              sessionStorage: { ...sessionStorage },
+            },
           };
-          
+
           const snapshotJson = JSON.stringify(snapshot, null, 2);
           const dataBlob = new Blob([snapshotJson], { type: 'application/json' });
           const url = URL.createObjectURL(dataBlob);
@@ -302,8 +301,8 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
           link.click();
           document.body.removeChild(link);
           URL.revokeObjectURL(url);
-          console.log('✅ DOM snapshot downloaded!');
-        }
+          debug.log('✅ DOM snapshot downloaded!');
+        },
       };
     }
   }, [schema, validationResult, hardwareChannels, channelErrors]);
@@ -325,9 +324,9 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
       setChannelErrors(errors);
 
       if (errors.length > 0) {
-        console.warn(`⚠️ Found ${errors.length} channel binding errors:`, errors);
+        debug.warn(`⚠️ Found ${errors.length} channel binding errors:`, errors);
       } else {
-        console.log('✅ All channel bindings are valid');
+        debug.log('✅ All channel bindings are valid');
       }
     } else {
       setChannelErrors([]);
@@ -374,7 +373,7 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
         typeof hardwareConfigData !== 'object' ||
         !('outputs' in hardwareConfigData)
       ) {
-        console.error('Invalid hardware config format');
+        debug.error('Invalid hardware config format');
         return;
       }
 
@@ -408,9 +407,9 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
 
       setHardwareChannels(channels);
 
-      console.log(`✅ Loaded ${channels.length} hardware channels from config`);
+      debug.log(`✅ Loaded ${channels.length} hardware channels from config`);
     } catch (error) {
-      console.error('Failed to parse hardware config:', error);
+      debug.error('Failed to parse hardware config:', error);
     }
   };
 

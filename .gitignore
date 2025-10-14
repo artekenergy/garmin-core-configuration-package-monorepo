@@ -66,3 +66,9 @@ yarn.lock
 # Build artifacts
 *.js.map
 *.d.ts.map
+packages/web-configurator/public/deployment-package/
+packages/web-configurator/public/hmi-dist/
+
+# Auto-copied hardware configs (source of truth: configuration/)
+packages/hmi-ui/public/hardware-config*.json
+packages/web-configurator/public/hardware-config*.json

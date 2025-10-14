@@ -11,7 +11,7 @@ pnpm build
 echo ""
 echo "📦 Deploying to garmin-bundle/web directory..."
 
-\# Define paths
+# Define paths
 DIST_DIR="./dist"
 WEB_DIR="../../garmin-bundle/web"
 GARMIN_BUNDLE_DIR="../../garmin-bundle"
@@ -28,6 +28,16 @@ cp -r "$DIST_DIR/assets" "$WEB_DIR/hmi-assets"
 # Copy schema.json
 echo "  → Copying schema.json"
 cp "$DIST_DIR/schema.json" "$WEB_DIR/schema.json"
+
+# Copy icon library from web-configurator
+ICONS_SOURCE="../web-configurator/public/icons"
+if [ -d "$ICONS_SOURCE" ]; then
+  echo "  → Copying icon library"
+  rm -rf "$WEB_DIR/icons"
+  cp -r "$ICONS_SOURCE" "$WEB_DIR/icons"
+else
+  echo "  ⚠ Icon library not found at $ICONS_SOURCE - skipping"
+fi
 
 # Generate cache-busting timestamp
 CACHE_BUST=$(date +%s)

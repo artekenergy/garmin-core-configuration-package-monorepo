@@ -12,6 +12,7 @@ import {
   CONTROL_COMPONENT_MAP,
   generateGenesisChannels,
 } from '../constants/hardware';
+import { debug } from '../utils/debug';
 import styles from './HardwareConfigPage.module.css';
 
 export default function HardwareConfigPage() {
@@ -73,7 +74,7 @@ export default function HardwareConfigPage() {
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         setUploadError(`Failed to load hardware config: ${errorMessage}`);
-        console.error('Hardware config upload error:', error);
+        debug.error('Hardware config upload error:', error);
       }
     };
 
@@ -113,7 +114,7 @@ export default function HardwareConfigPage() {
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         setUploadError(`Failed to load schema: ${errorMessage}`);
-        console.error('Schema upload error:', error);
+        debug.error('Schema upload error:', error);
       }
     };
 
@@ -149,11 +150,7 @@ export default function HardwareConfigPage() {
       // Prefer the new validation configs; fall back to legacy names
       const candidates =
         systemType === 'core'
-          ? [
-              '/configuration/core-config.json',
-              '/core-config.json',
-              '/hardware-config-core.json',
-            ]
+          ? ['/configuration/core-config.json', '/core-config.json', '/hardware-config-core.json']
           : [
               '/configuration/lite-config.json',
               '/lite-config.json',
@@ -166,7 +163,7 @@ export default function HardwareConfigPage() {
           if (response.ok) {
             const hardwareConfig = await response.json();
             loadHardwareConfig(hardwareConfig);
-            console.log(`✅ Auto-loaded ${systemType.toUpperCase()} hardware config from ${url}`);
+            debug.log(`✅ Auto-loaded ${systemType.toUpperCase()} hardware config from ${url}`);
             return; // Stop after first success
           }
         } catch (e) {
@@ -174,7 +171,7 @@ export default function HardwareConfigPage() {
         }
       }
 
-      console.warn('Could not auto-load any hardware validation config');
+      debug.warn('Could not auto-load any hardware validation config');
     };
 
     autoLoadHardwareConfig();

@@ -6,7 +6,7 @@
  */
 
 import { z } from 'zod';
-import { UISchemaSchema } from './schema';
+import { UISchemaSchema } from './root';
 import { ValidationError } from './types';
 
 type UISchema = z.infer<typeof UISchemaSchema>;
