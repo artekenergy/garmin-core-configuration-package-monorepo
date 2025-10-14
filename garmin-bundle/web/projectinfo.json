@@ -1,0 +1,15 @@
+{
+  "projectTitle": "core-2_9-24-25",
+  "netlistChecksum": "1109419468",
+  "empirBusStudioConfigFileId": "91e78ce0-ca2c-49d5-a500-01999d7114f1",
+  "empirBusStudioConfigFileVersion": "1",
+  "projectFileId": "b0aeba2c-2075-4970-8ebd-01997d2adf91",
+  "projectFileVersion": "6",
+  "exportGuid": "634ddd2f-2a74-4da8-80d3-0199e0089c51",
+  "wduWebVersion": "3.5.3",
+  "graphicsToolVersion": "1.65.6+9b055a6518cc5df43fc4a63a5659d26bf760f383",
+  "buildEnvironment": "Production",
+  "targetConfiguration": "production",
+  "targetPlatform": "WDU",
+  "targetPlatformVersion": "3.0.0"
+}

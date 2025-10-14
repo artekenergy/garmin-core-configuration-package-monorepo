@@ -1,0 +1,2416 @@
+/**
+ * Design Tokens - CSS Variables
+ * 
+ * Single source of truth for all design values.
+ * Applied via theme presets or custom overrides from schema.
+ * 
+ * ES2017 compliant styling.
+ */
+
+:root {
+  /* ===========================
+     Color Tokens
+     =========================== */
+
+  /* Primary colors - main brand/accent */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-active: #1d4ed8;
+
+  /* Secondary colors - backgrounds, cards */
+  --color-secondary: #1e293b;
+  --color-secondary-light: #334155;
+  --color-secondary-dark: #0f172a;
+
+  /* Accent colors - highlights, focus */
+  --color-accent: #06b6d4;
+  --color-accent-hover: #0891b2;
+
+  /* Text colors */
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+
+  /* Background colors */
+  --color-bg: #0f172a;
+  --color-bg-elevated: #1e293b;
+  --color-bg-overlay: rgba(15, 23, 42, 0.95);
+
+  /* State colors - semantic */
+  --color-state-ok: #10b981;
+  --color-state-warn: #f59e0b;
+  --color-state-error: #ef4444;
+  --color-state-info: #3b82f6;
+  --color-state-neutral: #64748b;
+
+  /* Border colors */
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-border-focus: #3b82f6;
+
+  /* ===========================
+     Spacing Tokens
+     =========================== */
+
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 3rem; /* 48px */
+
+  /* ===========================
+     Typography Tokens
+     =========================== */
+
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ===========================
+     Border Tokens
+     =========================== */
+
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --border-width-thick: 4px;
+
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius-base: 0.5rem; /* 8px */
+  --border-radius-lg: 0.75rem; /* 12px */
+  --border-radius-full: 9999px;
+
+  /* ===========================
+     Shadow Tokens
+     =========================== */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ===========================
+     Z-index Layers
+     =========================== */
+
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-popover: 1400;
+  --z-tooltip: 1500;
+
+  /* ===========================
+     Transition Tokens
+     =========================== */
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* ===========================
+     Component-Specific Tokens
+     =========================== */
+
+  /* Touch targets - minimum 44px per iOS HIG */
+  --touch-target-min: 44px;
+
+  /* Focus ring */
+  --focus-ring-width: 3px;
+  --focus-ring-color: var(--color-border-focus);
+  --focus-ring-offset: 2px;
+
+  /* Disabled state */
+  --opacity-disabled: 0.5;
+
+  /* Overlay scrim */
+  --overlay-scrim: rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Theme Presets
+   =========================== */
+
+/* Blue Theme (default) - Ocean Blue */
+[data-theme='blue'] {
+  --color-primary: #dbeafe; /* Light blue - inactive button background */
+  --color-secondary: #1e40af; /* Dark blue - active button background / inactive icon */
+  --color-accent: #3b82f6;
+  --color-bg: #f8fafc;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Purple Theme - Royal Purple */
+[data-theme='purple'] {
+  --color-primary: #f3e8ff; /* Light purple - inactive button background */
+  --color-secondary: #6d28d9; /* Dark purple - active button background / inactive icon */
+  --color-accent: #8b5cf6;
+  --color-bg: #faf5ff;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Green Theme - Forest Green */
+[data-theme='green'] {
+  --color-primary: #d1fae5; /* Light green - inactive button background */
+  --color-secondary: #047857; /* Dark green - active button background / inactive icon */
+  --color-accent: #10b981;
+  --color-bg: #f0fdf4;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Orange Theme - Sunset Orange */
+[data-theme='orange'] {
+  --color-primary: #ffedd5; /* Light orange - inactive button background */
+  --color-secondary: #c2410c; /* Dark orange - active button background / inactive icon */
+  --color-accent: #f97316;
+  --color-bg: #fff7ed;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Red Theme - Marine Red */
+[data-theme='red'] {
+  --color-primary: #fee2e2; /* Light red - inactive button background */
+  --color-secondary: #b91c1c; /* Dark red - active button background / inactive icon */
+  --color-accent: #ef4444;
+  --color-bg: #fef2f2;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Dark Theme - Midnight Dark */
+[data-theme='dark'] {
+  --color-primary: #1e293b; /* Dark gray - inactive button background */
+  --color-secondary: #93c5fd; /* Light blue - active button background / inactive icon */
+  --color-accent: #60a5fa;
+  --color-bg: #0f172a;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+}
+
+/* Light Theme - Bright Light */
+[data-theme='light'] {
+  --color-primary: #e0f2fe; /* Very light blue - inactive button background */
+  --color-secondary: #0284c7; /* Dark cyan - active button background / inactive icon */
+  --color-accent: #38bdf8;
+  --color-bg: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+}
+
+/* Dark mode adjustments (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default */
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
+/**
+ * Responsive Layout Styles
+ * 
+ * Target Displays:
+ * - Serv 7 (Horizontal): 958 x 489px (ratio: 1.9591)
+ * - Serv 10 (Horizontal): 1084 x 606px (ratio: 1.7887)
+ * 
+ * Design Principles:
+ * - Fixed viewport, no scrolling
+ * - Touch-friendly targets (min 44px)
+ * - Responsive grid layouts
+ * - Optimized for horizontal displays
+ */
+
+/* ===========================
+   Base Layout
+   =========================== */
+
+.gcg-main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--theme-secondary);
+}
+
+/* ===========================
+   Serv 7 Display (958 x 489)
+   =========================== */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  /* Smaller display optimizations */
+  .gcg-status-bar {
+    padding: 0.75rem 1rem;
+  }
+
+  .gcg-status-bar__section {
+    font-size: 0.75rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 70px;
+  }
+
+  .gcg-tab-bar__icon {
+    font-size: 1.25rem;
+  }
+
+  .gcg-tab-bar__label {
+    font-size: 0.625rem;
+  }
+
+  .gcg-main-content {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Specific to Serv 7 (958 x 489) */
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-status-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .gcg-status-bar__content {
+    margin-bottom: 0.5rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 60px;
+  }
+
+  .gcg-main-content {
+    padding: 0.5rem !important;
+  }
+}
+
+/* ===========================
+   Serv 10 Display (1084 x 606)
+   =========================== */
+
+@media screen and (min-width: 959px) and (max-width: 1084px) and (max-height: 606px) {
+  /* Optimized for Serv 10 */
+  .gcg-status-bar {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 75px;
+  }
+
+  .gcg-main-content {
+    padding: 0.875rem !important;
+  }
+}
+
+/* ===========================
+   Component Grid Layouts
+   =========================== */
+
+/* Default: 4 columns for larger displays */
+.gcg-section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Serv 10: 3 columns */
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  .gcg-section-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+}
+
+/* Serv 7: 2-3 columns depending on content */
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-section-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+/* ===========================
+   Touch Targets
+   =========================== */
+
+/* Ensure minimum touch target size of 44px */
+@media (pointer: coarse) {
+  button,
+  .gcg-toggle,
+  .gcg-round-toggle,
+  .gcg-button,
+  .gcg-round-button,
+  .gcg-tab-bar__item {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ===========================
+   Landscape Optimization
+   =========================== */
+
+@media screen and (orientation: landscape) {
+  /* Optimize vertical space usage */
+  .gcg-status-bar__content {
+    margin-bottom: 0.5rem;
+  }
+
+  .gcg-status-bar__divider {
+    margin: 0;
+  }
+}
+
+/* ===========================
+   Prevent Overscroll/Bounce
+   =========================== */
+
+html,
+body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+/* Base styles for HMI UI */
+
+/* Import tokens first - single source of truth */
+
+/**
+ * Design Tokens - CSS Variables
+ * 
+ * Single source of truth for all design values.
+ * Applied via theme presets or custom overrides from schema.
+ * 
+ * ES2017 compliant styling.
+ */
+
+:root {
+  /* ===========================
+     Color Tokens
+     =========================== */
+
+  /* Primary colors - main brand/accent */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-active: #1d4ed8;
+
+  /* Secondary colors - backgrounds, cards */
+  --color-secondary: #1e293b;
+  --color-secondary-light: #334155;
+  --color-secondary-dark: #0f172a;
+
+  /* Accent colors - highlights, focus */
+  --color-accent: #06b6d4;
+  --color-accent-hover: #0891b2;
+
+  /* Text colors */
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+
+  /* Background colors */
+  --color-bg: #0f172a;
+  --color-bg-elevated: #1e293b;
+  --color-bg-overlay: rgba(15, 23, 42, 0.95);
+
+  /* State colors - semantic */
+  --color-state-ok: #10b981;
+  --color-state-warn: #f59e0b;
+  --color-state-error: #ef4444;
+  --color-state-info: #3b82f6;
+  --color-state-neutral: #64748b;
+
+  /* Border colors */
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-border-focus: #3b82f6;
+
+  /* ===========================
+     Spacing Tokens
+     =========================== */
+
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+  --space-2xl: 3rem; /* 48px */
+
+  /* ===========================
+     Typography Tokens
+     =========================== */
+
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ===========================
+     Border Tokens
+     =========================== */
+
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --border-width-thick: 4px;
+
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius-base: 0.5rem; /* 8px */
+  --border-radius-lg: 0.75rem; /* 12px */
+  --border-radius-full: 9999px;
+
+  /* ===========================
+     Shadow Tokens
+     =========================== */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ===========================
+     Z-index Layers
+     =========================== */
+
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-popover: 1400;
+  --z-tooltip: 1500;
+
+  /* ===========================
+     Transition Tokens
+     =========================== */
+
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 200ms ease-in-out;
+  --transition-slow: 300ms ease-in-out;
+
+  /* ===========================
+     Component-Specific Tokens
+     =========================== */
+
+  /* Touch targets - minimum 44px per iOS HIG */
+  --touch-target-min: 44px;
+
+  /* Focus ring */
+  --focus-ring-width: 3px;
+  --focus-ring-color: var(--color-border-focus);
+  --focus-ring-offset: 2px;
+
+  /* Disabled state */
+  --opacity-disabled: 0.5;
+
+  /* Overlay scrim */
+  --overlay-scrim: rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Theme Presets
+   =========================== */
+
+/* Blue Theme (default) - Ocean Blue */
+
+[data-theme='blue'] {
+  --color-primary: #dbeafe; /* Light blue - inactive button background */
+  --color-secondary: #1e40af; /* Dark blue - active button background / inactive icon */
+  --color-accent: #3b82f6;
+  --color-bg: #f8fafc;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Purple Theme - Royal Purple */
+
+[data-theme='purple'] {
+  --color-primary: #f3e8ff; /* Light purple - inactive button background */
+  --color-secondary: #6d28d9; /* Dark purple - active button background / inactive icon */
+  --color-accent: #8b5cf6;
+  --color-bg: #faf5ff;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Green Theme - Forest Green */
+
+[data-theme='green'] {
+  --color-primary: #d1fae5; /* Light green - inactive button background */
+  --color-secondary: #047857; /* Dark green - active button background / inactive icon */
+  --color-accent: #10b981;
+  --color-bg: #f0fdf4;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Orange Theme - Sunset Orange */
+
+[data-theme='orange'] {
+  --color-primary: #ffedd5; /* Light orange - inactive button background */
+  --color-secondary: #c2410c; /* Dark orange - active button background / inactive icon */
+  --color-accent: #f97316;
+  --color-bg: #fff7ed;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Red Theme - Marine Red */
+
+[data-theme='red'] {
+  --color-primary: #fee2e2; /* Light red - inactive button background */
+  --color-secondary: #b91c1c; /* Dark red - active button background / inactive icon */
+  --color-accent: #ef4444;
+  --color-bg: #fef2f2;
+  --color-text: #f1f5f9; /* Light text for dark backgrounds */
+  --color-text-muted: #94a3b8;
+}
+
+/* Dark Theme - Midnight Dark */
+
+[data-theme='dark'] {
+  --color-primary: #1e293b; /* Dark gray - inactive button background */
+  --color-secondary: #93c5fd; /* Light blue - active button background / inactive icon */
+  --color-accent: #60a5fa;
+  --color-bg: #0f172a;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+}
+
+/* Light Theme - Bright Light */
+
+[data-theme='light'] {
+  --color-primary: #e0f2fe; /* Very light blue - inactive button background */
+  --color-secondary: #0284c7; /* Dark cyan - active button background / inactive icon */
+  --color-accent: #38bdf8;
+  --color-bg: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+}
+
+/* Dark mode adjustments (if needed in future) */
+
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default */
+}
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
+
+/* Then import component styles */
+
+/**
+ * Component Styles - Minimal Clean Design
+ * 
+ * Design principles:
+ * - Flat colors, no gradients
+ * - Minimal shadows, simple borders
+ * - Clean, professional aesthetic
+ * - Touch-friendly sizing
+ */
+
+/* ===========================
+   Icon Component
+   =========================== */
+
+.gcg-icon {
+  display: inline-block;
+  line-height: 0;
+  color: inherit;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.gcg-icon--sm {
+  width: 20px;
+  height: 20px;
+}
+
+.gcg-icon--md {
+  width: 24px;
+  height: 24px;
+}
+
+.gcg-icon--lg {
+  width: 32px;
+  height: 32px;
+}
+
+.gcg-icon svg,
+.gcg-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gcg-icon svg {
+  fill: currentColor;
+}
+
+/* ===========================
+   StatusBar Component
+   =========================== */
+
+.gcg-status-bar {
+  background: var(--theme-secondary);
+  padding: 1rem 1.5rem;
+}
+
+.gcg-status-bar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.gcg-status-bar__section {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--theme-primary);
+  white-space: nowrap;
+}
+
+.gcg-status-bar__section--left {
+  text-align: left;
+  flex: 1;
+}
+
+.gcg-status-bar__section--center {
+  text-align: center;
+  flex: 1;
+}
+
+.gcg-status-bar__section--right {
+  text-align: right;
+  flex: 1;
+}
+
+.gcg-status-bar__divider {
+  height: 1px;
+  background: rgba(232, 236, 240, 0.15);
+  width: 100%;
+}
+
+/* ===========================
+   TabBar Component
+   =========================== */
+
+.gcg-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 80px;
+  background: var(--theme-secondary);
+  border-top: 1px solid rgba(232, 236, 240, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+  z-index: 1000;
+}
+
+.gcg-tab-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  min-width: 60px;
+  min-height: 60px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gcg-tab-bar__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gcg-tab-bar__item--active {
+  color: var(--theme-primary, #e8ecf0);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gcg-tab-bar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.gcg-tab-bar__label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+/* Hide labels on very small screens */
+
+@media (max-width: 480px) {
+  .gcg-tab-bar__label {
+    display: none;
+  }
+
+  .gcg-tab-bar__item {
+    min-width: 48px;
+  }
+}
+
+/* ===========================
+   SubtabBar Component
+   =========================== */
+
+.gcg-subtab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+  background: transparent;
+}
+
+.gcg-subtab-bar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gcg-subtab-bar__item:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.gcg-subtab-bar__item--active {
+  color: var(--theme-primary, #e8ecf0);
+  border-bottom-color: var(--theme-primary, #e8ecf0);
+}
+
+.gcg-subtab-bar__icon {
+  display: none; /* Hide icons in this design */
+}
+
+.gcg-subtab-bar__title {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ===== Component Wrapper ===== */
+
+.gcg-component-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 0.5rem; - Not supported in Chrome 83 flexbox */
+  margin-bottom: 1rem;
+}
+
+.gcg-component-wrapper > * + * {
+  margin-top: 0.5rem; /* Fallback for gap in flexbox */
+}
+
+.gcg-component-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  order: -1; /* Place label above button */
+}
+
+.gcg-component-tooltip {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  padding-left: 0.5rem;
+}
+
+/* ===== Toggle Component ===== */
+
+.gcg-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.gcg-toggle:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.gcg-toggle:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gcg-toggle:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gcg-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Toggle Track (the sliding part) */
+
+.gcg-toggle__track {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.gcg-toggle--on .gcg-toggle__track {
+  background: var(--theme-primary, #e8ecf0);
+  border-color: var(--theme-primary, #e8ecf0);
+}
+
+/* Toggle Thumb (the circle) */
+
+.gcg-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.125rem;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.gcg-toggle--on .gcg-toggle__thumb {
+  transform: translateX(1.5rem) translateY(-50%);
+}
+
+/* Toggle Label */
+
+.gcg-toggle__label {
+  flex: 1;
+  text-align: left;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+/* ===== Round Toggle Variant ===== */
+
+.gcg-toggle--round {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  padding: 0;
+  border-radius: 50%;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+  /* Inactive state: primary background, secondary border */
+  background: var(--theme-primary, #e8ecf0);
+  border: 2px solid var(--theme-secondary, #1d3a52);
+  color: var(--theme-secondary, #1d3a52);
+  font-family: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide track and thumb for round variant */
+
+.gcg-toggle--round .gcg-toggle__track {
+  display: none;
+}
+
+.gcg-toggle--round .gcg-toggle__thumb {
+  display: none;
+}
+
+/* Round Toggle ON state: secondary background, primary border and icon */
+
+.gcg-toggle--round.gcg-toggle--on {
+  background: var(--theme-secondary, #1d3a52);
+  border-color: var(--theme-primary, #e8ecf0);
+  color: var(--theme-primary, #e8ecf0);
+}
+
+.gcg-toggle--round:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.gcg-toggle--round.gcg-toggle--on:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Disabled state */
+
+.gcg-toggle--round:disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.4;
+}
+
+/* Round Toggle Icon - inline SVG */
+
+.gcg-toggle--round .gcg-toggle__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.gcg-toggle--round .gcg-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Round Toggle Label (text-only version) */
+
+.gcg-toggle--round .gcg-toggle__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ON/OFF text inside round toggle when no icon */
+
+.gcg-toggle--round .gcg-toggle__text {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: currentColor;
+  user-select: none;
+}
+
+/* Round Toggle Size Variants */
+
+.gcg-toggle--small.gcg-toggle--round {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  gap: 0.5rem;
+}
+
+.gcg-toggle--small.gcg-toggle--round .gcg-toggle__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.gcg-toggle--small.gcg-toggle--round .gcg-toggle__label {
+  font-size: 0.65rem;
+}
+
+.gcg-toggle--large.gcg-toggle--round {
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+  gap: 1rem;
+}
+
+.gcg-toggle--large.gcg-toggle--round .gcg-toggle__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.gcg-toggle--large.gcg-toggle--round .gcg-toggle__label {
+  font-size: 0.875rem;
+}
+
+/* Toggle Variants - Checkbox Style */
+
+.gcg-toggle--checkbox .gcg-toggle__track {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  background: var(--surface-color);
+  border: 2px solid var(--border-color);
+}
+
+.gcg-toggle--checkbox.gcg-toggle--on .gcg-toggle__track {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.gcg-toggle--checkbox .gcg-toggle__thumb {
+  display: none;
+}
+
+.gcg-toggle--checkbox.gcg-toggle--on .gcg-toggle__track::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ===== Dimmer Component ===== */
+
+.gcg-dimmer {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.5rem; - Not supported in Chrome 83 flexbox */
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+}
+
+.gcg-dimmer > * + * {
+  margin-top: 0.5rem; /* Fallback for gap */
+}
+
+.gcg-dimmer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 1rem; - Not supported in Chrome 83 flexbox */
+  margin-bottom: 0.5rem;
+}
+
+.gcg-dimmer__header > * + * {
+  margin-left: 1rem; /* Fallback for gap */
+}
+
+.gcg-dimmer__label {
+  display: flex;
+  align-items: center;
+  /* gap: 0.75rem; - Not supported in Chrome 83 flexbox */
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gcg-dimmer__label > * + * {
+  margin-left: 0.75rem; /* Fallback for gap */
+}
+
+.gcg-dimmer__label-text {
+  flex: 1;
+}
+
+.gcg-dimmer__value {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  min-width: 3rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.gcg-dimmer__toggle {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  min-width: 3rem;
+  min-height: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.gcg-dimmer__toggle:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.gcg-dimmer__toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.gcg-dimmer__toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+.gcg-dimmer__toggle-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0.125rem;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.gcg-dimmer__toggle--on {
+  background: var(--theme-primary, #e8ecf0);
+  border-color: var(--theme-primary, #e8ecf0);
+}
+
+.gcg-dimmer__toggle--on .gcg-dimmer__toggle-indicator {
+  transform: translateX(1.5rem) translateY(-50%);
+  background: var(--theme-secondary, #1d3a52);
+}
+
+.gcg-dimmer__slider-container {
+  position: relative;
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.gcg-dimmer__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+/* Slider thumb - minimal circular design like reference */
+
+.gcg-dimmer__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: grab;
+  transition: all 0.15s ease;
+  margin-top: 0;
+}
+
+.gcg-dimmer__slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  border-color: white;
+}
+
+.gcg-dimmer__slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.gcg-dimmer__slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: grab;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+.gcg-dimmer__slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  border-color: white;
+}
+
+.gcg-dimmer__slider::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.gcg-dimmer__slider:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.gcg-dimmer__slider:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.gcg-dimmer__slider:disabled::-moz-range-thumb {
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Slider track - minimal flat design */
+
+.gcg-dimmer__track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gcg-dimmer__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--theme-primary, #e8ecf0);
+  border-radius: 2px;
+  transition: width 0.05s ease-out;
+}
+
+/* ===== Button Component ===== */
+
+/* Button Container - wraps label and button */
+
+.gcg-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* Button Label - displayed above the button */
+
+.gcg-button-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gcg-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.gcg-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.gcg-button:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gcg-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gcg-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Button Pressed State */
+
+.gcg-button--pressed {
+  background: var(--theme-primary, #e8ecf0);
+  color: var(--theme-secondary, #1d3a52);
+  border-color: var(--theme-primary, #e8ecf0);
+}
+
+/* Button Icon (for regular variants) */
+
+.gcg-button__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.gcg-button__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ===== Round Button Variant ===== */
+
+.gcg-button--round {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  padding: 0;
+  border-radius: 50%;
+  flex-direction: column;
+  gap: 0;
+  background: transparent;
+  border: 2px solid var(--theme-primary, #e8ecf0);
+  color: var(--theme-primary, #e8ecf0);
+  font-family: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gcg-button--round:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Round Button Icon - inline SVG */
+
+.gcg-button--round .gcg-button__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.gcg-button--round .gcg-button__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Round Button Label (text-only version) */
+
+.gcg-button--round .gcg-button__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Round Button Active/Pressed State - filled background */
+
+.gcg-button--round.gcg-button--pressed,
+.gcg-button--round:active:not(:disabled) {
+  background: var(--theme-primary, #e8ecf0);
+  color: var(--theme-secondary, #1d3a52);
+  border-color: var(--theme-primary, #e8ecf0);
+}
+
+.gcg-button--round.gcg-button--pressed:hover:not(:disabled) {
+  background: var(--theme-primary, #e8ecf0);
+  opacity: 0.9;
+}
+
+/* Round Button Disabled State */
+
+.gcg-button--round:disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.4;
+}
+
+.gcg-button--round:disabled .gcg-button__icon,
+.gcg-button--round:disabled .gcg-button__label {
+  color: #9ba6b3;
+}
+
+/* ===== Button Size Variants ===== */
+
+.gcg-button--small.gcg-button--round {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  gap: 0.5rem;
+}
+
+.gcg-button--small.gcg-button--round .gcg-button__icon {
+  font-size: 1.75rem;
+}
+
+.gcg-button--small.gcg-button--round .gcg-button__label {
+  font-size: 0.75rem;
+}
+
+.gcg-button--large.gcg-button--round {
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+  gap: 1rem;
+}
+
+.gcg-button--large.gcg-button--round .gcg-button__icon {
+  font-size: 3.5rem;
+}
+
+.gcg-button--large.gcg-button--round .gcg-button__label {
+  font-size: 1rem;
+}
+
+/* ===== Indicator Component ===== */
+
+.gcg-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+/* Indicator Light (LED-like circle) - minimal design */
+
+.gcg-indicator__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Indicator States - simple colors, minimal glow */
+
+.gcg-indicator--off .gcg-indicator__light {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.4;
+}
+
+.gcg-indicator--on .gcg-indicator__light {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.gcg-indicator--warning .gcg-indicator__light {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.gcg-indicator--error .gcg-indicator__light {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+/* Indicator Label */
+
+.gcg-indicator__label {
+  flex: 1;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Indicator Value (optional) */
+
+.gcg-indicator__value {
+  color: var(--color-text);
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+/* Indicator Variants */
+
+.gcg-indicator--large .gcg-indicator__light {
+  width: 1rem;
+  height: 1rem;
+}
+
+.gcg-indicator--small .gcg-indicator__light {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+/* ============================================
+   Gauge Component
+   ============================================ */
+
+.gcg-gauge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Numeric Variant */
+
+.gcg-gauge__numeric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gcg-gauge__label {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gcg-gauge__value-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.gcg-gauge__value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--text-primary);
+}
+
+.gcg-gauge__unit {
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Linear Variant */
+
+.gcg-gauge__linear {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gcg-gauge__track-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gcg-gauge__linear .gcg-gauge__track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gcg-gauge__linear .gcg-gauge__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.gcg-gauge__linear .gcg-gauge__value {
+  font-size: 1.25rem;
+}
+
+/* Circular Variant */
+
+.gcg-gauge__circular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.gcg-gauge__svg {
+  width: 120px;
+  height: 120px;
+}
+
+.gcg-gauge__circular .gcg-gauge__track {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.gcg-gauge__circular .gcg-gauge__fill {
+  stroke: #3b82f6;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.gcg-gauge__circular .gcg-gauge__value-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.gcg-gauge__circular .gcg-gauge__value {
+  font-size: 1.5rem;
+}
+
+.gcg-gauge__circular .gcg-gauge__unit {
+  font-size: 0.75rem;
+}
+
+.gcg-gauge__circular .gcg-gauge__label {
+  text-align: center;
+}
+
+/**
+ * Responsive Layout Styles
+ * 
+ * Target Displays:
+ * - Serv 7 (Horizontal): 958 x 489px (ratio: 1.9591)
+ * - Serv 10 (Horizontal): 1084 x 606px (ratio: 1.7887)
+ * 
+ * Design Principles:
+ * - Fixed viewport, no scrolling
+ * - Touch-friendly targets (min 44px)
+ * - Responsive grid layouts
+ * - Optimized for horizontal displays
+ */
+
+/* ===========================
+   Base Layout
+   =========================== */
+
+.gcg-main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--theme-secondary);
+}
+
+/* ===========================
+   Serv 7 Display (958 x 489)
+   =========================== */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  /* Smaller display optimizations */
+  .gcg-status-bar {
+    padding: 0.75rem 1rem;
+  }
+
+  .gcg-status-bar__section {
+    font-size: 0.75rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 70px;
+  }
+
+  .gcg-tab-bar__icon {
+    font-size: 1.25rem;
+  }
+
+  .gcg-tab-bar__label {
+    font-size: 0.625rem;
+  }
+
+  .gcg-main-content {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Specific to Serv 7 (958 x 489) */
+
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-status-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .gcg-status-bar__content {
+    margin-bottom: 0.5rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 60px;
+  }
+
+  .gcg-main-content {
+    padding: 0.5rem !important;
+  }
+}
+
+/* ===========================
+   Serv 10 Display (1084 x 606)
+   =========================== */
+
+@media screen and (min-width: 959px) and (max-width: 1084px) and (max-height: 606px) {
+  /* Optimized for Serv 10 */
+  .gcg-status-bar {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .gcg-tab-bar {
+    min-height: 75px;
+  }
+
+  .gcg-main-content {
+    padding: 0.875rem !important;
+  }
+}
+
+/* ===========================
+   Component Grid Layouts
+   =========================== */
+
+/* Default: 4 columns for larger displays */
+
+.gcg-section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Serv 10: 3 columns */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  .gcg-section-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+}
+
+/* Serv 7: 2-3 columns depending on content */
+
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-section-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+/* ===========================
+   Touch Targets
+   =========================== */
+
+/* Ensure minimum touch target size of 44px */
+
+@media (pointer: coarse) {
+  button,
+  .gcg-toggle,
+  .gcg-round-toggle,
+  .gcg-button,
+  .gcg-round-button,
+  .gcg-tab-bar__item {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ===========================
+   Landscape Optimization
+   =========================== */
+
+@media screen and (orientation: landscape) {
+  /* Optimize vertical space usage */
+  .gcg-status-bar__content {
+    margin-bottom: 0.5rem;
+  }
+
+  .gcg-status-bar__divider {
+    margin: 0;
+  }
+}
+
+/* ===========================
+   Prevent Overscroll/Bounce
+   =========================== */
+
+html,
+body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/**
+ * CSS Grid System for Tab Content Sections
+ * 
+ * Responsive grid layout that adapts to display size:
+ * - Default (>1084px): 4 columns
+ * - Serv 10 (1084x606): 3 columns  
+ * - Serv 7 (958x489): 2 columns
+ * 
+ * Component spanning rules:
+ * - Small (Toggle, Button, Indicator): 1 cell
+ * - Wide (Dimmer, Slider): 2 cells
+ * - Full (Gauge, Chart): all cells
+ * 
+ * Compatible with: WebView 83 (Chrome 83) - CSS Grid Level 1
+ */
+
+/* ===========================
+   Section Container
+   =========================== */
+
+.gcg-section {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; - Not supported in Chrome 83 flexbox */
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.gcg-section > * + * {
+  margin-top: 1rem; /* Fallback for gap */
+}
+
+.gcg-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ===========================
+   Section Title
+   =========================== */
+
+.gcg-section__title {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--theme-primary);
+  margin: 0;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.025em;
+}
+
+/* ===========================
+   Base Grid Layout (4 columns)
+   =========================== */
+
+.gcg-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  align-items: start; /* Align items to top of grid cells */
+}
+
+/* ===========================
+   Component Spanning Rules
+   =========================== */
+
+/* Small components: 1 cell (default) */
+
+.gcg-button,
+.gcg-indicator {
+  grid-column: span 1;
+}
+
+/* Medium components: 2 cells */
+
+.gcg-toggle,
+.gcg-round-toggle,
+.gcg-round-button,
+.gcg-dimmer,
+.gcg-slider {
+  grid-column: span 2;
+}
+
+/* Full-width components: all cells */
+
+.gcg-gauge,
+.gcg-chart {
+  grid-column: 1 / -1;
+}
+
+/* ===========================
+   Component Minimum Sizes
+   =========================== */
+
+/* Base minimum for touch targets */
+
+.gcg-section__grid > * {
+  min-height: 60px;
+}
+
+/* Round components maintain 1:1 aspect ratio */
+
+.gcg-round-toggle,
+.gcg-round-button {
+  /* aspect-ratio: 1 / 1; - Not supported in Chrome 83 */
+  /* Use fixed sizing to maintain square shape */
+  min-height: 120px;
+  max-height: 180px;
+  height: 100%;
+}
+
+/* Indicators can be smaller */
+
+.gcg-indicator {
+  min-height: 40px;
+}
+
+/* ===========================
+   Serv 10 Display (1084 x 606)
+   =========================== */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  /* 3-column grid */
+  .gcg-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+
+  .gcg-section__title {
+    font-size: 1.125rem;
+    padding-bottom: 0.625rem;
+  }
+
+  .gcg-section {
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Round components slightly smaller */
+  .gcg-round-toggle,
+  .gcg-round-button {
+    min-height: 70px;
+  }
+}
+
+/* ===========================
+   Serv 7 Display (958 x 489)
+   =========================== */
+
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  /* 2-column grid */
+  .gcg-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .gcg-section__title {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .gcg-section {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Dimmers span full width on small displays */
+  .gcg-dimmer,
+  .gcg-slider {
+    grid-column: span 2;
+  }
+
+  /* Reduce minimum sizes for compact display */
+  .gcg-section__grid > * {
+    min-height: 50px;
+  }
+
+  .gcg-round-toggle,
+  .gcg-round-button {
+    min-height: 60px;
+  }
+
+  .gcg-indicator {
+    min-height: 36px;
+  }
+}
+
+/* ===========================
+   Empty State
+   =========================== */
+
+.gcg-section--empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--theme-primary);
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+/* ===========================
+   Grid Layout Optimization
+   =========================== */
+
+/* CSS containment for better performance */
+
+.gcg-section {
+  contain: layout style;
+}
+
+/* Prevent layout shifts */
+
+.gcg-section__grid {
+  grid-auto-rows: minmax(60px, auto);
+}
+
+/* Dense packing to fill gaps */
+
+.gcg-section__grid {
+  grid-auto-flow: row dense;
+}
+
+/* ===========================
+   Home Tab Layout
+   =========================== */
+
+/* Home layout container */
+
+.gcg-home-layout {
+  width: 100%;
+  height: 100%;
+}
+
+/* Empty state */
+
+.gcg-home-layout--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-primary);
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+/* Single section: Full width */
+
+.gcg-home-layout--single {
+  width: 100%;
+  height: 100%;
+}
+
+/* Dual sections: Side-by-side (50/50) */
+
+.gcg-home-layout--dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.gcg-home-layout__section {
+  min-width: 0; /* Prevent grid blowout */
+  overflow: hidden;
+}
+
+/* Serv 10: Slightly smaller gap */
+
+@media screen and (max-width: 1084px) and (max-height: 606px) {
+  .gcg-home-layout--dual {
+    gap: 1.25rem;
+  }
+}
+
+/* Serv 7: Stack vertically on smallest display */
+
+@media screen and (max-width: 958px) and (max-height: 489px) {
+  .gcg-home-layout--dual {
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: 1fr 1fr; /* Two rows */
+    gap: 1rem;
+  }
+}
+
+:root {
+  /* Legacy aliases for backward compatibility */
+  /* These map old token names to new ones */
+  --theme-primary: var(--color-primary);
+  --theme-secondary: var(--color-secondary);
+  --theme-accent: var(--color-accent);
+  --theme-background: var(--color-bg);
+  --theme-text: var(--color-text);
+
+  /* Component-specific aliases */
+  --primary-color: var(--color-primary);
+  --surface-color: var(--color-secondary-light);
+  --surface-hover: var(--color-secondary);
+  --border-color: var(--color-border);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-muted);
+
+  /* Component sizes */
+  --toggle-width: 60px;
+  --toggle-height: 34px;
+  --button-height: 48px;
+  --gauge-size: 120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-secondary);
+  color: var(--color-text);
+  overflow: hidden;
+  position: fixed;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Utility classes */
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.p-sm {
+  padding: var(--spacing-sm);
+}
+
+.p-md {
+  padding: var(--spacing-md);
+}
+
+.p-lg {
+  padding: var(--spacing-lg);
+}
+
+/* Prevent text selection on touch devices */
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch-friendly tap targets */
+
+button,
+.interactive {
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Accessibility */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

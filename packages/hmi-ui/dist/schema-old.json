@@ -1,0 +1,789 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "New HMI Configuration",
+    "version": "1.0.0",
+    "description": "Created with Garmin Core Graphics Configurator",
+    "author": "",
+    "createdAt": "2025-10-12T06:06:37.547Z",
+    "updatedAt": "2025-10-12T06:09:18.916Z"
+  },
+  "hardware": {
+    "systemType": "core",
+    "outputs": [
+      {
+        "id": "core-01",
+        "source": "core",
+        "channel": 1,
+        "control": "slider",
+        "label": "Stabilizer",
+        "icon": "💧",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        "signals": {
+          "toggle": 15,
+          "momentary": 14,
+          "dimmer": 16
+        }
+      },
+      {
+        "id": "core-02",
+        "source": "core",
+        "channel": 2,
+        "control": "not-used",
+        "signals": {
+          "toggle": 72,
+          "momentary": 71,
+          "dimmer": 73
+        }
+      },
+      {
+        "id": "core-03",
+        "source": "core",
+        "channel": 3,
+        "control": "toggle-button",
+        "label": "Kitchen Dimmer",
+        "icon": "/icons/All Lights.svg",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-04",
+        "source": "core",
+        "channel": 4,
+        "control": "toggle-button",
+        "label": "Cabinet Light",
+        "icon": "/icons/Water Dump.svg",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-05",
+        "source": "core",
+        "channel": 5,
+        "control": "push-button",
+        "label": "Tank Heater",
+        "icon": "/icons/WiFi.svg",
+        "signals": {
+          "toggle": 75,
+          "momentary": 74,
+          "dimmer": 76
+        }
+      },
+      {
+        "id": "core-09",
+        "source": "core",
+        "channel": 9,
+        "control": "toggle-button",
+        "label": "Slide Motor",
+        "icon": "/icons/Plumbing.svg",
+        "signals": {
+          "toggle": 78,
+          "momentary": 77,
+          "dimmer": 79
+        }
+      },
+      {
+        "id": "core-10",
+        "source": "core",
+        "channel": 10,
+        "control": "not-used",
+        "signals": {
+          "toggle": 81,
+          "momentary": 80,
+          "dimmer": 82
+        }
+      },
+      {
+        "id": "core-11",
+        "source": "core",
+        "channel": 11,
+        "control": "slider",
+        "label": "Kitchen Dimmer",
+        "icon": "🔆",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-12",
+        "source": "core",
+        "channel": 12,
+        "control": "not-used",
+        "signals": {
+          "toggle": null,
+          "momentary": null,
+          "dimmer": null
+        }
+      },
+      {
+        "id": "core-13",
+        "source": "core",
+        "channel": 13,
+        "control": "toggle-button",
+        "label": "Tank Heater",
+        "icon": "/icons/Alternator.svg",
+        "signals": {
+          "toggle": 84,
+          "momentary": 83,
+          "dimmer": 85
+        }
+      },
+      {
+        "id": "core-17",
+        "source": "core",
+        "channel": 17,
+        "control": "slider",
+        "label": "Water Pump",
+        "icon": "🔆",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        "signals": {
+          "toggle": 87,
+          "momentary": 86,
+          "dimmer": 88
+        }
+      },
+      {
+        "id": "core-18",
+        "source": "core",
+        "channel": 18,
+        "control": "push-button",
+        "label": "Reading Lamp",
+        "icon": "/icons/Power.svg",
+        "signals": {
+          "toggle": 90,
+          "momentary": 89,
+          "dimmer": 91
+        }
+      },
+      {
+        "id": "core-19",
+        "source": "core",
+        "channel": 19,
+        "control": "slider",
+        "label": "Kitchen Dimmer",
+        "icon": "🔌",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        "signals": {
+          "toggle": 93,
+          "momentary": 92,
+          "dimmer": 94
+        }
+      },
+      {
+        "id": "core-20",
+        "source": "core",
+        "channel": 20,
+        "control": "not-used",
+        "signals": {
+          "toggle": 96,
+          "momentary": 95,
+          "dimmer": 97
+        }
+      },
+      {
+        "id": "core-21",
+        "source": "core",
+        "channel": 21,
+        "control": "slider",
+        "label": "Accent Light",
+        "icon": "🎯",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        "signals": {
+          "toggle": 99,
+          "momentary": 98,
+          "dimmer": 100
+        }
+      },
+      {
+        "id": "core-25",
+        "source": "core",
+        "channel": 25,
+        "control": "not-used",
+        "signals": {
+          "toggle": 102,
+          "momentary": 101,
+          "dimmer": 103
+        }
+      },
+      {
+        "id": "core-26",
+        "source": "core",
+        "channel": 26,
+        "control": "slider",
+        "label": "Air Compressor",
+        "icon": "🎭",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        "signals": {
+          "toggle": 105,
+          "momentary": 104,
+          "dimmer": 106
+        }
+      },
+      {
+        "id": "core-27",
+        "source": "core",
+        "channel": 27,
+        "control": "not-used",
+        "signals": {
+          "toggle": 108,
+          "momentary": 107,
+          "dimmer": 109
+        }
+      },
+      {
+        "id": "core-28",
+        "source": "core",
+        "channel": 28,
+        "control": "toggle-button",
+        "label": "Kitchen Dimmer",
+        "icon": "/icons/Group.svg",
+        "signals": {
+          "toggle": 111,
+          "momentary": 110,
+          "dimmer": 112
+        }
+      },
+      {
+        "id": "core-29",
+        "source": "core",
+        "channel": 29,
+        "control": "not-used",
+        "signals": {
+          "toggle": 114,
+          "momentary": 113,
+          "dimmer": 115
+        }
+      }
+    ],
+    "halfBridgePairs": [],
+    "signalMap": {},
+    "genesisBoards": 0
+  },
+  "power": {
+    "dcCharging": {
+      "secondAlternator": true,
+      "orionXs": true
+    },
+    "solar": {
+      "enabled": true,
+      "primaryArray": true,
+      "auxiliaryArray": true
+    },
+    "batteryManagement": "victron",
+    "acLegs": 2,
+    "multiplus": {
+      "l1": true,
+      "l2": true
+    }
+  },
+  "hvac": {
+    "heating": {
+      "enabled": true,
+      "sources": {
+        "diesel": true,
+        "electric": true,
+        "engine": true
+      },
+      "distribution": {
+        "floor": true,
+        "fans": true
+      },
+      "hotWater": true,
+      "auxZone": true
+    },
+    "cooling": {
+      "enabled": true,
+      "brand": "recpro"
+    },
+    "ventilation": {
+      "enabled": true,
+      "fans": 2
+    }
+  },
+  "plumbing": {
+    "enabled": true,
+    "monitoringSource": "cerbo-gx",
+    "count": 3,
+    "tanks": [
+      {
+        "type": "fresh",
+        "name": ""
+      },
+      {
+        "type": "waste",
+        "name": ""
+      },
+      {
+        "type": "black",
+        "name": ""
+      }
+    ]
+  },
+  "accessories": {
+    "keypad": {
+      "enabled": false,
+      "count": 1,
+      "buttonsPerKeypad": 8
+    },
+    "awning": {
+      "enabled": true,
+      "light": true,
+      "controlType": "rvc"
+    },
+    "slides": {
+      "enabled": true,
+      "controlType": "analog",
+      "keypadSecured": true
+    },
+    "itcLighting": {
+      "enabled": false,
+      "modules": 0,
+      "zonesPerModule": 2
+    }
+  },
+  "lightingTab": {
+    "interior": {
+      "enabled": true,
+      "title": "Interior",
+      "icon": "💡"
+    },
+    "exterior": {
+      "enabled": true,
+      "title": "Exterior",
+      "icon": "🌟"
+    },
+    "rgb": {
+      "enabled": false,
+      "title": "RGB",
+      "icon": "🌈"
+    }
+  },
+  "hvacTab": {
+    "heating": {
+      "enabled": true,
+      "title": "Heating",
+      "icon": "🔥"
+    },
+    "cooling": {
+      "enabled": true,
+      "title": "Cooling",
+      "icon": "❄️"
+    },
+    "ventilation": {
+      "enabled": true,
+      "title": "Ventilation",
+      "icon": "💨"
+    }
+  },
+  "switchingTab": {
+    "switches": {
+      "enabled": true,
+      "title": "Switches",
+      "icon": "🔌"
+    },
+    "accessories": {
+      "enabled": true,
+      "title": "Accessories",
+      "icon": "⚡"
+    }
+  },
+  "tabs": [
+    {
+      "id": "tab-home",
+      "title": "Home",
+      "preset": "home",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-home-1",
+          "title": "Quick Controls",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-core-01",
+              "type": "dimmer",
+              "label": "Stabilizer",
+              "min": 0,
+              "max": 100,
+              "step": 5,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "core-01"
+                }
+              }
+            },
+            {
+              "id": "comp-core-09",
+              "type": "toggle",
+              "variant": "round",
+              "label": "Slide Motor",
+              "icon": "/icons/Plumbing.svg",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-09"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "section-home-2",
+          "title": "Status",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-signal-battery-soc",
+              "type": "gauge",
+              "label": "State of Charge",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "decimals": 0,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 0
+                }
+              }
+            },
+            {
+              "id": "comp-signal-solar-voltage",
+              "type": "gauge",
+              "label": "Solar Voltage",
+              "min": 0,
+              "max": 16,
+              "unit": "V",
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "static",
+                  "value": 0
+                }
+              }
+            }
+          ],
+          "type": "signal-values"
+        }
+      ]
+    },
+    {
+      "id": "tab-lighting",
+      "title": "Lighting",
+      "preset": "lighting",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-lighting-interior",
+          "title": "Interior",
+          "components": [
+            {
+              "id": "comp-core-03",
+              "type": "toggle",
+              "variant": "round",
+              "label": "Kitchen Dimmer",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-03"
+                }
+              }
+            },
+            {
+              "id": "comp-core-04",
+              "type": "toggle",
+              "variant": "round",
+              "label": "Cabinet Light",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-04"
+                }
+              }
+            }
+          ],
+          "enabled": true
+        },
+        {
+          "id": "section-lighting-exterior",
+          "title": "Exterior",
+          "components": [
+            {
+              "id": "comp-core-19",
+              "type": "dimmer",
+              "label": "Kitchen Dimmer",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "core-19"
+                }
+              }
+            },
+            {
+              "id": "comp-core-18",
+              "type": "button",
+              "variant": "round",
+              "label": "Reading Lamp",
+              "action": "momentary",
+              "bindings": {
+                "action": {
+                  "type": "empirbus",
+                  "channel": "core-18"
+                }
+              }
+            }
+          ],
+          "enabled": true
+        },
+        {
+          "id": "section-lighting-rgb",
+          "title": "RGB",
+          "components": [],
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "tab-power",
+      "title": "Power",
+      "preset": "power",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-battery",
+          "title": "Battery",
+          "enabled": true,
+          "components": []
+        },
+        {
+          "id": "section-dc-charging",
+          "title": "DC Charging",
+          "enabled": true,
+          "components": []
+        },
+        {
+          "id": "section-solar",
+          "title": "Solar",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-solar-indicator",
+              "type": "indicator",
+              "label": "Solar Status",
+              "variant": "badge",
+              "color": "green",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "signal-solar-indicator",
+                  "property": "state"
+                }
+              }
+            },
+            {
+              "id": "comp-solar-primary-amperage",
+              "type": "gauge",
+              "label": "PRIMARY AMPERAGE",
+              "variant": "numeric",
+              "unit": "A",
+              "min": -100,
+              "max": 100,
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "signal-primary-solar-amperage",
+                  "property": "value"
+                }
+              }
+            },
+            {
+              "id": "comp-solar-primary-voltage",
+              "type": "gauge",
+              "label": "PRIMARY VOLTAGE",
+              "variant": "numeric",
+              "unit": "V",
+              "min": 0,
+              "max": 16,
+              "decimals": 2,
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "signal-primary-solar-voltage",
+                  "property": "value"
+                }
+              }
+            },
+            {
+              "id": "comp-solar-aux-amperage",
+              "type": "gauge",
+              "label": "AUXILIARY AMPERAGE",
+              "variant": "numeric",
+              "unit": "A",
+              "min": -100,
+              "max": 100,
+              "decimals": 1,
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "signal-aux-solar-amperage",
+                  "property": "value"
+                }
+              }
+            },
+            {
+              "id": "comp-solar-aux-voltage",
+              "type": "gauge",
+              "label": "AUXILIARY VOLTAGE",
+              "variant": "numeric",
+              "unit": "V",
+              "min": 0,
+              "max": 16,
+              "decimals": 2,
+              "bindings": {
+                "value": {
+                  "type": "empirbus",
+                  "channel": "signal-aux-solar-voltage",
+                  "property": "value"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-hvac",
+      "title": "HVAC",
+      "preset": "hvac",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-hvac-heating",
+          "title": "Heating",
+          "enabled": true,
+          "components": []
+        },
+        {
+          "id": "section-hvac-cooling",
+          "title": "Cooling",
+          "enabled": true,
+          "components": []
+        },
+        {
+          "id": "section-hvac-ventilation",
+          "title": "Ventilation",
+          "enabled": true,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-switching",
+      "title": "Switching",
+      "preset": "switching",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-switching-switches",
+          "title": "Switches",
+          "enabled": true,
+          "components": []
+        },
+        {
+          "id": "section-switching-accessories",
+          "title": "Accessories",
+          "enabled": true,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-plumbing",
+      "title": "Plumbing",
+      "preset": "plumbing",
+      "enabled": true,
+      "sections": [
+        {
+          "id": "section-tank-levels",
+          "title": "Tank Levels",
+          "enabled": true,
+          "components": [
+            {
+              "id": "comp-core-17",
+              "type": "dimmer",
+              "label": "Water Pump",
+              "min": 0,
+              "max": 100,
+              "step": 5,
+              "bindings": {
+                "intensity": {
+                  "type": "empirbus",
+                  "channel": "core-17"
+                }
+              }
+            },
+            {
+              "id": "comp-core-13",
+              "type": "toggle",
+              "variant": "round",
+              "label": "Tank Heater",
+              "bindings": {
+                "state": {
+                  "type": "empirbus",
+                  "channel": "core-13"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "theme": {
+    "preset": "green"
+  },
+  "plumbingTab": {
+    "switchingSection": {
+      "enabled": true,
+      "title": "Plumbing Controls"
+    }
+  }
+}

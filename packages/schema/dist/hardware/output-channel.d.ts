@@ -1,0 +1,77 @@
+/**
+ * Output channel configuration schema
+ */
+import { z } from 'zod';
+export declare const OutputChannelSchema: z.ZodObject<{
+    id: z.ZodString;
+    source: z.ZodEnum<["core", "core-lite", "genesis"]>;
+    channel: z.ZodNumber;
+    label: z.ZodOptional<z.ZodString>;
+    control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function"]>>;
+    icon: z.ZodOptional<z.ZodString>;
+    signalId: z.ZodOptional<z.ZodNumber>;
+    signals: z.ZodOptional<z.ZodObject<{
+        toggle: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        momentary: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        dimmer: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    }, "strip", z.ZodTypeAny, {
+        dimmer?: number | null | undefined;
+        toggle?: number | null | undefined;
+        momentary?: number | null | undefined;
+    }, {
+        dimmer?: number | null | undefined;
+        toggle?: number | null | undefined;
+        momentary?: number | null | undefined;
+    }>>;
+    range: z.ZodOptional<z.ZodObject<{
+        min: z.ZodNumber;
+        max: z.ZodNumber;
+        step: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        min: number;
+        max: number;
+        step: number;
+    }, {
+        min: number;
+        max: number;
+        step: number;
+    }>>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    source: "core" | "core-lite" | "genesis";
+    channel: number;
+    control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function";
+    icon?: string | undefined;
+    label?: string | undefined;
+    signalId?: number | undefined;
+    signals?: {
+        dimmer?: number | null | undefined;
+        toggle?: number | null | undefined;
+        momentary?: number | null | undefined;
+    } | undefined;
+    range?: {
+        min: number;
+        max: number;
+        step: number;
+    } | undefined;
+}, {
+    id: string;
+    source: "core" | "core-lite" | "genesis";
+    channel: number;
+    icon?: string | undefined;
+    label?: string | undefined;
+    control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | undefined;
+    signalId?: number | undefined;
+    signals?: {
+        dimmer?: number | null | undefined;
+        toggle?: number | null | undefined;
+        momentary?: number | null | undefined;
+    } | undefined;
+    range?: {
+        min: number;
+        max: number;
+        step: number;
+    } | undefined;
+}>;
+export type OutputChannel = z.infer<typeof OutputChannelSchema>;
+//# sourceMappingURL=output-channel.d.ts.map

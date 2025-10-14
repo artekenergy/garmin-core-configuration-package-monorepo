@@ -117,7 +117,7 @@ export function handleMfdStatusMessage(msg: EmpirBusMessage): void {
           const clampedPercent = Math.max(0, Math.min(100, percent));
 
           console.log(`[Signal-State] Signal ${signalId} Dimmer: ${clampedPercent}%`);
-          
+
           const state: DimmerState = {
             index: index,
             value: clampedPercent,

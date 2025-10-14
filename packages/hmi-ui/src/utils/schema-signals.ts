@@ -91,11 +91,15 @@ export function subscribeToSchemaSignals(schema: UISchema): void {
       return response.json();
     })
     .then(function (hardwareConfig) {
-      console.log('[Schema-Signals] Loaded hardware config with', hardwareConfig.outputs?.length, 'outputs');
-      
+      console.log(
+        '[Schema-Signals] Loaded hardware config with',
+        hardwareConfig.outputs?.length,
+        'outputs'
+      );
+
       // Extract ALL signals from hardware config
       const allSignals = new Set<number>();
-      
+
       if (hardwareConfig.outputs) {
         hardwareConfig.outputs.forEach(function (output: any) {
           if (output.signals) {
@@ -107,21 +111,25 @@ export function subscribeToSchemaSignals(schema: UISchema): void {
           }
         });
       }
-      
-      const signalArray = Array.from(allSignals).sort(function (a, b) { return a - b; });
-      
+
+      const signalArray = Array.from(allSignals).sort(function (a, b) {
+        return a - b;
+      });
+
       console.log(
-        '[Schema-Signals] Subscribing to ' + signalArray.length + ' signals from hardware-config.json:',
+        '[Schema-Signals] Subscribing to ' +
+          signalArray.length +
+          ' signals from hardware-config.json:',
         signalArray
       );
-      
+
       wsAdapter.subscribeToSignals(signalArray);
     })
     .catch(function (error) {
       // Fallback: use signals from schema
       console.warn('[Schema-Signals] Could not load hardware config:', error);
       console.log('[Schema-Signals] Falling back to schema signals');
-      
+
       const signalIds = extractSignalIds(schema);
       console.log('[Schema-Signals] Extracted signal IDs from schema:', signalIds);
 
