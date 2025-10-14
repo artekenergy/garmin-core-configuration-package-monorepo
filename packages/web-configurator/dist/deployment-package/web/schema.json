@@ -476,8 +476,8 @@
               "decimals": 0,
               "bindings": {
                 "value": {
-                  "type": "static",
-                  "value": 0
+                  "type": "empirbus",
+                  "channel": "battery-soc"
                 }
               }
             },
@@ -491,8 +491,8 @@
               "decimals": 1,
               "bindings": {
                 "value": {
-                  "type": "static",
-                  "value": 0
+                  "type": "empirbus",
+                  "channel": "signal-primary-solar-voltage"
                 }
               }
             }

@@ -47,9 +47,6 @@ export function TabBar(props: TabBarProps) {
             <div className="gcg-tab-bar__icon">
               <Icon iconId={tab.icon} preset={tab.preset} size="md" />
             </div>
-
-            {/* Label - optional, can be hidden on small screens */}
-            <span className="gcg-tab-bar__label">{tab.title}</span>
           </button>
         );
       })}

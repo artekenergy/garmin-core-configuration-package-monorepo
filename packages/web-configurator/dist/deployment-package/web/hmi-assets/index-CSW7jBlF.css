@@ -150,66 +150,66 @@
 
 /* Blue Theme (default) */
 [data-theme='blue'] {
-  --color-primary: #3b82f6;     /* Blue for buttons/interactive */
-  --color-secondary: #1e293b;   /* Dark slate for backgrounds */
-  --color-accent: #06b6d4;      /* Cyan for highlights */
-  --color-text: #f1f5f9;        /* Light text */
+  --color-primary: #3b82f6; /* Blue for buttons/interactive */
+  --color-secondary: #1e293b; /* Dark slate for backgrounds */
+  --color-accent: #06b6d4; /* Cyan for highlights */
+  --color-text: #f1f5f9; /* Light text */
 }
 
 /* Purple Theme */
 [data-theme='purple'] {
-  --color-primary: #8b5cf6;     /* Purple for buttons/interactive */
-  --color-secondary: #1e1b4b;   /* Dark indigo for backgrounds */
-  --color-accent: #a78bfa;      /* Light purple for highlights */
-  --color-text: #f5f3ff;        /* Light purple text */
+  --color-primary: #8b5cf6; /* Purple for buttons/interactive */
+  --color-secondary: #1e1b4b; /* Dark indigo for backgrounds */
+  --color-accent: #a78bfa; /* Light purple for highlights */
+  --color-text: #f5f3ff; /* Light purple text */
 }
 
 /* Green Theme */
 [data-theme='green'] {
-  --color-primary: #10b981;     /* Green for buttons/interactive */
-  --color-secondary: #064e3b;   /* Dark green for backgrounds */
-  --color-accent: #34d399;      /* Light green for highlights */
-  --color-text: #ecfdf5;        /* Light green text */
+  --color-primary: #10b981; /* Green for buttons/interactive */
+  --color-secondary: #064e3b; /* Dark green for backgrounds */
+  --color-accent: #34d399; /* Light green for highlights */
+  --color-text: #ecfdf5; /* Light green text */
 }
 
 /* Orange Theme */
 [data-theme='orange'] {
-  --color-primary: #f97316;     /* Orange for buttons/interactive */
-  --color-secondary: #431407;   /* Dark orange for backgrounds */
-  --color-accent: #fb923c;      /* Light orange for highlights */
-  --color-text: #fff7ed;        /* Light orange text */
+  --color-primary: #f97316; /* Orange for buttons/interactive */
+  --color-secondary: #431407; /* Dark orange for backgrounds */
+  --color-accent: #fb923c; /* Light orange for highlights */
+  --color-text: #fff7ed; /* Light orange text */
 }
 
 /* Red Theme */
 [data-theme='red'] {
-  --color-primary: #ef4444;     /* Red for buttons/interactive */
-  --color-secondary: #450a0a;   /* Dark red for backgrounds */
-  --color-accent: #f87171;      /* Light red for highlights */
-  --color-text: #fef2f2;        /* Light red text */
+  --color-primary: #ef4444; /* Red for buttons/interactive */
+  --color-secondary: #450a0a; /* Dark red for backgrounds */
+  --color-accent: #f87171; /* Light red for highlights */
+  --color-text: #fef2f2; /* Light red text */
 }
 
 /* Cyan Theme */
 [data-theme='cyan'] {
-  --color-primary: #06b6d4;     /* Cyan for buttons/interactive */
-  --color-secondary: #164e63;   /* Dark cyan for backgrounds */
-  --color-accent: #22d3ee;      /* Light cyan for highlights */
-  --color-text: #ecfeff;        /* Light cyan text */
+  --color-primary: #06b6d4; /* Cyan for buttons/interactive */
+  --color-secondary: #164e63; /* Dark cyan for backgrounds */
+  --color-accent: #22d3ee; /* Light cyan for highlights */
+  --color-text: #ecfeff; /* Light cyan text */
 }
 
 /* Dark Theme */
 [data-theme='dark'] {
-  --color-primary: #60a5fa;     /* Light blue for buttons/interactive */
-  --color-secondary: #0f172a;   /* Very dark slate for backgrounds */
-  --color-accent: #818cf8;      /* Indigo for highlights */
-  --color-text: #f1f5f9;        /* Light text */
+  --color-primary: #60a5fa; /* Light blue for buttons/interactive */
+  --color-secondary: #0f172a; /* Very dark slate for backgrounds */
+  --color-accent: #818cf8; /* Indigo for highlights */
+  --color-text: #f1f5f9; /* Light text */
 }
 
 /* Light Theme */
 [data-theme='light'] {
-  --color-primary: #2563eb;     /* Dark blue for buttons/interactive */
-  --color-secondary: #f8fafc;   /* Light slate for backgrounds */
-  --color-accent: #0ea5e9;      /* Bright blue for highlights */
-  --color-text: #0f172a;        /* Dark text */
+  --color-primary: #2563eb; /* Dark blue for buttons/interactive */
+  --color-secondary: #f8fafc; /* Light slate for backgrounds */
+  --color-accent: #0ea5e9; /* Bright blue for highlights */
+  --color-text: #0f172a; /* Dark text */
 }
 
 /* Dark mode adjustments (if needed in future) */
@@ -556,73 +556,73 @@ body {
 /* Blue Theme (default) */
 
 [data-theme='blue'] {
-  --color-primary: #3b82f6;     /* Blue for buttons/interactive */
-  --color-secondary: #1e293b;   /* Dark slate for backgrounds */
-  --color-accent: #06b6d4;      /* Cyan for highlights */
-  --color-text: #f1f5f9;        /* Light text */
+  --color-primary: #3b82f6; /* Blue for buttons/interactive */
+  --color-secondary: #1e293b; /* Dark slate for backgrounds */
+  --color-accent: #06b6d4; /* Cyan for highlights */
+  --color-text: #f1f5f9; /* Light text */
 }
 
 /* Purple Theme */
 
 [data-theme='purple'] {
-  --color-primary: #8b5cf6;     /* Purple for buttons/interactive */
-  --color-secondary: #1e1b4b;   /* Dark indigo for backgrounds */
-  --color-accent: #a78bfa;      /* Light purple for highlights */
-  --color-text: #f5f3ff;        /* Light purple text */
+  --color-primary: #8b5cf6; /* Purple for buttons/interactive */
+  --color-secondary: #1e1b4b; /* Dark indigo for backgrounds */
+  --color-accent: #a78bfa; /* Light purple for highlights */
+  --color-text: #f5f3ff; /* Light purple text */
 }
 
 /* Green Theme */
 
 [data-theme='green'] {
-  --color-primary: #10b981;     /* Green for buttons/interactive */
-  --color-secondary: #064e3b;   /* Dark green for backgrounds */
-  --color-accent: #34d399;      /* Light green for highlights */
-  --color-text: #ecfdf5;        /* Light green text */
+  --color-primary: #10b981; /* Green for buttons/interactive */
+  --color-secondary: #064e3b; /* Dark green for backgrounds */
+  --color-accent: #34d399; /* Light green for highlights */
+  --color-text: #ecfdf5; /* Light green text */
 }
 
 /* Orange Theme */
 
 [data-theme='orange'] {
-  --color-primary: #f97316;     /* Orange for buttons/interactive */
-  --color-secondary: #431407;   /* Dark orange for backgrounds */
-  --color-accent: #fb923c;      /* Light orange for highlights */
-  --color-text: #fff7ed;        /* Light orange text */
+  --color-primary: #f97316; /* Orange for buttons/interactive */
+  --color-secondary: #431407; /* Dark orange for backgrounds */
+  --color-accent: #fb923c; /* Light orange for highlights */
+  --color-text: #fff7ed; /* Light orange text */
 }
 
 /* Red Theme */
 
 [data-theme='red'] {
-  --color-primary: #ef4444;     /* Red for buttons/interactive */
-  --color-secondary: #450a0a;   /* Dark red for backgrounds */
-  --color-accent: #f87171;      /* Light red for highlights */
-  --color-text: #fef2f2;        /* Light red text */
+  --color-primary: #ef4444; /* Red for buttons/interactive */
+  --color-secondary: #450a0a; /* Dark red for backgrounds */
+  --color-accent: #f87171; /* Light red for highlights */
+  --color-text: #fef2f2; /* Light red text */
 }
 
 /* Cyan Theme */
 
 [data-theme='cyan'] {
-  --color-primary: #06b6d4;     /* Cyan for buttons/interactive */
-  --color-secondary: #164e63;   /* Dark cyan for backgrounds */
-  --color-accent: #22d3ee;      /* Light cyan for highlights */
-  --color-text: #ecfeff;        /* Light cyan text */
+  --color-primary: #06b6d4; /* Cyan for buttons/interactive */
+  --color-secondary: #164e63; /* Dark cyan for backgrounds */
+  --color-accent: #22d3ee; /* Light cyan for highlights */
+  --color-text: #ecfeff; /* Light cyan text */
 }
 
 /* Dark Theme */
 
 [data-theme='dark'] {
-  --color-primary: #60a5fa;     /* Light blue for buttons/interactive */
-  --color-secondary: #0f172a;   /* Very dark slate for backgrounds */
-  --color-accent: #818cf8;      /* Indigo for highlights */
-  --color-text: #f1f5f9;        /* Light text */
+  --color-primary: #60a5fa; /* Light blue for buttons/interactive */
+  --color-secondary: #0f172a; /* Very dark slate for backgrounds */
+  --color-accent: #818cf8; /* Indigo for highlights */
+  --color-text: #f1f5f9; /* Light text */
 }
 
 /* Light Theme */
 
 [data-theme='light'] {
-  --color-primary: #2563eb;     /* Dark blue for buttons/interactive */
-  --color-secondary: #f8fafc;   /* Light slate for backgrounds */
-  --color-accent: #0ea5e9;      /* Bright blue for highlights */
-  --color-text: #0f172a;        /* Dark text */
+  --color-primary: #2563eb; /* Dark blue for buttons/interactive */
+  --color-secondary: #f8fafc; /* Light slate for backgrounds */
+  --color-accent: #0ea5e9; /* Bright blue for highlights */
+  --color-text: #0f172a; /* Dark text */
 }
 
 /* Dark mode adjustments (if needed in future) */
@@ -714,7 +714,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: var(--theme-primary);
+  color: var(--color-text);
   white-space: nowrap;
 }
 
@@ -735,8 +735,9 @@ body {
 
 .gcg-status-bar__divider {
   height: 1px;
-  background: rgba(232, 236, 240, 0.15);
+  background: var(--color-accent);
   width: 100%;
+  
 }
 
 /* ===========================
@@ -750,7 +751,7 @@ body {
   right: 0;
   min-height: 80px;
   background: var(--theme-secondary);
-  border-top: 1px solid rgba(232, 236, 240, 0.1);
+  border-top: 1px solid var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -779,13 +780,8 @@ body {
   -webkit-user-select: none;
 }
 
-.gcg-tab-bar__item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.7);
-}
-
 .gcg-tab-bar__item--active {
-  color: var(--theme-primary, #e8ecf0);
+  color: var(--color-text);
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -854,13 +850,9 @@ body {
   -webkit-user-select: none;
 }
 
-.gcg-subtab-bar__item:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .gcg-subtab-bar__item--active {
-  color: var(--theme-primary, #e8ecf0);
-  border-bottom-color: var(--theme-primary, #e8ecf0);
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
 }
 
 .gcg-subtab-bar__icon {
@@ -894,6 +886,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
   line-height: 1.3;
   max-width: 100%;
   overflow: hidden;
@@ -916,18 +909,13 @@ body {
   gap: 1rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
   font-size: 1rem;
   color: var(--text-primary);
-}
-
-.gcg-toggle:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .gcg-toggle:active:not(:disabled) {
@@ -951,15 +939,15 @@ body {
   width: 3rem;
   height: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-accent);
   border-radius: 1rem;
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
 .gcg-toggle--on .gcg-toggle__track {
-  background: var(--theme-primary, #e8ecf0);
-  border-color: var(--theme-primary, #e8ecf0);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 /* Toggle Thumb (the circle) */
@@ -1003,9 +991,9 @@ body {
   flex-direction: column;
   gap: 0;
   justify-content: center;
-  /* Inactive state: primary background, secondary border */
+  /* Inactive state: primary background, accent border */
   background: var(--theme-primary, #e8ecf0);
-  border: 2px solid var(--theme-secondary, #1d3a52);
+  border: 2px solid var(--color-accent);
   color: var(--theme-secondary, #1d3a52);
   font-family: inherit;
   user-select: none;
@@ -1026,26 +1014,18 @@ body {
   display: none;
 }
 
-/* Round Toggle ON state: secondary background, primary border and icon */
+/* Round Toggle ON state: accent background, accent border and secondary icon */
 
 .gcg-toggle--round.gcg-toggle--on {
-  background: var(--theme-secondary, #1d3a52);
-  border-color: var(--theme-primary, #e8ecf0);
-  color: var(--theme-primary, #e8ecf0);
-}
-
-.gcg-toggle--round:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.gcg-toggle--round.gcg-toggle--on:hover:not(:disabled) {
-  opacity: 0.9;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--theme-secondary, #1d3a52);
 }
 
 /* Disabled state */
 
 .gcg-toggle--round:disabled {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-accent);
   opacity: 0.4;
 }
 
@@ -1133,12 +1113,12 @@ body {
   height: 1.5rem;
   border-radius: 0.25rem;
   background: var(--surface-color);
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--color-accent);
 }
 
 .gcg-toggle--checkbox.gcg-toggle--on .gcg-toggle__track {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .gcg-toggle--checkbox .gcg-toggle__thumb {
@@ -1164,7 +1144,7 @@ body {
   /* gap: 0.5rem; - Not supported in Chrome 83 flexbox */
   padding: 1.25rem;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
 }
 
@@ -1220,16 +1200,12 @@ body {
   min-width: 3rem;
   min-height: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-accent);
   border-radius: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
   flex-shrink: 0;
-}
-
-.gcg-dimmer__toggle:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.12);
 }
 
 .gcg-dimmer__toggle:disabled {
@@ -1255,8 +1231,8 @@ body {
 }
 
 .gcg-dimmer__toggle--on {
-  background: var(--theme-primary, #e8ecf0);
-  border-color: var(--theme-primary, #e8ecf0);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .gcg-dimmer__toggle--on .gcg-dimmer__toggle-indicator {
@@ -1292,16 +1268,11 @@ body {
   width: 24px;
   height: 24px;
   background: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--color-accent);
   border-radius: 50%;
   cursor: grab;
   transition: all 0.15s ease;
   margin-top: 0;
-}
-
-.gcg-dimmer__slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  border-color: white;
 }
 
 .gcg-dimmer__slider::-webkit-slider-thumb:active {
@@ -1313,16 +1284,10 @@ body {
   width: 24px;
   height: 24px;
   background: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--color-accent);
   border-radius: 50%;
   cursor: grab;
   transition: all 0.15s ease;
-  border: none;
-}
-
-.gcg-dimmer__slider::-moz-range-thumb:hover {
-  transform: scale(1.1);
-  border-color: white;
 }
 
 .gcg-dimmer__slider::-moz-range-thumb:active {
@@ -1365,7 +1330,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  background: var(--theme-primary, #e8ecf0);
+  background: var(--color-accent);
   border-radius: 2px;
   transition: width 0.05s ease-out;
 }
@@ -1393,6 +1358,7 @@ body {
   -webkit-user-select: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
 .gcg-button {
@@ -1402,7 +1368,7 @@ body {
   gap: 0.5rem;
   padding: 1rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1414,11 +1380,6 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-
-.gcg-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .gcg-button:active:not(:disabled) {
@@ -1438,9 +1399,9 @@ body {
 /* Button Pressed State */
 
 .gcg-button--pressed {
-  background: var(--theme-primary, #e8ecf0);
+  background: var(--color-accent);
   color: var(--theme-secondary, #1d3a52);
-  border-color: var(--theme-primary, #e8ecf0);
+  border-color: var(--color-accent);
 }
 
 /* Button Icon (for regular variants) */
@@ -1471,7 +1432,7 @@ body {
   flex-direction: column;
   gap: 0;
   background: transparent;
-  border: 2px solid var(--theme-primary, #e8ecf0);
+  border: 2px solid var(--color-accent);
   color: var(--theme-primary, #e8ecf0);
   font-family: inherit;
   user-select: none;
@@ -1481,10 +1442,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.gcg-button--round:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Round Button Icon - inline SVG */
@@ -1520,24 +1477,19 @@ body {
   -webkit-box-orient: vertical;
 }
 
-/* Round Button Active/Pressed State - filled background */
+/* Round Button Active/Pressed State - accent background and border */
 
 .gcg-button--round.gcg-button--pressed,
 .gcg-button--round:active:not(:disabled) {
-  background: var(--theme-primary, #e8ecf0);
+  background: var(--color-accent);
   color: var(--theme-secondary, #1d3a52);
-  border-color: var(--theme-primary, #e8ecf0);
+  border-color: var(--color-accent);
 }
 
-.gcg-button--round.gcg-button--pressed:hover:not(:disabled) {
-  background: var(--theme-primary, #e8ecf0);
-  opacity: 0.9;
-}
-
-/* Round Button Disabled State */
+/* Round Button Disabled State - accent border */
 
 .gcg-button--round:disabled {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-accent);
   opacity: 0.4;
 }
 
@@ -1586,7 +1538,7 @@ body {
   gap: 0.75rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
   width: 100%;
 }
@@ -1674,7 +1626,7 @@ body {
   padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
 }
 
 .gcg-gauge__label {
@@ -1713,7 +1665,7 @@ body {
   padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
 }
 
 .gcg-gauge__track-container {
@@ -1755,7 +1707,7 @@ body {
   padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-accent);
   position: relative;
 }
 

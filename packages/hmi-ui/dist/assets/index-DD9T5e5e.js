@@ -6031,10 +6031,7 @@ function TabBar(props) {
         },
         "aria-label": tab.title,
         "aria-current": isActive ? "page" : void 0,
-        children: [
-          /* @__PURE__ */ u("div", { className: "gcg-tab-bar__icon", children: /* @__PURE__ */ u(Icon, { iconId: tab.icon, preset: tab.preset, size: "md" }) }),
-          /* @__PURE__ */ u("span", { className: "gcg-tab-bar__label", children: tab.title })
-        ]
+        children: /* @__PURE__ */ u("div", { className: "gcg-tab-bar__icon", children: /* @__PURE__ */ u(Icon, { iconId: tab.icon, preset: tab.preset, size: "md" }) })
       },
       tab.id
     );

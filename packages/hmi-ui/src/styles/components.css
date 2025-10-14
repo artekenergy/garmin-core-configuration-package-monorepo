@@ -26,8 +26,8 @@
 }
 
 .gcg-icon--md {
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
 }
 
 .gcg-icon--lg {
@@ -147,23 +147,8 @@
   height: 2rem;
 }
 
-.gcg-tab-bar__label {
-  font-size: 0.625rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80px;
-}
-
 /* Hide labels on very small screens */
 @media (max-width: 480px) {
-  .gcg-tab-bar__label {
-    display: none;
-  }
-
   .gcg-tab-bar__item {
     min-width: 48px;
   }
@@ -189,7 +174,7 @@
   padding: 0.5rem 0;
   background: transparent;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid var(--color-accent);
   cursor: pointer;
   transition: all 0.2s ease;
   color: rgba(255, 255, 255, 0.5);
@@ -238,6 +223,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
   line-height: 1.3;
   max-width: 100%;
   overflow: hidden;
@@ -692,6 +678,7 @@
   -webkit-user-select: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
 .gcg-button {
