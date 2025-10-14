@@ -407,20 +407,6 @@ This package includes the complete HMI UI application and is ready for direct de
                 ? '✅ Compiled Successfully'
                 : '🔨 Compile Package'}
           </button>
-
-          {compiledPackage && (
-            <div className={styles.successBox}>
-              <div className={styles.successIcon}>✅</div>
-              <div>
-                <strong>Compilation Successful!</strong>
-                <p>
-                  Your configuration has been compiled and validated. Package includes{' '}
-                  {compiledPackage.stats.totalIcons} icons ({compiledPackage.stats.libraryIcons}{' '}
-                  library, {compiledPackage.stats.customIcons} custom) + HMI UI application.
-                </p>
-              </div>
-            </div>
-          )}
         </section>
 
         {/* Step 2: Download */}

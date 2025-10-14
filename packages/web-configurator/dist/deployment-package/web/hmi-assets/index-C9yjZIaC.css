@@ -1,51 +1,52 @@
 /**
  * Design Tokens - CSS Variables
  * 
- * Single source of truth for all design values.
- * Applied via theme presets or custom overrides from schema.
+ * 4-Color Theme System:
+ * - Primary: Main interactive elements (buttons, links)
+ * - Secondary: Supporting elements (backgrounds, borders)
+ * - Accent: Highlights and focus states
+ * - Text: All text content
  * 
  * ES2017 compliant styling.
  */
 
 :root {
   /* ===========================
-     Color Tokens
+     Core Theme Colors (4-Color System)
      =========================== */
 
-  /* Primary colors - main brand/accent */
+  /* Primary - Main interactive color */
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
   --color-primary-active: #1d4ed8;
 
-  /* Secondary colors - backgrounds, cards */
+  /* Secondary - Supporting/background color */
   --color-secondary: #1e293b;
-  --color-secondary-light: #334155;
-  --color-secondary-dark: #0f172a;
+  --color-secondary-hover: #334155;
+  --color-secondary-active: #475569;
 
-  /* Accent colors - highlights, focus */
+  /* Accent - Highlights and focus */
   --color-accent: #06b6d4;
   --color-accent-hover: #0891b2;
+  --color-accent-active: #0e7490;
 
-  /* Text colors */
+  /* Text - All text content */
   --color-text: #f1f5f9;
   --color-text-muted: #94a3b8;
-  --color-text-inverse: #0f172a;
+  --color-text-disabled: #64748b;
 
-  /* Background colors */
-  --color-bg: #0f172a;
-  --color-bg-elevated: #1e293b;
-  --color-bg-overlay: rgba(15, 23, 42, 0.95);
+  /* Derived colors from the 4-color system */
+  --color-bg: var(--color-secondary);
+  --color-bg-elevated: var(--color-secondary-hover);
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-border-focus: var(--color-accent);
 
-  /* State colors - semantic */
+  /* State colors - use accent for active, primary for info */
   --color-state-ok: #10b981;
   --color-state-warn: #f59e0b;
   --color-state-error: #ef4444;
-  --color-state-info: #3b82f6;
-  --color-state-neutral: #64748b;
-
-  /* Border colors */
-  --color-border: rgba(148, 163, 184, 0.2);
-  --color-border-focus: #3b82f6;
+  --color-state-info: var(--color-primary);
+  --color-state-active: var(--color-accent);
 
   /* ===========================
      Spacing Tokens
@@ -144,77 +145,71 @@
 }
 
 /* ===========================
-   Theme Presets
+   Theme Presets (4-Color System)
    =========================== */
 
-/* Blue Theme (default) - Ocean Blue */
+/* Blue Theme (default) */
 [data-theme='blue'] {
-  --color-primary: #dbeafe; /* Light blue - inactive button background */
-  --color-secondary: #1e40af; /* Dark blue - active button background / inactive icon */
-  --color-accent: #3b82f6;
-  --color-bg: #f8fafc;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #3b82f6;     /* Blue for buttons/interactive */
+  --color-secondary: #1e293b;   /* Dark slate for backgrounds */
+  --color-accent: #06b6d4;      /* Cyan for highlights */
+  --color-text: #f1f5f9;        /* Light text */
 }
 
-/* Purple Theme - Royal Purple */
+/* Purple Theme */
 [data-theme='purple'] {
-  --color-primary: #f3e8ff; /* Light purple - inactive button background */
-  --color-secondary: #6d28d9; /* Dark purple - active button background / inactive icon */
-  --color-accent: #8b5cf6;
-  --color-bg: #faf5ff;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #8b5cf6;     /* Purple for buttons/interactive */
+  --color-secondary: #1e1b4b;   /* Dark indigo for backgrounds */
+  --color-accent: #a78bfa;      /* Light purple for highlights */
+  --color-text: #f5f3ff;        /* Light purple text */
 }
 
-/* Green Theme - Forest Green */
+/* Green Theme */
 [data-theme='green'] {
-  --color-primary: #d1fae5; /* Light green - inactive button background */
-  --color-secondary: #047857; /* Dark green - active button background / inactive icon */
-  --color-accent: #10b981;
-  --color-bg: #f0fdf4;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #10b981;     /* Green for buttons/interactive */
+  --color-secondary: #064e3b;   /* Dark green for backgrounds */
+  --color-accent: #34d399;      /* Light green for highlights */
+  --color-text: #ecfdf5;        /* Light green text */
 }
 
-/* Orange Theme - Sunset Orange */
+/* Orange Theme */
 [data-theme='orange'] {
-  --color-primary: #ffedd5; /* Light orange - inactive button background */
-  --color-secondary: #c2410c; /* Dark orange - active button background / inactive icon */
-  --color-accent: #f97316;
-  --color-bg: #fff7ed;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #f97316;     /* Orange for buttons/interactive */
+  --color-secondary: #431407;   /* Dark orange for backgrounds */
+  --color-accent: #fb923c;      /* Light orange for highlights */
+  --color-text: #fff7ed;        /* Light orange text */
 }
 
-/* Red Theme - Marine Red */
+/* Red Theme */
 [data-theme='red'] {
-  --color-primary: #fee2e2; /* Light red - inactive button background */
-  --color-secondary: #b91c1c; /* Dark red - active button background / inactive icon */
-  --color-accent: #ef4444;
-  --color-bg: #fef2f2;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #ef4444;     /* Red for buttons/interactive */
+  --color-secondary: #450a0a;   /* Dark red for backgrounds */
+  --color-accent: #f87171;      /* Light red for highlights */
+  --color-text: #fef2f2;        /* Light red text */
 }
 
-/* Dark Theme - Midnight Dark */
+/* Cyan Theme */
+[data-theme='cyan'] {
+  --color-primary: #06b6d4;     /* Cyan for buttons/interactive */
+  --color-secondary: #164e63;   /* Dark cyan for backgrounds */
+  --color-accent: #22d3ee;      /* Light cyan for highlights */
+  --color-text: #ecfeff;        /* Light cyan text */
+}
+
+/* Dark Theme */
 [data-theme='dark'] {
-  --color-primary: #1e293b; /* Dark gray - inactive button background */
-  --color-secondary: #93c5fd; /* Light blue - active button background / inactive icon */
-  --color-accent: #60a5fa;
-  --color-bg: #0f172a;
-  --color-text: #f1f5f9;
-  --color-text-muted: #94a3b8;
+  --color-primary: #60a5fa;     /* Light blue for buttons/interactive */
+  --color-secondary: #0f172a;   /* Very dark slate for backgrounds */
+  --color-accent: #818cf8;      /* Indigo for highlights */
+  --color-text: #f1f5f9;        /* Light text */
 }
 
-/* Light Theme - Bright Light */
+/* Light Theme */
 [data-theme='light'] {
-  --color-primary: #e0f2fe; /* Very light blue - inactive button background */
-  --color-secondary: #0284c7; /* Dark cyan - active button background / inactive icon */
-  --color-accent: #38bdf8;
-  --color-bg: #ffffff;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --color-primary: #2563eb;     /* Dark blue for buttons/interactive */
+  --color-secondary: #f8fafc;   /* Light slate for backgrounds */
+  --color-accent: #0ea5e9;      /* Bright blue for highlights */
+  --color-text: #0f172a;        /* Dark text */
 }
 
 /* Dark mode adjustments (if needed in future) */
@@ -411,51 +406,52 @@ body {
 /**
  * Design Tokens - CSS Variables
  * 
- * Single source of truth for all design values.
- * Applied via theme presets or custom overrides from schema.
+ * 4-Color Theme System:
+ * - Primary: Main interactive elements (buttons, links)
+ * - Secondary: Supporting elements (backgrounds, borders)
+ * - Accent: Highlights and focus states
+ * - Text: All text content
  * 
  * ES2017 compliant styling.
  */
 
 :root {
   /* ===========================
-     Color Tokens
+     Core Theme Colors (4-Color System)
      =========================== */
 
-  /* Primary colors - main brand/accent */
+  /* Primary - Main interactive color */
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
   --color-primary-active: #1d4ed8;
 
-  /* Secondary colors - backgrounds, cards */
+  /* Secondary - Supporting/background color */
   --color-secondary: #1e293b;
-  --color-secondary-light: #334155;
-  --color-secondary-dark: #0f172a;
+  --color-secondary-hover: #334155;
+  --color-secondary-active: #475569;
 
-  /* Accent colors - highlights, focus */
+  /* Accent - Highlights and focus */
   --color-accent: #06b6d4;
   --color-accent-hover: #0891b2;
+  --color-accent-active: #0e7490;
 
-  /* Text colors */
+  /* Text - All text content */
   --color-text: #f1f5f9;
   --color-text-muted: #94a3b8;
-  --color-text-inverse: #0f172a;
+  --color-text-disabled: #64748b;
 
-  /* Background colors */
-  --color-bg: #0f172a;
-  --color-bg-elevated: #1e293b;
-  --color-bg-overlay: rgba(15, 23, 42, 0.95);
+  /* Derived colors from the 4-color system */
+  --color-bg: var(--color-secondary);
+  --color-bg-elevated: var(--color-secondary-hover);
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-border-focus: var(--color-accent);
 
-  /* State colors - semantic */
+  /* State colors - use accent for active, primary for info */
   --color-state-ok: #10b981;
   --color-state-warn: #f59e0b;
   --color-state-error: #ef4444;
-  --color-state-info: #3b82f6;
-  --color-state-neutral: #64748b;
-
-  /* Border colors */
-  --color-border: rgba(148, 163, 184, 0.2);
-  --color-border-focus: #3b82f6;
+  --color-state-info: var(--color-primary);
+  --color-state-active: var(--color-accent);
 
   /* ===========================
      Spacing Tokens
@@ -554,84 +550,79 @@ body {
 }
 
 /* ===========================
-   Theme Presets
+   Theme Presets (4-Color System)
    =========================== */
 
-/* Blue Theme (default) - Ocean Blue */
+/* Blue Theme (default) */
 
 [data-theme='blue'] {
-  --color-primary: #dbeafe; /* Light blue - inactive button background */
-  --color-secondary: #1e40af; /* Dark blue - active button background / inactive icon */
-  --color-accent: #3b82f6;
-  --color-bg: #f8fafc;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #3b82f6;     /* Blue for buttons/interactive */
+  --color-secondary: #1e293b;   /* Dark slate for backgrounds */
+  --color-accent: #06b6d4;      /* Cyan for highlights */
+  --color-text: #f1f5f9;        /* Light text */
 }
 
-/* Purple Theme - Royal Purple */
+/* Purple Theme */
 
 [data-theme='purple'] {
-  --color-primary: #f3e8ff; /* Light purple - inactive button background */
-  --color-secondary: #6d28d9; /* Dark purple - active button background / inactive icon */
-  --color-accent: #8b5cf6;
-  --color-bg: #faf5ff;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #8b5cf6;     /* Purple for buttons/interactive */
+  --color-secondary: #1e1b4b;   /* Dark indigo for backgrounds */
+  --color-accent: #a78bfa;      /* Light purple for highlights */
+  --color-text: #f5f3ff;        /* Light purple text */
 }
 
-/* Green Theme - Forest Green */
+/* Green Theme */
 
 [data-theme='green'] {
-  --color-primary: #d1fae5; /* Light green - inactive button background */
-  --color-secondary: #047857; /* Dark green - active button background / inactive icon */
-  --color-accent: #10b981;
-  --color-bg: #f0fdf4;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #10b981;     /* Green for buttons/interactive */
+  --color-secondary: #064e3b;   /* Dark green for backgrounds */
+  --color-accent: #34d399;      /* Light green for highlights */
+  --color-text: #ecfdf5;        /* Light green text */
 }
 
-/* Orange Theme - Sunset Orange */
+/* Orange Theme */
 
 [data-theme='orange'] {
-  --color-primary: #ffedd5; /* Light orange - inactive button background */
-  --color-secondary: #c2410c; /* Dark orange - active button background / inactive icon */
-  --color-accent: #f97316;
-  --color-bg: #fff7ed;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #f97316;     /* Orange for buttons/interactive */
+  --color-secondary: #431407;   /* Dark orange for backgrounds */
+  --color-accent: #fb923c;      /* Light orange for highlights */
+  --color-text: #fff7ed;        /* Light orange text */
 }
 
-/* Red Theme - Marine Red */
+/* Red Theme */
 
 [data-theme='red'] {
-  --color-primary: #fee2e2; /* Light red - inactive button background */
-  --color-secondary: #b91c1c; /* Dark red - active button background / inactive icon */
-  --color-accent: #ef4444;
-  --color-bg: #fef2f2;
-  --color-text: #f1f5f9; /* Light text for dark backgrounds */
-  --color-text-muted: #94a3b8;
+  --color-primary: #ef4444;     /* Red for buttons/interactive */
+  --color-secondary: #450a0a;   /* Dark red for backgrounds */
+  --color-accent: #f87171;      /* Light red for highlights */
+  --color-text: #fef2f2;        /* Light red text */
 }
 
-/* Dark Theme - Midnight Dark */
+/* Cyan Theme */
+
+[data-theme='cyan'] {
+  --color-primary: #06b6d4;     /* Cyan for buttons/interactive */
+  --color-secondary: #164e63;   /* Dark cyan for backgrounds */
+  --color-accent: #22d3ee;      /* Light cyan for highlights */
+  --color-text: #ecfeff;        /* Light cyan text */
+}
+
+/* Dark Theme */
 
 [data-theme='dark'] {
-  --color-primary: #1e293b; /* Dark gray - inactive button background */
-  --color-secondary: #93c5fd; /* Light blue - active button background / inactive icon */
-  --color-accent: #60a5fa;
-  --color-bg: #0f172a;
-  --color-text: #f1f5f9;
-  --color-text-muted: #94a3b8;
+  --color-primary: #60a5fa;     /* Light blue for buttons/interactive */
+  --color-secondary: #0f172a;   /* Very dark slate for backgrounds */
+  --color-accent: #818cf8;      /* Indigo for highlights */
+  --color-text: #f1f5f9;        /* Light text */
 }
 
-/* Light Theme - Bright Light */
+/* Light Theme */
 
 [data-theme='light'] {
-  --color-primary: #e0f2fe; /* Very light blue - inactive button background */
-  --color-secondary: #0284c7; /* Dark cyan - active button background / inactive icon */
-  --color-accent: #38bdf8;
-  --color-bg: #ffffff;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
+  --color-primary: #2563eb;     /* Dark blue for buttons/interactive */
+  --color-secondary: #f8fafc;   /* Light slate for backgrounds */
+  --color-accent: #0ea5e9;      /* Bright blue for highlights */
+  --color-text: #0f172a;        /* Dark text */
 }
 
 /* Dark mode adjustments (if needed in future) */

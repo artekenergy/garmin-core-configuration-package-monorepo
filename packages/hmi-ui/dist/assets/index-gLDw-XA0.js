@@ -4812,7 +4812,11 @@ function subscribeToSchemaSignals(schema) {
     return response.json();
   }).then(function(hardwareConfig) {
     var _a;
-    console.log("[Schema-Signals] Loaded hardware config with", (_a = hardwareConfig.outputs) == null ? void 0 : _a.length, "outputs");
+    console.log(
+      "[Schema-Signals] Loaded hardware config with",
+      (_a = hardwareConfig.outputs) == null ? void 0 : _a.length,
+      "outputs"
+    );
     const allSignals = /* @__PURE__ */ new Set();
     if (hardwareConfig.outputs) {
       hardwareConfig.outputs.forEach(function(output) {

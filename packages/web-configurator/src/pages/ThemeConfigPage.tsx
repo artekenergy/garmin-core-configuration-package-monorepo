@@ -2,91 +2,95 @@ import { useSchema } from '../context/SchemaContext';
 import type { ThemeConfig } from '@gcg/schema';
 import styles from './ThemeConfigPage.module.css';
 
-// Define theme presets with their color schemes
+// Define theme presets with their 4-color system
 const THEME_PRESETS = {
   blue: {
     name: 'Ocean Blue',
     description: 'Classic blue theme with professional look',
     colors: {
-      primary: '#dbeafe', // Light blue (inactive button background)
-      secondary: '#1e40af', // Dark blue (active button background / inactive icon)
-      accent: '#3b82f6',
-      background: '#f8fafc',
-      text: '#1e293b',
+      primary: '#3b82f6', // Blue for buttons/interactive
+      secondary: '#1e293b', // Dark slate for backgrounds
+      accent: '#06b6d4', // Cyan for highlights
+      text: '#f1f5f9', // Light text
     },
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    gradient: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
   },
   purple: {
     name: 'Royal Purple',
     description: 'Elegant purple theme',
     colors: {
-      primary: '#f3e8ff', // Light purple (inactive button background)
-      secondary: '#6d28d9', // Dark purple (active button background / inactive icon)
-      accent: '#8b5cf6',
-      background: '#faf5ff',
-      text: '#1e293b',
+      primary: '#8b5cf6', // Purple for buttons/interactive
+      secondary: '#1e1b4b', // Dark indigo for backgrounds
+      accent: '#a78bfa', // Light purple for highlights
+      text: '#f5f3ff', // Light purple text
     },
-    gradient: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
+    gradient: 'linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)',
   },
   green: {
     name: 'Forest Green',
     description: 'Natural green theme',
     colors: {
-      primary: '#d1fae5', // Light green (inactive button background)
-      secondary: '#047857', // Dark green (active button background / inactive icon)
-      accent: '#10b981',
-      background: '#f0fdf4',
-      text: '#1e293b',
+      primary: '#10b981', // Green for buttons/interactive
+      secondary: '#064e3b', // Dark green for backgrounds
+      accent: '#34d399', // Light green for highlights
+      text: '#ecfdf5', // Light green text
     },
-    gradient: 'linear-gradient(135deg, #34d399 0%, #059669 100%)',
+    gradient: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
   },
   orange: {
     name: 'Sunset Orange',
     description: 'Warm orange theme',
     colors: {
-      primary: '#ffedd5', // Light orange (inactive button background)
-      secondary: '#c2410c', // Dark orange (active button background / inactive icon)
-      accent: '#f97316',
-      background: '#fff7ed',
-      text: '#1e293b',
+      primary: '#f97316', // Orange for buttons/interactive
+      secondary: '#431407', // Dark orange for backgrounds
+      accent: '#fb923c', // Light orange for highlights
+      text: '#fff7ed', // Light orange text
     },
-    gradient: 'linear-gradient(135deg, #fb923c 0%, #ea580c 100%)',
+    gradient: 'linear-gradient(135deg, #f97316 0%, #fb923c 100%)',
   },
   red: {
     name: 'Marine Red',
     description: 'Bold red theme',
     colors: {
-      primary: '#fee2e2', // Light red (inactive button background)
-      secondary: '#b91c1c', // Dark red (active button background / inactive icon)
-      accent: '#ef4444',
-      background: '#fef2f2',
-      text: '#1e293b',
+      primary: '#ef4444', // Red for buttons/interactive
+      secondary: '#450a0a', // Dark red for backgrounds
+      accent: '#f87171', // Light red for highlights
+      text: '#fef2f2', // Light red text
     },
-    gradient: 'linear-gradient(135deg, #f87171 0%, #dc2626 100%)',
+    gradient: 'linear-gradient(135deg, #ef4444 0%, #f87171 100%)',
+  },
+  cyan: {
+    name: 'Cyan Wave',
+    description: 'Cool cyan theme',
+    colors: {
+      primary: '#06b6d4', // Cyan for buttons/interactive
+      secondary: '#164e63', // Dark cyan for backgrounds
+      accent: '#22d3ee', // Light cyan for highlights
+      text: '#ecfeff', // Light cyan text
+    },
+    gradient: 'linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%)',
   },
   dark: {
     name: 'Midnight Dark',
     description: 'Dark mode theme',
     colors: {
-      primary: '#1e293b', // Dark gray (inactive button background)
-      secondary: '#93c5fd', // Light blue (active button background / inactive icon)
-      accent: '#60a5fa',
-      background: '#0f172a',
-      text: '#f1f5f9',
+      primary: '#60a5fa', // Light blue for buttons/interactive
+      secondary: '#0f172a', // Very dark slate for backgrounds
+      accent: '#818cf8', // Indigo for highlights
+      text: '#f1f5f9', // Light text
     },
-    gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+    gradient: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
   },
   light: {
     name: 'Bright Light',
     description: 'Clean light theme',
     colors: {
-      primary: '#e0f2fe', // Very light blue (inactive button background)
-      secondary: '#0284c7', // Dark cyan (active button background / inactive icon)
-      accent: '#38bdf8',
-      background: '#ffffff',
-      text: '#0f172a',
+      primary: '#2563eb', // Dark blue for buttons/interactive
+      secondary: '#f8fafc', // Light slate for backgrounds
+      accent: '#0ea5e9', // Bright blue for highlights
+      text: '#0f172a', // Dark text
     },
-    gradient: 'linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)',
+    gradient: 'linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%)',
   },
 };
 
@@ -121,7 +125,6 @@ export default function ThemeConfigPage() {
     primary: theme.customColors?.primary || currentPreset.colors.primary,
     secondary: theme.customColors?.secondary || currentPreset.colors.secondary,
     accent: theme.customColors?.accent || currentPreset.colors.accent,
-    background: theme.customColors?.background || currentPreset.colors.background,
     text: theme.customColors?.text || currentPreset.colors.text,
   };
 
@@ -149,15 +152,19 @@ export default function ThemeConfigPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <h2>🎨 Theme Configuration</h2>
-        <p className={styles.subtitle}>Customize the look and feel of your HMI interface</p>
+        <p className={styles.subtitle}>
+          Customize your HMI with the 4-color system: Primary, Secondary, Accent, and Text
+        </p>
       </header>
 
       <div className={styles.content}>
         {/* Custom Color Overrides */}
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h3>Custom Colors (Optional)</h3>
-            <p className={styles.sectionDescription}>Override specific colors from the preset</p>
+            <h3>4-Color Theme System</h3>
+            <p className={styles.sectionDescription}>
+              Customize the four core colors that define your entire HMI appearance
+            </p>
             {hasCustomColors && (
               <button className={styles.resetButton} onClick={resetCustomColors}>
                 Reset to Preset
@@ -168,7 +175,10 @@ export default function ThemeConfigPage() {
           <div className={styles.colorPickerGrid}>
             <div className={styles.colorPickerItem}>
               <label className={styles.colorLabel}>
-                <span className={styles.colorLabelText}>Primary Color</span>
+                <span className={styles.colorLabelText}>
+                  Primary Color
+                  <span className={styles.colorHint}>Buttons & interactive elements</span>
+                </span>
                 <div className={styles.colorInputWrapper}>
                   <input
                     type="color"
@@ -186,7 +196,7 @@ export default function ThemeConfigPage() {
                       }
                     }}
                     className={styles.colorTextInput}
-                    placeholder="#2563eb"
+                    placeholder="#3b82f6"
                     maxLength={7}
                   />
                 </div>
@@ -195,7 +205,10 @@ export default function ThemeConfigPage() {
 
             <div className={styles.colorPickerItem}>
               <label className={styles.colorLabel}>
-                <span className={styles.colorLabelText}>Secondary Color</span>
+                <span className={styles.colorLabelText}>
+                  Secondary Color
+                  <span className={styles.colorHint}>Backgrounds & containers</span>
+                </span>
                 <div className={styles.colorInputWrapper}>
                   <input
                     type="color"
@@ -213,7 +226,7 @@ export default function ThemeConfigPage() {
                       }
                     }}
                     className={styles.colorTextInput}
-                    placeholder="#1e40af"
+                    placeholder="#1e293b"
                     maxLength={7}
                   />
                 </div>
@@ -222,7 +235,10 @@ export default function ThemeConfigPage() {
 
             <div className={styles.colorPickerItem}>
               <label className={styles.colorLabel}>
-                <span className={styles.colorLabelText}>Accent Color</span>
+                <span className={styles.colorLabelText}>
+                  Accent Color
+                  <span className={styles.colorHint}>Highlights & focus states</span>
+                </span>
                 <div className={styles.colorInputWrapper}>
                   <input
                     type="color"
@@ -240,7 +256,7 @@ export default function ThemeConfigPage() {
                       }
                     }}
                     className={styles.colorTextInput}
-                    placeholder="#3b82f6"
+                    placeholder="#06b6d4"
                     maxLength={7}
                   />
                 </div>
@@ -249,34 +265,10 @@ export default function ThemeConfigPage() {
 
             <div className={styles.colorPickerItem}>
               <label className={styles.colorLabel}>
-                <span className={styles.colorLabelText}>Background Color</span>
-                <div className={styles.colorInputWrapper}>
-                  <input
-                    type="color"
-                    value={effectiveColors.background}
-                    onChange={(e) => updateCustomColor('background', e.target.value)}
-                    className={styles.colorInput}
-                  />
-                  <input
-                    type="text"
-                    value={effectiveColors.background}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      if (/^#[0-9A-Fa-f]{0,6}$/.test(val)) {
-                        updateCustomColor('background', val);
-                      }
-                    }}
-                    className={styles.colorTextInput}
-                    placeholder="#f8fafc"
-                    maxLength={7}
-                  />
-                </div>
-              </label>
-            </div>
-
-            <div className={styles.colorPickerItem}>
-              <label className={styles.colorLabel}>
-                <span className={styles.colorLabelText}>Text Color</span>
+                <span className={styles.colorLabelText}>
+                  Text Color
+                  <span className={styles.colorHint}>All text content</span>
+                </span>
                 <div className={styles.colorInputWrapper}>
                   <input
                     type="color"
@@ -294,7 +286,7 @@ export default function ThemeConfigPage() {
                       }
                     }}
                     className={styles.colorTextInput}
-                    placeholder="#1e293b"
+                    placeholder="#f1f5f9"
                     maxLength={7}
                   />
                 </div>
@@ -365,7 +357,6 @@ export default function ThemeConfigPage() {
                   '--theme-primary': effectiveColors.primary,
                   '--theme-secondary': effectiveColors.secondary,
                   '--theme-accent': effectiveColors.accent,
-                  '--theme-background': effectiveColors.background,
                   '--theme-text': effectiveColors.text,
                 } as React.CSSProperties
               }
@@ -431,13 +422,32 @@ export default function ThemeConfigPage() {
               </div>
             </div>
             <div className={styles.summaryItem}>
-              <div className={styles.summaryLabel}>Background</div>
+              <div className={styles.summaryLabel}>Secondary Color</div>
               <div className={styles.summaryValue}>
                 <div
                   className={styles.colorIndicator}
-                  style={{ background: effectiveColors.background }}
+                  style={{ background: effectiveColors.secondary }}
                 >
-                  {effectiveColors.background}
+                  {effectiveColors.secondary}
+                </div>
+              </div>
+            </div>
+            <div className={styles.summaryItem}>
+              <div className={styles.summaryLabel}>Accent Color</div>
+              <div className={styles.summaryValue}>
+                <div
+                  className={styles.colorIndicator}
+                  style={{ background: effectiveColors.accent }}
+                >
+                  {effectiveColors.accent}
+                </div>
+              </div>
+            </div>
+            <div className={styles.summaryItem}>
+              <div className={styles.summaryLabel}>Text Color</div>
+              <div className={styles.summaryValue}>
+                <div className={styles.colorIndicator} style={{ background: effectiveColors.text }}>
+                  {effectiveColors.text}
                 </div>
               </div>
             </div>

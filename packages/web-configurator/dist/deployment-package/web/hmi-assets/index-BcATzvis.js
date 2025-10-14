@@ -4805,17 +4805,53 @@ function subscribeToSchemaSignals(schema) {
     console.warn("[Schema-Signals] Cannot subscribe: WebSocket not connected");
     return;
   }
-  const signalIds = extractSignalIds(schema);
-  console.log("[Schema-Signals] Extracted signal IDs from schema:", signalIds);
-  if (signalIds.length === 0) {
-    console.warn("[Schema-Signals] No signals found in schema to subscribe");
-    return;
-  }
-  console.log(
-    "[Schema-Signals] Subscribing to " + signalIds.length + " signals from hardware config:",
-    signalIds
-  );
-  wsAdapter2.subscribeToSignals(signalIds);
+  fetch("/configuration/hardware-config.json").then(function(response) {
+    if (!response.ok) {
+      throw new Error("Hardware config not found, falling back to schema signals");
+    }
+    return response.json();
+  }).then(function(hardwareConfig) {
+    var _a;
+    console.log(
+      "[Schema-Signals] Loaded hardware config with",
+      (_a = hardwareConfig.outputs) == null ? void 0 : _a.length,
+      "outputs"
+    );
+    const allSignals = /* @__PURE__ */ new Set();
+    if (hardwareConfig.outputs) {
+      hardwareConfig.outputs.forEach(function(output) {
+        if (output.signals) {
+          const sigs = output.signals;
+          if (typeof sigs.toggle === "number") allSignals.add(sigs.toggle);
+          if (typeof sigs.momentary === "number") allSignals.add(sigs.momentary);
+          if (typeof sigs.dimmer === "number") allSignals.add(sigs.dimmer);
+          if (typeof sigs.value === "number") allSignals.add(sigs.value);
+        }
+      });
+    }
+    const signalArray = Array.from(allSignals).sort(function(a, b) {
+      return a - b;
+    });
+    console.log(
+      "[Schema-Signals] Subscribing to " + signalArray.length + " signals from hardware-config.json:",
+      signalArray
+    );
+    wsAdapter2.subscribeToSignals(signalArray);
+  }).catch(function(error) {
+    console.warn("[Schema-Signals] Could not load hardware config:", error);
+    console.log("[Schema-Signals] Falling back to schema signals");
+    const signalIds = extractSignalIds(schema);
+    console.log("[Schema-Signals] Extracted signal IDs from schema:", signalIds);
+    if (signalIds.length === 0) {
+      console.warn("[Schema-Signals] No signals found in schema to subscribe");
+      return;
+    }
+    console.log(
+      "[Schema-Signals] Subscribing to " + signalIds.length + " signals from schema:",
+      signalIds
+    );
+    wsAdapter2.subscribeToSignals(signalIds);
+  });
 }
 function setupAutoSubscription(schema) {
   console.log("[Schema-Signals] Setting up auto-subscription");
