@@ -66,7 +66,6 @@ export declare const UISchemaSchema: z.ZodObject<{
             text?: string | undefined;
         } | undefined;
     }>>>;
-    demoMode: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
     lightingTab: z.ZodOptional<z.ZodDefault<z.ZodObject<{
         interior: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
@@ -1365,7 +1364,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 max: z.ZodOptional<z.ZodNumber>;
                 unit: z.ZodOptional<z.ZodString>;
                 decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
-                demoValue: z.ZodOptional<z.ZodNumber>;
                 bindings: z.ZodObject<{
                     value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
                         type: z.ZodLiteral<"empirbus">;
@@ -1461,7 +1459,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 min?: number | undefined;
                 max?: number | undefined;
                 unit?: string | undefined;
-                demoValue?: number | undefined;
             }, {
                 id: string;
                 type: "gauge";
@@ -1490,7 +1487,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
-                demoValue?: number | undefined;
             }>, z.ZodObject<{
                 id: z.ZodString;
                 label: z.ZodString;
@@ -1792,7 +1788,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 min?: number | undefined;
                 max?: number | undefined;
                 unit?: string | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -1972,7 +1967,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -2159,7 +2153,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 min?: number | undefined;
                 max?: number | undefined;
                 unit?: string | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -2345,7 +2338,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -2536,7 +2528,6 @@ export declare const UISchemaSchema: z.ZodObject<{
         createdAt?: string | undefined;
         updatedAt?: string | undefined;
     };
-    demoMode: boolean;
     tabs: {
         id: string;
         title: string;
@@ -2573,7 +2564,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 min?: number | undefined;
                 max?: number | undefined;
                 unit?: string | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -2954,7 +2944,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                 max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
-                demoValue?: number | undefined;
             } | {
                 id: string;
                 type: "toggle";
@@ -3174,7 +3163,6 @@ export declare const UISchemaSchema: z.ZodObject<{
             text?: string | undefined;
         } | undefined;
     } | undefined;
-    demoMode?: boolean | undefined;
     lightingTab?: {
         interior?: {
             icon?: string | undefined;

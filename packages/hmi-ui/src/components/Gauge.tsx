@@ -35,12 +35,43 @@ export function Gauge(props: GaugeProps) {
   // Subscribe to signal state for reactive updates
   const signalState = signalId !== null ? getSignalState(signalId) : null;
 
+  // Heuristic scaling based on channel ID
+  function toSigned16(n: number): number {
+    return n >= 0x8000 ? n - 0x10000 : n;
+  }
+
+  function scaleNumeric(raw: number): number {
+    // If binding is present and is a string channel, use its name to infer scaling
+    const ch = component.bindings?.value && (component.bindings.value as any).channel;
+    const channelId = typeof ch === 'string' ? ch : '';
+
+    const id = channelId.toLowerCase();
+    // Default: no scaling
+    let scaled = raw;
+
+    if (id.includes('voltage')) {
+      // mV -> V
+      scaled = raw / 1000;
+    } else if (id.includes('amperage') || id.includes('current')) {
+      // mA (signed) -> A
+      scaled = toSigned16(raw) / 1000;
+    } else if (id.includes('state-of-charge') || id.includes('soc')) {
+      // Assume 0.1% or 0.01% like other sensors; start with /1000 and clamp 0-100
+      const soc = raw / 1000;
+      if (soc < 0) return 0;
+      if (soc > 100) return 100;
+      scaled = soc;
+    }
+
+    return scaled;
+  }
+
   // Compute current value from signal state or props
   const currentValue = useComputed(function () {
     if (signalState && signalState.value) {
       const state = signalState.value.value as NumericState;
       if (state && typeof state.raw === 'number') {
-        return state.raw;
+        return scaleNumeric(state.raw);
       }
     }
     return value !== undefined ? value : 0;

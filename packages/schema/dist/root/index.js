@@ -22,7 +22,6 @@ export const UISchemaSchema = z.object({
         .regex(/^\d+\.\d+\.\d+$/, 'Schema version must be semantic version (x.y.z)'),
     metadata: MetadataSchema,
     theme: ThemeConfigSchema.optional(),
-    demoMode: z.boolean().optional().default(false), // Enable demo/preview mode with static values
     lightingTab: LightingTabConfigSchema.optional(),
     hvacTab: HVACTabConfigSchema.optional(),
     switchingTab: SwitchingTabConfigSchema.optional(),

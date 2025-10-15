@@ -47,7 +47,6 @@ const defaultSchema: UISchema = {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
-  demoMode: false,
   hardware: {
     systemType: 'core',
     outputs: [],

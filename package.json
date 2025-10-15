@@ -22,6 +22,7 @@
     "clean": "pnpm -r clean && rm -rf node_modules",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "deploy:full": "bash ./scripts/deploy-full.sh",
     "deploy": "flyctl deploy",
     "deploy:production": "flyctl deploy --app garmin-core-configurator",
     "logs": "flyctl logs",

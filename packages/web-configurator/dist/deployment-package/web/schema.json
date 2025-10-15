@@ -476,8 +476,9 @@
               "decimals": 0,
               "bindings": {
                 "value": {
-                  "type": "static",
-                  "value": 0
+                  "type": "empirbus",
+                  "channel": "signal-bms-battery-state-of-charge",
+                  "property": "value"
                 }
               }
             },
@@ -491,8 +492,9 @@
               "decimals": 1,
               "bindings": {
                 "value": {
-                  "type": "static",
-                  "value": 0
+                  "type": "empirbus",
+                  "channel": "signal-primary-solar-voltage",
+                  "property": "value"
                 }
               }
             }

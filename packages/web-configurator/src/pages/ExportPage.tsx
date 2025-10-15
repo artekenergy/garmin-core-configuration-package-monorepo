@@ -4,6 +4,7 @@ import { debug } from '../utils/debug';
 import JSZip from 'jszip';
 import { useState } from 'react';
 import { updateSchemaIcons } from '../utils/iconRegistry';
+import type { UISchema, Tab, Section, Component, GaugeComponent, OutputChannel } from '@gcg/schema';
 
 export default function ExportPage() {
   const { schema, validationResult } = useSchema();
@@ -45,7 +46,114 @@ export default function ExportPage() {
       const zip = new JSZip();
 
       // 1. Build icons array and update schema with icon registry
-      const enhancedSchema = updateSchemaIcons(schema);
+      let enhancedSchema = updateSchemaIcons(schema);
+
+      // Ensure hardware structure exists for export-time augmentation
+      if (!enhancedSchema.hardware) {
+        enhancedSchema = {
+          ...enhancedSchema,
+          hardware: {
+            systemType: 'core',
+            outputs: [],
+            halfBridgePairs: [],
+            signalMap: {},
+            genesisBoards: 0,
+          },
+        } as UISchema;
+      }
+      const hardwareCfg = enhancedSchema.hardware!;
+      if (!hardwareCfg.outputs) {
+        hardwareCfg.outputs = [] as OutputChannel[];
+      }
+
+      // Helper: sanitize any static signal-value bindings to empirbus before export
+      const aliasToChannel: Record<string, string> = {
+        // Power/BMS
+        'battery-voltage': 'signal-bms-battery-voltage',
+        'battery-current': 'signal-bms-battery-amperage',
+        'battery-soc': 'signal-bms-battery-state-of-charge',
+        // Solar
+        'solar-voltage': 'signal-primary-solar-voltage',
+        // No direct power signal available yet; bind to amperage as a placeholder source
+        'solar-power': 'signal-primary-solar-amperage',
+      };
+
+      const isGauge = (comp: Component): comp is GaugeComponent => comp.type === 'gauge';
+
+      const sanitizeSchemaBindings = (inputSchema: UISchema) => {
+        const cloned: UISchema = JSON.parse(JSON.stringify(inputSchema)) as UISchema;
+        let upgraded = 0;
+        let converted = 0;
+
+        if (Array.isArray(cloned.tabs)) {
+          cloned.tabs = cloned.tabs.map((tab: Tab): Tab => ({
+            ...tab,
+            sections: Array.isArray(tab.sections)
+              ? tab.sections.map((section: Section): Section => ({
+                  ...section,
+                  components: Array.isArray(section.components)
+                    ? section.components.map((comp: Component): Component => {
+                        if (!isGauge(comp)) return comp;
+                        const hasValueBinding = (comp as GaugeComponent).bindings?.value;
+                        if (!hasValueBinding) return comp;
+
+                        // Try to infer alias from component id like "comp-signal-<alias>"
+                        let alias: string | null = null;
+                        if (typeof comp.id === 'string' && comp.id.startsWith('comp-signal-')) {
+                          alias = comp.id.replace('comp-signal-', '');
+                        }
+
+                        const resolvedChannel = alias ? aliasToChannel[alias] || alias : null;
+
+                        // Case 1: static -> empirbus (preferred channel if known, else alias)
+                        if (comp.bindings.value?.type === 'static') {
+                          const nextComp: GaugeComponent = {
+                            ...comp,
+                            bindings: {
+                              ...comp.bindings,
+                              value: resolvedChannel
+                                ? { type: 'empirbus', channel: resolvedChannel, property: 'value' }
+                                : { type: 'empirbus', channel: alias || 'unknown', property: 'value' },
+                            },
+                          };
+                          converted++;
+                          return nextComp;
+                        }
+
+                        // Case 2: empirbus but pointing at an alias (not a real signal id)
+                        if (
+                          comp.bindings.value?.type === 'empirbus' &&
+                          typeof comp.bindings.value?.channel === 'string' &&
+                          alias &&
+                          comp.bindings.value.channel === alias &&
+                          aliasToChannel[alias]
+                        ) {
+                          const resolved = aliasToChannel[alias] as string;
+                          const nextComp: GaugeComponent = {
+                            ...comp,
+                            bindings: {
+                              ...comp.bindings,
+                              value: {
+                                ...comp.bindings.value,
+                                channel: resolved,
+                                property: 'value',
+                              },
+                            },
+                          };
+                          upgraded++;
+                          return nextComp;
+                        }
+
+                        return comp;
+                      })
+                    : section.components,
+                }))
+              : tab.sections,
+          }));
+        }
+
+        return { schema: cloned, stats: { upgraded, converted } };
+      };
 
       // 2. Fetch hardware config with signal mappings
       try {
@@ -61,25 +169,100 @@ export default function ExportPage() {
             enhancedSchema.hardware &&
             enhancedSchema.hardware.outputs
           ) {
-            const hwOutputsMap = new Map<string, any>();
-            hardwareConfig.outputs.forEach((hwOutput: any) => {
+            type HWOutput = {
+              id: string;
+              source?: string;
+              channel?: number;
+              control?: string;
+              label?: string;
+              icon?: string;
+              signals?: Record<string, number | null>;
+            };
+            const hwOutputsMap = new Map<string, HWOutput>();
+            (hardwareConfig.outputs as Array<HWOutput>).forEach((hwOutput) => {
               hwOutputsMap.set(hwOutput.id, hwOutput);
             });
 
             // Add signals to each output in the user's schema
-            enhancedSchema.hardware.outputs = enhancedSchema.hardware.outputs.map((userOutput) => {
-              const hwOutput = hwOutputsMap.get(userOutput.id);
-              if (hwOutput && hwOutput.signals) {
-                return { ...userOutput, signals: hwOutput.signals };
+            hardwareCfg.outputs = hardwareCfg.outputs.map(
+              (userOutput) => {
+                const hwOutput = hwOutputsMap.get(userOutput.id);
+                if (hwOutput && hwOutput.signals) {
+                  return { ...userOutput, signals: hwOutput.signals };
+                }
+                return userOutput;
               }
-              return userOutput;
+            );
+
+            // Ensure any referenced signal channels exist in hardware.outputs
+            const referencedChannels = new Set<string>();
+            enhancedSchema.tabs?.forEach((tab: Tab) => {
+              tab.sections.forEach((section: Section) => {
+                section.components.forEach((comp: Component) => {
+                  type BindingLike = { type?: string; channel?: string | number; property?: string };
+                  const bindings = (comp as { bindings?: Record<string, BindingLike> }).bindings;
+                  if (!bindings) return;
+                  for (const key of Object.keys(bindings)) {
+                    const b = bindings[key];
+                    if (b && b.type === 'empirbus' && typeof b.channel === 'string') {
+                      referencedChannels.add(b.channel);
+                    }
+                  }
+                });
+              });
             });
 
-            debug.log('✓ Added signal mappings to schema for export');
+            const existingIds = new Set((hardwareCfg.outputs || []).map((o: OutputChannel) => o.id));
+
+            const added: string[] = [];
+            referencedChannels.forEach((id) => {
+              if (!existingIds.has(id)) {
+                const hw = hwOutputsMap.get(id);
+                if (hw) {
+                  const numericChannel =
+                    typeof hw.channel === 'number'
+                      ? hw.channel
+                      : typeof hw.signals?.value === 'number'
+                        ? hw.signals!.value!
+                        : 1; // safe fallback
+
+                  const oc: OutputChannel = {
+                    id: hw.id,
+                    // Use a valid source enum; these signal IDs are virtual, map to 'genesis'
+                    source: 'genesis',
+                    channel: numericChannel,
+                    control: 'special-function',
+                    label: hw.label,
+                    icon: hw.icon,
+                  };
+
+                  hardwareCfg.outputs.push(oc);
+                  existingIds.add(id);
+                  added.push(id);
+                } else {
+                  debug.warn(
+                    `Referenced channel '${id}' not found in hardware-config.json; cannot add to hardware.outputs`
+                  );
+                }
+              }
+            });
+
+            debug.log(
+              `✓ Added signal mappings to schema for export (added ${added.length} referenced outputs)`
+            );
           }
         }
       } catch (error) {
         debug.warn('Could not fetch hardware config for signal mappings:', error);
+      }
+
+      // 2b. Sanitize any static/alias value bindings in tabs/sections/components
+      const { schema: sanitizedSchema, stats } = sanitizeSchemaBindings(enhancedSchema);
+      enhancedSchema = sanitizedSchema;
+      if (stats.converted || stats.upgraded) {
+        debug.log(
+          `✓ Sanitized gauge bindings (converted: ${stats.converted}, upgraded: ${stats.upgraded})`
+        );
       }
 
       const schemaJson = JSON.stringify(enhancedSchema, null, 2);

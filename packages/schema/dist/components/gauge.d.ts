@@ -16,7 +16,6 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
     max: z.ZodOptional<z.ZodNumber>;
     unit: z.ZodOptional<z.ZodString>;
     decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
-    demoValue: z.ZodOptional<z.ZodNumber>;
     bindings: z.ZodObject<{
         value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
             type: z.ZodLiteral<"empirbus">;
@@ -112,7 +111,6 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
     min?: number | undefined;
     max?: number | undefined;
     unit?: string | undefined;
-    demoValue?: number | undefined;
 }, {
     id: string;
     type: "gauge";
@@ -141,7 +139,6 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
     max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
-    demoValue?: number | undefined;
 }>;
 export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     id: z.ZodString;
@@ -157,7 +154,6 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     max: z.ZodOptional<z.ZodNumber>;
     unit: z.ZodOptional<z.ZodString>;
     decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
-    demoValue: z.ZodOptional<z.ZodNumber>;
     bindings: z.ZodObject<{
         value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
             type: z.ZodLiteral<"empirbus">;
@@ -253,7 +249,6 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     min?: number | undefined;
     max?: number | undefined;
     unit?: string | undefined;
-    demoValue?: number | undefined;
 }, {
     id: string;
     type: "gauge";
@@ -282,7 +277,6 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
-    demoValue?: number | undefined;
 }>, {
     id: string;
     type: "gauge";
@@ -311,7 +305,6 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     min?: number | undefined;
     max?: number | undefined;
     unit?: string | undefined;
-    demoValue?: number | undefined;
 }, {
     id: string;
     type: "gauge";
@@ -340,7 +333,6 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
-    demoValue?: number | undefined;
 }>;
 export type GaugeComponent = z.infer<typeof GaugeComponentSchema>;
 //# sourceMappingURL=gauge.d.ts.map
