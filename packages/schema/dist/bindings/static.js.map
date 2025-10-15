@@ -1,0 +1,1 @@
+{"version":3,"file":"static.js","sourceRoot":"","sources":["../../src/bindings/static.ts"],"names":[],"mappings":"AAAA;;GAEG;AAEH,OAAO,EAAE,CAAC,EAAE,MAAM,KAAK,CAAC;AAExB,MAAM,CAAC,MAAM,mBAAmB,GAAG,CAAC,CAAC,MAAM,CAAC;IAC1C,IAAI,EAAE,CAAC,CAAC,OAAO,CAAC,QAAQ,CAAC;IACzB,KAAK,EAAE,CAAC,CAAC,OAAO,EAAE;CACnB,CAAC,CAAC"}

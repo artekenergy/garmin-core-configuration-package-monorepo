@@ -86,70 +86,82 @@ export default function ExportPage() {
         let converted = 0;
 
         if (Array.isArray(cloned.tabs)) {
-          cloned.tabs = cloned.tabs.map((tab: Tab): Tab => ({
-            ...tab,
-            sections: Array.isArray(tab.sections)
-              ? tab.sections.map((section: Section): Section => ({
-                  ...section,
-                  components: Array.isArray(section.components)
-                    ? section.components.map((comp: Component): Component => {
-                        if (!isGauge(comp)) return comp;
-                        const hasValueBinding = (comp as GaugeComponent).bindings?.value;
-                        if (!hasValueBinding) return comp;
+          cloned.tabs = cloned.tabs.map(
+            (tab: Tab): Tab => ({
+              ...tab,
+              sections: Array.isArray(tab.sections)
+                ? tab.sections.map(
+                    (section: Section): Section => ({
+                      ...section,
+                      components: Array.isArray(section.components)
+                        ? section.components.map((comp: Component): Component => {
+                            if (!isGauge(comp)) return comp;
+                            const hasValueBinding = (comp as GaugeComponent).bindings?.value;
+                            if (!hasValueBinding) return comp;
 
-                        // Try to infer alias from component id like "comp-signal-<alias>"
-                        let alias: string | null = null;
-                        if (typeof comp.id === 'string' && comp.id.startsWith('comp-signal-')) {
-                          alias = comp.id.replace('comp-signal-', '');
-                        }
+                            // Try to infer alias from component id like "comp-signal-<alias>"
+                            let alias: string | null = null;
+                            if (typeof comp.id === 'string' && comp.id.startsWith('comp-signal-')) {
+                              alias = comp.id.replace('comp-signal-', '');
+                            }
 
-                        const resolvedChannel = alias ? aliasToChannel[alias] || alias : null;
+                            const resolvedChannel = alias ? aliasToChannel[alias] || alias : null;
 
-                        // Case 1: static -> empirbus (preferred channel if known, else alias)
-                        if (comp.bindings.value?.type === 'static') {
-                          const nextComp: GaugeComponent = {
-                            ...comp,
-                            bindings: {
-                              ...comp.bindings,
-                              value: resolvedChannel
-                                ? { type: 'empirbus', channel: resolvedChannel, property: 'value' }
-                                : { type: 'empirbus', channel: alias || 'unknown', property: 'value' },
-                            },
-                          };
-                          converted++;
-                          return nextComp;
-                        }
+                            // Case 1: static -> empirbus (preferred channel if known, else alias)
+                            if (comp.bindings.value?.type === 'static') {
+                              const nextComp: GaugeComponent = {
+                                ...comp,
+                                bindings: {
+                                  ...comp.bindings,
+                                  value: resolvedChannel
+                                    ? {
+                                        type: 'empirbus',
+                                        channel: resolvedChannel,
+                                        property: 'value',
+                                      }
+                                    : {
+                                        type: 'empirbus',
+                                        channel: alias || 'unknown',
+                                        property: 'value',
+                                      },
+                                },
+                              };
+                              converted++;
+                              return nextComp;
+                            }
 
-                        // Case 2: empirbus but pointing at an alias (not a real signal id)
-                        if (
-                          comp.bindings.value?.type === 'empirbus' &&
-                          typeof comp.bindings.value?.channel === 'string' &&
-                          alias &&
-                          comp.bindings.value.channel === alias &&
-                          aliasToChannel[alias]
-                        ) {
-                          const resolved = aliasToChannel[alias] as string;
-                          const nextComp: GaugeComponent = {
-                            ...comp,
-                            bindings: {
-                              ...comp.bindings,
-                              value: {
-                                ...comp.bindings.value,
-                                channel: resolved,
-                                property: 'value',
-                              },
-                            },
-                          };
-                          upgraded++;
-                          return nextComp;
-                        }
+                            // Case 2: empirbus but pointing at an alias (not a real signal id)
+                            if (
+                              comp.bindings.value?.type === 'empirbus' &&
+                              typeof comp.bindings.value?.channel === 'string' &&
+                              alias &&
+                              comp.bindings.value.channel === alias &&
+                              aliasToChannel[alias]
+                            ) {
+                              const resolved = aliasToChannel[alias] as string;
+                              const nextComp: GaugeComponent = {
+                                ...comp,
+                                bindings: {
+                                  ...comp.bindings,
+                                  value: {
+                                    ...comp.bindings.value,
+                                    channel: resolved,
+                                    property: 'value',
+                                  },
+                                },
+                              };
+                              upgraded++;
+                              return nextComp;
+                            }
 
-                        return comp;
-                      })
-                    : section.components,
-                }))
-              : tab.sections,
-          }));
+                            return comp;
+                          })
+                        : section.components,
+                    })
+                  )
+                : tab.sections,
+            })
+          );
         }
 
         return { schema: cloned, stats: { upgraded, converted } };
@@ -184,22 +196,24 @@ export default function ExportPage() {
             });
 
             // Add signals to each output in the user's schema
-            hardwareCfg.outputs = hardwareCfg.outputs.map(
-              (userOutput) => {
-                const hwOutput = hwOutputsMap.get(userOutput.id);
-                if (hwOutput && hwOutput.signals) {
-                  return { ...userOutput, signals: hwOutput.signals };
-                }
-                return userOutput;
+            hardwareCfg.outputs = hardwareCfg.outputs.map((userOutput) => {
+              const hwOutput = hwOutputsMap.get(userOutput.id);
+              if (hwOutput && hwOutput.signals) {
+                return { ...userOutput, signals: hwOutput.signals };
               }
-            );
+              return userOutput;
+            });
 
             // Ensure any referenced signal channels exist in hardware.outputs
             const referencedChannels = new Set<string>();
             enhancedSchema.tabs?.forEach((tab: Tab) => {
               tab.sections.forEach((section: Section) => {
                 section.components.forEach((comp: Component) => {
-                  type BindingLike = { type?: string; channel?: string | number; property?: string };
+                  type BindingLike = {
+                    type?: string;
+                    channel?: string | number;
+                    property?: string;
+                  };
                   const bindings = (comp as { bindings?: Record<string, BindingLike> }).bindings;
                   if (!bindings) return;
                   for (const key of Object.keys(bindings)) {
@@ -212,7 +226,9 @@ export default function ExportPage() {
               });
             });
 
-            const existingIds = new Set((hardwareCfg.outputs || []).map((o: OutputChannel) => o.id));
+            const existingIds = new Set(
+              (hardwareCfg.outputs || []).map((o: OutputChannel) => o.id)
+            );
 
             const added: string[] = [];
             referencedChannels.forEach((id) => {
