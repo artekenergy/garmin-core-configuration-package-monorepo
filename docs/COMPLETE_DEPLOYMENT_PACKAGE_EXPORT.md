@@ -44,9 +44,9 @@ The web configurator now exports **complete deployment packages** with all 214 f
 
 **Changes:**
 
-- Copies entire `/web` directory (not just selected files)
-- Copies `/configuration` directory
-- Copies `/services` directory
+- Copies entire `garmin-bundle/web` directory (not just selected files)
+- Copies `garmin-bundle/configuration` directory
+- Copies `garmin-bundle/services` directory
 - Creates comprehensive manifest with file breakdown
 - Output to `public/deployment-package/`
 
@@ -55,14 +55,14 @@ The web configurator now exports **complete deployment packages** with all 214 f
 ```
 📦 Copying complete deployment package...
 
-📁 Copying complete /web directory...
-   ✓ Copied 90 files from /web
+📁 Copying complete garmin-bundle/web directory...
+   ✓ Copied 90 files from garmin-bundle/web
 
-📁 Copying /configuration directory...
-   ✓ Copied 6 files from /configuration
+📁 Copying garmin-bundle/configuration directory...
+   ✓ Copied 6 files from garmin-bundle/configuration
 
-📁 Copying /services directory...
-   ✓ Copied 12 files from /services
+📁 Copying garmin-bundle/services directory...
+   ✓ Copied 12 files from garmin-bundle/services
 
 ✅ Copied 108 files to public/deployment-package/
 📄 Created manifest with 108 entries
@@ -118,7 +118,7 @@ Breakdown:
 ### Preparation (One-time)
 
 ```bash
-# Ensure HMI UI is built and deployed
+# Ensure HMI UI is built and deployed into garmin-bundle/web
 pnpm --filter @gcg/hmi-ui deploy:web
 
 # Copy complete deployment package

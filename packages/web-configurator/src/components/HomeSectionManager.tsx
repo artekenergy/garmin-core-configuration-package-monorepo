@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { debug } from '../utils/debug';
 import type { UISchema } from '@gcg/schema';
 import styles from './HomeSectionManager.module.css';
 
@@ -108,7 +109,7 @@ export default function HomeSectionManager({
         onAddComponent(data.channelId, data.componentType, sectionId);
       }
     } catch (error) {
-      console.error('Failed to parse drop data:', error);
+      debug.error('Failed to parse drop data:', error);
     }
   };
 

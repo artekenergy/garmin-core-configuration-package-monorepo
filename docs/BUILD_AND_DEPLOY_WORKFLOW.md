@@ -4,7 +4,7 @@
 
 This project has two main deployment paths:
 
-1. **Direct deployment** - Build and deploy HMI UI directly to `/web/` and create a ZIP
+1. **Direct deployment** - Build and deploy HMI UI directly to `garmin-bundle/web/` and create a ZIP
 2. **Web-configurator export** - User exports a custom configuration package via the web UI
 
 Both paths now stay automatically synchronized.
@@ -21,7 +21,7 @@ pnpm run deploy:web
 The script automatically:
 
 1. ✅ Builds the HMI UI (`tsc && vite build`)
-2. ✅ Copies to `/web/` directory
+2. ✅ Copies to `garmin-bundle/web/` directory
 3. ✅ Creates deployment ZIP package
 4. ✅ **Syncs with web-configurator** (runs `pnpm run prebuild`)
 
@@ -87,9 +87,9 @@ Creates: `garmin-hmi-deployment-YYYYMMDD_HHMMSS.zip`
 
 Contains:
 
-- `/web/` - Complete HMI UI application
-- `/services/` - Backend service files
-- `/configuration/` - Hardware config and channel mappings
+- `garmin-bundle/web/` - Complete HMI UI application
+- `garmin-bundle/services/` - Backend service files
+- `garmin-bundle/configuration/` - Hardware config and channel mappings
 
 ### Web-Configurator Export (Production)
 
@@ -114,7 +114,7 @@ cd packages/web-configurator
 pnpm run prebuild
 ```
 
-This copies everything from `/web/`, `/services/`, and `/configuration/` into `public/deployment-package/`.
+This copies everything from `garmin-bundle/web/`, `garmin-bundle/services/`, and `garmin-bundle/configuration/` into `public/deployment-package/`.
 
 ## File Locations
 
@@ -130,7 +130,7 @@ This copies everything from `/web/`, `/services/`, and `/configuration/` into `p
 
 ### Deployment Staging
 
-- Direct deployment: `/web/`, `/services/`, `/configuration/`
+- Direct deployment: `garmin-bundle/web/`, `garmin-bundle/services/`, `garmin-bundle/configuration/`
 - Web-configurator export: `packages/web-configurator/public/deployment-package/`
 
 ### Final Packages
@@ -145,8 +145,7 @@ This copies everything from `/web/`, `/services/`, and `/configuration/` into `p
    - USB transfer
    - Network/FTP
    - SD card
-3. Access at device's web interface
-4. Navigate to `index1.html`
+3. Access at device's web interface and navigate to `index1.html`
 
 ## CI/CD Integration
 

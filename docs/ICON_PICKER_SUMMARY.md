@@ -94,7 +94,6 @@ channel.icon ? <img src={channel.icon} /> : "Select Icon"
 - **Plumbing**: Water Dump, Water Pump
 - **Lighting**: All Lights, Lightin
 - **System**: Engine, Drive, Group, Home, Plumbing, Power, Time, WiFi
-- **Generic**: Kind12, Kind12-1
 
 All icons are SVG format stored in `web/icons/`
 

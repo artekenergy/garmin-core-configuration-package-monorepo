@@ -1,0 +1,39 @@
+{
+  "name": "Garmin Core Graphics Monorepo",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "18"
+    }
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.eol": "\n",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'corepack enable && corepack prepare pnpm@8.10.0 --activate && pnpm -v && pnpm install -w'",
+  "forwardPorts": [3000, 5173, 5174, 4173],
+  "portsAttributes": {
+    "3000": { "label": "web-configurator" },
+    "5173": { "label": "vite-dev (hmi-ui)" },
+    "5174": { "label": "vite-dev (secondary)" },
+    "4173": { "label": "vite-preview" }
+  },
+  "mounts": [
+    "type=cache,target=/home/node/.local/share/pnpm",
+    "type=cache,target=/home/node/.pnpm-store"
+  ],
+  "overrideCommand": false
+}

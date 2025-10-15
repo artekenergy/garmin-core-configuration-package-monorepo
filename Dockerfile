@@ -1,56 +1,50 @@
-# Multi-stage build for Garmin Core Graphics Configurator
-FROM node:20-alpine AS base
+# syntax=docker/dockerfile:1
 
-# Install pnpm
-RUN npm install -g pnpm@9.15.9
+# ---- Builder ----
+FROM node:18-bullseye-slim AS builder
 
-# Set working directory
+ENV CI=1
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY packages/schema/package.json ./packages/schema/
-COPY packages/hmi-ui/package.json ./packages/hmi-ui/
-COPY packages/web-configurator/package.json ./packages/web-configurator/
+# Enable Corepack and pin pnpm
+RUN corepack enable && corepack prepare pnpm@8.10.0 --activate \
+ && apt-get update && apt-get install -y --no-install-recommends bash \
+ && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Copy minimal workspace manifests first for better caching
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json ./
+COPY packages/schema/package.json packages/schema/package.json
+COPY packages/hmi-ui/package.json packages/hmi-ui/package.json
+COPY packages/web-configurator/package.json packages/web-configurator/package.json
 
-# Copy source code
-COPY . .
+# Install dependencies (workspace)
+RUN pnpm install -w --frozen-lockfile
 
-# Build stage
-FROM base AS builder
+# Copy the rest of the repo
+COPY packages ./packages
+COPY configuration ./configuration
+COPY garmin-bundle ./garmin-bundle
+COPY scripts ./scripts
+COPY README.md ./
 
-# Build packages in the correct order
-RUN cd packages/schema && pnpm build
-RUN cd packages/hmi-ui && pnpm build  
-# Skip prebuild script and run build directly for web-configurator
-RUN cd packages/web-configurator && pnpm run build:skip-prebuild
+# Build shared schema
+RUN pnpm --filter @gcg/schema build
 
-# Production stage
-FROM nginx:alpine AS production
+# Build + stage HMI bundle to garmin-bundle/web (used by configurator export)
+RUN pnpm --filter @gcg/hmi-ui deploy:web
 
-# Copy built files from builder stage
-COPY --from=builder /app/packages/web-configurator/dist /usr/share/nginx/html
+# Build web-configurator (includes prebuild copy of deployment-package)
+RUN pnpm --filter @gcg/web-configurator build
 
-# Copy nginx configuration for SPA
-RUN echo 'server { \
-    listen 3000; \
-    server_name localhost; \
-    root /usr/share/nginx/html; \
-    index index.html; \
-    location / { \
-        try_files $uri $uri/ /index.html; \
-    } \
-    location /api { \
-        return 404; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+# ---- Runtime ----
+FROM node:18-alpine AS runtime
+ENV NODE_ENV=production
+WORKDIR /app
 
-# Update nginx to listen on port 3000
-RUN sed -i 's/listen 80;/listen 3000;/' /etc/nginx/conf.d/default.conf
+# Copy built configurator output to /app/dist so Fly statics can serve it
+COPY --from=builder /app/packages/web-configurator/dist /app/dist
 
+# Tiny static server for health checks and flexibility
+COPY server.mjs /app/server.mjs
 EXPOSE 3000
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.mjs"]

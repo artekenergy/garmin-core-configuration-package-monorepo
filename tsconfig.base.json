@@ -30,5 +30,13 @@
     "incremental": true,
     "composite": true
   },
-  "exclude": ["node_modules", "dist", "build", "coverage"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "web",
+    "garmin-bundle",
+    "packages/web-configurator/public/deployment-package"
+  ]
 }

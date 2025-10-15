@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Deploy HMI UI to /web/ directory
-# This script builds the HMI UI and copies it to the web directory for device deployment
+# Deploy HMI UI to garmin-bundle/web directory
+# This script builds the HMI UI and copies it to the garmin-bundle/web directory for device deployment
 
 set -e  # Exit on error
 
@@ -9,11 +9,12 @@ echo "🔨 Building HMI UI..."
 pnpm build
 
 echo ""
-echo "📦 Deploying to /web/ directory..."
+echo "📦 Deploying to garmin-bundle/web directory..."
 
 # Define paths
 DIST_DIR="./dist"
-WEB_DIR="../../web"
+WEB_DIR="../../garmin-bundle/web"
+GARMIN_BUNDLE_DIR="../../garmin-bundle"
 
 # Copy the main HTML file to index1.html
 echo "  → Copying index.html to index1.html"
@@ -27,6 +28,28 @@ cp -r "$DIST_DIR/assets" "$WEB_DIR/hmi-assets"
 # Copy schema.json
 echo "  → Copying schema.json"
 cp "$DIST_DIR/schema.json" "$WEB_DIR/schema.json"
+
+# Copy hardware configs to configuration directory
+CONFIG_DIR="$GARMIN_BUNDLE_DIR/configuration"
+mkdir -p "$CONFIG_DIR"
+HW_CONFIG_SOURCE="../web-configurator/public"
+if [ -f "$HW_CONFIG_SOURCE/hardware-config-core.json" ]; then
+  echo "  → Copying hardware configs to configuration directory"
+  cp "$HW_CONFIG_SOURCE/hardware-config-core.json" "$CONFIG_DIR/hardware-config.json"
+  cp "$HW_CONFIG_SOURCE/hardware-config-core-lite.json" "$CONFIG_DIR/hardware-config-core-lite.json" 2>/dev/null || true
+else
+  echo "  ⚠ Hardware config files not found at $HW_CONFIG_SOURCE - skipping"
+fi
+
+# Copy icon library from web-configurator
+ICONS_SOURCE="../web-configurator/public/icons"
+if [ -d "$ICONS_SOURCE" ]; then
+  echo "  → Copying icon library"
+  rm -rf "$WEB_DIR/icons"
+  cp -r "$ICONS_SOURCE" "$WEB_DIR/icons"
+else
+  echo "  ⚠ Icon library not found at $ICONS_SOURCE - skipping"
+fi
 
 # Generate cache-busting timestamp
 CACHE_BUST=$(date +%s)
@@ -54,10 +77,10 @@ PROJECT_ROOT=$(dirname "$ABS_WEB_DIR")
 ZIP_FILE="$PROJECT_ROOT/$ZIP_FILENAME"
 
 # Create zip file including web, services, and configuration directories
-echo "  → Packaging web/ directory..."
-echo "  → Packaging services/ directory..."
-echo "  → Packaging configuration/ directory..."
-(cd "$PROJECT_ROOT" && zip -r "$ZIP_FILE" \
+echo "  → Packaging garmin-bundle/web directory..."
+echo "  → Packaging garmin-bundle/services directory..."
+echo "  → Packaging garmin-bundle/configuration directory..."
+(cd "$GARMIN_BUNDLE_DIR" && zip -r "$ZIP_FILE" \
   web \
   services \
   configuration \
@@ -89,7 +112,7 @@ echo ""
 echo "📦 Deployment package created:"
 echo "  - Location: $ZIP_FILE"
 echo "  - Size: $ZIP_SIZE"
-echo "  - Includes: web/, services/, configuration/"
+echo "  - Includes: garmin-bundle/web/, garmin-bundle/services/, garmin-bundle/configuration/"
 echo ""
 echo "🔄 Web-configurator export package synced with latest HMI UI"
 echo ""

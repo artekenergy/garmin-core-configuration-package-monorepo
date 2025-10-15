@@ -18,7 +18,7 @@ import { useState } from 'preact/hooks';
 import type { ButtonComponent } from '@gcg/schema';
 import { getWebSocketAdapter } from '../state/websocket-state';
 import { createToggleMessage, resolveBindingToChannelId } from '../utils/binding-resolver';
-import { schemaSignal } from '../state/schema-signal';
+import { Icon } from './Icon';
 
 interface ButtonProps {
   component: ButtonComponent;
@@ -32,18 +32,7 @@ export function Button(props: ButtonProps) {
   // Track if button is currently pressed for immediate visual feedback
   const [isPressed, setIsPressed] = useState(false);
 
-  // 2. RESOLVE ICON DATA
-  let iconSvg: string | null = null;
-  if (component.icon && schemaSignal.value && schemaSignal.value.icons) {
-    const iconDef = schemaSignal.value.icons.find(function (icon) {
-      return icon.id === component.icon;
-    });
-    if (iconDef && iconDef.data) {
-      iconSvg = iconDef.data;
-    }
-  }
-
-  // 3. RESOLVE SIGNAL ID
+  // 2. RESOLVE SIGNAL ID
   let signalId: number | null = null;
   if (component.bindings && component.bindings.action) {
     signalId = resolveBindingToChannelId(component.bindings.action, 'momentary');
@@ -168,8 +157,10 @@ export function Button(props: ButtonProps) {
           {/* Round variant - icon OR ON/OFF text inside circle */}
           {variant === 'round' && (
             <>
-              {iconSvg ? (
-                <div className="gcg-button__icon" dangerouslySetInnerHTML={{ __html: iconSvg }} />
+              {component.icon ? (
+                <div className="gcg-button__icon">
+                  <Icon iconId={component.icon} size="md" />
+                </div>
               ) : (
                 <span className="gcg-button__label">ON/OFF</span>
               )}
@@ -177,8 +168,10 @@ export function Button(props: ButtonProps) {
           )}
 
           {/* Default/rectangular variants - can optionally show icon inside button */}
-          {variant !== 'round' && iconSvg && (
-            <div className="gcg-button__icon" dangerouslySetInnerHTML={{ __html: iconSvg }} />
+          {variant !== 'round' && component.icon && (
+            <div className="gcg-button__icon">
+              <Icon iconId={component.icon} size="sm" />
+            </div>
           )}
         </button>
       </div>

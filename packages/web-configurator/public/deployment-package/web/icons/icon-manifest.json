@@ -26,11 +26,6 @@
           "path": "icons/Inverter.svg"
         },
         {
-          "label": "Kind12-1",
-          "path": "icons/Kind12-1.svg"
-        },
-        { "label": "Kind12", "path": "icons/Kind12.svg" },
-        {
           "label": "Water Dump",
           "path": "icons/Water Dump.svg"
         },

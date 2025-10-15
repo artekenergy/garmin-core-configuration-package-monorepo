@@ -11,6 +11,7 @@ import ComponentPalette from '../components/ComponentPalette';
 import type { Component } from '@gcg/schema';
 import { CONTROL_COMPONENT_MAP } from '../constants/hardware';
 import { regenerateTabContent } from '../utils/tabGenerator';
+import { debug } from '../utils/debug';
 import styles from './EditorPage.module.css';
 
 export default function EditorPage() {
@@ -48,7 +49,7 @@ export default function EditorPage() {
       const currentTab = schema.tabs.find((t) => t.id === selectedTabId);
       const section = currentTab?.sections.find((s) => s.id === selectedSectionId);
 
-      console.log('[DEBUG] Home tab section matching:', {
+      debug.log('[DEBUG] Home tab section matching:', {
         sectionId: section?.id,
         selectedSectionId,
         sectionType: section?.type,
@@ -56,7 +57,7 @@ export default function EditorPage() {
 
       // Return the section's type property (or null if not set)
       const type = section?.type || null;
-      console.log('[DEBUG] Section selected, returning type:', type);
+      debug.log('[DEBUG] Section selected, returning type:', type);
       return type;
     }
 
@@ -127,42 +128,64 @@ export default function EditorPage() {
       // Handle signal value components (gauges, indicators)
       const componentId = `comp-signal-${channelId}`;
 
+      // Map palette signal aliases to hardware signal channel IDs
+      const aliasToChannel: Record<string, string> = {
+        // Power/BMS
+        'battery-voltage': 'signal-bms-battery-voltage',
+        'battery-current': 'signal-bms-battery-amperage',
+        'battery-soc': 'signal-bms-battery-state-of-charge',
+        // Solar
+        'solar-voltage': 'signal-primary-solar-voltage',
+        // No direct power signal available yet; bind to amperage as a placeholder source
+        'solar-power': 'signal-primary-solar-amperage',
+        // Plumbing and HVAC aliases can be extended here when hardware signals exist
+      };
+
+      const resolvedChannel = aliasToChannel[channelId] || null;
+
       let label = channelId;
       let unit = '';
       let min = 0;
       let max = 100;
+      let decimals = 0;
 
-      // Configure based on signal type
+      // Configure default display ranges/labels based on alias
       if (channelId.includes('voltage')) {
         label = channelId.includes('battery') ? 'Battery Voltage' : 'Solar Voltage';
         unit = 'V';
         min = 0;
         max = 16;
+        decimals = 1;
       } else if (channelId.includes('current')) {
         label = 'Battery Current';
         unit = 'A';
         min = -100;
         max = 100;
+        decimals = 1;
       } else if (channelId.includes('soc')) {
         label = 'State of Charge';
         unit = '%';
         min = 0;
         max = 100;
+        decimals = 0;
       } else if (channelId.includes('power')) {
         label = 'Solar Power';
         unit = 'W';
         min = 0;
         max = 1000;
+        decimals = 0;
       } else if (channelId.includes('tank')) {
         label = channelId.replace(/-/g, ' ').replace(/tank (\d+) level/, 'Tank $1 Level');
         unit = '%';
         min = 0;
         max = 100;
+        decimals = 0;
       } else if (channelId.includes('temp')) {
         label = 'Interior Temperature';
         unit = '°F';
         min = 40;
         max = 120;
+        decimals = 0;
       }
 
       newComponent = {
@@ -172,12 +195,21 @@ export default function EditorPage() {
         min,
         max,
         unit,
-        decimals: channelId.includes('voltage') || channelId.includes('current') ? 1 : 0,
+        decimals,
         bindings: {
-          value: {
-            type: 'static',
-            value: 0, // Default value, will be replaced at runtime
-          },
+          value: resolvedChannel
+            ? {
+                type: 'empirbus',
+                channel: resolvedChannel,
+                property: 'value',
+              }
+            : {
+                // Fallback to empirbus with the alias as channel so validator can flag it;
+                // encourages user to map to a real hardware signal instead of using static.
+                type: 'empirbus',
+                channel: channelId,
+                property: 'value',
+              },
         },
       };
     } else {
@@ -196,6 +228,7 @@ export default function EditorPage() {
           type: 'button',
           variant: 'round',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           action: mapping.action,
           bindings: {
             action: {
@@ -210,6 +243,7 @@ export default function EditorPage() {
           type: 'toggle',
           variant: 'round',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           bindings: {
             state: {
               type: 'empirbus',
@@ -222,6 +256,7 @@ export default function EditorPage() {
           id: componentId,
           type: 'dimmer',
           label: channel.label || `${channel.source} ${channel.channel}`,
+          icon: channel.icon,
           min: channel.range?.min ?? 0,
           max: channel.range?.max ?? 100,
           step: channel.range?.step ?? 1,

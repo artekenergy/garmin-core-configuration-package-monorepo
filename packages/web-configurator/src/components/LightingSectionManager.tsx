@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { debug } from '../utils/debug';
 import type { UISchema } from '@gcg/schema';
 import styles from './LightingSectionManager.module.css';
 
@@ -97,7 +98,7 @@ export default function LightingSectionManager({
         onAddComponent(data.channelId, data.componentType, sectionId);
       }
     } catch (error) {
-      console.error('Failed to parse drop data:', error);
+      debug.error('Failed to parse drop data:', error);
     }
   };
 

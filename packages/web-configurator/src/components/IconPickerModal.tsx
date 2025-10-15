@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { debug } from '../utils/debug';
 import styles from './IconPickerModal.module.css';
 
 interface IconManifest {
@@ -34,7 +35,7 @@ export default function IconPickerModal({
         const allIcons = manifest.groups.flatMap((group) => group.icons);
         setIcons(allIcons);
       })
-      .catch((err) => console.error('Failed to load icon manifest:', err));
+      .catch((err) => debug.error('Failed to load icon manifest:', err));
   }, []);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {

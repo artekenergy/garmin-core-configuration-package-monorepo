@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import type { UISchema } from '@gcg/schema';
 import { CONTROL_COMPONENT_MAP } from '../constants/hardware';
+import { debug } from '../utils/debug';
 import styles from './ComponentPalette.module.css';
 
 interface ComponentPaletteProps {
@@ -20,10 +21,10 @@ export default function ComponentPalette({
 
   // Auto-switch category when filterType changes
   useEffect(() => {
-    console.log('[DEBUG ComponentPalette] filterType changed to:', filterType);
+    debug.log('[DEBUG ComponentPalette] filterType changed to:', filterType);
     if (filterType === 'switching' || filterType === 'signal-values') {
       setSelectedCategory(filterType);
-      console.log('[DEBUG ComponentPalette] Auto-switched category to:', filterType);
+      debug.log('[DEBUG ComponentPalette] Auto-switched category to:', filterType);
     }
   }, [filterType]);
 

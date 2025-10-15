@@ -10,8 +10,8 @@
  * ES2017 compliant.
  */
 
-import type { Section as SectionType } from '@gcg/schema';
-import { ComponentRenderer } from './ComponentRenderer';
+import type { Section as SectionType, Component } from '@gcg/schema';
+import { COMPONENT_REGISTRY } from './registry';
 
 export interface SectionProps {
   section: SectionType;
@@ -28,8 +28,15 @@ export function Section(props: SectionProps) {
 
       {/* Component Grid */}
       <div className="gcg-section__grid">
-        {section.components.map(function (component) {
-          return <ComponentRenderer key={component.id} component={component} />;
+        {section.components.map(function (component: Component, index) {
+          const ComponentCtor = COMPONENT_REGISTRY[component.type];
+
+          if (!ComponentCtor) {
+            console.warn('Unknown component type:', component.type, component);
+            return null;
+          }
+
+          return <ComponentCtor key={component.id || index} component={component} />;
         })}
       </div>
     </div>

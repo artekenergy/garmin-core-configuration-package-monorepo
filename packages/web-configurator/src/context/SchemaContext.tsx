@@ -5,6 +5,7 @@ import {
   validateAllChannelBindings,
   type ChannelValidationError,
 } from '../utils/channelValidation';
+import { debug } from '../utils/debug';
 
 /**
  * Hardware channel info extracted from hardware-config.json
@@ -60,7 +61,7 @@ const defaultSchema: UISchema = {
     },
     solar: {
       enabled: false,
-      primaryArray: true,
+      primaryArray: false,
       auxiliaryArray: false,
     },
     batteryManagement: 'victron',
@@ -88,14 +89,10 @@ const defaultSchema: UISchema = {
     },
   },
   plumbing: {
-    enabled: true,
+    enabled: false,
     monitoringSource: 'cerbo-gx',
-    count: 3,
-    tanks: [
-      { type: 'fresh', name: '' },
-      { type: 'waste', name: '' },
-      { type: 'black', name: '' },
-    ],
+    count: 1,
+    tanks: [{ type: 'fresh', name: '' }],
   },
   accessories: {
     keypad: {
@@ -119,69 +116,23 @@ const defaultSchema: UISchema = {
       zonesPerModule: 2,
     },
   },
-  lightingTab: {
-    interior: {
-      enabled: true,
-      title: 'Interior',
-      icon: '💡',
-    },
-    exterior: {
-      enabled: true,
-      title: 'Exterior',
-      icon: '🌟',
-    },
-    rgb: {
-      enabled: false,
-      title: 'RGB',
-      icon: '🌈',
-    },
-  },
-  hvacTab: {
-    heating: {
-      enabled: false,
-      title: 'Heating',
-      icon: '🔥',
-    },
-    cooling: {
-      enabled: false,
-      title: 'Cooling',
-      icon: '❄️',
-    },
-    ventilation: {
-      enabled: false,
-      title: 'Ventilation',
-      icon: '💨',
-    },
-  },
-  switchingTab: {
-    switches: {
-      enabled: true,
-      title: 'Switches',
-      icon: '🔌',
-    },
-    accessories: {
-      enabled: true,
-      title: 'Accessories',
-      icon: '⚡',
-    },
-  },
   tabs: [
     {
       id: 'tab-home',
       title: 'Home',
       preset: 'home',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-home-1',
           title: 'Quick Controls',
-          enabled: true,
+          enabled: false,
           components: [],
         },
         {
           id: 'section-home-2',
           title: 'Status',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -190,18 +141,18 @@ const defaultSchema: UISchema = {
       id: 'tab-lighting',
       title: 'Lighting',
       preset: 'lighting',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-lighting-interior',
           title: 'Interior Lights',
-          enabled: true,
+          enabled: false,
           components: [],
         },
         {
           id: 'section-lighting-exterior',
           title: 'Exterior Lights',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -210,12 +161,12 @@ const defaultSchema: UISchema = {
       id: 'tab-power',
       title: 'Power',
       preset: 'power',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-power',
           title: 'Power Status',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -238,12 +189,12 @@ const defaultSchema: UISchema = {
       id: 'tab-switching',
       title: 'Switching',
       preset: 'switching',
-      enabled: true,
+      enabled: false,
       sections: [
         {
           id: 'section-switches',
           title: 'Switches',
-          enabled: true,
+          enabled: false,
           components: [],
         },
       ],
@@ -284,7 +235,7 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
         channelErrors,
         downloadSchema: () => {
           if (!schema) {
-            console.warn('No schema available');
+            debug.warn('No schema available');
             return;
           }
           const schemaJson = JSON.stringify(schema, null, 2);
@@ -297,20 +248,20 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
           link.click();
           document.body.removeChild(link);
           URL.revokeObjectURL(url);
-          console.log('✅ Schema downloaded!');
+          debug.log('✅ Schema downloaded!');
         },
         copySchemaToClipboard: async () => {
           if (!schema) {
-            console.warn('No schema available');
+            debug.warn('No schema available');
             return;
           }
           try {
             const schemaJson = JSON.stringify(schema, null, 2);
             await navigator.clipboard.writeText(schemaJson);
-            console.log('✅ Schema copied to clipboard!');
+            debug.log('✅ Schema copied to clipboard!');
           } catch (err) {
-            console.error('❌ Failed to copy to clipboard:', err);
-            console.log('Schema JSON:', JSON.stringify(schema, null, 2));
+            debug.error('❌ Failed to copy to clipboard:', err);
+            debug.log('Schema JSON:', JSON.stringify(schema, null, 2));
           }
         },
         exportDOMSnapshot: () => {
@@ -324,22 +275,22 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
             channelErrors: channelErrors,
             domSnapshot: {
               title: document.title,
-              forms: Array.from(document.forms).map(form => ({
+              forms: Array.from(document.forms).map((form) => ({
                 name: form.name,
                 action: form.action,
                 method: form.method,
-                elements: Array.from(form.elements).map(el => ({
+                elements: Array.from(form.elements).map((el) => ({
                   name: (el as any).name,
                   type: (el as any).type,
                   value: (el as any).value,
-                  checked: (el as any).checked
-                }))
+                  checked: (el as any).checked,
+                })),
               })),
               localStorage: { ...localStorage },
-              sessionStorage: { ...sessionStorage }
-            }
+              sessionStorage: { ...sessionStorage },
+            },
           };
-          
+
           const snapshotJson = JSON.stringify(snapshot, null, 2);
           const dataBlob = new Blob([snapshotJson], { type: 'application/json' });
           const url = URL.createObjectURL(dataBlob);
@@ -350,8 +301,8 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
           link.click();
           document.body.removeChild(link);
           URL.revokeObjectURL(url);
-          console.log('✅ DOM snapshot downloaded!');
-        }
+          debug.log('✅ DOM snapshot downloaded!');
+        },
       };
     }
   }, [schema, validationResult, hardwareChannels, channelErrors]);
@@ -373,9 +324,9 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
       setChannelErrors(errors);
 
       if (errors.length > 0) {
-        console.warn(`⚠️ Found ${errors.length} channel binding errors:`, errors);
+        debug.warn(`⚠️ Found ${errors.length} channel binding errors:`, errors);
       } else {
-        console.log('✅ All channel bindings are valid');
+        debug.log('✅ All channel bindings are valid');
       }
     } else {
       setChannelErrors([]);
@@ -422,7 +373,7 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
         typeof hardwareConfigData !== 'object' ||
         !('outputs' in hardwareConfigData)
       ) {
-        console.error('Invalid hardware config format');
+        debug.error('Invalid hardware config format');
         return;
       }
 
@@ -456,9 +407,9 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
 
       setHardwareChannels(channels);
 
-      console.log(`✅ Loaded ${channels.length} hardware channels from config`);
+      debug.log(`✅ Loaded ${channels.length} hardware channels from config`);
     } catch (error) {
-      console.error('Failed to parse hardware config:', error);
+      debug.error('Failed to parse hardware config:', error);
     }
   };
 

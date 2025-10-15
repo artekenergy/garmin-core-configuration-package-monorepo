@@ -13,11 +13,11 @@ cd packages/hmi-ui
 pnpm deploy
 ```
 
-**Output**: Files copied to `/web/` directory
+**Output (local)**: Files copied to `garmin-bundle/web/` directory
 
-- `/web/index1.html` ← Your HMI UI
-- `/web/hmi-assets/` ← JS/CSS bundles
-- `/web/schema.json` ← Test schema (or use configurator export)
+- `garmin-bundle/web/index1.html` ← Your HMI UI
+- `garmin-bundle/web/hmi-assets/` ← JS/CSS bundles
+- `garmin-bundle/web/schema.json` ← Test schema (or use configurator export)
 
 ---
 
@@ -30,7 +30,7 @@ If you want to test with a real configuration instead of the test schema:
 3. Go to Export page
 4. Download `config.zip`
 5. Extract `schema.json`
-6. Copy to `/web/schema.json`
+6. Copy to `garmin-bundle/web/schema.json`
 7. Re-run: `pnpm deploy`
 
 ---
@@ -39,7 +39,7 @@ If you want to test with a real configuration instead of the test schema:
 
 **Create .ebp file** (using EmpirBus tools):
 
-- Package the entire `/web/` directory
+- Package the contents of `garmin-bundle/web/` as `web/` in the package
 - Output: `configuration.ebp`
 
 **Upload to Garmin**:

@@ -1,4 +1,5 @@
 import type { UISchema, Component } from '@gcg/schema';
+import { debug } from '../utils/debug';
 import styles from './PlumbingSectionManager.module.css';
 
 interface PlumbingSectionManagerProps {
@@ -108,7 +109,7 @@ export default function PlumbingSectionManager({
       onAddComponent(data.channelId, data.componentType, sectionId);
       onSelectSection(sectionId);
     } catch (error) {
-      console.error('Failed to parse component data:', error);
+      debug.error('Failed to parse component data:', error);
     }
   };
 

@@ -1,0 +1,11 @@
+# Ensure LF line endings
+* text=auto eol=lf
+
+# Treat EBP exports as binary
+*.ebp binary
+
+# Do not diff built artifacts by default
+*.min.js -diff
+*.map -diff
+dist/** -diff
+build/** -diff

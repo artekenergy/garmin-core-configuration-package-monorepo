@@ -21,6 +21,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  background: var(--theme-secondary);
 }
 
 /* ===========================
@@ -43,10 +44,6 @@
 
   .gcg-tab-bar__icon {
     font-size: 1.25rem;
-  }
-
-  .gcg-tab-bar__label {
-    font-size: 0.625rem;
   }
 
   .gcg-main-content {

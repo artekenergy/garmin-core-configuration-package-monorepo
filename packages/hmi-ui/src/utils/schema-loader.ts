@@ -2,6 +2,7 @@ import { validateSchema } from '@gcg/schema';
 import type { UISchema } from '@gcg/schema';
 import { schemaSignal, isLoadingSignal, errorSignal } from '../state/schema-signal';
 import { setupAutoSubscription } from './schema-signals';
+import { regenerateTabContent } from './tabGenerator';
 
 /**
  * Schema loader configuration
@@ -22,11 +23,14 @@ interface SchemaLoaderConfig {
  * @returns Promise that resolves when schema is loaded and validated
  */
 export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void> {
-  const {
-    schemaPath = '/new-hmi-configuration-schema-2.json',
-    schema: providedSchema,
-    autoSubscribe = true,
-  } = config;
+  const { schemaPath = '/schema.json', schema: providedSchema, autoSubscribe = true } = config;
+
+  console.log(
+    '[Schema-Loader] Starting schema load, path:',
+    schemaPath,
+    'autoSubscribe:',
+    autoSubscribe
+  );
 
   // Set loading state
   isLoadingSignal.value = true;
@@ -64,13 +68,27 @@ export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void>
       throw new Error('Schema validation failed: ' + errorMessages);
     }
 
-    // Success! Store the validated schema
+    // Success! Store the validated schema with derived tab metadata
     const validatedSchema = result.data as UISchema;
-    schemaSignal.value = validatedSchema;
+    const derivedSchema = regenerateTabContent(validatedSchema);
+    schemaSignal.value = derivedSchema;
+
+    console.log(
+      '[Schema-Loader] Schema loaded successfully, outputs:',
+      derivedSchema.hardware?.outputs?.length || 0
+    );
 
     // Setup auto-subscription to signals
-    if (autoSubscribe && validatedSchema.hardware) {
-      setupAutoSubscription(validatedSchema);
+    if (autoSubscribe && derivedSchema.hardware) {
+      console.log('[Schema-Loader] Calling setupAutoSubscription');
+      setupAutoSubscription(derivedSchema);
+    } else {
+      console.log(
+        '[Schema-Loader] Skipping auto-subscription, autoSubscribe:',
+        autoSubscribe,
+        'has hardware:',
+        !!derivedSchema.hardware
+      );
     }
   } catch (err) {
     // Handle any errors

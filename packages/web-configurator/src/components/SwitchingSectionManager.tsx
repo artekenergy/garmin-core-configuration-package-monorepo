@@ -1,4 +1,5 @@
 import type { UISchema, Component } from '@gcg/schema';
+import { debug } from '../utils/debug';
 import styles from './SwitchingSectionManager.module.css';
 
 interface SwitchingSectionManagerProps {
@@ -72,7 +73,7 @@ export default function SwitchingSectionManager({
 
   const updateCustomSection = (updates: Partial<typeof switchingConfig.customSection>) => {
     if (!switchingConfig.customSection) return;
-    
+
     updateSwitchingConfig({
       customSection: {
         ...switchingConfig.customSection,
@@ -115,7 +116,7 @@ export default function SwitchingSectionManager({
       onAddComponent(data.channelId, data.componentType, sectionId);
       onSelectSection(sectionId);
     } catch (error) {
-      console.error('Failed to parse component data:', error);
+      debug.error('Failed to parse component data:', error);
     }
   };
 

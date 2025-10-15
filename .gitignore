@@ -2,11 +2,11 @@
 node_modules/
 .pnpm-store/
 .pnpm-debug.log*
+.pnpm-cache/
 
-# Build outputs
-dist/
-build/
-*.tsbuildinfo
+# Task runners/build caches
+.turbo/
+.cache/
 
 # Testing
 coverage/
@@ -29,6 +29,13 @@ coverage/
 *~
 .DS_Store
 
+# VS Code workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # OS
 Thumbs.db
 Desktop.ini
@@ -36,7 +43,9 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.temp
-.cache/
+# Editor/backup files
+**/*.bak
+# Local web assets (copied from device or built output)
 
 # Debug
 npm-debug.log*
@@ -48,6 +57,5 @@ pnpm-debug.log*
 package-lock.json
 yarn.lock
 
-# Build artifacts
-*.js.map
-*.d.ts.map
+# TypeScript build info
+**/tsconfig.tsbuildinfo

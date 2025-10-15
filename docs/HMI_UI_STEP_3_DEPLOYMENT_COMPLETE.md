@@ -62,11 +62,11 @@ Built **3 out of 6** core UI components:
 
 - **File**: `scripts/deploy-to-web.sh`
 - **Functionality**:
-  1. Builds production HMI UI
-  2. Copies `dist/index.html` → `/web/index1.html`
-  3. Copies `dist/assets/` → `/web/hmi-assets/`
-  4. Copies `dist/schema.json` → `/web/schema.json`
-  5. Updates asset paths in HTML
+   1. Builds production HMI UI
+   2. Copies `dist/index.html` → `garmin-bundle/web/index1.html`
+   3. Copies `dist/assets/` → `garmin-bundle/web/hmi-assets/`
+   4. Copies `dist/schema.json` → `garmin-bundle/web/schema.json`
+   5. Updates asset paths in HTML
 
 #### **NPM Script**
 
@@ -83,9 +83,9 @@ Built **3 out of 6** core UI components:
 
 ## 📁 Files Created/Modified
 
-### Created Files:
+### Created Files
 
-```
+```text
 packages/hmi-ui/src/components/
 ├── Toggle.tsx                    (63 lines)
 ├── Button.tsx                    (78 lines)
@@ -102,14 +102,14 @@ Root:
 └── HMI_DEPLOYMENT_GUIDE.md       (226 lines)
 ```
 
-### Modified Files:
+### Modified Files
 
-```
+```text
 packages/hmi-ui/package.json      (added "deploy" script)
 packages/hmi-ui/public/schema.json (added indicator component)
-web/index1.html                    (deployed from build)
-web/hmi-assets/                    (created, contains build output)
-web/schema.json                    (deployed from build)
+garmin-bundle/web/index1.html      (deployed from build)
+garmin-bundle/web/hmi-assets/      (created, contains build output)
+garmin-bundle/web/schema.json      (deployed from build)
 ```
 
 ---
@@ -159,10 +159,10 @@ web/schema.json                    (deployed from build)
 
 - **Ready to test**: Deployment script complete
 - **Process**:
-  1. Run `pnpm deploy` from `packages/hmi-ui`
-  2. Create EmpirBus package (.ebp) with `/web/` contents
-  3. Upload to Garmin display
-  4. Access HMI from display menu
+   1. Run `pnpm deploy` from `packages/hmi-ui`
+   2. Create EmpirBus package (.ebp) with the `web/` directory contents, sourced from `garmin-bundle/web/`
+   3. Upload to Garmin display
+   4. Access HMI from display menu
 
 ### Known Limitations
 
