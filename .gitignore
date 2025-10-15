@@ -43,6 +43,8 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.temp
+# Editor/backup files
+**/*.bak
 # Local web assets (copied from device or built output)
 
 # Debug
