@@ -11,6 +11,7 @@ export const GaugeComponentBaseSchema = BaseComponentSchema.extend({
     max: z.number().optional(),
     unit: z.string().max(20).optional(),
     decimals: z.number().int().min(0).max(4).optional().default(0),
+    demoValue: z.number().optional(), // Value to use when demoMode is enabled
     bindings: z.object({
         value: BindingSchema,
     }),

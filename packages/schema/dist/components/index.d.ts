@@ -94,8 +94,8 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "toggle";
     id: string;
+    type: "toggle";
     label: string;
     bindings: {
         state: {
@@ -118,8 +118,8 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     visible?: boolean | undefined;
     variant?: "default" | "switch" | "checkbox" | "round" | undefined;
 }, {
-    type: "toggle";
     id: string;
+    type: "toggle";
     label: string;
     bindings: {
         state: {
@@ -337,8 +337,8 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         } | undefined;
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "button";
     id: string;
+    type: "button";
     label: string;
     bindings: {
         state?: {
@@ -373,10 +373,10 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
-    variant?: "primary" | "secondary" | "round" | "danger" | undefined;
+    variant?: "round" | "primary" | "secondary" | "danger" | undefined;
 }, {
-    type: "button";
     id: string;
+    type: "button";
     label: string;
     bindings: {
         state?: {
@@ -411,7 +411,7 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
-    variant?: "primary" | "secondary" | "round" | "danger" | undefined;
+    variant?: "round" | "primary" | "secondary" | "danger" | undefined;
 }>, z.ZodObject<{
     id: z.ZodString;
     label: z.ZodString;
@@ -492,12 +492,11 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "dimmer";
     id: string;
+    type: "dimmer";
     label: string;
     min: number;
     max: number;
-    step: number;
     bindings: {
         intensity: {
             type: "empirbus";
@@ -513,13 +512,14 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
             value?: unknown;
         };
     };
+    step: number;
     icon?: string | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
 }, {
-    type: "dimmer";
     id: string;
+    type: "dimmer";
     label: string;
     bindings: {
         intensity: {
@@ -537,12 +537,12 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
-    step?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
+    step?: number | undefined;
 }>, z.ZodObject<{
     id: z.ZodString;
     label: z.ZodString;
@@ -557,6 +557,7 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     max: z.ZodOptional<z.ZodNumber>;
     unit: z.ZodOptional<z.ZodString>;
     decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
+    demoValue: z.ZodOptional<z.ZodNumber>;
     bindings: z.ZodObject<{
         value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
             type: z.ZodLiteral<"empirbus">;
@@ -625,36 +626,37 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
-    bindings: {
-        value: {
-            type: "empirbus";
-            channel: string;
-            property?: "value" | "state" | "intensity" | undefined;
-        } | {
-            type: "nmea2000";
-            pgn: number;
-            field: string;
-            instance?: number | undefined;
-        } | {
-            type: "static";
-            value?: unknown;
-        };
-    };
     decimals: number;
+    bindings: {
+        value: {
+            type: "empirbus";
+            channel: string;
+            property?: "value" | "state" | "intensity" | undefined;
+        } | {
+            type: "nmea2000";
+            pgn: number;
+            field: string;
+            instance?: number | undefined;
+        } | {
+            type: "static";
+            value?: unknown;
+        };
+    };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
+    demoValue?: number | undefined;
 }, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
     bindings: {
         value: {
@@ -672,14 +674,15 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
+    demoValue?: number | undefined;
 }>, z.ZodObject<{
     id: z.ZodString;
     label: z.ZodString;
@@ -759,8 +762,8 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "indicator";
     id: string;
+    type: "indicator";
     label: string;
     bindings: {
         state: {
@@ -782,10 +785,10 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "icon" | "led" | "badge" | undefined;
-    color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
+    color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
 }, {
-    type: "indicator";
     id: string;
+    type: "indicator";
     label: string;
     bindings: {
         state: {
@@ -807,7 +810,7 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "icon" | "led" | "badge" | undefined;
-    color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
+    color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
 }>, z.ZodObject<{
     id: z.ZodString;
     label: z.ZodString;
@@ -891,12 +894,11 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "slider";
     id: string;
+    type: "slider";
     label: string;
     min: number;
     max: number;
-    step: number;
     bindings: {
         value: {
             type: "empirbus";
@@ -912,6 +914,7 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
             value?: unknown;
         };
     };
+    step: number;
     orientation: "horizontal" | "vertical";
     showValue: boolean;
     icon?: string | undefined;
@@ -920,8 +923,8 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
     visible?: boolean | undefined;
     unit?: string | undefined;
 }, {
-    type: "slider";
     id: string;
+    type: "slider";
     label: string;
     min: number;
     max: number;
@@ -941,11 +944,11 @@ export declare const ComponentSchema: z.ZodUnion<[z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    step?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     unit?: string | undefined;
+    step?: number | undefined;
     orientation?: "horizontal" | "vertical" | undefined;
     showValue?: boolean | undefined;
 }>]>;

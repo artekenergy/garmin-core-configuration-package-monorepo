@@ -1,5 +1,6 @@
 {
   "schemaVersion": "0.1.0",
+  "demoMode": false,
   "metadata": {
     "name": "New HMI Configuration",
     "version": "1.0.0",
@@ -473,11 +474,13 @@
               "min": 0,
               "max": 100,
               "unit": "%",
-              "decimals": 0,
+              "decimals": 1,
+              "demoValue": 85.5,
               "bindings": {
                 "value": {
                   "type": "empirbus",
-                  "channel": "battery-soc"
+                  "channel": "battery-soc",
+                  "property": "value"
                 }
               }
             },
@@ -488,11 +491,13 @@
               "min": 0,
               "max": 16,
               "unit": "V",
-              "decimals": 1,
+              "decimals": 2,
+              "demoValue": 13.25,
               "bindings": {
                 "value": {
                   "type": "empirbus",
-                  "channel": "signal-primary-solar-voltage"
+                  "channel": "signal-primary-solar-voltage",
+                  "property": "value"
                 }
               }
             }

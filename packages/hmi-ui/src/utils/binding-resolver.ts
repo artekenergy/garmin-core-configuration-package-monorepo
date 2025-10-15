@@ -10,6 +10,10 @@
 import type { Binding } from '@gcg/schema';
 import { schemaSignal } from '../state/schema-signal';
 
+// Extend known signal keys to include 'value' used by numeric gauges
+type SignalKey = 'toggle' | 'momentary' | 'dimmer' | 'value';
+type ExtendedSignals = Partial<Record<SignalKey, number | null>>;
+
 /**
  * Resolve a binding to a signal ID using the loaded schema
  *
@@ -18,7 +22,7 @@ import { schemaSignal } from '../state/schema-signal';
  */
 export function resolveBindingToChannelId(
   binding: Binding,
-  action?: 'toggle' | 'momentary' | 'dimmer'
+  action?: 'toggle' | 'momentary' | 'dimmer' | 'value'
 ): number | null {
   if (!binding) {
     return null;
@@ -52,16 +56,24 @@ export function resolveBindingToChannelId(
       }
 
       // If output has signals and action is specified, return the signal ID
-      if (output.signals && action && output.signals[action]) {
+      const sigs = (output.signals as unknown) as ExtendedSignals | undefined;
+      if (sigs && action && sigs[action] != null) {
         console.log(
           'Resolved',
           channelRef,
           'with action',
           action,
           'to signal',
-          output.signals[action]
+          sigs[action]
         );
-        return output.signals[action];
+        return Number(sigs[action]);
+      }
+
+      // If no action specified and a numeric 'value' signal exists, prefer that for read-only gauges
+      if (sigs && typeof sigs.value === 'number') {
+        const valueSignal = sigs.value as number;
+        console.log('Resolved', channelRef, 'to value signal', valueSignal);
+        return valueSignal;
       }
 
       // Fallback to channel number for backward compatibility

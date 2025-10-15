@@ -16,6 +16,7 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
     max: z.ZodOptional<z.ZodNumber>;
     unit: z.ZodOptional<z.ZodString>;
     decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
+    demoValue: z.ZodOptional<z.ZodNumber>;
     bindings: z.ZodObject<{
         value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
             type: z.ZodLiteral<"empirbus">;
@@ -84,36 +85,37 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
-    bindings: {
-        value: {
-            type: "empirbus";
-            channel: string;
-            property?: "value" | "state" | "intensity" | undefined;
-        } | {
-            type: "nmea2000";
-            pgn: number;
-            field: string;
-            instance?: number | undefined;
-        } | {
-            type: "static";
-            value?: unknown;
-        };
-    };
     decimals: number;
+    bindings: {
+        value: {
+            type: "empirbus";
+            channel: string;
+            property?: "value" | "state" | "intensity" | undefined;
+        } | {
+            type: "nmea2000";
+            pgn: number;
+            field: string;
+            instance?: number | undefined;
+        } | {
+            type: "static";
+            value?: unknown;
+        };
+    };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
+    demoValue?: number | undefined;
 }, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
     bindings: {
         value: {
@@ -131,14 +133,15 @@ export declare const GaugeComponentBaseSchema: z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
+    demoValue?: number | undefined;
 }>;
 export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     id: z.ZodString;
@@ -154,6 +157,7 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
     max: z.ZodOptional<z.ZodNumber>;
     unit: z.ZodOptional<z.ZodString>;
     decimals: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
+    demoValue: z.ZodOptional<z.ZodNumber>;
     bindings: z.ZodObject<{
         value: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
             type: z.ZodLiteral<"empirbus">;
@@ -222,36 +226,37 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
-    bindings: {
-        value: {
-            type: "empirbus";
-            channel: string;
-            property?: "value" | "state" | "intensity" | undefined;
-        } | {
-            type: "nmea2000";
-            pgn: number;
-            field: string;
-            instance?: number | undefined;
-        } | {
-            type: "static";
-            value?: unknown;
-        };
-    };
     decimals: number;
+    bindings: {
+        value: {
+            type: "empirbus";
+            channel: string;
+            property?: "value" | "state" | "intensity" | undefined;
+        } | {
+            type: "nmea2000";
+            pgn: number;
+            field: string;
+            instance?: number | undefined;
+        } | {
+            type: "static";
+            value?: unknown;
+        };
+    };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
+    demoValue?: number | undefined;
 }, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
     bindings: {
         value: {
@@ -269,45 +274,47 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
+    demoValue?: number | undefined;
 }>, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
-    bindings: {
-        value: {
-            type: "empirbus";
-            channel: string;
-            property?: "value" | "state" | "intensity" | undefined;
-        } | {
-            type: "nmea2000";
-            pgn: number;
-            field: string;
-            instance?: number | undefined;
-        } | {
-            type: "static";
-            value?: unknown;
-        };
-    };
     decimals: number;
+    bindings: {
+        value: {
+            type: "empirbus";
+            channel: string;
+            property?: "value" | "state" | "intensity" | undefined;
+        } | {
+            type: "nmea2000";
+            pgn: number;
+            field: string;
+            instance?: number | undefined;
+        } | {
+            type: "static";
+            value?: unknown;
+        };
+    };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
+    demoValue?: number | undefined;
 }, {
-    type: "gauge";
     id: string;
+    type: "gauge";
     label: string;
     bindings: {
         value: {
@@ -325,14 +332,15 @@ export declare const GaugeComponentSchema: z.ZodEffects<z.ZodObject<{
         };
     };
     icon?: string | undefined;
-    min?: number | undefined;
-    max?: number | undefined;
     tooltip?: string | undefined;
     disabled?: boolean | undefined;
     visible?: boolean | undefined;
     variant?: "circular" | "linear" | "numeric" | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
     unit?: string | undefined;
     decimals?: number | undefined;
+    demoValue?: number | undefined;
 }>;
 export type GaugeComponent = z.infer<typeof GaugeComponentSchema>;
 //# sourceMappingURL=gauge.d.ts.map
