@@ -60,8 +60,16 @@ yarn.lock
 # Build artifacts
 *.js.map
 *.d.ts.map
+packages/**/dist/
+garmin-bundle/
 packages/web-configurator/public/deployment-package/
 packages/web-configurator/public/hmi-dist/
+
+# TypeScript build info
+**/tsconfig.tsbuildinfo
+
+# Deployment zips
+garmin-bundle/*.zip
 
 # Auto-copied hardware configs (source of truth: configuration/)
 packages/hmi-ui/public/hardware-config*.json
