@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+pnpm-store
+.pnpm-store
+dist
+**/dist
+.git
+.github
+.devcontainer
+.DS_Store
+garmin-bundle/garmin-hmi-deployment-*.zip
+packages/web-configurator/public/deployment-package
+packages/web-configurator/dist/deployment-package

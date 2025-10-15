@@ -2,12 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main, dev ]
   pull_request:
-    branches: [main]
+    branches: [ main, dev ]
 
 jobs:
-  build:
+  build-and-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,28 +16,35 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm"
+          node-version: 18
+          cache: 'pnpm'
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
+      - name: Enable Corepack and pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.10.0 --activate
+          pnpm -v
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies (workspace)
+        run: pnpm install -w
 
-      - name: Check formatting
-        run: pnpm format:check
+      - name: Build schema package
+        run: pnpm --filter @gcg/schema build
 
-      - name: Type check
-        run: pnpm type-check
+      - name: Build HMI UI
+        run: pnpm --filter @gcg/hmi-ui build
 
-      - name: Build packages (excluding web-configurator)
-        run: pnpm -r --filter "!@gcg/web-configurator" build
+      - name: Stage HMI bundle to garmin-bundle/web
+        run: pnpm --filter @gcg/hmi-ui deploy:web
 
-      - name: Build web-configurator (skip prebuild)
-        run: pnpm --filter @gcg/web-configurator run build:skip-prebuild
+      - name: Prepare configurator deployment package (prebuild)
+        run: pnpm --filter @gcg/web-configurator prebuild
 
-      - name: Run tests
-        run: pnpm test
+      - name: Build web-configurator (skip prebuild copy)
+        run: pnpm --filter @gcg/web-configurator build:skip-prebuild
+
+      - name: Type-check all packages
+        run: pnpm -r type-check
+
+      - name: Validate no static value bindings in exported artifacts
+        run: node scripts/check-no-static-bindings.js
