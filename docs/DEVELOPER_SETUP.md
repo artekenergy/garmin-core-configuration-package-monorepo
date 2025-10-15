@@ -22,9 +22,9 @@ The repo pins the toolchain to keep things consistent:
 
 This is the easiest and most consistent path across Windows/macOS/Linux.
 
-1) Open the repo in VS Code.
-1) When prompted, “Reopen in Container” (or run “Dev Containers: Reopen in Container”).
-1) The container auto-installs workspace dependencies and matches the pinned Node/pnpm.
+1. Open the repo in VS Code.
+1. When prompted, “Reopen in Container” (or run “Dev Containers: Reopen in Container”).
+1. The container auto-installs workspace dependencies and matches the pinned Node/pnpm.
 
 Common tasks inside the container:
 
@@ -62,7 +62,7 @@ Tips:
 
 Use this if you prefer running directly on your Windows host.
 
-1) Install Node 18.x and enable Corepack/pnpm:
+1. Install Node 18.x and enable Corepack/pnpm:
 
 ```powershell
 corepack enable
@@ -70,13 +70,13 @@ corepack prepare pnpm@8.10.0 --activate
 pnpm -v
 ```
 
-1) Install workspace dependencies:
+1. Install workspace dependencies:
 
 ```powershell
 pnpm install -w
 ```
 
-1) Start dev servers:
+1. Start dev servers:
 
 ```powershell
 # All dev servers in parallel
@@ -87,7 +87,7 @@ pnpm --filter @gcg/hmi-ui dev
 pnpm --filter @gcg/web-configurator dev
 ```
 
-1) Build pipeline (manual sequence):
+1. Build pipeline (manual sequence):
 
 ```powershell
 pnpm --filter @gcg/schema build
@@ -99,7 +99,7 @@ pnpm --filter @gcg/web-configurator prebuild
 pnpm --filter @gcg/web-configurator build
 ```
 
-1) Quick checks:
+1. Quick checks:
 
 ```powershell
 pnpm type-check
