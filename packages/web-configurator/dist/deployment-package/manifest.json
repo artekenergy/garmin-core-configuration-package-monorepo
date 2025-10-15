@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-15T00:38:43.538Z",
+  "generatedAt": "2025-10-15T19:50:34.665Z",
   "totalFiles": 105,
   "files": [
     "configuration/applications.json",
@@ -33,8 +33,8 @@
     "web/garmin/empirbus_config1.json",
     "web/garmin/empirbus_config2.json",
     "web/garmin/empirbus_config3.json",
-    "web/hmi-assets/index-DPF5VIEY.css",
-    "web/hmi-assets/index-DPhVatLJ.js",
+    "web/hmi-assets/index-BWTUGmRg.js",
+    "web/hmi-assets/index-Cs8B6kNX.css",
     "web/hmi-assets/signals-Bt6fiQq5.js",
     "web/hmi-assets/vendor-YOiOz27F.js",
     "web/icons/AC In.svg",

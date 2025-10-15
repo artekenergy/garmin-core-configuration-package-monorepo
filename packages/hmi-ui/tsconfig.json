@@ -17,6 +17,10 @@
     }
   },
   "include": ["src"],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/__tests__/**"
+  ],
   "references": [
     { "path": "../schema" }
   ]
