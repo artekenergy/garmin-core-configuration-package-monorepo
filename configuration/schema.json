@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "0.1.0",
+  "metadata": {
+    "name": "New HMI Configuration",
+    "description": "Created with Garmin Core Graphics Configurator",
+    "version": "1.0.0",
+    "author": "",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T21:35:06.408Z"
+  },
+  "lightingTab": {
+    "interior": {
+      "enabled": false,
+      "title": "Interior"
+    },
+    "exterior": {
+      "enabled": false,
+      "title": "Exterior"
+    },
+    "rgb": {
+      "enabled": false,
+      "title": "RGB"
+    }
+  },
+  "hvacTab": {
+    "heating": {
+      "enabled": false,
+      "title": "Heating"
+    },
+    "cooling": {
+      "enabled": false,
+      "title": "Cooling"
+    },
+    "ventilation": {
+      "enabled": false,
+      "title": "Ventilation"
+    }
+  },
+  "switchingTab": {
+    "switches": {
+      "enabled": false,
+      "title": "Switches"
+    },
+    "accessories": {
+      "enabled": false,
+      "title": "Accessories"
+    }
+  },
+  "plumbingTab": {
+    "switchingSection": {
+      "enabled": false,
+      "title": "Plumbing Controls"
+    }
+  },
+  "hardware": {
+    "systemType": "core",
+    "outputs": [],
+    "halfBridgePairs": [],
+    "signalMap": {},
+    "genesisBoards": 0
+  },
+  "power": {
+    "dcCharging": {
+      "secondAlternator": false,
+      "orionXs": false
+    },
+    "solar": {
+      "enabled": false,
+      "primaryArray": false,
+      "auxiliaryArray": false
+    },
+    "batteryManagement": "victron",
+    "acLegs": 1,
+    "multiplus": {
+      "l1": false,
+      "l2": false
+    }
+  },
+  "hvac": {
+    "heating": {
+      "enabled": false,
+      "sources": {
+        "diesel": false,
+        "electric": false,
+        "engine": false
+      },
+      "distribution": {
+        "floor": false,
+        "fans": false
+      },
+      "hotWater": false,
+      "auxZone": false
+    },
+    "cooling": {
+      "enabled": false,
+      "brand": ""
+    },
+    "ventilation": {
+      "enabled": false,
+      "fans": 1
+    }
+  },
+  "plumbing": {
+    "enabled": false,
+    "monitoringSource": "cerbo-gx",
+    "count": 1,
+    "tanks": [
+      {
+        "type": "fresh",
+        "name": ""
+      }
+    ]
+  },
+  "accessories": {
+    "keypad": {
+      "enabled": false,
+      "count": 1,
+      "buttonsPerKeypad": 8
+    },
+    "awning": {
+      "enabled": false,
+      "light": false,
+      "controlType": "rvc"
+    },
+    "slides": {
+      "enabled": false,
+      "controlType": "rvc",
+      "keypadSecured": false
+    },
+    "itcLighting": {
+      "enabled": false,
+      "modules": 0,
+      "zonesPerModule": 2
+    }
+  },
+  "tabs": [
+    {
+      "id": "tab-home",
+      "title": "Home",
+      "preset": "home",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-home-1",
+          "title": "Quick Controls",
+          "enabled": false,
+          "components": [
+          ]
+        },
+        {
+          "id": "section-home-2",
+          "title": "Status",
+          "enabled": false,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-lighting",
+      "title": "Lighting",
+      "preset": "lighting",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-lighting-interior",
+          "title": "Interior",
+          "components": [],
+          "enabled": false
+        },
+        {
+          "id": "section-lighting-exterior",
+          "title": "Exterior",
+          "components": [],
+          "enabled": false
+        },
+        {
+          "id": "section-lighting-rgb",
+          "title": "RGB",
+          "components": [],
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "id": "tab-power",
+      "title": "Power",
+      "preset": "power",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-battery",
+          "title": "Battery",
+          "enabled": false,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-hvac",
+      "title": "HVAC",
+      "preset": "hvac",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-hvac-heating",
+          "title": "Heating",
+          "enabled": false,
+          "components": []
+        },
+        {
+          "id": "section-hvac-cooling",
+          "title": "Cooling",
+          "enabled": false,
+          "components": []
+        },
+        {
+          "id": "section-hvac-ventilation",
+          "title": "Ventilation",
+          "enabled": false,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-switching",
+      "title": "Switching",
+      "preset": "switching",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-switching-switches",
+          "title": "Switches",
+          "enabled": false,
+          "components": []
+        },
+        {
+          "id": "section-switching-accessories",
+          "title": "Accessories",
+          "enabled": false,
+          "components": []
+        }
+      ]
+    },
+    {
+      "id": "tab-plumbing",
+      "title": "Plumbing",
+      "preset": "plumbing",
+      "enabled": false,
+      "sections": [
+        {
+          "id": "section-tank-levels-1760650500163-p19dx5438",
+          "title": "Tank Levels",
+          "enabled": false,
+          "components": []
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "id": "ac-out",
+      "type": "svg",
+      "url": "/icons/AC Out.svg"
+    }
+  ]
+}
