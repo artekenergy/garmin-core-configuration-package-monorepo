@@ -9,7 +9,7 @@
  */
 import { z } from 'zod';
 import { UISchemaSchema } from './root';
-export type ComponentType = 'toggle' | 'button' | 'dimmer' | 'gauge' | 'indicator' | 'slider';
+export type ComponentType = 'toggle' | 'button' | 'dimmer' | 'gauge' | 'indicator' | 'slider' | 'multiplus-control' | 'multiplus-test-controls';
 export type BindingType = 'empirbus' | 'nmea2000' | 'static';
 export interface ValidationSuccess {
     success: true;

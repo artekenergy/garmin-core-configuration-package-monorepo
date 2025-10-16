@@ -10,6 +10,7 @@ import { StatusBar } from './components/StatusBar';
 import { TabBar } from './components/TabBar';
 import { SubtabBar } from './components/SubtabBar';
 import type { UITabWithDerived, SubtabSpec } from './utils/tabGenerator';
+import type { Section as SectionType } from '@gcg/schema';
 import './styles/tokens.css';
 import './styles/responsive.css';
 
@@ -126,7 +127,7 @@ export const App: FunctionComponent = () => {
         const current = currentMap[tab.id];
         const currentIsValid =
           current &&
-          subtabs.some(function (subtab) {
+          subtabs.some(function (subtab: SubtabSpec) {
             return subtab.id === current && subtab.enabled !== false;
           });
 
@@ -194,7 +195,7 @@ export const App: FunctionComponent = () => {
         return null;
       }
 
-      const currentSubtab = activeTabSubtabs.find(function (subtab) {
+      const currentSubtab = activeTabSubtabs.find(function (subtab: SubtabSpec) {
         return subtab.id === resolvedSubtabId;
       });
 
@@ -202,7 +203,7 @@ export const App: FunctionComponent = () => {
         return null;
       }
 
-      const activeSection = activeTab.sections.find(function (section) {
+      const activeSection = activeTab.sections.find(function (section: SectionType) {
         return section.id === currentSubtab.sectionId && section.enabled !== false;
       });
 
@@ -217,13 +218,13 @@ export const App: FunctionComponent = () => {
       );
     }
 
-    const enabledSections = activeTab.sections.filter(function (section) {
+    const enabledSections = activeTab.sections.filter(function (section: SectionType) {
       return section.enabled !== false;
     });
 
     return (
       <div>
-        {enabledSections.map(function (section) {
+        {enabledSections.map(function (section: SectionType) {
           return <Section key={section.id} section={section} />;
         })}
       </div>

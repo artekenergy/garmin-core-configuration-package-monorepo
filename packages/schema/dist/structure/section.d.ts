@@ -490,8 +490,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "dimmer";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             intensity: {
                 type: "empirbus";
@@ -507,6 +505,8 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         step: number;
         icon?: string | undefined;
         tooltip?: string | undefined;
@@ -623,7 +623,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "gauge";
         label: string;
-        decimals: number;
         bindings: {
             value: {
                 type: "empirbus";
@@ -639,6 +638,7 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        decimals: number;
         icon?: string | undefined;
         tooltip?: string | undefined;
         disabled?: boolean | undefined;
@@ -889,8 +889,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "slider";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             value: {
                 type: "empirbus";
@@ -906,6 +904,8 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         step: number;
         orientation: "horizontal" | "vertical";
         showValue: boolean;
@@ -918,8 +918,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "slider";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             value: {
                 type: "empirbus";
@@ -935,48 +933,620 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         icon?: string | undefined;
         tooltip?: string | undefined;
         disabled?: boolean | undefined;
         visible?: boolean | undefined;
-        unit?: string | undefined;
         step?: number | undefined;
+        unit?: string | undefined;
         orientation?: "horizontal" | "vertical" | undefined;
         showValue?: boolean | undefined;
+    }>, z.ZodObject<{
+        id: z.ZodString;
+        label: z.ZodString;
+        icon: z.ZodOptional<z.ZodString>;
+        tooltip: z.ZodOptional<z.ZodString>;
+        disabled: z.ZodOptional<z.ZodBoolean>;
+        visible: z.ZodOptional<z.ZodBoolean>;
+    } & {
+        type: z.ZodLiteral<"multiplus-control">;
+        leg: z.ZodOptional<z.ZodNumber>;
+        bindings: z.ZodOptional<z.ZodObject<{
+            acInVoltage: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+            acOutVoltage: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+            acOutCurrent: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+            modeOff: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+            modeOn: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+            modeChargerOnly: z.ZodOptional<z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+                type: z.ZodLiteral<"empirbus">;
+                channel: z.ZodString;
+                property: z.ZodOptional<z.ZodEnum<["state", "intensity", "value"]>>;
+            }, "strip", z.ZodTypeAny, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }, {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"nmea2000">;
+                pgn: z.ZodNumber;
+                field: z.ZodString;
+                instance: z.ZodOptional<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }, {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            }>, z.ZodObject<{
+                type: z.ZodLiteral<"static">;
+                value: z.ZodUnknown;
+            }, "strip", z.ZodTypeAny, {
+                type: "static";
+                value?: unknown;
+            }, {
+                type: "static";
+                value?: unknown;
+            }>]>>;
+        }, "strip", z.ZodTypeAny, {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        }, {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        }>>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        type: "multiplus-control";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        bindings?: {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        } | undefined;
+        leg?: number | undefined;
+    }, {
+        id: string;
+        type: "multiplus-control";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        bindings?: {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        } | undefined;
+        leg?: number | undefined;
+    }>, z.ZodObject<{
+        id: z.ZodString;
+        label: z.ZodString;
+        icon: z.ZodOptional<z.ZodString>;
+        tooltip: z.ZodOptional<z.ZodString>;
+        disabled: z.ZodOptional<z.ZodBoolean>;
+        visible: z.ZodOptional<z.ZodBoolean>;
+    } & {
+        type: z.ZodLiteral<"multiplus-test-controls">;
+        leg: z.ZodOptional<z.ZodNumber>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        type: "multiplus-test-controls";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        leg?: number | undefined;
+    }, {
+        id: string;
+        type: "multiplus-test-controls";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        leg?: number | undefined;
     }>]>, "many">;
 }, "strip", z.ZodTypeAny, {
     id: string;
     title: string;
     enabled: boolean;
     components: ({
-        id: string;
-        type: "gauge";
-        label: string;
-        decimals: number;
-        bindings: {
-            value: {
-                type: "empirbus";
-                channel: string;
-                property?: "value" | "state" | "intensity" | undefined;
-            } | {
-                type: "nmea2000";
-                pgn: number;
-                field: string;
-                instance?: number | undefined;
-            } | {
-                type: "static";
-                value?: unknown;
-            };
-        };
-        icon?: string | undefined;
-        tooltip?: string | undefined;
-        disabled?: boolean | undefined;
-        visible?: boolean | undefined;
-        variant?: "circular" | "linear" | "numeric" | undefined;
-        min?: number | undefined;
-        max?: number | undefined;
-        unit?: string | undefined;
-    } | {
         id: string;
         type: "toggle";
         label: string;
@@ -1042,8 +1612,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "dimmer";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             intensity: {
                 type: "empirbus";
@@ -1059,11 +1627,41 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         step: number;
         icon?: string | undefined;
         tooltip?: string | undefined;
         disabled?: boolean | undefined;
         visible?: boolean | undefined;
+    } | {
+        id: string;
+        type: "gauge";
+        label: string;
+        bindings: {
+            value: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            };
+        };
+        decimals: number;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        variant?: "circular" | "linear" | "numeric" | undefined;
+        min?: number | undefined;
+        max?: number | undefined;
+        unit?: string | undefined;
     } | {
         id: string;
         type: "indicator";
@@ -1093,8 +1691,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "slider";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             value: {
                 type: "empirbus";
@@ -1110,6 +1706,8 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         step: number;
         orientation: "horizontal" | "vertical";
         showValue: boolean;
@@ -1118,6 +1716,104 @@ export declare const SectionSchema: z.ZodObject<{
         disabled?: boolean | undefined;
         visible?: boolean | undefined;
         unit?: string | undefined;
+    } | {
+        id: string;
+        type: "multiplus-control";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        bindings?: {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        } | undefined;
+        leg?: number | undefined;
+    } | {
+        id: string;
+        type: "multiplus-test-controls";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        leg?: number | undefined;
     })[];
     type?: "switching" | "signal-values" | "image" | "mixed" | undefined;
     icon?: string | undefined;
@@ -1128,6 +1824,94 @@ export declare const SectionSchema: z.ZodObject<{
     id: string;
     title: string;
     components: ({
+        id: string;
+        type: "toggle";
+        label: string;
+        bindings: {
+            state: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            };
+        };
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        variant?: "default" | "switch" | "checkbox" | "round" | undefined;
+    } | {
+        id: string;
+        type: "button";
+        label: string;
+        bindings: {
+            state?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            action?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        };
+        action: "toggle" | "momentary";
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+    } | {
+        id: string;
+        type: "dimmer";
+        label: string;
+        bindings: {
+            intensity: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            };
+        };
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        min?: number | undefined;
+        max?: number | undefined;
+        step?: number | undefined;
+    } | {
         id: string;
         type: "gauge";
         label: string;
@@ -1157,94 +1941,6 @@ export declare const SectionSchema: z.ZodObject<{
         decimals?: number | undefined;
     } | {
         id: string;
-        type: "toggle";
-        label: string;
-        bindings: {
-            state: {
-                type: "empirbus";
-                channel: string;
-                property?: "value" | "state" | "intensity" | undefined;
-            } | {
-                type: "nmea2000";
-                pgn: number;
-                field: string;
-                instance?: number | undefined;
-            } | {
-                type: "static";
-                value?: unknown;
-            };
-        };
-        icon?: string | undefined;
-        tooltip?: string | undefined;
-        disabled?: boolean | undefined;
-        visible?: boolean | undefined;
-        variant?: "default" | "switch" | "checkbox" | "round" | undefined;
-    } | {
-        id: string;
-        type: "button";
-        label: string;
-        bindings: {
-            state?: {
-                type: "empirbus";
-                channel: string;
-                property?: "value" | "state" | "intensity" | undefined;
-            } | {
-                type: "nmea2000";
-                pgn: number;
-                field: string;
-                instance?: number | undefined;
-            } | {
-                type: "static";
-                value?: unknown;
-            } | undefined;
-            action?: {
-                type: "empirbus";
-                channel: string;
-                property?: "value" | "state" | "intensity" | undefined;
-            } | {
-                type: "nmea2000";
-                pgn: number;
-                field: string;
-                instance?: number | undefined;
-            } | {
-                type: "static";
-                value?: unknown;
-            } | undefined;
-        };
-        action: "toggle" | "momentary";
-        icon?: string | undefined;
-        tooltip?: string | undefined;
-        disabled?: boolean | undefined;
-        visible?: boolean | undefined;
-        variant?: "round" | "primary" | "secondary" | "danger" | undefined;
-    } | {
-        id: string;
-        type: "dimmer";
-        label: string;
-        bindings: {
-            intensity: {
-                type: "empirbus";
-                channel: string;
-                property?: "value" | "state" | "intensity" | undefined;
-            } | {
-                type: "nmea2000";
-                pgn: number;
-                field: string;
-                instance?: number | undefined;
-            } | {
-                type: "static";
-                value?: unknown;
-            };
-        };
-        icon?: string | undefined;
-        tooltip?: string | undefined;
-        disabled?: boolean | undefined;
-        visible?: boolean | undefined;
-        min?: number | undefined;
-        max?: number | undefined;
-        step?: number | undefined;
-    } | {
-        id: string;
         type: "indicator";
         label: string;
         bindings: {
@@ -1272,8 +1968,6 @@ export declare const SectionSchema: z.ZodObject<{
         id: string;
         type: "slider";
         label: string;
-        min: number;
-        max: number;
         bindings: {
             value: {
                 type: "empirbus";
@@ -1289,14 +1983,114 @@ export declare const SectionSchema: z.ZodObject<{
                 value?: unknown;
             };
         };
+        min: number;
+        max: number;
         icon?: string | undefined;
         tooltip?: string | undefined;
         disabled?: boolean | undefined;
         visible?: boolean | undefined;
-        unit?: string | undefined;
         step?: number | undefined;
+        unit?: string | undefined;
         orientation?: "horizontal" | "vertical" | undefined;
         showValue?: boolean | undefined;
+    } | {
+        id: string;
+        type: "multiplus-control";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        bindings?: {
+            acInVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutVoltage?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            acOutCurrent?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOff?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeOn?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+            modeChargerOnly?: {
+                type: "empirbus";
+                channel: string;
+                property?: "value" | "state" | "intensity" | undefined;
+            } | {
+                type: "nmea2000";
+                pgn: number;
+                field: string;
+                instance?: number | undefined;
+            } | {
+                type: "static";
+                value?: unknown;
+            } | undefined;
+        } | undefined;
+        leg?: number | undefined;
+    } | {
+        id: string;
+        type: "multiplus-test-controls";
+        label: string;
+        icon?: string | undefined;
+        tooltip?: string | undefined;
+        disabled?: boolean | undefined;
+        visible?: boolean | undefined;
+        leg?: number | undefined;
     })[];
     type?: "switching" | "signal-values" | "image" | "mixed" | undefined;
     icon?: string | undefined;

@@ -30,8 +30,8 @@ export function SubtabBar(props: SubtabBarProps) {
     return subtab.enabled !== false;
   });
 
-  // Don't render if no subtabs or only one subtab
-  if (enabledSubtabs.length <= 1) {
+  // Don't render if no subtabs
+  if (enabledSubtabs.length === 0) {
     return null;
   }
 

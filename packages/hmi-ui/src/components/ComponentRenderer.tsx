@@ -14,6 +14,8 @@ import { Dimmer } from './Dimmer';
 import { Indicator } from './Indicator';
 import { Gauge } from './Gauge';
 import { Slider } from './Slider';
+import { MultiplusControl } from './MultiplusControl';
+import { MultiplusTestControls } from './MultiplusTestControls';
 
 interface ComponentRendererProps {
   component: Component;
@@ -44,11 +46,19 @@ export function ComponentRenderer(props: ComponentRendererProps) {
     case 'slider':
       return <Slider component={component} />;
 
-    default:
+    case 'multiplus-control':
+      return <MultiplusControl component={component} />;
+
+    case 'multiplus-test-controls':
+      return <MultiplusTestControls />;
+
+    default: {
+      const unknownComponent = component as { type: string };
       return (
         <div style={{ padding: '1rem', background: 'rgba(255, 0, 0, 0.1)' }}>
-          Unknown component type: {(component as any).type}
+          Unknown component type: {unknownComponent.type}
         </div>
       );
+    }
   }
 }

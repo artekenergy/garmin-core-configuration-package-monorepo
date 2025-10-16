@@ -397,3 +397,83 @@
 .summaryValue li {
   margin: 0.25rem 0;
 }
+
+/* Test Bench Controls */
+.testControls {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-background);
+  border: 2px dashed var(--color-border);
+  border-radius: 8px;
+}
+
+.testControlsHeader {
+  margin-bottom: 1rem;
+}
+
+.testControlsHeader h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.testControlsHeader p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.testButton {
+  flex: 1;
+  min-width: 120px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.testButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.testButton:active {
+  transform: translateY(0);
+}
+
+.testButtonDanger {
+  background: #dc3545;
+}
+
+.testButtonDanger:hover {
+  background: #c82333;
+}
+
+.testButtonSuccess {
+  background: #28a745;
+}
+
+.testButtonSuccess:hover {
+  background: #218838;
+}
+
+.testButtonWarning {
+  background: #ffc107;
+  color: #000;
+}
+
+.testButtonWarning:hover {
+  background: #e0a800;
+}

@@ -4070,6 +4070,24 @@ const SliderComponentBaseSchema = BaseComponentSchema.extend({
   })
 });
 SliderComponentBaseSchema.refine((data) => data.min < data.max, "min must be less than max");
+const MultiplusBindingsSchema = objectType({
+  acInVoltage: BindingSchema.optional(),
+  acOutVoltage: BindingSchema.optional(),
+  acOutCurrent: BindingSchema.optional(),
+  modeOff: BindingSchema.optional(),
+  modeOn: BindingSchema.optional(),
+  modeChargerOnly: BindingSchema.optional()
+});
+const MultiplusControlComponentSchema = BaseComponentSchema.extend({
+  type: literalType("multiplus-control"),
+  leg: numberType().min(1).max(2).optional(),
+  // AC leg number (1 or 2)
+  bindings: MultiplusBindingsSchema.optional()
+});
+const MultiplusTestControlsComponentSchema = BaseComponentSchema.extend({
+  type: literalType("multiplus-test-controls"),
+  leg: numberType().min(1).max(2).optional()
+});
 const ComponentSchema = unionType([
   ToggleComponentSchema,
   ButtonComponentSchema,
@@ -4078,8 +4096,10 @@ const ComponentSchema = unionType([
   GaugeComponentBaseSchema,
   // Use base schema for union
   IndicatorComponentSchema,
-  SliderComponentBaseSchema
+  SliderComponentBaseSchema,
   // Use base schema for union
+  MultiplusControlComponentSchema,
+  MultiplusTestControlsComponentSchema
 ]);
 const SectionSchema = objectType({
   id: stringType().regex(/^[a-zA-Z][a-zA-Z0-9-_]*$/, "ID must start with letter and contain only alphanumeric, hyphens, underscores"),
@@ -4996,6 +5016,120 @@ function createSubtab(id, config, sectionId) {
     enabled: Boolean(config.enabled)
   };
 }
+function applyPowerConfig(tab, schema) {
+  const power = schema.power;
+  if (!power || !power.multiplus) {
+    return;
+  }
+  const acSection = ensureSection(
+    tab,
+    "section-ac-power",
+    "AC Power"
+  );
+  acSection.components = [];
+  acSection.enabled = false;
+  if (power.multiplus.l1) {
+    acSection.enabled = true;
+    acSection.components.push({
+      id: "comp-multiplus-l1",
+      type: "multiplus-control",
+      label: "Multiplus L1",
+      leg: 1,
+      bindings: {
+        acInVoltage: {
+          type: "empirbus",
+          channel: "signal-leg-one-ac-in-voltage",
+          property: "value"
+        },
+        acOutVoltage: {
+          type: "empirbus",
+          channel: "signal-leg-one-ac-out-voltage",
+          property: "value"
+        },
+        acOutCurrent: {
+          type: "empirbus",
+          channel: "signal-leg-one-ac-out-amperage",
+          property: "value"
+        },
+        modeOff: {
+          type: "empirbus",
+          channel: "press-multiplus-off",
+          property: "state"
+        },
+        modeOn: {
+          type: "empirbus",
+          channel: "press-multi-on",
+          property: "state"
+        },
+        modeChargerOnly: {
+          type: "empirbus",
+          channel: "press-multiplus-charger-only",
+          property: "state"
+        }
+      }
+    });
+  }
+  if (power.multiplus.l2) {
+    acSection.enabled = true;
+    acSection.components.push({
+      id: "comp-multiplus-l2",
+      type: "multiplus-control",
+      label: "Multiplus L2",
+      leg: 2,
+      bindings: {
+        acInVoltage: {
+          type: "empirbus",
+          channel: "signal-leg-two-ac-in-voltage",
+          property: "value"
+        },
+        acOutVoltage: {
+          type: "empirbus",
+          channel: "signal-leg-two-ac-out-voltage",
+          property: "value"
+        },
+        acOutCurrent: {
+          type: "empirbus",
+          channel: "signal-leg-two-ac-out-amperage",
+          property: "value"
+        },
+        modeOff: {
+          type: "empirbus",
+          channel: "press-multiplus-two-off",
+          property: "state"
+        },
+        modeOn: {
+          type: "empirbus",
+          channel: "press-multiplus-two-on",
+          property: "state"
+        },
+        modeChargerOnly: {
+          type: "empirbus",
+          channel: "press-multiplus-two-charger-only",
+          property: "state"
+        }
+      }
+    });
+  }
+  if (power.multiplus.l1 || power.multiplus.l2) {
+    const testSection = ensureSection(tab, "section-test-controls", "Test Controls");
+    if (power.multiplus.l1) {
+      testSection.components.push({
+        id: "multiplus-test-controls-l1",
+        type: "multiplus-test-controls",
+        label: "L1 Quick Test",
+        leg: 1
+      });
+    }
+    if (power.multiplus.l2) {
+      testSection.components.push({
+        id: "multiplus-test-controls-l2",
+        type: "multiplus-test-controls",
+        label: "L2 Quick Test",
+        leg: 2
+      });
+    }
+  }
+}
 function regenerateTabContent(input) {
   const schema = cloneSchema(input);
   schema.tabs = schema.tabs.map(function(tab) {
@@ -5010,6 +5144,8 @@ function regenerateTabContent(input) {
       applyHVACConfig(derivedTab, schema);
     } else if (preset === "switching" || tab.id === "tab-switching") {
       applySwitchingConfig(derivedTab, schema);
+    } else if (preset === "power" || tab.id === "tab-power") {
+      applyPowerConfig(derivedTab, schema);
     }
     return derivedTab;
   });
@@ -6069,7 +6205,7 @@ function SubtabBar(props) {
   const enabledSubtabs = subtabs.filter(function(subtab) {
     return subtab.enabled !== false;
   });
-  if (enabledSubtabs.length <= 1) {
+  if (enabledSubtabs.length === 0) {
     return null;
   }
   return /* @__PURE__ */ u("nav", { className: "gcg-subtab-bar", children: enabledSubtabs.map(function(subtab) {

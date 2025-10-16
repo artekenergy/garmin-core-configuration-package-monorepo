@@ -24,7 +24,7 @@ function cloneSchema(schema: UISchema): UISchema {
 }
 
 function ensureSection(tab: UITabWithDerived, id: string, title: string): Section {
-  let existing = tab.sections.find(function (section) {
+  let existing = tab.sections.find(function (section: Section) {
     return section.id === id;
   });
 
@@ -161,6 +161,139 @@ function createSubtab(id: string, config: SubtabConfig, sectionId: string): Subt
   };
 }
 
+/**
+ * Apply power configuration to generate Multiplus control components
+ */
+function applyPowerConfig(tab: UITabWithDerived, schema: UISchema) {
+  const power = schema.power;
+
+  if (!power || !power.multiplus) {
+    return;
+  }
+
+  // Find or create AC section
+  const acSection = ensureSection(
+    tab,
+    'section-ac-power',
+    'AC Power'
+  );
+
+  // Clear existing components to regenerate
+  acSection.components = [];
+  acSection.enabled = false;
+
+  // Generate Multiplus L1 control if enabled
+  if (power.multiplus.l1) {
+    acSection.enabled = true;
+    acSection.components.push({
+      id: 'comp-multiplus-l1',
+      type: 'multiplus-control',
+      label: 'Multiplus L1',
+      leg: 1,
+      bindings: {
+        acInVoltage: {
+          type: 'empirbus',
+          channel: 'signal-leg-one-ac-in-voltage',
+          property: 'value',
+        },
+        acOutVoltage: {
+          type: 'empirbus',
+          channel: 'signal-leg-one-ac-out-voltage',
+          property: 'value',
+        },
+        acOutCurrent: {
+          type: 'empirbus',
+          channel: 'signal-leg-one-ac-out-amperage',
+          property: 'value',
+        },
+        modeOff: {
+          type: 'empirbus',
+          channel: 'press-multiplus-off',
+          property: 'state',
+        },
+        modeOn: {
+          type: 'empirbus',
+          channel: 'press-multi-on',
+          property: 'state',
+        },
+        modeChargerOnly: {
+          type: 'empirbus',
+          channel: 'press-multiplus-charger-only',
+          property: 'state',
+        },
+      },
+    });
+  }
+
+  // Generate Multiplus L2 control if enabled
+  if (power.multiplus.l2) {
+    acSection.enabled = true;
+    acSection.components.push({
+      id: 'comp-multiplus-l2',
+      type: 'multiplus-control',
+      label: 'Multiplus L2',
+      leg: 2,
+      bindings: {
+        acInVoltage: {
+          type: 'empirbus',
+          channel: 'signal-leg-two-ac-in-voltage',
+          property: 'value',
+        },
+        acOutVoltage: {
+          type: 'empirbus',
+          channel: 'signal-leg-two-ac-out-voltage',
+          property: 'value',
+        },
+        acOutCurrent: {
+          type: 'empirbus',
+          channel: 'signal-leg-two-ac-out-amperage',
+          property: 'value',
+        },
+        modeOff: {
+          type: 'empirbus',
+          channel: 'press-multiplus-two-off',
+          property: 'state',
+        },
+        modeOn: {
+          type: 'empirbus',
+          channel: 'press-multiplus-two-on',
+          property: 'state',
+        },
+        modeChargerOnly: {
+          type: 'empirbus',
+          channel: 'press-multiplus-two-charger-only',
+          property: 'state',
+        },
+      },
+    });
+  }
+
+  // Add test controls section if any multiplus enabled
+  if (power.multiplus.l1 || power.multiplus.l2) {
+    const testSection = ensureSection(tab, 'section-test-controls', 'Test Controls');
+    
+    // Add L1 test controls if enabled
+    if (power.multiplus.l1) {
+      testSection.components.push({
+        id: 'multiplus-test-controls-l1',
+        type: 'multiplus-test-controls',
+        label: 'L1 Quick Test',
+        leg: 1,
+      });
+    }
+    
+    // Add L2 test controls if enabled
+    if (power.multiplus.l2) {
+      testSection.components.push({
+        id: 'multiplus-test-controls-l2',
+        type: 'multiplus-test-controls',
+        label: 'L2 Quick Test',
+        leg: 2,
+      });
+    }
+  }
+}
+
 export function regenerateTabContent(input: UISchema): UISchemaWithDerived {
   const schema = cloneSchema(input) as UISchemaWithDerived;
 
@@ -180,6 +313,8 @@ export function regenerateTabContent(input: UISchema): UISchemaWithDerived {
       applyHVACConfig(derivedTab, schema);
     } else if (preset === 'switching' || tab.id === 'tab-switching') {
       applySwitchingConfig(derivedTab, schema);
+    } else if (preset === 'power' || tab.id === 'tab-power') {
+      applyPowerConfig(derivedTab, schema);
     }
 
     return derivedTab;

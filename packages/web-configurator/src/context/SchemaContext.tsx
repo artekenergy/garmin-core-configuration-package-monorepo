@@ -67,8 +67,8 @@ const defaultSchema: UISchema = {
     batteryManagement: 'victron',
     acLegs: 2,
     multiplus: {
-      l1: false,
-      l2: false,
+      l1: true,
+      l2: true,
     },
   },
   hvac: {
@@ -114,6 +114,52 @@ const defaultSchema: UISchema = {
       enabled: false,
       modules: 0,
       zonesPerModule: 2,
+    },
+  },
+  lightingTab: {
+    interior: {
+      enabled: true,
+      title: 'Interior',
+      icon: '💡',
+    },
+    exterior: {
+      enabled: true,
+      title: 'Exterior',
+      icon: '🌟',
+    },
+    rgb: {
+      enabled: false,
+      title: 'RGB',
+      icon: '🌈',
+    },
+  },
+  hvacTab: {
+    heating: {
+      enabled: true,
+      title: 'Heating',
+      icon: '🔥',
+    },
+    cooling: {
+      enabled: true,
+      title: 'Cooling',
+      icon: '❄️',
+    },
+    ventilation: {
+      enabled: true,
+      title: 'Ventilation',
+      icon: '💨',
+    },
+  },
+  switchingTab: {
+    switches: {
+      enabled: true,
+      title: 'Switches',
+      icon: '🔌',
+    },
+    accessories: {
+      enabled: true,
+      title: 'Accessories',
+      icon: '⚡',
     },
   },
   tabs: [

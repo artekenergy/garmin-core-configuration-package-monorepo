@@ -1,0 +1,132 @@
+/**
+ * Multiplus Control Component Styles
+ * 
+ * Composite component for Victron MultiPlus inverter/charger control.
+ * Displays voltage/current readings and mode buttons (Off/On/Charger Only).
+ */
+
+.gcg-multiplus-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-secondary, #1a1a1a);
+  border: 1px solid var(--border-color, #333);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Header */
+.gcg-multiplus-control__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color, #333);
+}
+
+.gcg-multiplus-control__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #fff);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Readings Grid */
+.gcg-multiplus-control__readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.gcg-multiplus-control__reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: var(--bg-tertiary, #0d0d0d);
+  border-radius: 4px;
+  border: 1px solid var(--border-color-subtle, #252525);
+}
+
+.gcg-multiplus-control__reading--wide {
+  grid-column: 1 / -1;
+}
+
+.gcg-multiplus-control__reading-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary, #999);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gcg-multiplus-control__reading-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  font-variant-numeric: tabular-nums;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Mode Buttons */
+.gcg-multiplus-control__modes {
+  display: flex;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color, #333);
+}
+
+.gcg-multiplus-control__mode-button {
+  flex: 1;
+  padding: 10px 8px;
+  background: var(--bg-tertiary, #0d0d0d);
+  border: 1px solid var(--border-color, #333);
+  border-radius: 4px;
+  color: var(--text-primary, #fff);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gcg-multiplus-control__mode-button:hover {
+  background: var(--bg-secondary, #1a1a1a);
+  border-color: var(--border-color-hover, #444);
+}
+
+.gcg-multiplus-control__mode-button:active {
+  transform: translateY(1px);
+  background: var(--bg-tertiary, #0d0d0d);
+}
+
+.gcg-multiplus-control__mode-button--active {
+  background: var(--accent-color, #007aff);
+  border-color: var(--accent-color, #007aff);
+  color: var(--text-on-accent, #fff);
+}
+
+.gcg-multiplus-control__mode-button--active:hover {
+  background: var(--accent-color-hover, #0062cc);
+  border-color: var(--accent-color-hover, #0062cc);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .gcg-multiplus-control {
+    max-width: 100%;
+  }
+
+  .gcg-multiplus-control__mode-button {
+    font-size: 10px;
+    padding: 8px 6px;
+  }
+}

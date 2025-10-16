@@ -7,7 +7,7 @@
  * ES2017 compliant.
  */
 
-import type { Binding } from '@gcg/schema';
+import type { Binding, OutputChannel } from '@gcg/schema';
 import { schemaSignal } from '../state/schema-signal';
 
 // Extend known signal keys to include 'value' used by numeric gauges
@@ -46,7 +46,7 @@ export function resolveBindingToChannelId(
       }
 
       // Find the output with matching id
-      const output = schema.hardware.outputs.find(function (out) {
+      const output = schema.hardware.outputs.find(function (out: OutputChannel) {
         return out.id === channelRef;
       });
 

@@ -90,7 +90,7 @@ export async function loadSchema(config: SchemaLoaderConfig = {}): Promise<void>
         !!derivedSchema.hardware
       );
     }
-  } catch (err) {
+  } catch (err: unknown) {
     // Handle any errors
     const errorMessage = err instanceof Error ? err.message : 'Unknown error loading schema';
     errorSignal.value = errorMessage;

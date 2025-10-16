@@ -42,7 +42,8 @@ function validateComponentBindings(
 ): ChannelValidationError[] {
   const errors: ChannelValidationError[] = [];
 
-  if (!component.bindings) return errors;
+  // Some components don't have bindings (e.g., multiplus-test-controls)
+  if (!('bindings' in component) || !component.bindings) return errors;
 
   // Create a map of available channel IDs for quick lookup
   const channelMap = new Map<string, HardwareChannel>();
@@ -145,7 +146,8 @@ export function getReferencedChannels(schema: UISchema): Set<string> {
   for (const tab of schema.tabs) {
     for (const section of tab.sections) {
       for (const component of section.components) {
-        if (!component.bindings) continue;
+        // Some components don't have bindings (e.g., multiplus-test-controls)
+        if (!('bindings' in component) || !component.bindings) continue;
 
         const bindingTypes = ['state', 'intensity', 'value', 'action'];
         for (const bindingType of bindingTypes) {

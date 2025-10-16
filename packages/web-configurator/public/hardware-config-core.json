@@ -851,6 +851,138 @@
       "control": "signal-value",
       "label": "Grey Tank 3 (Victron)",
       "signals": { "value": 208 }
+    },
+    {
+      "id": "signal-value-int-temp",
+      "source": "sensors",
+      "channel": 2,
+      "control": "signal-value",
+      "label": "Interior Temperature",
+      "signals": { "value": 2 }
+    },
+    {
+      "id": "signal-value-ext-temp",
+      "source": "sensors",
+      "channel": 3,
+      "control": "signal-value",
+      "label": "Exterior Temperature",
+      "signals": { "value": 3 }
+    },
+    {
+      "id": "signal-value-starter-battery-voltage",
+      "source": "power",
+      "channel": 4,
+      "control": "signal-value",
+      "label": "Starter Battery Voltage",
+      "signals": { "value": 4 }
+    },
+    {
+      "id": "press-multiplus-off",
+      "source": "power",
+      "channel": 132,
+      "control": "push-button",
+      "label": "MultiPlus Off"
+    },
+    {
+      "id": "press-multi-on",
+      "source": "power",
+      "channel": 133,
+      "control": "push-button",
+      "label": "MultiPlus On"
+    },
+    {
+      "id": "press-multiplus-charger-only",
+      "source": "power",
+      "channel": 134,
+      "control": "push-button",
+      "label": "MultiPlus Charger Only"
+    },
+    {
+      "id": "mom-increase-ac-limit",
+      "source": "power",
+      "channel": 135,
+      "control": "push-button",
+      "label": "Increase AC Limit"
+    },
+    {
+      "id": "mom-decrease-ac-limit",
+      "source": "power",
+      "channel": 136,
+      "control": "push-button",
+      "label": "Decrease AC Limit"
+    },
+    {
+      "id": "mom-requested-ac-limit",
+      "source": "power",
+      "channel": 137,
+      "control": "signal-value",
+      "label": "Requested AC Limit",
+      "signals": { "value": 137 }
+    },
+    {
+      "id": "mom-load-ac-limit",
+      "source": "power",
+      "channel": 138,
+      "control": "push-button",
+      "label": "Load AC Limit"
+    },
+    {
+      "id": "signal-current-ac-limit",
+      "source": "power",
+      "channel": 139,
+      "control": "signal-value",
+      "label": "Current AC Limit",
+      "signals": { "value": 139 }
+    },
+    {
+      "id": "mom-ac-limit-5",
+      "source": "power",
+      "channel": 140,
+      "control": "push-button",
+      "label": "Set AC Limit 5A"
+    },
+    {
+      "id": "mom-ac-limit-10",
+      "source": "power",
+      "channel": 141,
+      "control": "push-button",
+      "label": "Set AC Limit 10A"
+    },
+    {
+      "id": "mom-ac-limit-15",
+      "source": "power",
+      "channel": 142,
+      "control": "push-button",
+      "label": "Set AC Limit 15A"
+    },
+    {
+      "id": "mom-ac-limit-20",
+      "source": "power",
+      "channel": 143,
+      "control": "push-button",
+      "label": "Set AC Limit 20A"
+    },
+    {
+      "id": "mom-ac-limit-30",
+      "source": "power",
+      "channel": 144,
+      "control": "push-button",
+      "label": "Set AC Limit 30A"
+    },
+    {
+      "id": "mom-ac-limit-50",
+      "source": "power",
+      "channel": 145,
+      "control": "push-button",
+      "label": "Set AC Limit 50A"
+    },
+    {
+      "id": "rixens-fan-value",
+      "source": "hvac",
+      "channel": 338,
+      "control": "signal-value",
+      "label": "Rixens Fan Value",
+      "signals": { "value": 338 }
     }
   ]
 }

@@ -13,12 +13,16 @@ export * from './dimmer';
 export * from './gauge';
 export * from './indicator';
 export * from './slider';
+export * from './multiplus-control';
+export * from './multiplus-test-controls';
 import { ToggleComponentSchema } from './toggle';
 import { ButtonComponentSchema } from './button';
 import { DimmerComponentBaseSchema } from './dimmer';
 import { GaugeComponentBaseSchema } from './gauge';
 import { IndicatorComponentSchema } from './indicator';
 import { SliderComponentBaseSchema } from './slider';
+import { MultiplusControlComponentSchema } from './multiplus-control';
+import { MultiplusTestControlsComponentSchema } from './multiplus-test-controls';
 /**
  * Union of all component types
  */
@@ -29,5 +33,7 @@ export const ComponentSchema = z.union([
     GaugeComponentBaseSchema, // Use base schema for union
     IndicatorComponentSchema,
     SliderComponentBaseSchema, // Use base schema for union
+    MultiplusControlComponentSchema,
+    MultiplusTestControlsComponentSchema,
 ]);
 //# sourceMappingURL=index.js.map

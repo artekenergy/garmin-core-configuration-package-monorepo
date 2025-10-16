@@ -28,7 +28,7 @@ export function Section(props: SectionProps) {
 
       {/* Component Grid */}
       <div className="gcg-section__grid">
-        {section.components.map(function (component: Component, index) {
+        {section.components.map(function (component: Component, index: number) {
           const ComponentCtor = COMPONENT_REGISTRY[component.type];
 
           if (!ComponentCtor) {
