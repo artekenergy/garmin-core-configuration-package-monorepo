@@ -10,6 +10,7 @@ Created a new composite component for controlling Victron MultiPlus inverter/cha
 ## Component Features
 
 ### Visual Layout
+
 ```
 ┌─────────────────────────────┐
 │      Multiplus L1/L2        │
@@ -24,8 +25,9 @@ Created a new composite component for controlling Victron MultiPlus inverter/cha
 ```
 
 ### Functionality
+
 - **AC Input Voltage Display** - Shows incoming AC voltage
-- **AC Output Voltage Display** - Shows outgoing AC voltage  
+- **AC Output Voltage Display** - Shows outgoing AC voltage
 - **AC Output Current Display** - Shows current draw in amps
 - **Mode Control Buttons** - Three momentary buttons:
   - **OFF** - Turn inverter/charger off
@@ -36,18 +38,19 @@ Created a new composite component for controlling Victron MultiPlus inverter/cha
 
 The component supports these optional bindings:
 
-| Binding | Type | Purpose | Example Signal ID |
-|---------|------|---------|------------------|
-| `acInVoltage` | empirbus | Input AC voltage reading | 151 |
-| `acOutVoltage` | empirbus | Output AC voltage reading | 154 |
-| `acOutCurrent` | empirbus | Output AC current reading | 155 |
-| `modeOff` | empirbus | Momentary button - OFF mode | 132 |
-| `modeOn` | empirbus | Momentary button - ON mode | 133 |
-| `modeChargerOnly` | empirbus | Momentary button - Charger mode | 134 |
+| Binding           | Type     | Purpose                         | Example Signal ID |
+| ----------------- | -------- | ------------------------------- | ----------------- |
+| `acInVoltage`     | empirbus | Input AC voltage reading        | 151               |
+| `acOutVoltage`    | empirbus | Output AC voltage reading       | 154               |
+| `acOutCurrent`    | empirbus | Output AC current reading       | 155               |
+| `modeOff`         | empirbus | Momentary button - OFF mode     | 132               |
+| `modeOn`          | empirbus | Momentary button - ON mode      | 133               |
+| `modeChargerOnly` | empirbus | Momentary button - Charger mode | 134               |
 
 ## Files Created/Modified
 
 ### New Files
+
 1. **`packages/hmi-ui/src/components/MultiplusControl.tsx`**
    - Main component implementation
    - Uses Preact signals for reactive state
@@ -66,6 +69,7 @@ The component supports these optional bindings:
    - Validation for bindings and properties
 
 ### Modified Files
+
 1. **`packages/schema/src/components/index.ts`**
    - Added MultiplusControlComponentSchema to union
    - Exported multiplus-control types
@@ -81,6 +85,7 @@ The component supports these optional bindings:
 ## Component API
 
 ### TypeScript Interface
+
 ```typescript
 interface MultiplusControlComponent {
   id: string;
@@ -103,6 +108,7 @@ interface MultiplusControlComponent {
 ```
 
 ### Example Component Definition
+
 ```json
 {
   "id": "multiplus-l1",
@@ -147,7 +153,9 @@ interface MultiplusControlComponent {
 ## WebSocket Communication
 
 ### Mode Button Behavior
+
 When a mode button is clicked:
+
 1. Resolve binding to EmpirBus channel ID
 2. Send press message (value = true)
 3. Wait 100ms
@@ -155,6 +163,7 @@ When a mode button is clicked:
 5. Update local UI state
 
 ### Example WebSocket Messages
+
 ```javascript
 // Button Press
 {
@@ -165,7 +174,7 @@ When a mode button is clicked:
 
 // Button Release (100ms later)
 {
-  type: "toggle", 
+  type: "toggle",
   channelId: 132,
   value: false
 }
@@ -174,6 +183,7 @@ When a mode button is clicked:
 ## Integration Status
 
 ### ✅ Completed
+
 - [x] Component TypeScript implementation
 - [x] CSS styling with responsive design
 - [x] Zod schema definition
@@ -184,6 +194,7 @@ When a mode button is clicked:
 - [x] ES2017 compliance
 
 ### 🚧 Next Steps
+
 1. **Tab Generator Integration**
    - Update `tabGenerator.ts` to create multiplus-control components
    - Read `schema.power.multiplus.l1` and `l2` flags
@@ -203,14 +214,14 @@ When a mode button is clicked:
 
 For Core board with Victron MultiPlus on AC Leg 1:
 
-| UI Component Binding | Hardware Config Signal | Signal ID |
-|---------------------|------------------------|-----------|
-| acInVoltage | signal-leg-one-ac-in-voltage | 151 |
-| acOutVoltage | signal-leg-one-ac-out-voltage | 154 |
-| acOutCurrent | signal-leg-one-ac-out-amperage | 155 |
-| modeOff | press-multiplus-off | 132 |
-| modeOn | press-multi-on | 133 |
-| modeChargerOnly | press-multiplus-charger-only | 134 |
+| UI Component Binding | Hardware Config Signal         | Signal ID |
+| -------------------- | ------------------------------ | --------- |
+| acInVoltage          | signal-leg-one-ac-in-voltage   | 151       |
+| acOutVoltage         | signal-leg-one-ac-out-voltage  | 154       |
+| acOutCurrent         | signal-leg-one-ac-out-amperage | 155       |
+| modeOff              | press-multiplus-off            | 132       |
+| modeOn               | press-multi-on                 | 133       |
+| modeChargerOnly      | press-multiplus-charger-only   | 134       |
 
 ## Notes
 

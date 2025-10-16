@@ -7,6 +7,7 @@ The HMI UI was not displaying subtabs correctly for Lighting, HVAC, and Switchin
 ## Root Cause
 
 The default schema template in the web-configurator's `SchemaContext.tsx` was missing the required subtab configuration objects:
+
 - `lightingTab`
 - `hvacTab`
 - `switchingTab`
@@ -87,6 +88,7 @@ if (enabledSubtabs.length === 0) {
 ### 3. Debug Logging Removed
 
 Cleaned up temporary debug logging from:
+
 - `packages/hmi-ui/src/utils/tabGenerator.ts`
 - `packages/hmi-ui/src/utils/schema-loader.ts`
 - `packages/hmi-ui/src/App.tsx`
@@ -182,6 +184,7 @@ node scripts/add-subtab-configs.js
 ```
 
 This will add default subtab configurations to:
+
 - `packages/hmi-ui/public/schema.json`
 - `garmin-bundle/web/schema.json`
 - `packages/web-configurator/public/deployment-package/web/schema.json`
@@ -217,6 +220,7 @@ This will add default subtab configurations to:
 ### Configuration Pages Need Updates
 
 The web-configurator configuration pages (Lighting, HVAC, Switching) should allow users to:
+
 - Enable/disable individual subtabs
 - Customize subtab titles
 - Change subtab icons

@@ -12,7 +12,15 @@ import { z } from 'zod';
 import { UISchemaSchema } from './root';
 
 // Helper type for component type strings
-export type ComponentType = 'toggle' | 'button' | 'dimmer' | 'gauge' | 'indicator' | 'slider' | 'multiplus-control' | 'multiplus-test-controls';
+export type ComponentType =
+  | 'toggle'
+  | 'button'
+  | 'dimmer'
+  | 'gauge'
+  | 'indicator'
+  | 'slider'
+  | 'multiplus-control'
+  | 'multiplus-test-controls';
 
 // Helper type for binding type strings (discriminated union)
 export type BindingType = 'empirbus' | 'nmea2000' | 'static';

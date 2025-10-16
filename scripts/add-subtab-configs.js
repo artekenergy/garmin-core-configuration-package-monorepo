@@ -64,7 +64,7 @@ const SCHEMA_PATHS = [
 
 function addSubtabConfigs(schemaPath) {
   const fullPath = path.join(process.cwd(), schemaPath);
-  
+
   if (!fs.existsSync(fullPath)) {
     console.log(`⏭️  Skipping ${schemaPath} (not found)`);
     return;

@@ -1,6 +1,6 @@
 /**
  * MultiplusControl Component - Composite control for Victron MultiPlus inverter/charger
- * 
+ *
  * Displays AC voltage/current readings and mode control buttons.
  */
 

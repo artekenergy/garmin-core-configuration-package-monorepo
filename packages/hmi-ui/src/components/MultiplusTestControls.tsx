@@ -1,9 +1,9 @@
 /**
  * Multiplus Test Controls
- * 
+ *
  * Quick test controls for Multiplus mode switching.
  * Displays three buttons: OFF, ON, CHARGER ONLY
- * 
+ *
  * ES2017 compliant.
  */
 
@@ -37,7 +37,7 @@ export function MultiplusTestControls(props: MultiplusTestControlsProps) {
       console.warn('[MultiplusTestControls] Invalid mode:', mode);
       return;
     }
-    
+
     // Create binding object
     const binding = {
       type: 'empirbus' as const,
@@ -56,7 +56,7 @@ export function MultiplusTestControls(props: MultiplusTestControlsProps) {
     const pressMessage = createToggleMessage(channelId, true);
     ws.send(pressMessage);
     console.log('[MultiplusTestControls] Mode:', mode, 'Press (1) ChannelID:', channelId);
-    
+
     // Send release after 100ms
     setTimeout(function () {
       const releaseMessage = createToggleMessage(channelId, false);
@@ -69,16 +69,16 @@ export function MultiplusTestControls(props: MultiplusTestControlsProps) {
     <div className="gcg-component-wrapper">
       <div className="gcg-multiplus-test-controls">
         <div className="gcg-multiplus-test-controls__header">
-          <span className="gcg-multiplus-test-controls__title">
-            Multiplus L{leg} Test Controls
-          </span>
+          <span className="gcg-multiplus-test-controls__title">Multiplus L{leg} Test Controls</span>
         </div>
 
         <div className="gcg-multiplus-test-controls__buttons">
           <button
             type="button"
             className="gcg-multiplus-test-controls__button gcg-multiplus-test-controls__button--off"
-            onClick={function () { handleModeClick('off'); }}
+            onClick={function () {
+              handleModeClick('off');
+            }}
             aria-label="Turn Multiplus Off"
           >
             OFF
@@ -87,7 +87,9 @@ export function MultiplusTestControls(props: MultiplusTestControlsProps) {
           <button
             type="button"
             className="gcg-multiplus-test-controls__button gcg-multiplus-test-controls__button--on"
-            onClick={function () { handleModeClick('on'); }}
+            onClick={function () {
+              handleModeClick('on');
+            }}
             aria-label="Turn Multiplus On"
           >
             ON
@@ -96,7 +98,9 @@ export function MultiplusTestControls(props: MultiplusTestControlsProps) {
           <button
             type="button"
             className="gcg-multiplus-test-controls__button gcg-multiplus-test-controls__button--charger"
-            onClick={function () { handleModeClick('charger-only'); }}
+            onClick={function () {
+              handleModeClick('charger-only');
+            }}
             aria-label="Charger Only Mode"
           >
             CHARGER

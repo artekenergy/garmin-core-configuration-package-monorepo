@@ -56,16 +56,9 @@ export function resolveBindingToChannelId(
       }
 
       // If output has signals and action is specified, return the signal ID
-      const sigs = (output.signals as unknown) as ExtendedSignals | undefined;
+      const sigs = output.signals as unknown as ExtendedSignals | undefined;
       if (sigs && action && sigs[action] != null) {
-        console.log(
-          'Resolved',
-          channelRef,
-          'with action',
-          action,
-          'to signal',
-          sigs[action]
-        );
+        console.log('Resolved', channelRef, 'with action', action, 'to signal', sigs[action]);
         return Number(sigs[action]);
       }
 

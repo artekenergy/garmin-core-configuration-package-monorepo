@@ -29,7 +29,7 @@ type MultiplusMode = 'off' | 'on' | 'charger-only';
 
 export function MultiplusControl(props: MultiplusControlProps) {
   const { component } = props;
-  
+
   // State for readings
   const acInVoltage = useSignal<number | null>(null);
   const acOutVoltage = useSignal<number | null>(null);
@@ -45,7 +45,7 @@ export function MultiplusControl(props: MultiplusControlProps) {
     }
 
     let binding;
-    
+
     if (mode === 'off' && component.bindings.modeOff) {
       binding = component.bindings.modeOff;
     } else if (mode === 'on' && component.bindings.modeOn) {
@@ -70,7 +70,7 @@ export function MultiplusControl(props: MultiplusControlProps) {
     const pressMessage = createToggleMessage(channelId, true);
     ws.send(pressMessage);
     console.log('[MultiplusControl] Mode:', mode, 'Press (1) ChannelID:', channelId);
-    
+
     // Send release after 100ms (value=false for released)
     setTimeout(function () {
       const releaseMessage = createToggleMessage(channelId, false);
@@ -99,27 +99,21 @@ export function MultiplusControl(props: MultiplusControlProps) {
           <div className="gcg-multiplus-control__reading">
             <span className="gcg-multiplus-control__reading-label">AC IN</span>
             <span className="gcg-multiplus-control__reading-value">
-              {acInVoltage.value !== null 
-                ? acInVoltage.value.toFixed(0) + 'V' 
-                : '--'}
+              {acInVoltage.value !== null ? acInVoltage.value.toFixed(0) + 'V' : '--'}
             </span>
           </div>
-          
+
           <div className="gcg-multiplus-control__reading">
             <span className="gcg-multiplus-control__reading-label">AC OUT</span>
             <span className="gcg-multiplus-control__reading-value">
-              {acOutVoltage.value !== null 
-                ? acOutVoltage.value.toFixed(0) + 'V' 
-                : '--'}
+              {acOutVoltage.value !== null ? acOutVoltage.value.toFixed(0) + 'V' : '--'}
             </span>
           </div>
 
           <div className="gcg-multiplus-control__reading gcg-multiplus-control__reading--wide">
             <span className="gcg-multiplus-control__reading-label">CURRENT</span>
             <span className="gcg-multiplus-control__reading-value">
-              {acOutCurrent.value !== null 
-                ? acOutCurrent.value.toFixed(1) + 'A' 
-                : '--'}
+              {acOutCurrent.value !== null ? acOutCurrent.value.toFixed(1) + 'A' : '--'}
             </span>
           </div>
         </div>
@@ -132,7 +126,9 @@ export function MultiplusControl(props: MultiplusControlProps) {
               'gcg-multiplus-control__mode-button' +
               (currentMode.value === 'off' ? ' gcg-multiplus-control__mode-button--active' : '')
             }
-            onClick={function () { handleModeClick('off'); }}
+            onClick={function () {
+              handleModeClick('off');
+            }}
             aria-label="Turn Multiplus Off"
           >
             OFF
@@ -144,7 +140,9 @@ export function MultiplusControl(props: MultiplusControlProps) {
               'gcg-multiplus-control__mode-button' +
               (currentMode.value === 'on' ? ' gcg-multiplus-control__mode-button--active' : '')
             }
-            onClick={function () { handleModeClick('on'); }}
+            onClick={function () {
+              handleModeClick('on');
+            }}
             aria-label="Turn Multiplus On"
           >
             ON
@@ -154,9 +152,13 @@ export function MultiplusControl(props: MultiplusControlProps) {
             type="button"
             className={
               'gcg-multiplus-control__mode-button' +
-              (currentMode.value === 'charger-only' ? ' gcg-multiplus-control__mode-button--active' : '')
+              (currentMode.value === 'charger-only'
+                ? ' gcg-multiplus-control__mode-button--active'
+                : '')
             }
-            onClick={function () { handleModeClick('charger-only'); }}
+            onClick={function () {
+              handleModeClick('charger-only');
+            }}
             aria-label="Charger Only Mode"
           >
             CHARGER

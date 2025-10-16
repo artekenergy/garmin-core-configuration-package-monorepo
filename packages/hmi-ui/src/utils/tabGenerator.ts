@@ -69,11 +69,7 @@ function applyLightingConfig(tab: UITabWithDerived, schema: UISchema) {
   exterior.title = lighting.exterior.title || exterior.title;
   exterior.enabled = Boolean(lighting.exterior.enabled);
 
-  const rgb = ensureSection(
-    tab,
-    'section-lighting-rgb',
-    lighting.rgb.title || 'RGB Lighting'
-  );
+  const rgb = ensureSection(tab, 'section-lighting-rgb', lighting.rgb.title || 'RGB Lighting');
   rgb.title = lighting.rgb.title || rgb.title;
   rgb.enabled = Boolean(lighting.rgb.enabled);
 
@@ -91,19 +87,11 @@ function applyHVACConfig(tab: UITabWithDerived, schema: UISchema) {
     return;
   }
 
-  const heating = ensureSection(
-    tab,
-    'section-hvac-heating',
-    hvac.heating.title || 'Heating'
-  );
+  const heating = ensureSection(tab, 'section-hvac-heating', hvac.heating.title || 'Heating');
   heating.title = hvac.heating.title || heating.title;
   heating.enabled = Boolean(hvac.heating.enabled);
 
-  const cooling = ensureSection(
-    tab,
-    'section-hvac-cooling',
-    hvac.cooling.title || 'Cooling'
-  );
+  const cooling = ensureSection(tab, 'section-hvac-cooling', hvac.cooling.title || 'Cooling');
   cooling.title = hvac.cooling.title || cooling.title;
   cooling.enabled = Boolean(hvac.cooling.enabled);
 
@@ -172,11 +160,7 @@ function applyPowerConfig(tab: UITabWithDerived, schema: UISchema) {
   }
 
   // Find or create AC section
-  const acSection = ensureSection(
-    tab,
-    'section-ac-power',
-    'AC Power'
-  );
+  const acSection = ensureSection(tab, 'section-ac-power', 'AC Power');
 
   // Clear existing components to regenerate
   acSection.components = [];
@@ -271,7 +255,7 @@ function applyPowerConfig(tab: UITabWithDerived, schema: UISchema) {
   // Add test controls section if any multiplus enabled
   if (power.multiplus.l1 || power.multiplus.l2) {
     const testSection = ensureSection(tab, 'section-test-controls', 'Test Controls');
-    
+
     // Add L1 test controls if enabled
     if (power.multiplus.l1) {
       testSection.components.push({
@@ -281,7 +265,7 @@ function applyPowerConfig(tab: UITabWithDerived, schema: UISchema) {
         leg: 1,
       });
     }
-    
+
     // Add L2 test controls if enabled
     if (power.multiplus.l2) {
       testSection.components.push({
