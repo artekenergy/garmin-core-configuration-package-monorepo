@@ -16,10 +16,24 @@ export const OutputControlTypeSchema = z.enum([
   'half-bridge',
   'dimmer',
   'special-function',
+  'signal-value', // Read-only sensor values
 ]);
 
-// Hardware sources
-export const HardwareSourceSchema = z.enum(['core', 'core-lite', 'genesis']);
+// Hardware sources (expanded to include all device types)
+export const HardwareSourceSchema = z.enum([
+  'core',
+  'core-lite',
+  'genesis',
+  'bms',          // Battery Management System
+  'sensors',      // Temperature, voltage sensors
+  'solar',        // Solar panels/controllers
+  'power',        // Power systems (MultiPlus, AC, etc.)
+  'hvac',         // Heating, Ventilation, Air Conditioning
+  'plumbing',     // Tanks, pumps
+  'accessories',  // Awnings, slides, etc.
+  'alternator',   // Alternator charging
+  'orion',        // Orion DC-DC converter
+]);
 
 export type HardwareSystemType = z.infer<typeof HardwareSystemTypeSchema>;
 export type OutputControlType = z.infer<typeof OutputControlTypeSchema>;

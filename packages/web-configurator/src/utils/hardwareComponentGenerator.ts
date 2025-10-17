@@ -18,6 +18,7 @@ const CONTROL_TO_COMPONENT_MAP = {
   'not-used': null, // Don't generate components for unused outputs
   'half-bridge': 'toggle', // Half-bridge pairs become toggle controls
   'special-function': 'button', // Special functions become buttons
+  'signal-value': null, // Read-only sensors, don't generate draggable components
 } as const;
 
 /**

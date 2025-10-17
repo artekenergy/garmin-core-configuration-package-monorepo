@@ -102,12 +102,16 @@ export const CONTROL_COMPONENT_MAP = {
     action: 'momentary' as const,
     width: 3,
   },
+  'signal-value': null, // Read-only sensor values, not draggable controls
 } as const;
 
 /**
- * Generate channel ID from source and channel number
+ * Generate channel ID from source and channel number/string
  */
-export function generateChannelId(source: string, channel: number): string {
+export function generateChannelId(source: string, channel: number | string): string {
+  if (typeof channel === 'string') {
+    return channel; // Already a full ID like "battery-voltage"
+  }
   return `${source}-${String(channel).padStart(2, '0')}`;
 }
 
@@ -126,11 +130,14 @@ export function parseChannelId(id: string): { source: string; channel: number } 
 
 /**
  * Check if a channel is part of a half-bridge pair
+ * Only works with numeric channels, returns null for string channels
  */
 export function findHalfBridgePair(
   source: string,
-  channel: number
+  channel: number | string
 ): Omit<HalfBridgePair, 'enabled'> | null {
+  if (typeof channel === 'string') return null; // String channels can't be in half-bridge pairs
+  
   return (
     HALF_BRIDGE_PAIRS.find(
       (pair) => pair.source === source && (pair.channelA === channel || pair.channelB === channel)
@@ -140,11 +147,13 @@ export function findHalfBridgePair(
 
 /**
  * Check if a channel is the primary channel in a half-bridge pair
+ * Only works with numeric channels
  */
 export function isPrimaryChannel(
   source: string,
-  channel: number,
+  channel: number | string,
   pair: Omit<HalfBridgePair, 'enabled'>
 ): boolean {
+  if (typeof channel === 'string') return false; // String channels can't be in pairs
   return pair.source === source && pair.channelA === channel;
 }

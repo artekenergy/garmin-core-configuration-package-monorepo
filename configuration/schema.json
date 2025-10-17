@@ -59,6 +59,16 @@
     "signalMap": {},
     "genesisBoards": 0
   },
+  "theme": {
+    "preset": "Artek",
+    "customColors": {
+      "primary": "#1e293b",
+      "secondary": "#0f172a",
+      "accent": "#f1f5f9",
+      "background": "#0f172a",
+      "text": "#f1f5f9"
+    }
+  },
   "power": {
     "dcCharging": {
       "secondAlternator": false,
@@ -72,7 +82,7 @@
     "batteryManagement": "victron",
     "acLegs": 1,
     "multiplus": {
-      "l1": false,
+      "l1": true,
       "l2": false
     }
   },
@@ -144,8 +154,7 @@
           "id": "section-home-1",
           "title": "Quick Controls",
           "enabled": false,
-          "components": [
-          ]
+          "components": []
         },
         {
           "id": "section-home-2",
@@ -185,12 +194,12 @@
       "id": "tab-power",
       "title": "Power",
       "preset": "power",
-      "enabled": false,
+      "enabled": true,
       "sections": [
         {
           "id": "section-battery",
           "title": "Battery",
-          "enabled": false,
+          "enabled": true,
           "components": []
         }
       ]
