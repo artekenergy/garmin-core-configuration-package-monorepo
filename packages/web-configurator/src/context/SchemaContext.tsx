@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { validateSchema, type UISchema, type ValidationResult } from '@gcg/schema';
+import { validateSchema, type UISchema, type ValidationResult, createDefaultUISchema } from '@gcg/schema';
 import { regenerateTabContent } from '../utils/tabGenerator';
 import {
   validateAllChannelBindings,
@@ -37,7 +37,14 @@ interface SchemaContextType {
 
 const SchemaContext = createContext<SchemaContextType | undefined>(undefined);
 
-const defaultSchema: UISchema = {
+const defaultSchema: UISchema = createDefaultUISchema();
+
+/*
+Old inline template removed in favor of library default.
+Keeping a minimal stub here to avoid shipping large defaults in this file.
+*/
+
+/* const legacyTemplate: UISchema = {
   schemaVersion: '0.1.0',
   metadata: {
     name: 'New HMI Configuration',
@@ -260,13 +267,10 @@ const defaultSchema: UISchema = {
       ],
     },
   ],
-};
+}; */
 
 export function SchemaProvider({ children }: { children: ReactNode }) {
-  const [schema, setSchema] = useState<UISchema | null>(() => {
-    // Fix section IDs when loading the default schema
-    return regenerateTabContent(defaultSchema);
-  });
+  const [schema, setSchema] = useState<UISchema | null>(() => regenerateTabContent(defaultSchema));
   const [validationResult, setValidationResult] = useState<ValidationResult | null>(null);
   const [hardwareChannels, setHardwareChannels] = useState<HardwareChannel[]>([]);
   const [channelErrors, setChannelErrors] = useState<ChannelValidationError[]>([]);
@@ -407,6 +411,28 @@ export function SchemaProvider({ children }: { children: ReactNode }) {
     const fixedSchema = regenerateTabContent(defaultSchema);
     setSchema(fixedSchema);
   };
+
+  // Auto-load canonical schema.json if present (single source of truth)
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const resp = await fetch('/schema.json', { cache: 'no-cache' });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (!cancelled) {
+            loadSchema(data);
+            debug.log('Loaded canonical /schema.json into editor');
+          }
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   /**
    * Load and parse hardware config to extract available channels

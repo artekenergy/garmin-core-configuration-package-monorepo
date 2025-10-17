@@ -2,27 +2,142 @@
   "schemaVersion": "0.1.0",
   "metadata": {
     "name": "New HMI Configuration",
-    "version": "1.0.0",
     "description": "Created with Garmin Core Graphics Configurator",
+    "version": "1.0.0",
     "author": "",
-    "createdAt": "2025-10-12T06:06:37.547Z",
-    "updatedAt": "2025-10-12T06:09:18.916Z"
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T21:35:06.408Z"
+  },
+  "lightingTab": {
+    "interior": {
+      "enabled": false,
+      "title": "Interior"
+    },
+    "exterior": {
+      "enabled": false,
+      "title": "Exterior"
+    },
+    "rgb": {
+      "enabled": false,
+      "title": "RGB"
+    }
+  },
+  "hvacTab": {
+    "heating": {
+      "enabled": false,
+      "title": "Heating"
+    },
+    "cooling": {
+      "enabled": false,
+      "title": "Cooling"
+    },
+    "ventilation": {
+      "enabled": false,
+      "title": "Ventilation"
+    }
+  },
+  "switchingTab": {
+    "switches": {
+      "enabled": false,
+      "title": "Switches"
+    },
+    "accessories": {
+      "enabled": false,
+      "title": "Accessories"
+    }
+  },
+  "plumbingTab": {
+    "switchingSection": {
+      "enabled": false,
+      "title": "Plumbing Controls"
+    }
   },
   "hardware": {
     "systemType": "core",
     "outputs": [
       {
+        "id": "battery-voltage",
+        "source": "bms",
+        "channel": "battery-voltage",
+        "control": "signal-value",
+        "label": "Battery Voltage",
+        "icon": "/icons/Battery.svg",
+        "signals": {
+          "value": 197
+        }
+      },
+      {
+        "id": "battery-soc",
+        "source": "bms",
+        "channel": "battery-soc",
+        "control": "signal-value",
+        "label": "Battery State of Charge",
+        "icon": "/icons/Battery.svg",
+        "signals": {
+          "value": 149
+        }
+      },
+      {
+        "id": "tank-fresh-1",
+        "source": "sensors",
+        "channel": "tank-fresh-1",
+        "control": "signal-value",
+        "label": "Fresh Water Tank",
+        "icon": "/icons/Tank.svg",
+        "signals": {
+          "value": 201
+        }
+      },
+      {
+        "id": "tank-waste-2",
+        "source": "sensors",
+        "channel": "tank-waste-2",
+        "control": "signal-value",
+        "label": "Waste Water Tank",
+        "icon": "/icons/Tank.svg",
+        "signals": {
+          "value": 202
+        }
+      },
+      {
+        "id": "tank-black-3",
+        "source": "sensors",
+        "channel": "tank-black-3",
+        "control": "signal-value",
+        "label": "Black Water Tank",
+        "icon": "/icons/Tank.svg",
+        "signals": {
+          "value": 203
+        }
+      },
+      {
+        "id": "alternator-current",
+        "source": "alternator",
+        "channel": "alternator-current",
+        "control": "signal-value",
+        "label": "Alternator Current",
+        "icon": "/icons/Alternator.svg",
+        "signals": {
+          "value": 339
+        }
+      },
+      {
+        "id": "orion-current",
+        "source": "orion",
+        "channel": "orion-current",
+        "control": "signal-value",
+        "label": "Orion DC-DC Current",
+        "icon": "/icons/Charger.svg",
+        "signals": {
+          "value": 340
+        }
+      },
+      {
         "id": "core-01",
         "source": "core",
         "channel": 1,
-        "control": "slider",
-        "label": "Stabilizer",
-        "icon": "💧",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 5
-        },
+        "control": "not-used",
+        "label": "Core 1",
         "signals": {
           "toggle": 15,
           "momentary": 14,
@@ -34,6 +149,7 @@
         "source": "core",
         "channel": 2,
         "control": "not-used",
+        "label": "Core 2",
         "signals": {
           "toggle": 72,
           "momentary": 71,
@@ -44,35 +160,32 @@
         "id": "core-03",
         "source": "core",
         "channel": 3,
-        "control": "toggle-button",
-        "label": "Kitchen Dimmer",
-        "icon": "all-lights",
+        "control": "not-used",
+        "label": "Core 3",
         "signals": {
-          "toggle": null,
-          "momentary": null,
-          "dimmer": null
+          "toggle": 18,
+          "momentary": 17,
+          "dimmer": 19
         }
       },
       {
         "id": "core-04",
         "source": "core",
         "channel": 4,
-        "control": "toggle-button",
-        "label": "Cabinet Light",
-        "icon": "water-dump",
+        "control": "not-used",
+        "label": "Core 4",
         "signals": {
-          "toggle": null,
-          "momentary": null,
-          "dimmer": null
+          "toggle": 21,
+          "momentary": 20,
+          "dimmer": 22
         }
       },
       {
         "id": "core-05",
         "source": "core",
         "channel": 5,
-        "control": "push-button",
-        "label": "Tank Heater",
-        "icon": "wifi",
+        "control": "not-used",
+        "label": "Core 5",
         "signals": {
           "toggle": 75,
           "momentary": 74,
@@ -80,12 +193,47 @@
         }
       },
       {
+        "id": "core-06",
+        "source": "core",
+        "channel": 6,
+        "control": "not-used",
+        "label": "Core 6",
+        "signals": {
+          "toggle": 27,
+          "momentary": 26,
+          "dimmer": 28
+        }
+      },
+      {
+        "id": "core-07",
+        "source": "core",
+        "channel": 7,
+        "control": "not-used",
+        "label": "Core 7",
+        "signals": {
+          "toggle": 30,
+          "momentary": 29,
+          "dimmer": 31
+        }
+      },
+      {
+        "id": "core-08",
+        "source": "core",
+        "channel": 8,
+        "control": "not-used",
+        "label": "Core 8",
+        "signals": {
+          "toggle": 33,
+          "momentary": 32,
+          "dimmer": 34
+        }
+      },
+      {
         "id": "core-09",
         "source": "core",
         "channel": 9,
-        "control": "toggle-button",
-        "label": "Slide Motor",
-        "icon": "plumbing",
+        "control": "not-used",
+        "label": "Core 9",
         "signals": {
           "toggle": 78,
           "momentary": 77,
@@ -97,6 +245,7 @@
         "source": "core",
         "channel": 10,
         "control": "not-used",
+        "label": "Core 10",
         "signals": {
           "toggle": 81,
           "momentary": 80,
@@ -107,18 +256,12 @@
         "id": "core-11",
         "source": "core",
         "channel": 11,
-        "control": "slider",
-        "label": "Kitchen Dimmer",
-        "icon": "🔆",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 1
-        },
+        "control": "not-used",
+        "label": "Core 11",
         "signals": {
-          "toggle": null,
-          "momentary": null,
-          "dimmer": null
+          "toggle": 42,
+          "momentary": 41,
+          "dimmer": 43
         }
       },
       {
@@ -126,19 +269,19 @@
         "source": "core",
         "channel": 12,
         "control": "not-used",
+        "label": "Core 12",
         "signals": {
-          "toggle": null,
-          "momentary": null,
-          "dimmer": null
+          "toggle": 45,
+          "momentary": 44,
+          "dimmer": 46
         }
       },
       {
         "id": "core-13",
         "source": "core",
         "channel": 13,
-        "control": "toggle-button",
-        "label": "Tank Heater",
-        "icon": "alternator",
+        "control": "not-used",
+        "label": "Core 13",
         "signals": {
           "toggle": 84,
           "momentary": 83,
@@ -149,14 +292,8 @@
         "id": "core-17",
         "source": "core",
         "channel": 17,
-        "control": "slider",
-        "label": "Water Pump",
-        "icon": "🔆",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 5
-        },
+        "control": "not-used",
+        "label": "Core 17",
         "signals": {
           "toggle": 87,
           "momentary": 86,
@@ -167,9 +304,8 @@
         "id": "core-18",
         "source": "core",
         "channel": 18,
-        "control": "push-button",
-        "label": "Reading Lamp",
-        "icon": "power",
+        "control": "not-used",
+        "label": "Core 18",
         "signals": {
           "toggle": 90,
           "momentary": 89,
@@ -180,14 +316,8 @@
         "id": "core-19",
         "source": "core",
         "channel": 19,
-        "control": "slider",
-        "label": "Kitchen Dimmer",
-        "icon": "🔌",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 1
-        },
+        "control": "not-used",
+        "label": "Core 19",
         "signals": {
           "toggle": 93,
           "momentary": 92,
@@ -199,6 +329,7 @@
         "source": "core",
         "channel": 20,
         "control": "not-used",
+        "label": "Core 20",
         "signals": {
           "toggle": 96,
           "momentary": 95,
@@ -209,14 +340,8 @@
         "id": "core-21",
         "source": "core",
         "channel": 21,
-        "control": "slider",
-        "label": "Accent Light",
-        "icon": "🎯",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 5
-        },
+        "control": "not-used",
+        "label": "Core 21",
         "signals": {
           "toggle": 99,
           "momentary": 98,
@@ -228,6 +353,7 @@
         "source": "core",
         "channel": 25,
         "control": "not-used",
+        "label": "Core 25",
         "signals": {
           "toggle": 102,
           "momentary": 101,
@@ -238,14 +364,8 @@
         "id": "core-26",
         "source": "core",
         "channel": 26,
-        "control": "slider",
-        "label": "Air Compressor",
-        "icon": "🎭",
-        "range": {
-          "min": 0,
-          "max": 100,
-          "step": 5
-        },
+        "control": "not-used",
+        "label": "Core 26",
         "signals": {
           "toggle": 105,
           "momentary": 104,
@@ -257,6 +377,7 @@
         "source": "core",
         "channel": 27,
         "control": "not-used",
+        "label": "Core 27",
         "signals": {
           "toggle": 108,
           "momentary": 107,
@@ -267,9 +388,8 @@
         "id": "core-28",
         "source": "core",
         "channel": 28,
-        "control": "toggle-button",
-        "label": "Kitchen Dimmer",
-        "icon": "group",
+        "control": "not-used",
+        "label": "Core 28",
         "signals": {
           "toggle": 111,
           "momentary": 110,
@@ -281,10 +401,699 @@
         "source": "core",
         "channel": 29,
         "control": "not-used",
+        "label": "Core 29",
         "signals": {
           "toggle": 114,
           "momentary": 113,
           "dimmer": 115
+        }
+      },
+      {
+        "id": "signal-primary-solar-voltage",
+        "source": "solar",
+        "channel": 153,
+        "control": "signal-value",
+        "label": "Primary Solar Voltage",
+        "icon": "/icons/Solar.svg",
+        "signals": {
+          "value": 153
+        }
+      },
+      {
+        "id": "signal-leg-one-ac-out-voltage",
+        "source": "power",
+        "channel": 154,
+        "control": "signal-value",
+        "label": "Leg 1 AC Out Voltage",
+        "icon": "/icons/AC.svg",
+        "signals": {
+          "value": 154
+        }
+      },
+      {
+        "id": "signal-leg-one-ac-out-amperage",
+        "source": "power",
+        "channel": 155,
+        "control": "signal-value",
+        "label": "Leg 1 AC Out Amperage",
+        "icon": "/icons/AC.svg",
+        "signals": {
+          "value": 155
+        }
+      },
+      {
+        "id": "signal-solar-indicator",
+        "source": "solar",
+        "channel": 156,
+        "control": "signal-value",
+        "label": "Solar Indicator",
+        "icon": "/icons/Solar.svg",
+        "signals": {
+          "value": 156
+        }
+      },
+      {
+        "id": "signal-primary-solar-amperage",
+        "source": "solar",
+        "channel": 157,
+        "control": "signal-value",
+        "label": "Primary Solar Amperage",
+        "icon": "/icons/Solar.svg",
+        "signals": {
+          "value": 157
+        }
+      },
+      {
+        "id": "signal-aux-solar-voltage",
+        "source": "solar",
+        "channel": 158,
+        "control": "signal-value",
+        "label": "Auxiliary Solar Voltage",
+        "icon": "/icons/Solar.svg",
+        "signals": {
+          "value": 158
+        }
+      },
+      {
+        "id": "signal-aux-solar-amperage",
+        "source": "solar",
+        "channel": 159,
+        "control": "signal-value",
+        "label": "Auxiliary Solar Amperage",
+        "icon": "/icons/Solar.svg",
+        "signals": {
+          "value": 159
+        }
+      },
+      {
+        "id": "signal-bms-battery-voltage",
+        "source": "bms",
+        "channel": 146,
+        "control": "signal-value",
+        "label": "BMS Battery Voltage",
+        "icon": "/icons/Battery.svg",
+        "signals": {
+          "value": 146
+        }
+      },
+      {
+        "id": "signal-dc-loads",
+        "source": "power",
+        "channel": 147,
+        "control": "signal-value",
+        "label": "DC Loads",
+        "signals": {
+          "value": 147
+        }
+      },
+      {
+        "id": "signal-bms-battery-amperage",
+        "source": "bms",
+        "channel": 148,
+        "control": "signal-value",
+        "label": "BMS Battery Amperage",
+        "icon": "/icons/Battery.svg",
+        "signals": {
+          "value": 148
+        }
+      },
+      {
+        "id": "signal-bms-battery-state-of-charge",
+        "source": "bms",
+        "channel": 149,
+        "control": "signal-value",
+        "label": "BMS State of Charge",
+        "icon": "/icons/Battery.svg",
+        "signals": {
+          "value": 149
+        }
+      },
+      {
+        "id": "signal-bms-time-to-go",
+        "source": "bms",
+        "channel": 150,
+        "control": "signal-value",
+        "label": "BMS Time To Go",
+        "signals": {
+          "value": 150
+        }
+      },
+      {
+        "id": "signal-leg-one-ac-in-voltage",
+        "source": "power",
+        "channel": 151,
+        "control": "signal-value",
+        "label": "Leg 1 AC In Voltage",
+        "icon": "/icons/AC.svg",
+        "signals": {
+          "value": 151
+        }
+      },
+      {
+        "id": "indicator-shore-power",
+        "source": "power",
+        "channel": 160,
+        "control": "signal-value",
+        "label": "Shore Power Indicator",
+        "signals": {
+          "value": 160
+        }
+      },
+      {
+        "id": "pbc-vent-fan-1-on-off",
+        "source": "hvac",
+        "channel": 161,
+        "control": "toggle-button",
+        "label": "Vent Fan 1 On/Off"
+      },
+      {
+        "id": "pbc-vent-fan-1-intake",
+        "source": "hvac",
+        "channel": 162,
+        "control": "toggle-button",
+        "label": "Vent Fan 1 Intake"
+      },
+      {
+        "id": "pbc-vent-fan-1-exhaust",
+        "source": "hvac",
+        "channel": 163,
+        "control": "toggle-button",
+        "label": "Vent Fan 1 Exhaust"
+      },
+      {
+        "id": "mom-vent-fan-1-increase-speed",
+        "source": "hvac",
+        "channel": 164,
+        "control": "push-button",
+        "label": "Vent Fan 1 Increase Speed"
+      },
+      {
+        "id": "mom-vent-fan-1-decrease-speed",
+        "source": "hvac",
+        "channel": 165,
+        "control": "push-button",
+        "label": "Vent Fan 1 Decrease Speed"
+      },
+      {
+        "id": "signal-vent-fan-1-speed-value",
+        "source": "hvac",
+        "channel": 166,
+        "control": "signal-value",
+        "label": "Vent Fan 1 Speed",
+        "signals": {
+          "value": 166
+        }
+      },
+      {
+        "id": "pbc-vent-fan-2-on-off",
+        "source": "hvac",
+        "channel": 167,
+        "control": "toggle-button",
+        "label": "Vent Fan 2 On/Off"
+      },
+      {
+        "id": "pbc-vent-fan-2-intake",
+        "source": "hvac",
+        "channel": 168,
+        "control": "toggle-button",
+        "label": "Vent Fan 2 Intake"
+      },
+      {
+        "id": "pbc-vent-fan-2-exhaust",
+        "source": "hvac",
+        "channel": 169,
+        "control": "toggle-button",
+        "label": "Vent Fan 2 Exhaust"
+      },
+      {
+        "id": "pbc-vent-fan-2-increase-speed",
+        "source": "hvac",
+        "channel": 170,
+        "control": "push-button",
+        "label": "Vent Fan 2 Increase Speed"
+      },
+      {
+        "id": "pbc-vent-fan-2-decrease-speed",
+        "source": "hvac",
+        "channel": 171,
+        "control": "push-button",
+        "label": "Vent Fan 2 Decrease Speed"
+      },
+      {
+        "id": "pbc-vent-fan-2-speed-value",
+        "source": "hvac",
+        "channel": 172,
+        "control": "signal-value",
+        "label": "Vent Fan 2 Speed",
+        "signals": {
+          "value": 172
+        }
+      },
+      {
+        "id": "press-truma-off",
+        "source": "hvac",
+        "channel": 173,
+        "control": "push-button",
+        "label": "Truma Off"
+      },
+      {
+        "id": "press-truma-cool",
+        "source": "hvac",
+        "channel": 174,
+        "control": "push-button",
+        "label": "Truma Cool"
+      },
+      {
+        "id": "press-truma-fan-only",
+        "source": "hvac",
+        "channel": 175,
+        "control": "push-button",
+        "label": "Truma Fan Only"
+      },
+      {
+        "id": "press-truma-fan-off",
+        "source": "hvac",
+        "channel": 176,
+        "control": "push-button",
+        "label": "Truma Fan Off"
+      },
+      {
+        "id": "press-truma-fan-low",
+        "source": "hvac",
+        "channel": 177,
+        "control": "push-button",
+        "label": "Truma Fan Low"
+      },
+      {
+        "id": "press-truma-fan-med",
+        "source": "hvac",
+        "channel": 178,
+        "control": "push-button",
+        "label": "Truma Fan Med"
+      },
+      {
+        "id": "press-truma-fan-hi",
+        "source": "hvac",
+        "channel": 179,
+        "control": "push-button",
+        "label": "Truma Fan High"
+      },
+      {
+        "id": "press-therm-set-temp-up",
+        "source": "hvac",
+        "channel": 180,
+        "control": "push-button",
+        "label": "Thermostat Temp Up"
+      },
+      {
+        "id": "press-therm-set-temp-down",
+        "source": "hvac",
+        "channel": 181,
+        "control": "push-button",
+        "label": "Thermostat Temp Down"
+      },
+      {
+        "id": "press-therm-set-temp-value",
+        "source": "hvac",
+        "channel": 182,
+        "control": "signal-value",
+        "label": "Thermostat Temp Value",
+        "signals": {
+          "value": 182
+        }
+      },
+      {
+        "id": "press-therm-set-temp-value-c",
+        "source": "hvac",
+        "channel": 183,
+        "control": "signal-value",
+        "label": "Thermostat Temp Value (C)",
+        "signals": {
+          "value": 183
+        }
+      },
+      {
+        "id": "pbc-rixens-system-on-off",
+        "source": "hvac",
+        "channel": 184,
+        "control": "toggle-button",
+        "label": "Rixens System On/Off"
+      },
+      {
+        "id": "pbc-rixens-floor-on-off",
+        "source": "hvac",
+        "channel": 185,
+        "control": "toggle-button",
+        "label": "Rixens Floor On/Off"
+      },
+      {
+        "id": "pbc-rixens-furnace-on-off",
+        "source": "hvac",
+        "channel": 186,
+        "control": "toggle-button",
+        "label": "Rixens Furnace On/Off"
+      },
+      {
+        "id": "pbc-rixens-electric-on-off",
+        "source": "hvac",
+        "channel": 187,
+        "control": "toggle-button",
+        "label": "Rixens Electric On/Off"
+      },
+      {
+        "id": "pbc-rixens-engine-on-off",
+        "source": "hvac",
+        "channel": 188,
+        "control": "toggle-button",
+        "label": "Rixens Engine On/Off"
+      },
+      {
+        "id": "pbc-rixens-aux-on-off",
+        "source": "hvac",
+        "channel": 189,
+        "control": "toggle-button",
+        "label": "Rixens Aux On/Off"
+      },
+      {
+        "id": "pbc-rixens-fan-only",
+        "source": "hvac",
+        "channel": 190,
+        "control": "toggle-button",
+        "label": "Rixens Fan Only"
+      },
+      {
+        "id": "pbc-rixen-hot-water",
+        "source": "hvac",
+        "channel": 191,
+        "control": "toggle-button",
+        "label": "Rixens Hot Water"
+      },
+      {
+        "id": "pbc-rixens-fan-on-off",
+        "source": "hvac",
+        "channel": 192,
+        "control": "toggle-button",
+        "label": "Rixens Fan On/Off"
+      },
+      {
+        "id": "mom-awning-stop",
+        "source": "accessories",
+        "channel": 193,
+        "control": "push-button",
+        "label": "Awning Stop"
+      },
+      {
+        "id": "mom-awning-retract",
+        "source": "accessories",
+        "channel": 194,
+        "control": "push-button",
+        "label": "Awning Retract"
+      },
+      {
+        "id": "mom-awning-extend",
+        "source": "accessories",
+        "channel": 195,
+        "control": "push-button",
+        "label": "Awning Extend"
+      },
+      {
+        "id": "pbc-awning-led-on-off",
+        "source": "accessories",
+        "channel": 196,
+        "control": "toggle-button",
+        "label": "Awning LED On/Off"
+      },
+      {
+        "id": "signal-fresh-tank-1",
+        "source": "plumbing",
+        "channel": 197,
+        "control": "signal-value",
+        "label": "Fresh Tank 1",
+        "signals": {
+          "value": 197
+        }
+      },
+      {
+        "id": "signal-black-tank-1",
+        "source": "plumbing",
+        "channel": 198,
+        "control": "signal-value",
+        "label": "Black Tank 1",
+        "signals": {
+          "value": 198
+        }
+      },
+      {
+        "id": "signal-grey-tank-1",
+        "source": "plumbing",
+        "channel": 199,
+        "control": "signal-value",
+        "label": "Grey Tank 1",
+        "signals": {
+          "value": 199
+        }
+      },
+      {
+        "id": "signal-lpg-tank-1",
+        "source": "plumbing",
+        "channel": 200,
+        "control": "signal-value",
+        "label": "LPG Tank 1",
+        "signals": {
+          "value": 200
+        }
+      },
+      {
+        "id": "signal-fresh-tank-2-soul",
+        "source": "plumbing",
+        "channel": 201,
+        "control": "signal-value",
+        "label": "Fresh Tank 2 (Soul)",
+        "signals": {
+          "value": 201
+        }
+      },
+      {
+        "id": "signal-black-tank-2-soul",
+        "source": "plumbing",
+        "channel": 202,
+        "control": "signal-value",
+        "label": "Black Tank 2 (Soul)",
+        "signals": {
+          "value": 202
+        }
+      },
+      {
+        "id": "signal-grey-tank-2-soul",
+        "source": "plumbing",
+        "channel": 203,
+        "control": "signal-value",
+        "label": "Grey Tank 2 (Soul)",
+        "signals": {
+          "value": 203
+        }
+      },
+      {
+        "id": "signal-fresh-tank-2-victron",
+        "source": "plumbing",
+        "channel": 204,
+        "control": "signal-value",
+        "label": "Fresh Tank 2 (Victron)",
+        "signals": {
+          "value": 204
+        }
+      },
+      {
+        "id": "signal-black-tank-2-victron",
+        "source": "plumbing",
+        "channel": 205,
+        "control": "signal-value",
+        "label": "Black Tank 2 (Victron)",
+        "signals": {
+          "value": 205
+        }
+      },
+      {
+        "id": "signal-grey-tank-2-victron",
+        "source": "plumbing",
+        "channel": 206,
+        "control": "signal-value",
+        "label": "Grey Tank 2 (Victron)",
+        "signals": {
+          "value": 206
+        }
+      },
+      {
+        "id": "signal-fresh-tank-3-victron",
+        "source": "plumbing",
+        "channel": 207,
+        "control": "signal-value",
+        "label": "Fresh Tank 3 (Victron)",
+        "signals": {
+          "value": 207
+        }
+      },
+      {
+        "id": "signal-grey-tank-3-victron",
+        "source": "plumbing",
+        "channel": 208,
+        "control": "signal-value",
+        "label": "Grey Tank 3 (Victron)",
+        "signals": {
+          "value": 208
+        }
+      },
+      {
+        "id": "signal-value-int-temp",
+        "source": "sensors",
+        "channel": 2,
+        "control": "signal-value",
+        "label": "Interior Temperature",
+        "signals": {
+          "value": 2
+        }
+      },
+      {
+        "id": "signal-value-ext-temp",
+        "source": "sensors",
+        "channel": 3,
+        "control": "signal-value",
+        "label": "Exterior Temperature",
+        "signals": {
+          "value": 3
+        }
+      },
+      {
+        "id": "signal-value-starter-battery-voltage",
+        "source": "power",
+        "channel": 4,
+        "control": "signal-value",
+        "label": "Starter Battery Voltage",
+        "signals": {
+          "value": 4
+        }
+      },
+      {
+        "id": "press-multiplus-off",
+        "source": "power",
+        "channel": 132,
+        "control": "push-button",
+        "label": "MultiPlus Off",
+        "signals": {
+          "momentary": 132
+        }
+      },
+      {
+        "id": "press-multi-on",
+        "source": "power",
+        "channel": 133,
+        "control": "push-button",
+        "label": "MultiPlus On",
+        "signals": {
+          "momentary": 133
+        }
+      },
+      {
+        "id": "press-multiplus-charger-only",
+        "source": "power",
+        "channel": 134,
+        "control": "push-button",
+        "label": "MultiPlus Charger Only",
+        "signals": {
+          "momentary": 134
+        }
+      },
+      {
+        "id": "mom-increase-ac-limit",
+        "source": "power",
+        "channel": 135,
+        "control": "push-button",
+        "label": "Increase AC Limit"
+      },
+      {
+        "id": "mom-decrease-ac-limit",
+        "source": "power",
+        "channel": 136,
+        "control": "push-button",
+        "label": "Decrease AC Limit"
+      },
+      {
+        "id": "mom-requested-ac-limit",
+        "source": "power",
+        "channel": 137,
+        "control": "signal-value",
+        "label": "Requested AC Limit",
+        "signals": {
+          "value": 137
+        }
+      },
+      {
+        "id": "mom-load-ac-limit",
+        "source": "power",
+        "channel": 138,
+        "control": "push-button",
+        "label": "Load AC Limit"
+      },
+      {
+        "id": "signal-current-ac-limit",
+        "source": "power",
+        "channel": 139,
+        "control": "signal-value",
+        "label": "Current AC Limit",
+        "signals": {
+          "value": 139
+        }
+      },
+      {
+        "id": "mom-ac-limit-5",
+        "source": "power",
+        "channel": 140,
+        "control": "push-button",
+        "label": "Set AC Limit 5A"
+      },
+      {
+        "id": "mom-ac-limit-10",
+        "source": "power",
+        "channel": 141,
+        "control": "push-button",
+        "label": "Set AC Limit 10A"
+      },
+      {
+        "id": "mom-ac-limit-15",
+        "source": "power",
+        "channel": 142,
+        "control": "push-button",
+        "label": "Set AC Limit 15A"
+      },
+      {
+        "id": "mom-ac-limit-20",
+        "source": "power",
+        "channel": 143,
+        "control": "push-button",
+        "label": "Set AC Limit 20A"
+      },
+      {
+        "id": "mom-ac-limit-30",
+        "source": "power",
+        "channel": 144,
+        "control": "push-button",
+        "label": "Set AC Limit 30A"
+      },
+      {
+        "id": "mom-ac-limit-50",
+        "source": "power",
+        "channel": 145,
+        "control": "push-button",
+        "label": "Set AC Limit 50A"
+      },
+      {
+        "id": "rixens-fan-value",
+        "source": "hvac",
+        "channel": 338,
+        "control": "signal-value",
+        "label": "Rixens Fan Value",
+        "signals": {
+          "value": 338
         }
       }
     ],
@@ -292,62 +1101,64 @@
     "signalMap": {},
     "genesisBoards": 0
   },
+  "theme": {
+    "preset": "Artek",
+    "customColors": {
+      "primary": "#1e293b",
+      "secondary": "#0f172a",
+      "accent": "#f1f5f9",
+      "background": "#0f172a",
+      "text": "#f1f5f9"
+    }
+  },
   "power": {
     "dcCharging": {
-      "secondAlternator": true,
-      "orionXs": true
+      "secondAlternator": false,
+      "orionXs": false
     },
     "solar": {
-      "enabled": true,
-      "primaryArray": true,
-      "auxiliaryArray": true
+      "enabled": false,
+      "primaryArray": false,
+      "auxiliaryArray": false
     },
     "batteryManagement": "victron",
-    "acLegs": 2,
+    "acLegs": 1,
     "multiplus": {
       "l1": true,
-      "l2": true
+      "l2": false
     }
   },
   "hvac": {
     "heating": {
-      "enabled": true,
+      "enabled": false,
       "sources": {
-        "diesel": true,
-        "electric": true,
-        "engine": true
+        "diesel": false,
+        "electric": false,
+        "engine": false
       },
       "distribution": {
-        "floor": true,
-        "fans": true
+        "floor": false,
+        "fans": false
       },
-      "hotWater": true,
-      "auxZone": true
+      "hotWater": false,
+      "auxZone": false
     },
     "cooling": {
-      "enabled": true,
-      "brand": "recpro"
+      "enabled": false,
+      "brand": ""
     },
     "ventilation": {
-      "enabled": true,
-      "fans": 2
+      "enabled": false,
+      "fans": 1
     }
   },
   "plumbing": {
-    "enabled": true,
+    "enabled": false,
     "monitoringSource": "cerbo-gx",
-    "count": 3,
+    "count": 1,
     "tanks": [
       {
         "type": "fresh",
-        "name": ""
-      },
-      {
-        "type": "waste",
-        "name": ""
-      },
-      {
-        "type": "black",
         "name": ""
       }
     ]
@@ -359,14 +1170,14 @@
       "buttonsPerKeypad": 8
     },
     "awning": {
-      "enabled": true,
-      "light": true,
+      "enabled": false,
+      "light": false,
       "controlType": "rvc"
     },
     "slides": {
-      "enabled": true,
-      "controlType": "analog",
-      "keypadSecured": true
+      "enabled": false,
+      "controlType": "rvc",
+      "keypadSecured": false
     },
     "itcLighting": {
       "enabled": false,
@@ -374,132 +1185,24 @@
       "zonesPerModule": 2
     }
   },
-  "lightingTab": {
-    "interior": {
-      "enabled": true,
-      "title": "Interior",
-      "icon": "💡"
-    },
-    "exterior": {
-      "enabled": true,
-      "title": "Exterior",
-      "icon": "🌟"
-    },
-    "rgb": {
-      "enabled": false,
-      "title": "RGB",
-      "icon": "🌈"
-    }
-  },
-  "hvacTab": {
-    "heating": {
-      "enabled": true,
-      "title": "Heating",
-      "icon": "🔥"
-    },
-    "cooling": {
-      "enabled": true,
-      "title": "Cooling",
-      "icon": "❄️"
-    },
-    "ventilation": {
-      "enabled": true,
-      "title": "Ventilation",
-      "icon": "💨"
-    }
-  },
-  "switchingTab": {
-    "switches": {
-      "enabled": true,
-      "title": "Switches",
-      "icon": "🔌"
-    },
-    "accessories": {
-      "enabled": true,
-      "title": "Accessories",
-      "icon": "⚡"
-    }
-  },
   "tabs": [
     {
       "id": "tab-home",
       "title": "Home",
       "preset": "home",
-      "enabled": true,
+      "enabled": false,
       "sections": [
         {
           "id": "section-home-1",
           "title": "Quick Controls",
-          "enabled": true,
-          "components": [
-            {
-              "id": "comp-core-01",
-              "type": "dimmer",
-              "label": "Stabilizer",
-              "min": 0,
-              "max": 100,
-              "step": 5,
-              "bindings": {
-                "intensity": {
-                  "type": "empirbus",
-                  "channel": "core-01"
-                }
-              }
-            },
-            {
-              "id": "comp-core-09",
-              "type": "toggle",
-              "variant": "round",
-              "label": "Slide Motor",
-              "icon": "plumbing",
-              "bindings": {
-                "state": {
-                  "type": "empirbus",
-                  "channel": "core-09"
-                }
-              }
-            }
-          ]
+          "enabled": false,
+          "components": []
         },
         {
           "id": "section-home-2",
           "title": "Status",
-          "enabled": true,
-          "components": [
-            {
-              "id": "comp-signal-battery-soc",
-              "type": "gauge",
-              "label": "State of Charge",
-              "min": 0,
-              "max": 100,
-              "unit": "%",
-              "decimals": 0,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-bms-battery-state-of-charge",
-                  "property": "value"
-                }
-              }
-            },
-            {
-              "id": "comp-signal-solar-voltage",
-              "type": "gauge",
-              "label": "Solar Voltage",
-              "min": 0,
-              "max": 16,
-              "unit": "V",
-              "decimals": 1,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-primary-solar-voltage",
-                  "property": "value"
-                }
-              }
-            }
-          ],
-          "type": "signal-values"
+          "enabled": false,
+          "components": []
         }
       ]
     },
@@ -507,78 +1210,25 @@
       "id": "tab-lighting",
       "title": "Lighting",
       "preset": "lighting",
-      "enabled": true,
+      "enabled": false,
       "sections": [
         {
           "id": "section-lighting-interior",
           "title": "Interior",
-          "components": [
-            {
-              "id": "comp-core-03",
-              "type": "toggle",
-              "variant": "round",
-              "label": "Kitchen Dimmer",
-              "bindings": {
-                "state": {
-                  "type": "empirbus",
-                  "channel": "core-03"
-                }
-              }
-            },
-            {
-              "id": "comp-core-04",
-              "type": "toggle",
-              "variant": "round",
-              "label": "Cabinet Light",
-              "bindings": {
-                "state": {
-                  "type": "empirbus",
-                  "channel": "core-04"
-                }
-              }
-            }
-          ],
-          "enabled": true
+          "components": [],
+          "enabled": false
         },
         {
           "id": "section-lighting-exterior",
           "title": "Exterior",
-          "components": [
-            {
-              "id": "comp-core-19",
-              "type": "dimmer",
-              "label": "Kitchen Dimmer",
-              "min": 0,
-              "max": 100,
-              "step": 1,
-              "bindings": {
-                "intensity": {
-                  "type": "empirbus",
-                  "channel": "core-19"
-                }
-              }
-            },
-            {
-              "id": "comp-core-18",
-              "type": "button",
-              "variant": "round",
-              "label": "Reading Lamp",
-              "action": "momentary",
-              "bindings": {
-                "action": {
-                  "type": "empirbus",
-                  "channel": "core-18"
-                }
-              }
-            }
-          ],
-          "enabled": true
+          "components": [],
+          "enabled": false
         },
         {
           "id": "section-lighting-rgb",
           "title": "RGB",
           "components": [],
-          "enabled": true
+          "enabled": false
         }
       ]
     },
@@ -593,101 +1243,6 @@
           "title": "Battery",
           "enabled": true,
           "components": []
-        },
-        {
-          "id": "section-dc-charging",
-          "title": "DC Charging",
-          "enabled": true,
-          "components": []
-        },
-        {
-          "id": "section-solar",
-          "title": "Solar",
-          "enabled": true,
-          "components": [
-            {
-              "id": "comp-solar-indicator",
-              "type": "indicator",
-              "label": "Solar Status",
-              "variant": "badge",
-              "color": "green",
-              "bindings": {
-                "state": {
-                  "type": "empirbus",
-                  "channel": "signal-solar-indicator",
-                  "property": "state"
-                }
-              }
-            },
-            {
-              "id": "comp-solar-primary-amperage",
-              "type": "gauge",
-              "label": "PRIMARY AMPERAGE",
-              "variant": "numeric",
-              "unit": "A",
-              "min": -100,
-              "max": 100,
-              "decimals": 1,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-primary-solar-amperage",
-                  "property": "value"
-                }
-              }
-            },
-            {
-              "id": "comp-solar-primary-voltage",
-              "type": "gauge",
-              "label": "PRIMARY VOLTAGE",
-              "variant": "numeric",
-              "unit": "V",
-              "min": 0,
-              "max": 16,
-              "decimals": 2,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-primary-solar-voltage",
-                  "property": "value"
-                }
-              }
-            },
-            {
-              "id": "comp-solar-aux-amperage",
-              "type": "gauge",
-              "label": "AUXILIARY AMPERAGE",
-              "variant": "numeric",
-              "unit": "A",
-              "min": -100,
-              "max": 100,
-              "decimals": 1,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-aux-solar-amperage",
-                  "property": "value"
-                }
-              }
-            },
-            {
-              "id": "comp-solar-aux-voltage",
-              "type": "gauge",
-              "label": "AUXILIARY VOLTAGE",
-              "variant": "numeric",
-              "unit": "V",
-              "min": 0,
-              "max": 16,
-              "decimals": 2,
-              "bindings": {
-                "value": {
-                  "type": "empirbus",
-                  "channel": "signal-aux-solar-voltage",
-                  "property": "value"
-                }
-              }
-            }
-          ]
         }
       ]
     },
@@ -695,24 +1250,24 @@
       "id": "tab-hvac",
       "title": "HVAC",
       "preset": "hvac",
-      "enabled": true,
+      "enabled": false,
       "sections": [
         {
           "id": "section-hvac-heating",
           "title": "Heating",
-          "enabled": true,
+          "enabled": false,
           "components": []
         },
         {
           "id": "section-hvac-cooling",
           "title": "Cooling",
-          "enabled": true,
+          "enabled": false,
           "components": []
         },
         {
           "id": "section-hvac-ventilation",
           "title": "Ventilation",
-          "enabled": true,
+          "enabled": false,
           "components": []
         }
       ]
@@ -721,18 +1276,18 @@
       "id": "tab-switching",
       "title": "Switching",
       "preset": "switching",
-      "enabled": true,
+      "enabled": false,
       "sections": [
         {
           "id": "section-switching-switches",
           "title": "Switches",
-          "enabled": true,
+          "enabled": false,
           "components": []
         },
         {
           "id": "section-switching-accessories",
           "title": "Accessories",
-          "enabled": true,
+          "enabled": false,
           "components": []
         }
       ]
@@ -741,88 +1296,22 @@
       "id": "tab-plumbing",
       "title": "Plumbing",
       "preset": "plumbing",
-      "enabled": true,
+      "enabled": false,
       "sections": [
         {
-          "id": "section-tank-levels",
+          "id": "section-tank-levels-1760650500163-p19dx5438",
           "title": "Tank Levels",
-          "enabled": true,
-          "components": [
-            {
-              "id": "comp-core-17",
-              "type": "dimmer",
-              "label": "Water Pump",
-              "min": 0,
-              "max": 100,
-              "step": 5,
-              "bindings": {
-                "intensity": {
-                  "type": "empirbus",
-                  "channel": "core-17"
-                }
-              }
-            },
-            {
-              "id": "comp-core-13",
-              "type": "toggle",
-              "variant": "round",
-              "label": "Tank Heater",
-              "bindings": {
-                "state": {
-                  "type": "empirbus",
-                  "channel": "core-13"
-                }
-              }
-            }
-          ]
+          "enabled": false,
+          "components": []
         }
       ]
     }
   ],
-  "theme": {
-    "preset": "green"
-  },
-  "plumbingTab": {
-    "switchingSection": {
-      "enabled": true,
-      "title": "Plumbing Controls"
-    }
-  },
   "icons": [
     {
-      "id": "all-lights",
+      "id": "ac-out",
       "type": "svg",
-      "url": "/icons/All Lights.svg"
-    },
-    {
-      "id": "water-dump",
-      "type": "svg",
-      "url": "/icons/Water Dump.svg"
-    },
-    {
-      "id": "wifi",
-      "type": "svg",
-      "url": "/icons/WiFi.svg"
-    },
-    {
-      "id": "plumbing",
-      "type": "svg",
-      "url": "/icons/Plumbing.svg"
-    },
-    {
-      "id": "alternator",
-      "type": "svg",
-      "url": "/icons/Alternator.svg"
-    },
-    {
-      "id": "power",
-      "type": "svg",
-      "url": "/icons/Power.svg"
-    },
-    {
-      "id": "group",
-      "type": "svg",
-      "url": "/icons/Group.svg"
+      "url": "/icons/AC Out.svg"
     }
   ]
 }

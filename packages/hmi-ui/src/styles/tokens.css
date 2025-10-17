@@ -149,10 +149,10 @@
    =========================== */
 
 /* Blue Theme (default) */
-[data-theme='blue'] {
-  --color-primary: #3b82f6; /* Blue for buttons/interactive */
+[data-theme='Artek'] {
+  --color-primary: #1e293b; /* Blue for buttons/interactive */
   --color-secondary: #1e293b; /* Dark slate for backgrounds */
-  --color-accent: #06b6d4; /* Cyan for highlights */
+  --color-accent: #f1f5f9; /* Cyan for highlights */
   --color-text: #f1f5f9; /* Light text */
 }
 

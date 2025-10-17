@@ -6,22 +6,25 @@ export declare const HardwareConfigSchema: z.ZodObject<{
     systemType: z.ZodDefault<z.ZodEnum<["core", "core-lite"]>>;
     outputs: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
-        source: z.ZodEnum<["core", "core-lite", "genesis"]>;
-        channel: z.ZodNumber;
+        source: z.ZodEnum<["core", "core-lite", "genesis", "bms", "sensors", "solar", "power", "hvac", "plumbing", "accessories", "alternator", "orion"]>;
+        channel: z.ZodUnion<[z.ZodNumber, z.ZodString]>;
         label: z.ZodOptional<z.ZodString>;
-        control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function"]>>;
+        control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function", "signal-value"]>>;
         icon: z.ZodOptional<z.ZodString>;
         signalId: z.ZodOptional<z.ZodNumber>;
         signals: z.ZodOptional<z.ZodObject<{
             toggle: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
             momentary: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
             dimmer: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+            value: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         }, "strip", z.ZodTypeAny, {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         }, {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         }>>;
@@ -40,14 +43,15 @@ export declare const HardwareConfigSchema: z.ZodObject<{
         }>>;
     }, "strip", z.ZodTypeAny, {
         id: string;
-        source: "core" | "core-lite" | "genesis";
-        channel: number;
-        control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function";
-        icon?: string | undefined;
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+        channel: string | number;
+        control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
         label?: string | undefined;
+        icon?: string | undefined;
         signalId?: number | undefined;
         signals?: {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         } | undefined;
@@ -58,14 +62,15 @@ export declare const HardwareConfigSchema: z.ZodObject<{
         } | undefined;
     }, {
         id: string;
-        source: "core" | "core-lite" | "genesis";
-        channel: number;
-        icon?: string | undefined;
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+        channel: string | number;
         label?: string | undefined;
-        control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | undefined;
+        control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
+        icon?: string | undefined;
         signalId?: number | undefined;
         signals?: {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         } | undefined;
@@ -76,17 +81,17 @@ export declare const HardwareConfigSchema: z.ZodObject<{
         } | undefined;
     }>, "many">;
     halfBridgePairs: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        source: z.ZodEnum<["core", "core-lite", "genesis"]>;
+        source: z.ZodEnum<["core", "core-lite", "genesis", "bms", "sensors", "solar", "power", "hvac", "plumbing", "accessories", "alternator", "orion"]>;
         channelA: z.ZodNumber;
         channelB: z.ZodNumber;
         enabled: z.ZodDefault<z.ZodBoolean>;
     }, "strip", z.ZodTypeAny, {
-        enabled: boolean;
-        source: "core" | "core-lite" | "genesis";
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
         channelA: number;
         channelB: number;
+        enabled: boolean;
     }, {
-        source: "core" | "core-lite" | "genesis";
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
         channelA: number;
         channelB: number;
         enabled?: boolean | undefined;
@@ -112,14 +117,15 @@ export declare const HardwareConfigSchema: z.ZodObject<{
     systemType: "core" | "core-lite";
     outputs: {
         id: string;
-        source: "core" | "core-lite" | "genesis";
-        channel: number;
-        control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function";
-        icon?: string | undefined;
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+        channel: string | number;
+        control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
         label?: string | undefined;
+        icon?: string | undefined;
         signalId?: number | undefined;
         signals?: {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         } | undefined;
@@ -131,10 +137,10 @@ export declare const HardwareConfigSchema: z.ZodObject<{
     }[];
     genesisBoards: number;
     halfBridgePairs?: {
-        enabled: boolean;
-        source: "core" | "core-lite" | "genesis";
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
         channelA: number;
         channelB: number;
+        enabled: boolean;
     }[] | undefined;
     signalMap?: Record<string, number | {
         'push-button'?: number | undefined;
@@ -145,14 +151,15 @@ export declare const HardwareConfigSchema: z.ZodObject<{
 }, {
     outputs: {
         id: string;
-        source: "core" | "core-lite" | "genesis";
-        channel: number;
-        icon?: string | undefined;
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+        channel: string | number;
         label?: string | undefined;
-        control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | undefined;
+        control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
+        icon?: string | undefined;
         signalId?: number | undefined;
         signals?: {
             dimmer?: number | null | undefined;
+            value?: number | null | undefined;
             toggle?: number | null | undefined;
             momentary?: number | null | undefined;
         } | undefined;
@@ -164,7 +171,7 @@ export declare const HardwareConfigSchema: z.ZodObject<{
     }[];
     systemType?: "core" | "core-lite" | undefined;
     halfBridgePairs?: {
-        source: "core" | "core-lite" | "genesis";
+        source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
         channelA: number;
         channelB: number;
         enabled?: boolean | undefined;

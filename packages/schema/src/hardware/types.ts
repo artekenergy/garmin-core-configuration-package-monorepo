@@ -24,15 +24,15 @@ export const HardwareSourceSchema = z.enum([
   'core',
   'core-lite',
   'genesis',
-  'bms',          // Battery Management System
-  'sensors',      // Temperature, voltage sensors
-  'solar',        // Solar panels/controllers
-  'power',        // Power systems (MultiPlus, AC, etc.)
-  'hvac',         // Heating, Ventilation, Air Conditioning
-  'plumbing',     // Tanks, pumps
-  'accessories',  // Awnings, slides, etc.
-  'alternator',   // Alternator charging
-  'orion',        // Orion DC-DC converter
+  'bms', // Battery Management System
+  'sensors', // Temperature, voltage sensors
+  'solar', // Solar panels/controllers
+  'power', // Power systems (MultiPlus, AC, etc.)
+  'hvac', // Heating, Ventilation, Air Conditioning
+  'plumbing', // Tanks, pumps
+  'accessories', // Awnings, slides, etc.
+  'alternator', // Alternator charging
+  'orion', // Orion DC-DC converter
 ]);
 
 export type HardwareSystemType = z.infer<typeof HardwareSystemTypeSchema>;

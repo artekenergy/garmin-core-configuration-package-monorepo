@@ -4,22 +4,25 @@
 import { z } from 'zod';
 export declare const OutputChannelSchema: z.ZodObject<{
     id: z.ZodString;
-    source: z.ZodEnum<["core", "core-lite", "genesis"]>;
-    channel: z.ZodNumber;
+    source: z.ZodEnum<["core", "core-lite", "genesis", "bms", "sensors", "solar", "power", "hvac", "plumbing", "accessories", "alternator", "orion"]>;
+    channel: z.ZodUnion<[z.ZodNumber, z.ZodString]>;
     label: z.ZodOptional<z.ZodString>;
-    control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function"]>>;
+    control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function", "signal-value"]>>;
     icon: z.ZodOptional<z.ZodString>;
     signalId: z.ZodOptional<z.ZodNumber>;
     signals: z.ZodOptional<z.ZodObject<{
         toggle: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         momentary: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         dimmer: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        value: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
     }, "strip", z.ZodTypeAny, {
         dimmer?: number | null | undefined;
+        value?: number | null | undefined;
         toggle?: number | null | undefined;
         momentary?: number | null | undefined;
     }, {
         dimmer?: number | null | undefined;
+        value?: number | null | undefined;
         toggle?: number | null | undefined;
         momentary?: number | null | undefined;
     }>>;
@@ -38,14 +41,15 @@ export declare const OutputChannelSchema: z.ZodObject<{
     }>>;
 }, "strip", z.ZodTypeAny, {
     id: string;
-    source: "core" | "core-lite" | "genesis";
-    channel: number;
-    control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function";
-    icon?: string | undefined;
+    source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+    channel: string | number;
+    control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
     label?: string | undefined;
+    icon?: string | undefined;
     signalId?: number | undefined;
     signals?: {
         dimmer?: number | null | undefined;
+        value?: number | null | undefined;
         toggle?: number | null | undefined;
         momentary?: number | null | undefined;
     } | undefined;
@@ -56,14 +60,15 @@ export declare const OutputChannelSchema: z.ZodObject<{
     } | undefined;
 }, {
     id: string;
-    source: "core" | "core-lite" | "genesis";
-    channel: number;
-    icon?: string | undefined;
+    source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+    channel: string | number;
     label?: string | undefined;
-    control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | undefined;
+    control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
+    icon?: string | undefined;
     signalId?: number | undefined;
     signals?: {
         dimmer?: number | null | undefined;
+        value?: number | null | undefined;
         toggle?: number | null | undefined;
         momentary?: number | null | undefined;
     } | undefined;

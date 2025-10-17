@@ -41,4 +41,5 @@ export * from './metadata';
 export * from './root';
 export * from './types';
 export * from './validators';
+export * from './defaults';
 //# sourceMappingURL=index.d.ts.map

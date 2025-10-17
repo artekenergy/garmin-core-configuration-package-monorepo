@@ -73,4 +73,5 @@ export * from './root';
 export * from './types';
 // Export validators (for custom validation)
 export * from './validators';
+export * from './defaults';
 //# sourceMappingURL=index.js.map

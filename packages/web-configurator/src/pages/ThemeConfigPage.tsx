@@ -5,15 +5,15 @@ import styles from './ThemeConfigPage.module.css';
 // Define theme presets with their 4-color system
 const THEME_PRESETS = {
   blue: {
-    name: 'Ocean Blue',
-    description: 'Classic blue theme with professional look',
+    name: 'Artek',
+    description: 'Artek Brand Colors',
     colors: {
-      primary: '#3b82f6', // Blue for buttons/interactive
+      primary: '#1e293b', // Blue for buttons/interactive
       secondary: '#1e293b', // Dark slate for backgrounds
-      accent: '#06b6d4', // Cyan for highlights
+      accent: '#f1f5f9', // Cyan for highlights
       text: '#f1f5f9', // Light text
     },
-    gradient: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+    gradient: 'linear-gradient(135deg, #1e293b 0%, #406d75ff 100%)',
   },
   purple: {
     name: 'Royal Purple',

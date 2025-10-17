@@ -137,7 +137,7 @@ export function findHalfBridgePair(
   channel: number | string
 ): Omit<HalfBridgePair, 'enabled'> | null {
   if (typeof channel === 'string') return null; // String channels can't be in half-bridge pairs
-  
+
   return (
     HALF_BRIDGE_PAIRS.find(
       (pair) => pair.source === source && (pair.channelA === channel || pair.channelB === channel)

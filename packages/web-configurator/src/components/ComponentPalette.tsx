@@ -39,22 +39,22 @@ export default function ComponentPalette({
       // Filter HVAC controls based on configuration
       if (output.source === 'hvac') {
         const outputId = output.id.toLowerCase();
-        
+
         // Truma controls only if Truma is selected as cooling brand
         if (outputId.includes('truma')) {
           return schema.hvac?.cooling?.enabled && schema.hvac.cooling.brand === 'truma';
         }
-        
+
         // Rixens controls only if heating is enabled (Rixens is a heating system)
         if (outputId.includes('rixens') || outputId.includes('rixen')) {
           return schema.hvac?.heating?.enabled === true;
         }
-        
+
         // Vent fan controls only if ventilation is enabled
         if (outputId.includes('vent-fan')) {
           return schema.hvac?.ventilation?.enabled === true;
         }
-        
+
         // Thermostat controls if heating or cooling is enabled
         if (outputId.includes('therm')) {
           return schema.hvac?.heating?.enabled || schema.hvac?.cooling?.enabled;
@@ -64,7 +64,7 @@ export default function ComponentPalette({
       // Filter accessory controls based on configuration
       if (output.source === 'accessories') {
         const outputId = output.id.toLowerCase();
-        
+
         // Awning controls only if awning is enabled
         if (outputId.includes('awning')) {
           return schema.accessories?.awning?.enabled === true;
@@ -74,12 +74,12 @@ export default function ComponentPalette({
       // Filter power controls based on configuration
       if (output.source === 'power') {
         const outputId = output.id.toLowerCase();
-        
+
         // MultiPlus controls only if multiplus is configured
         if (outputId.includes('multiplus') || outputId.includes('multi-')) {
           return schema.power?.multiplus?.l1 || schema.power?.multiplus?.l2;
         }
-        
+
         // AC limit controls only if multiplus is configured
         if (outputId.includes('ac-limit') || outputId.includes('ac_limit')) {
           return schema.power?.multiplus?.l1 || schema.power?.multiplus?.l2;

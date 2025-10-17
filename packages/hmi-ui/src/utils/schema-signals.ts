@@ -82,8 +82,8 @@ export function subscribeToSchemaSignals(schema: UISchema): void {
     return;
   }
 
-  // Try to load hardware-config.json to get ALL available signals
-  fetch('/configuration/hardware-config.json')
+  // Try to load hardware-config.json (served from public root) to get ALL available signals
+  fetch('/hardware-config.json')
     .then(function (response) {
       if (!response.ok) {
         throw new Error('Hardware config not found, falling back to schema signals');

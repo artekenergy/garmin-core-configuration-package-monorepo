@@ -48,7 +48,7 @@ export declare const UISchemaSchema: z.ZodObject<{
             text?: string | undefined;
         }>>;
     }, "strip", z.ZodTypeAny, {
-        preset: "green" | "red" | "blue" | "purple" | "orange" | "dark" | "light";
+        preset: "blue" | "purple" | "green" | "orange" | "red" | "dark" | "light";
         customColors?: {
             primary?: string | undefined;
             secondary?: string | undefined;
@@ -57,7 +57,7 @@ export declare const UISchemaSchema: z.ZodObject<{
             text?: string | undefined;
         } | undefined;
     }, {
-        preset?: "green" | "red" | "blue" | "purple" | "orange" | "dark" | "light" | undefined;
+        preset?: "blue" | "purple" | "green" | "orange" | "red" | "dark" | "light" | undefined;
         customColors?: {
             primary?: string | undefined;
             secondary?: string | undefined;
@@ -72,71 +72,71 @@ export declare const UISchemaSchema: z.ZodObject<{
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         exterior: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         rgb: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
     }, "strip", z.ZodTypeAny, {
         interior: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         exterior: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         rgb: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
     }, {
         interior?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         exterior?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         rgb?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     }>>>;
     hvacTab: z.ZodOptional<z.ZodDefault<z.ZodObject<{
@@ -145,71 +145,71 @@ export declare const UISchemaSchema: z.ZodObject<{
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         cooling: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         ventilation: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
     }, "strip", z.ZodTypeAny, {
         heating: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         cooling: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         ventilation: {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
     }, {
         heating?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         cooling?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         ventilation?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     }>>>;
     switchingTab: z.ZodOptional<z.ZodDefault<z.ZodObject<{
@@ -218,66 +218,66 @@ export declare const UISchemaSchema: z.ZodObject<{
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         accessories: z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
             icon: z.ZodOptional<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         }, {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
         customSection: z.ZodOptional<z.ZodDefault<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
         }, {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>>;
     }, "strip", z.ZodTypeAny, {
-        switches: {
-            title: string;
+        accessories: {
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
-        accessories: {
-            title: string;
+        switches: {
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         customSection?: {
-            title: string;
             enabled: boolean;
+            title: string;
         } | undefined;
     }, {
-        switches?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
         accessories?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        switches?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         customSection?: {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     }>>>;
     plumbingTab: z.ZodOptional<z.ZodDefault<z.ZodObject<{
@@ -285,45 +285,48 @@ export declare const UISchemaSchema: z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
             title: z.ZodDefault<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            title: string;
             enabled: boolean;
+            title: string;
         }, {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         }>>;
     }, "strip", z.ZodTypeAny, {
         switchingSection: {
-            title: string;
             enabled: boolean;
+            title: string;
         };
     }, {
         switchingSection?: {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     }>>>;
     hardware: z.ZodOptional<z.ZodObject<{
         systemType: z.ZodDefault<z.ZodEnum<["core", "core-lite"]>>;
         outputs: z.ZodArray<z.ZodObject<{
             id: z.ZodString;
-            source: z.ZodEnum<["core", "core-lite", "genesis"]>;
-            channel: z.ZodNumber;
+            source: z.ZodEnum<["core", "core-lite", "genesis", "bms", "sensors", "solar", "power", "hvac", "plumbing", "accessories", "alternator", "orion"]>;
+            channel: z.ZodUnion<[z.ZodNumber, z.ZodString]>;
             label: z.ZodOptional<z.ZodString>;
-            control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function"]>>;
+            control: z.ZodDefault<z.ZodEnum<["not-used", "push-button", "toggle-button", "slider", "half-bridge", "dimmer", "special-function", "signal-value"]>>;
             icon: z.ZodOptional<z.ZodString>;
             signalId: z.ZodOptional<z.ZodNumber>;
             signals: z.ZodOptional<z.ZodObject<{
                 toggle: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
                 momentary: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
                 dimmer: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+                value: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
             }, "strip", z.ZodTypeAny, {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             }, {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             }>>;
             range: z.ZodOptional<z.ZodObject<{
                 min: z.ZodNumber;
@@ -340,16 +343,17 @@ export declare const UISchemaSchema: z.ZodObject<{
             }>>;
         }, "strip", z.ZodTypeAny, {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
-            control: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
+            control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
             label?: string | undefined;
             icon?: string | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -358,16 +362,17 @@ export declare const UISchemaSchema: z.ZodObject<{
             } | undefined;
         }, {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
             label?: string | undefined;
+            control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
             icon?: string | undefined;
-            control?: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function" | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -376,17 +381,17 @@ export declare const UISchemaSchema: z.ZodObject<{
             } | undefined;
         }>, "many">;
         halfBridgePairs: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            source: z.ZodEnum<["core", "core-lite", "genesis"]>;
+            source: z.ZodEnum<["core", "core-lite", "genesis", "bms", "sensors", "solar", "power", "hvac", "plumbing", "accessories", "alternator", "orion"]>;
             channelA: z.ZodNumber;
             channelB: z.ZodNumber;
             enabled: z.ZodDefault<z.ZodBoolean>;
         }, "strip", z.ZodTypeAny, {
-            enabled: boolean;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
+            enabled: boolean;
         }, {
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
             enabled?: boolean | undefined;
@@ -397,31 +402,32 @@ export declare const UISchemaSchema: z.ZodObject<{
             slider: z.ZodOptional<z.ZodNumber>;
             default: z.ZodOptional<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }, {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }>]>>>;
         genesisBoards: z.ZodDefault<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
         systemType: "core" | "core-lite";
         outputs: {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
-            control: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
+            control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
             label?: string | undefined;
             icon?: string | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -431,30 +437,31 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         genesisBoards: number;
         halfBridgePairs?: {
-            enabled: boolean;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
+            enabled: boolean;
         }[] | undefined;
         signalMap?: Record<string, number | {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }> | undefined;
     }, {
         outputs: {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
             label?: string | undefined;
+            control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
             icon?: string | undefined;
-            control?: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function" | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -464,16 +471,16 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         systemType?: "core" | "core-lite" | undefined;
         halfBridgePairs?: {
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
             enabled?: boolean | undefined;
         }[] | undefined;
         signalMap?: Record<string, number | {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }> | undefined;
         genesisBoards?: number | undefined;
     }>>;
@@ -514,14 +521,14 @@ export declare const UISchemaSchema: z.ZodObject<{
             l2?: boolean | undefined;
         }>>;
     }, "strip", z.ZodTypeAny, {
-        dcCharging: {
-            secondAlternator: boolean;
-            orionXs: boolean;
-        };
         solar: {
             enabled: boolean;
             primaryArray: boolean;
             auxiliaryArray: boolean;
+        };
+        dcCharging: {
+            secondAlternator: boolean;
+            orionXs: boolean;
         };
         batteryManagement: "victron" | "expion" | "battleborn" | "discover";
         acLegs: number;
@@ -530,14 +537,14 @@ export declare const UISchemaSchema: z.ZodObject<{
             l2: boolean;
         };
     }, {
-        dcCharging?: {
-            secondAlternator?: boolean | undefined;
-            orionXs?: boolean | undefined;
-        } | undefined;
         solar?: {
             enabled?: boolean | undefined;
             primaryArray?: boolean | undefined;
             auxiliaryArray?: boolean | undefined;
+        } | undefined;
+        dcCharging?: {
+            secondAlternator?: boolean | undefined;
+            orionXs?: boolean | undefined;
         } | undefined;
         batteryManagement?: "victron" | "expion" | "battleborn" | "discover" | undefined;
         acLegs?: number | undefined;
@@ -901,8 +908,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -925,8 +932,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             }, {
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -1144,8 +1151,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                     } | undefined;
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -1180,10 +1187,10 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             }, {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -1218,7 +1225,7 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             }>, z.ZodObject<{
                 id: z.ZodString;
                 label: z.ZodString;
@@ -1299,9 +1306,12 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     intensity: {
                         type: "empirbus";
@@ -1317,16 +1327,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
             }, {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
                 bindings: {
                     intensity: {
@@ -1344,12 +1351,12 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
-                tooltip?: string | undefined;
-                disabled?: boolean | undefined;
-                visible?: boolean | undefined;
                 min?: number | undefined;
                 max?: number | undefined;
                 step?: number | undefined;
+                tooltip?: string | undefined;
+                disabled?: boolean | undefined;
+                visible?: boolean | undefined;
             }>, z.ZodObject<{
                 id: z.ZodString;
                 label: z.ZodString;
@@ -1432,8 +1439,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -1452,16 +1459,16 @@ export declare const UISchemaSchema: z.ZodObject<{
                 };
                 decimals: number;
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
             }, {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -1479,12 +1486,12 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
             }>, z.ZodObject<{
@@ -1566,8 +1573,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -1589,10 +1596,10 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             }, {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -1614,7 +1621,7 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             }>, z.ZodObject<{
                 id: z.ZodString;
                 label: z.ZodString;
@@ -1698,9 +1705,12 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 }>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -1716,9 +1726,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 orientation: "horizontal" | "vertical";
                 showValue: boolean;
                 icon?: string | undefined;
@@ -1727,9 +1734,11 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 unit?: string | undefined;
             }, {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -1745,13 +1754,11 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
                 icon?: string | undefined;
+                step?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                step?: number | undefined;
                 unit?: string | undefined;
                 orientation?: "horizontal" | "vertical" | undefined;
                 showValue?: boolean | undefined;
@@ -2148,8 +2155,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                     } | undefined;
                 }>>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2237,8 +2244,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             }, {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2336,8 +2343,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 type: z.ZodLiteral<"multiplus-test-controls">;
                 leg: z.ZodOptional<z.ZodNumber>;
             }, "strip", z.ZodTypeAny, {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2345,8 +2352,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 leg?: number | undefined;
             }, {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2356,11 +2363,11 @@ export declare const UISchemaSchema: z.ZodObject<{
             }>]>, "many">;
         }, "strip", z.ZodTypeAny, {
             id: string;
-            title: string;
             enabled: boolean;
+            title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -2383,8 +2390,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -2419,11 +2426,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     intensity: {
                         type: "empirbus";
@@ -2439,16 +2449,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -2467,16 +2474,16 @@ export declare const UISchemaSchema: z.ZodObject<{
                 };
                 decimals: number;
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -2498,11 +2505,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -2518,9 +2528,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 orientation: "horizontal" | "vertical";
                 showValue: boolean;
                 icon?: string | undefined;
@@ -2529,8 +2536,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2618,8 +2625,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2636,8 +2643,8 @@ export declare const UISchemaSchema: z.ZodObject<{
             id: string;
             title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -2660,8 +2667,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -2696,10 +2703,10 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
                 bindings: {
                     intensity: {
@@ -2717,15 +2724,15 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
-                tooltip?: string | undefined;
-                disabled?: boolean | undefined;
-                visible?: boolean | undefined;
                 min?: number | undefined;
                 max?: number | undefined;
                 step?: number | undefined;
+                tooltip?: string | undefined;
+                disabled?: boolean | undefined;
+                visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -2743,17 +2750,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -2775,11 +2782,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -2795,19 +2804,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
                 icon?: string | undefined;
+                step?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                step?: number | undefined;
                 unit?: string | undefined;
                 orientation?: "horizontal" | "vertical" | undefined;
                 showValue?: boolean | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2895,8 +2902,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -2913,15 +2920,15 @@ export declare const UISchemaSchema: z.ZodObject<{
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         id: string;
-        title: string;
         enabled: boolean;
+        title: string;
         sections: {
             id: string;
-            title: string;
             enabled: boolean;
+            title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -2944,8 +2951,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -2980,11 +2987,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     intensity: {
                         type: "empirbus";
@@ -3000,16 +3010,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -3028,16 +3035,16 @@ export declare const UISchemaSchema: z.ZodObject<{
                 };
                 decimals: number;
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -3059,11 +3066,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -3079,9 +3089,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 orientation: "horizontal" | "vertical";
                 showValue: boolean;
                 icon?: string | undefined;
@@ -3090,8 +3097,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3179,8 +3186,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3195,7 +3202,7 @@ export declare const UISchemaSchema: z.ZodObject<{
             imageUrl?: string | undefined;
         }[];
         icon?: string | undefined;
-        preset?: "switching" | "home" | "lighting" | "power" | "hvac" | "plumbing" | undefined;
+        preset?: "power" | "hvac" | "plumbing" | "lighting" | "home" | "switching" | undefined;
     }, {
         id: string;
         title: string;
@@ -3203,8 +3210,8 @@ export declare const UISchemaSchema: z.ZodObject<{
             id: string;
             title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -3227,8 +3234,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -3263,10 +3270,10 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
                 bindings: {
                     intensity: {
@@ -3284,15 +3291,15 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
-                tooltip?: string | undefined;
-                disabled?: boolean | undefined;
-                visible?: boolean | undefined;
                 min?: number | undefined;
                 max?: number | undefined;
                 step?: number | undefined;
+                tooltip?: string | undefined;
+                disabled?: boolean | undefined;
+                visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -3310,17 +3317,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -3342,11 +3349,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -3362,19 +3371,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
                 icon?: string | undefined;
+                step?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                step?: number | undefined;
                 unit?: string | undefined;
                 orientation?: "horizontal" | "vertical" | undefined;
                 showValue?: boolean | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3462,8 +3469,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3480,7 +3487,7 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         icon?: string | undefined;
         enabled?: boolean | undefined;
-        preset?: "switching" | "home" | "lighting" | "power" | "hvac" | "plumbing" | undefined;
+        preset?: "power" | "hvac" | "plumbing" | "lighting" | "home" | "switching" | undefined;
     }>, "many">;
     icons: z.ZodOptional<z.ZodArray<z.ZodEffects<z.ZodObject<{
         id: z.ZodString;
@@ -3488,23 +3495,23 @@ export declare const UISchemaSchema: z.ZodObject<{
         data: z.ZodOptional<z.ZodString>;
         url: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }, {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }>, {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }, {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }>, "many">>;
@@ -3520,15 +3527,15 @@ export declare const UISchemaSchema: z.ZodObject<{
     };
     tabs: {
         id: string;
-        title: string;
         enabled: boolean;
+        title: string;
         sections: {
             id: string;
-            title: string;
             enabled: boolean;
+            title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -3551,8 +3558,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -3587,11 +3594,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     intensity: {
                         type: "empirbus";
@@ -3607,16 +3617,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -3635,16 +3642,16 @@ export declare const UISchemaSchema: z.ZodObject<{
                 };
                 decimals: number;
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -3666,11 +3673,14 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
+                step: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -3686,9 +3696,6 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
-                step: number;
                 orientation: "horizontal" | "vertical";
                 showValue: boolean;
                 icon?: string | undefined;
@@ -3697,8 +3704,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 unit?: string | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3786,8 +3793,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -3802,22 +3809,17 @@ export declare const UISchemaSchema: z.ZodObject<{
             imageUrl?: string | undefined;
         }[];
         icon?: string | undefined;
-        preset?: "switching" | "home" | "lighting" | "power" | "hvac" | "plumbing" | undefined;
+        preset?: "power" | "hvac" | "plumbing" | "lighting" | "home" | "switching" | undefined;
     }[];
-    lighting?: {
-        enabled: boolean;
-        modules: number;
-        zonesPerModule: 2 | 4;
-    } | undefined;
     power?: {
-        dcCharging: {
-            secondAlternator: boolean;
-            orionXs: boolean;
-        };
         solar: {
             enabled: boolean;
             primaryArray: boolean;
             auxiliaryArray: boolean;
+        };
+        dcCharging: {
+            secondAlternator: boolean;
+            orionXs: boolean;
         };
         batteryManagement: "victron" | "expion" | "battleborn" | "discover";
         acLegs: number;
@@ -3859,50 +3861,6 @@ export declare const UISchemaSchema: z.ZodObject<{
             name: string;
         }[];
     } | undefined;
-    theme?: {
-        preset: "green" | "red" | "blue" | "purple" | "orange" | "dark" | "light";
-        customColors?: {
-            primary?: string | undefined;
-            secondary?: string | undefined;
-            accent?: string | undefined;
-            background?: string | undefined;
-            text?: string | undefined;
-        } | undefined;
-    } | undefined;
-    lightingTab?: {
-        interior: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-        exterior: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-        rgb: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-    } | undefined;
-    hvacTab?: {
-        heating: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-        cooling: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-        ventilation: {
-            title: string;
-            enabled: boolean;
-            icon?: string | undefined;
-        };
-    } | undefined;
     accessories?: {
         keypad: {
             enabled: boolean;
@@ -3925,42 +3883,87 @@ export declare const UISchemaSchema: z.ZodObject<{
             zonesPerModule: 2 | 4;
         };
     } | undefined;
-    switchingTab?: {
-        switches: {
-            title: string;
+    theme?: {
+        preset: "blue" | "purple" | "green" | "orange" | "red" | "dark" | "light";
+        customColors?: {
+            primary?: string | undefined;
+            secondary?: string | undefined;
+            accent?: string | undefined;
+            background?: string | undefined;
+            text?: string | undefined;
+        } | undefined;
+    } | undefined;
+    lightingTab?: {
+        interior: {
             enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
-        accessories: {
-            title: string;
+        exterior: {
             enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+        rgb: {
+            enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+    } | undefined;
+    hvacTab?: {
+        heating: {
+            enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+        cooling: {
+            enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+        ventilation: {
+            enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+    } | undefined;
+    switchingTab?: {
+        accessories: {
+            enabled: boolean;
+            title: string;
+            icon?: string | undefined;
+        };
+        switches: {
+            enabled: boolean;
+            title: string;
             icon?: string | undefined;
         };
         customSection?: {
-            title: string;
             enabled: boolean;
+            title: string;
         } | undefined;
     } | undefined;
     plumbingTab?: {
         switchingSection: {
-            title: string;
             enabled: boolean;
+            title: string;
         };
     } | undefined;
     hardware?: {
         systemType: "core" | "core-lite";
         outputs: {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
-            control: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
+            control: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value";
             label?: string | undefined;
             icon?: string | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -3970,21 +3973,26 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         genesisBoards: number;
         halfBridgePairs?: {
-            enabled: boolean;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
+            enabled: boolean;
         }[] | undefined;
         signalMap?: Record<string, number | {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }> | undefined;
     } | undefined;
+    lighting?: {
+        enabled: boolean;
+        modules: number;
+        zonesPerModule: 2 | 4;
+    } | undefined;
     icons?: {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }[] | undefined;
@@ -4005,8 +4013,8 @@ export declare const UISchemaSchema: z.ZodObject<{
             id: string;
             title: string;
             components: ({
-                id: string;
                 type: "toggle";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -4029,8 +4037,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 visible?: boolean | undefined;
                 variant?: "default" | "switch" | "checkbox" | "round" | undefined;
             } | {
-                id: string;
                 type: "button";
+                id: string;
                 label: string;
                 bindings: {
                     state?: {
@@ -4065,10 +4073,10 @@ export declare const UISchemaSchema: z.ZodObject<{
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                variant?: "round" | "primary" | "secondary" | "danger" | undefined;
+                variant?: "primary" | "secondary" | "round" | "danger" | undefined;
             } | {
-                id: string;
                 type: "dimmer";
+                id: string;
                 label: string;
                 bindings: {
                     intensity: {
@@ -4086,15 +4094,15 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
-                tooltip?: string | undefined;
-                disabled?: boolean | undefined;
-                visible?: boolean | undefined;
                 min?: number | undefined;
                 max?: number | undefined;
                 step?: number | undefined;
+                tooltip?: string | undefined;
+                disabled?: boolean | undefined;
+                visible?: boolean | undefined;
             } | {
-                id: string;
                 type: "gauge";
+                id: string;
                 label: string;
                 bindings: {
                     value: {
@@ -4112,17 +4120,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                     };
                 };
                 icon?: string | undefined;
+                min?: number | undefined;
+                max?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "circular" | "linear" | "numeric" | undefined;
-                min?: number | undefined;
-                max?: number | undefined;
                 unit?: string | undefined;
                 decimals?: number | undefined;
             } | {
-                id: string;
                 type: "indicator";
+                id: string;
                 label: string;
                 bindings: {
                     state: {
@@ -4144,11 +4152,13 @@ export declare const UISchemaSchema: z.ZodObject<{
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
                 variant?: "icon" | "led" | "badge" | undefined;
-                color?: "green" | "yellow" | "red" | "blue" | "white" | undefined;
+                color?: "blue" | "green" | "red" | "yellow" | "white" | undefined;
             } | {
-                id: string;
                 type: "slider";
+                id: string;
                 label: string;
+                min: number;
+                max: number;
                 bindings: {
                     value: {
                         type: "empirbus";
@@ -4164,19 +4174,17 @@ export declare const UISchemaSchema: z.ZodObject<{
                         value?: unknown;
                     };
                 };
-                min: number;
-                max: number;
                 icon?: string | undefined;
+                step?: number | undefined;
                 tooltip?: string | undefined;
                 disabled?: boolean | undefined;
                 visible?: boolean | undefined;
-                step?: number | undefined;
                 unit?: string | undefined;
                 orientation?: "horizontal" | "vertical" | undefined;
                 showValue?: boolean | undefined;
             } | {
-                id: string;
                 type: "multiplus-control";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -4264,8 +4272,8 @@ export declare const UISchemaSchema: z.ZodObject<{
                 } | undefined;
                 leg?: number | undefined;
             } | {
-                id: string;
                 type: "multiplus-test-controls";
+                id: string;
                 label: string;
                 icon?: string | undefined;
                 tooltip?: string | undefined;
@@ -4282,22 +4290,17 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         icon?: string | undefined;
         enabled?: boolean | undefined;
-        preset?: "switching" | "home" | "lighting" | "power" | "hvac" | "plumbing" | undefined;
+        preset?: "power" | "hvac" | "plumbing" | "lighting" | "home" | "switching" | undefined;
     }[];
-    lighting?: {
-        enabled?: boolean | undefined;
-        modules?: number | undefined;
-        zonesPerModule?: 2 | 4 | undefined;
-    } | undefined;
     power?: {
-        dcCharging?: {
-            secondAlternator?: boolean | undefined;
-            orionXs?: boolean | undefined;
-        } | undefined;
         solar?: {
             enabled?: boolean | undefined;
             primaryArray?: boolean | undefined;
             auxiliaryArray?: boolean | undefined;
+        } | undefined;
+        dcCharging?: {
+            secondAlternator?: boolean | undefined;
+            orionXs?: boolean | undefined;
         } | undefined;
         batteryManagement?: "victron" | "expion" | "battleborn" | "discover" | undefined;
         acLegs?: number | undefined;
@@ -4339,50 +4342,6 @@ export declare const UISchemaSchema: z.ZodObject<{
             name?: string | undefined;
         }[] | undefined;
     } | undefined;
-    theme?: {
-        preset?: "green" | "red" | "blue" | "purple" | "orange" | "dark" | "light" | undefined;
-        customColors?: {
-            primary?: string | undefined;
-            secondary?: string | undefined;
-            accent?: string | undefined;
-            background?: string | undefined;
-            text?: string | undefined;
-        } | undefined;
-    } | undefined;
-    lightingTab?: {
-        interior?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-        exterior?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-        rgb?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-    } | undefined;
-    hvacTab?: {
-        heating?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-        cooling?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-        ventilation?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
-        } | undefined;
-    } | undefined;
     accessories?: {
         keypad?: {
             enabled?: boolean | undefined;
@@ -4405,41 +4364,86 @@ export declare const UISchemaSchema: z.ZodObject<{
             zonesPerModule?: 2 | 4 | undefined;
         } | undefined;
     } | undefined;
-    switchingTab?: {
-        switches?: {
-            icon?: string | undefined;
-            title?: string | undefined;
-            enabled?: boolean | undefined;
+    theme?: {
+        preset?: "blue" | "purple" | "green" | "orange" | "red" | "dark" | "light" | undefined;
+        customColors?: {
+            primary?: string | undefined;
+            secondary?: string | undefined;
+            accent?: string | undefined;
+            background?: string | undefined;
+            text?: string | undefined;
         } | undefined;
+    } | undefined;
+    lightingTab?: {
+        interior?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        exterior?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        rgb?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+    } | undefined;
+    hvacTab?: {
+        heating?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        cooling?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        ventilation?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+    } | undefined;
+    switchingTab?: {
         accessories?: {
             icon?: string | undefined;
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
+        } | undefined;
+        switches?: {
+            icon?: string | undefined;
+            enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
         customSection?: {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     } | undefined;
     plumbingTab?: {
         switchingSection?: {
-            title?: string | undefined;
             enabled?: boolean | undefined;
+            title?: string | undefined;
         } | undefined;
     } | undefined;
     hardware?: {
         outputs: {
             id: string;
-            channel: number;
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
+            channel: string | number;
             label?: string | undefined;
+            control?: "not-used" | "push-button" | "toggle-button" | "slider" | "half-bridge" | "dimmer" | "special-function" | "signal-value" | undefined;
             icon?: string | undefined;
-            control?: "dimmer" | "slider" | "not-used" | "push-button" | "toggle-button" | "half-bridge" | "special-function" | undefined;
             signalId?: number | undefined;
             signals?: {
+                dimmer?: number | null | undefined;
+                value?: number | null | undefined;
                 toggle?: number | null | undefined;
                 momentary?: number | null | undefined;
-                dimmer?: number | null | undefined;
             } | undefined;
             range?: {
                 min: number;
@@ -4449,22 +4453,27 @@ export declare const UISchemaSchema: z.ZodObject<{
         }[];
         systemType?: "core" | "core-lite" | undefined;
         halfBridgePairs?: {
-            source: "core" | "core-lite" | "genesis";
+            source: "core" | "core-lite" | "genesis" | "bms" | "sensors" | "solar" | "power" | "hvac" | "plumbing" | "accessories" | "alternator" | "orion";
             channelA: number;
             channelB: number;
             enabled?: boolean | undefined;
         }[] | undefined;
         signalMap?: Record<string, number | {
-            default?: number | undefined;
-            slider?: number | undefined;
             'push-button'?: number | undefined;
             'toggle-button'?: number | undefined;
+            slider?: number | undefined;
+            default?: number | undefined;
         }> | undefined;
         genesisBoards?: number | undefined;
     } | undefined;
+    lighting?: {
+        enabled?: boolean | undefined;
+        modules?: number | undefined;
+        zonesPerModule?: 2 | 4 | undefined;
+    } | undefined;
     icons?: {
-        id: string;
         type: "svg" | "png" | "jpg";
+        id: string;
         data?: string | undefined;
         url?: string | undefined;
     }[] | undefined;

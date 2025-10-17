@@ -6,9 +6,10 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc -b && vite build",
     "preview": "vite preview",
     "deploy:web": "./scripts/deploy-to-web.sh",
+    "deploy:web:win": "powershell -ExecutionPolicy Bypass -File ./scripts/deploy-to-web.ps1",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",

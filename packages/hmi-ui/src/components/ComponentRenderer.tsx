@@ -15,7 +15,6 @@ import { Indicator } from './Indicator';
 import { Gauge } from './Gauge';
 import { Slider } from './Slider';
 import { MultiplusControl } from './MultiplusControl';
-import { MultiplusTestControls } from './MultiplusTestControls';
 
 interface ComponentRendererProps {
   component: Component;
@@ -48,9 +47,6 @@ export function ComponentRenderer(props: ComponentRendererProps) {
 
     case 'multiplus-control':
       return <MultiplusControl component={component} />;
-
-    case 'multiplus-test-controls':
-      return <MultiplusTestControls />;
 
     default: {
       const unknownComponent = component as { type: string };

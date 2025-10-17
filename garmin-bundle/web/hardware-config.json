@@ -1,4 +1,3 @@
-
 {
   "systemType": "core",
   "outputs": [
@@ -83,9 +82,8 @@
       "id": "core-01",
       "source": "core",
       "channel": 1,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 1",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 15,
         "momentary": 14,
@@ -96,9 +94,8 @@
       "id": "core-02",
       "source": "core",
       "channel": 2,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 2",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 72,
         "momentary": 71,
@@ -109,35 +106,32 @@
       "id": "core-03",
       "source": "core",
       "channel": 3,
-      "control": "toggle-button",
+      "control": "not-used",
       "label": "Core 3",
-      "icon": "/icons/Light.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 18,
+        "momentary": 17,
+        "dimmer": 19
       }
     },
     {
       "id": "core-04",
       "source": "core",
       "channel": 4,
-      "control": "toggle-button",
+      "control": "not-used",
       "label": "Core 4",
-      "icon": "/icons/Light.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 21,
+        "momentary": 20,
+        "dimmer": 22
       }
     },
     {
       "id": "core-05",
       "source": "core",
       "channel": 5,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 5",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 75,
         "momentary": 74,
@@ -148,48 +142,44 @@
       "id": "core-06",
       "source": "core",
       "channel": 6,
-      "control": "toggle-button",
+      "control": "not-used",
       "label": "Core 6",
-      "icon": "/icons/Light.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 27,
+        "momentary": 26,
+        "dimmer": 28
       }
     },
     {
       "id": "core-07",
       "source": "core",
       "channel": 7,
-      "control": "toggle-button",
+      "control": "not-used",
       "label": "Core 7",
-      "icon": "/icons/Light.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 30,
+        "momentary": 29,
+        "dimmer": 31
       }
     },
     {
       "id": "core-08",
       "source": "core",
       "channel": 8,
-      "control": "toggle-button",
+      "control": "not-used",
       "label": "Core 8",
-      "icon": "/icons/Light.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 33,
+        "momentary": 32,
+        "dimmer": 34
       }
     },
     {
       "id": "core-09",
       "source": "core",
       "channel": 9,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 9",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 78,
         "momentary": 77,
@@ -200,9 +190,8 @@
       "id": "core-10",
       "source": "core",
       "channel": 10,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 10",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 81,
         "momentary": 80,
@@ -213,35 +202,32 @@
       "id": "core-11",
       "source": "core",
       "channel": 11,
-      "control": "special-function",
+      "control": "not-used",
       "label": "Core 11",
-      "icon": "/icons/Settings.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 42,
+        "momentary": 41,
+        "dimmer": 43
       }
     },
     {
       "id": "core-12",
       "source": "core",
       "channel": 12,
-      "control": "special-function",
+      "control": "not-used",
       "label": "Core 12",
-      "icon": "/icons/Settings.svg",
       "signals": {
-        "toggle": null,
-        "momentary": null,
-        "dimmer": null
+        "toggle": 45,
+        "momentary": 44,
+        "dimmer": 46
       }
     },
     {
       "id": "core-13",
       "source": "core",
       "channel": 13,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 13",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 84,
         "momentary": 83,
@@ -252,9 +238,8 @@
       "id": "core-17",
       "source": "core",
       "channel": 17,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 17",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 87,
         "momentary": 86,
@@ -265,9 +250,8 @@
       "id": "core-18",
       "source": "core",
       "channel": 18,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 18",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 90,
         "momentary": 89,
@@ -278,9 +262,8 @@
       "id": "core-19",
       "source": "core",
       "channel": 19,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 19",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 93,
         "momentary": 92,
@@ -291,9 +274,8 @@
       "id": "core-20",
       "source": "core",
       "channel": 20,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 20",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 96,
         "momentary": 95,
@@ -304,9 +286,8 @@
       "id": "core-21",
       "source": "core",
       "channel": 21,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 21",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 99,
         "momentary": 98,
@@ -317,9 +298,8 @@
       "id": "core-25",
       "source": "core",
       "channel": 25,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 25",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 102,
         "momentary": 101,
@@ -330,9 +310,8 @@
       "id": "core-26",
       "source": "core",
       "channel": 26,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 26",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 105,
         "momentary": 104,
@@ -343,9 +322,8 @@
       "id": "core-27",
       "source": "core",
       "channel": 27,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 27",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 108,
         "momentary": 107,
@@ -356,9 +334,8 @@
       "id": "core-28",
       "source": "core",
       "channel": 28,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 28",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 111,
         "momentary": 110,
@@ -369,9 +346,8 @@
       "id": "core-29",
       "source": "core",
       "channel": 29,
-      "control": "dimmer",
+      "control": "not-used",
       "label": "Core 29",
-      "icon": "/icons/Dimmer.svg",
       "signals": {
         "toggle": 114,
         "momentary": 113,
@@ -385,7 +361,9 @@
       "control": "signal-value",
       "label": "Primary Solar Voltage",
       "icon": "/icons/Solar.svg",
-      "signals": { "value": 153 }
+      "signals": {
+        "value": 153
+      }
     },
     {
       "id": "signal-leg-one-ac-out-voltage",
@@ -394,7 +372,9 @@
       "control": "signal-value",
       "label": "Leg 1 AC Out Voltage",
       "icon": "/icons/AC.svg",
-      "signals": { "value": 154 }
+      "signals": {
+        "value": 154
+      }
     },
     {
       "id": "signal-leg-one-ac-out-amperage",
@@ -403,7 +383,9 @@
       "control": "signal-value",
       "label": "Leg 1 AC Out Amperage",
       "icon": "/icons/AC.svg",
-      "signals": { "value": 155 }
+      "signals": {
+        "value": 155
+      }
     },
     {
       "id": "signal-solar-indicator",
@@ -412,7 +394,9 @@
       "control": "signal-value",
       "label": "Solar Indicator",
       "icon": "/icons/Solar.svg",
-      "signals": { "value": 156 }
+      "signals": {
+        "value": 156
+      }
     },
     {
       "id": "signal-primary-solar-amperage",
@@ -421,7 +405,9 @@
       "control": "signal-value",
       "label": "Primary Solar Amperage",
       "icon": "/icons/Solar.svg",
-      "signals": { "value": 157 }
+      "signals": {
+        "value": 157
+      }
     },
     {
       "id": "signal-aux-solar-voltage",
@@ -430,7 +416,9 @@
       "control": "signal-value",
       "label": "Auxiliary Solar Voltage",
       "icon": "/icons/Solar.svg",
-      "signals": { "value": 158 }
+      "signals": {
+        "value": 158
+      }
     },
     {
       "id": "signal-aux-solar-amperage",
@@ -439,7 +427,9 @@
       "control": "signal-value",
       "label": "Auxiliary Solar Amperage",
       "icon": "/icons/Solar.svg",
-      "signals": { "value": 159 }
+      "signals": {
+        "value": 159
+      }
     },
     {
       "id": "signal-bms-battery-voltage",
@@ -448,7 +438,9 @@
       "control": "signal-value",
       "label": "BMS Battery Voltage",
       "icon": "/icons/Battery.svg",
-      "signals": { "value": 146 }
+      "signals": {
+        "value": 146
+      }
     },
     {
       "id": "signal-dc-loads",
@@ -456,7 +448,9 @@
       "channel": 147,
       "control": "signal-value",
       "label": "DC Loads",
-      "signals": { "value": 147 }
+      "signals": {
+        "value": 147
+      }
     },
     {
       "id": "signal-bms-battery-amperage",
@@ -465,7 +459,9 @@
       "control": "signal-value",
       "label": "BMS Battery Amperage",
       "icon": "/icons/Battery.svg",
-      "signals": { "value": 148 }
+      "signals": {
+        "value": 148
+      }
     },
     {
       "id": "signal-bms-battery-state-of-charge",
@@ -474,7 +470,9 @@
       "control": "signal-value",
       "label": "BMS State of Charge",
       "icon": "/icons/Battery.svg",
-      "signals": { "value": 149 }
+      "signals": {
+        "value": 149
+      }
     },
     {
       "id": "signal-bms-time-to-go",
@@ -482,7 +480,9 @@
       "channel": 150,
       "control": "signal-value",
       "label": "BMS Time To Go",
-      "signals": { "value": 150 }
+      "signals": {
+        "value": 150
+      }
     },
     {
       "id": "signal-leg-one-ac-in-voltage",
@@ -491,7 +491,9 @@
       "control": "signal-value",
       "label": "Leg 1 AC In Voltage",
       "icon": "/icons/AC.svg",
-      "signals": { "value": 151 }
+      "signals": {
+        "value": 151
+      }
     },
     {
       "id": "indicator-shore-power",
@@ -499,7 +501,9 @@
       "channel": 160,
       "control": "signal-value",
       "label": "Shore Power Indicator",
-      "signals": { "value": 160 }
+      "signals": {
+        "value": 160
+      }
     },
     {
       "id": "pbc-vent-fan-1-on-off",
@@ -542,7 +546,9 @@
       "channel": 166,
       "control": "signal-value",
       "label": "Vent Fan 1 Speed",
-      "signals": { "value": 166 }
+      "signals": {
+        "value": 166
+      }
     },
     {
       "id": "pbc-vent-fan-2-on-off",
@@ -585,7 +591,9 @@
       "channel": 172,
       "control": "signal-value",
       "label": "Vent Fan 2 Speed",
-      "signals": { "value": 172 }
+      "signals": {
+        "value": 172
+      }
     },
     {
       "id": "press-truma-off",
@@ -656,7 +664,9 @@
       "channel": 182,
       "control": "signal-value",
       "label": "Thermostat Temp Value",
-      "signals": { "value": 182 }
+      "signals": {
+        "value": 182
+      }
     },
     {
       "id": "press-therm-set-temp-value-c",
@@ -664,7 +674,9 @@
       "channel": 183,
       "control": "signal-value",
       "label": "Thermostat Temp Value (C)",
-      "signals": { "value": 183 }
+      "signals": {
+        "value": 183
+      }
     },
     {
       "id": "pbc-rixens-system-on-off",
@@ -763,7 +775,9 @@
       "channel": 197,
       "control": "signal-value",
       "label": "Fresh Tank 1",
-      "signals": { "value": 197 }
+      "signals": {
+        "value": 197
+      }
     },
     {
       "id": "signal-black-tank-1",
@@ -771,7 +785,9 @@
       "channel": 198,
       "control": "signal-value",
       "label": "Black Tank 1",
-      "signals": { "value": 198 }
+      "signals": {
+        "value": 198
+      }
     },
     {
       "id": "signal-grey-tank-1",
@@ -779,7 +795,9 @@
       "channel": 199,
       "control": "signal-value",
       "label": "Grey Tank 1",
-      "signals": { "value": 199 }
+      "signals": {
+        "value": 199
+      }
     },
     {
       "id": "signal-lpg-tank-1",
@@ -787,7 +805,9 @@
       "channel": 200,
       "control": "signal-value",
       "label": "LPG Tank 1",
-      "signals": { "value": 200 }
+      "signals": {
+        "value": 200
+      }
     },
     {
       "id": "signal-fresh-tank-2-soul",
@@ -795,7 +815,9 @@
       "channel": 201,
       "control": "signal-value",
       "label": "Fresh Tank 2 (Soul)",
-      "signals": { "value": 201 }
+      "signals": {
+        "value": 201
+      }
     },
     {
       "id": "signal-black-tank-2-soul",
@@ -803,7 +825,9 @@
       "channel": 202,
       "control": "signal-value",
       "label": "Black Tank 2 (Soul)",
-      "signals": { "value": 202 }
+      "signals": {
+        "value": 202
+      }
     },
     {
       "id": "signal-grey-tank-2-soul",
@@ -811,7 +835,9 @@
       "channel": 203,
       "control": "signal-value",
       "label": "Grey Tank 2 (Soul)",
-      "signals": { "value": 203 }
+      "signals": {
+        "value": 203
+      }
     },
     {
       "id": "signal-fresh-tank-2-victron",
@@ -819,7 +845,9 @@
       "channel": 204,
       "control": "signal-value",
       "label": "Fresh Tank 2 (Victron)",
-      "signals": { "value": 204 }
+      "signals": {
+        "value": 204
+      }
     },
     {
       "id": "signal-black-tank-2-victron",
@@ -827,7 +855,9 @@
       "channel": 205,
       "control": "signal-value",
       "label": "Black Tank 2 (Victron)",
-      "signals": { "value": 205 }
+      "signals": {
+        "value": 205
+      }
     },
     {
       "id": "signal-grey-tank-2-victron",
@@ -835,7 +865,9 @@
       "channel": 206,
       "control": "signal-value",
       "label": "Grey Tank 2 (Victron)",
-      "signals": { "value": 206 }
+      "signals": {
+        "value": 206
+      }
     },
     {
       "id": "signal-fresh-tank-3-victron",
@@ -843,7 +875,9 @@
       "channel": 207,
       "control": "signal-value",
       "label": "Fresh Tank 3 (Victron)",
-      "signals": { "value": 207 }
+      "signals": {
+        "value": 207
+      }
     },
     {
       "id": "signal-grey-tank-3-victron",
@@ -851,7 +885,162 @@
       "channel": 208,
       "control": "signal-value",
       "label": "Grey Tank 3 (Victron)",
-      "signals": { "value": 208 }
+      "signals": {
+        "value": 208
+      }
+    },
+    {
+      "id": "signal-value-int-temp",
+      "source": "sensors",
+      "channel": 2,
+      "control": "signal-value",
+      "label": "Interior Temperature",
+      "signals": {
+        "value": 2
+      }
+    },
+    {
+      "id": "signal-value-ext-temp",
+      "source": "sensors",
+      "channel": 3,
+      "control": "signal-value",
+      "label": "Exterior Temperature",
+      "signals": {
+        "value": 3
+      }
+    },
+    {
+      "id": "signal-value-starter-battery-voltage",
+      "source": "power",
+      "channel": 4,
+      "control": "signal-value",
+      "label": "Starter Battery Voltage",
+      "signals": {
+        "value": 4
+      }
+    },
+    {
+      "id": "press-multiplus-off",
+      "source": "power",
+      "channel": 132,
+      "control": "push-button",
+      "label": "MultiPlus Off",
+      "signals": {
+        "momentary": 132
+      }
+    },
+    {
+      "id": "press-multi-on",
+      "source": "power",
+      "channel": 133,
+      "control": "push-button",
+      "label": "MultiPlus On",
+      "signals": {
+        "momentary": 133
+      }
+    },
+    {
+      "id": "press-multiplus-charger-only",
+      "source": "power",
+      "channel": 134,
+      "control": "push-button",
+      "label": "MultiPlus Charger Only",
+      "signals": {
+        "momentary": 134
+      }
+    },
+    {
+      "id": "mom-increase-ac-limit",
+      "source": "power",
+      "channel": 135,
+      "control": "push-button",
+      "label": "Increase AC Limit"
+    },
+    {
+      "id": "mom-decrease-ac-limit",
+      "source": "power",
+      "channel": 136,
+      "control": "push-button",
+      "label": "Decrease AC Limit"
+    },
+    {
+      "id": "mom-requested-ac-limit",
+      "source": "power",
+      "channel": 137,
+      "control": "signal-value",
+      "label": "Requested AC Limit",
+      "signals": {
+        "value": 137
+      }
+    },
+    {
+      "id": "mom-load-ac-limit",
+      "source": "power",
+      "channel": 138,
+      "control": "push-button",
+      "label": "Load AC Limit"
+    },
+    {
+      "id": "signal-current-ac-limit",
+      "source": "power",
+      "channel": 139,
+      "control": "signal-value",
+      "label": "Current AC Limit",
+      "signals": {
+        "value": 139
+      }
+    },
+    {
+      "id": "mom-ac-limit-5",
+      "source": "power",
+      "channel": 140,
+      "control": "push-button",
+      "label": "Set AC Limit 5A"
+    },
+    {
+      "id": "mom-ac-limit-10",
+      "source": "power",
+      "channel": 141,
+      "control": "push-button",
+      "label": "Set AC Limit 10A"
+    },
+    {
+      "id": "mom-ac-limit-15",
+      "source": "power",
+      "channel": 142,
+      "control": "push-button",
+      "label": "Set AC Limit 15A"
+    },
+    {
+      "id": "mom-ac-limit-20",
+      "source": "power",
+      "channel": 143,
+      "control": "push-button",
+      "label": "Set AC Limit 20A"
+    },
+    {
+      "id": "mom-ac-limit-30",
+      "source": "power",
+      "channel": 144,
+      "control": "push-button",
+      "label": "Set AC Limit 30A"
+    },
+    {
+      "id": "mom-ac-limit-50",
+      "source": "power",
+      "channel": 145,
+      "control": "push-button",
+      "label": "Set AC Limit 50A"
+    },
+    {
+      "id": "rixens-fan-value",
+      "source": "hvac",
+      "channel": 338,
+      "control": "signal-value",
+      "label": "Rixens Fan Value",
+      "signals": {
+        "value": 338
+      }
     }
   ]
 }

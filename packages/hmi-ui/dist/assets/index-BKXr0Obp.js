@@ -3815,14 +3815,39 @@ const OutputControlTypeSchema = enumType([
   "slider",
   "half-bridge",
   "dimmer",
-  "special-function"
+  "special-function",
+  "signal-value"
+  // Read-only sensor values
 ]);
-const HardwareSourceSchema = enumType(["core", "core-lite", "genesis"]);
+const HardwareSourceSchema = enumType([
+  "core",
+  "core-lite",
+  "genesis",
+  "bms",
+  // Battery Management System
+  "sensors",
+  // Temperature, voltage sensors
+  "solar",
+  // Solar panels/controllers
+  "power",
+  // Power systems (MultiPlus, AC, etc.)
+  "hvac",
+  // Heating, Ventilation, Air Conditioning
+  "plumbing",
+  // Tanks, pumps
+  "accessories",
+  // Awnings, slides, etc.
+  "alternator",
+  // Alternator charging
+  "orion"
+  // Orion DC-DC converter
+]);
 const OutputChannelSchema = objectType({
   id: stringType(),
-  // e.g., "core-01", "core-lite-02", "genesis-01"
+  // e.g., "core-01", "core-lite-02", "genesis-01", "battery-voltage"
   source: HardwareSourceSchema,
-  channel: numberType().int().positive(),
+  channel: unionType([numberType().int().positive(), stringType()]),
+  // Can be number or string (e.g., "battery-voltage")
   label: stringType().max(50).optional(),
   control: OutputControlTypeSchema.default("not-used"),
   icon: stringType().optional(),
@@ -3830,7 +3855,9 @@ const OutputChannelSchema = objectType({
   signals: objectType({
     toggle: numberType().int().positive().nullable().optional(),
     momentary: numberType().int().positive().nullable().optional(),
-    dimmer: numberType().int().positive().nullable().optional()
+    dimmer: numberType().int().positive().nullable().optional(),
+    value: numberType().int().positive().nullable().optional()
+    // For signal-value control type
   }).optional(),
   range: objectType({
     min: numberType(),
@@ -4825,7 +4852,7 @@ function subscribeToSchemaSignals(schema) {
     console.warn("[Schema-Signals] Cannot subscribe: WebSocket not connected");
     return;
   }
-  fetch("/configuration/hardware-config.json").then(function(response) {
+  fetch("/hardware-config.json").then(function(response) {
     if (!response.ok) {
       throw new Error("Hardware config not found, falling back to schema signals");
     }
@@ -4938,11 +4965,7 @@ function applyLightingConfig(tab, schema) {
   );
   exterior.title = lighting.exterior.title || exterior.title;
   exterior.enabled = Boolean(lighting.exterior.enabled);
-  const rgb = ensureSection(
-    tab,
-    "section-lighting-rgb",
-    lighting.rgb.title || "RGB Lighting"
-  );
+  const rgb = ensureSection(tab, "section-lighting-rgb", lighting.rgb.title || "RGB Lighting");
   rgb.title = lighting.rgb.title || rgb.title;
   rgb.enabled = Boolean(lighting.rgb.enabled);
   tab.uiSubtabs = [
@@ -4956,18 +4979,10 @@ function applyHVACConfig(tab, schema) {
   if (!hvac) {
     return;
   }
-  const heating = ensureSection(
-    tab,
-    "section-hvac-heating",
-    hvac.heating.title || "Heating"
-  );
+  const heating = ensureSection(tab, "section-hvac-heating", hvac.heating.title || "Heating");
   heating.title = hvac.heating.title || heating.title;
   heating.enabled = Boolean(hvac.heating.enabled);
-  const cooling = ensureSection(
-    tab,
-    "section-hvac-cooling",
-    hvac.cooling.title || "Cooling"
-  );
+  const cooling = ensureSection(tab, "section-hvac-cooling", hvac.cooling.title || "Cooling");
   cooling.title = hvac.cooling.title || cooling.title;
   cooling.enabled = Boolean(hvac.cooling.enabled);
   const ventilation = ensureSection(
@@ -5021,11 +5036,7 @@ function applyPowerConfig(tab, schema) {
   if (!power || !power.multiplus) {
     return;
   }
-  const acSection = ensureSection(
-    tab,
-    "section-ac-power",
-    "AC Power"
-  );
+  const acSection = ensureSection(tab, "section-ac-power", "AC Power");
   acSection.components = [];
   acSection.enabled = false;
   if (power.multiplus.l1) {
@@ -5263,14 +5274,7 @@ function resolveBindingToChannelId(binding, action) {
       }
       const sigs = output.signals;
       if (sigs && action && sigs[action] != null) {
-        console.log(
-          "Resolved",
-          channelRef,
-          "with action",
-          action,
-          "to signal",
-          sigs[action]
-        );
+        console.log("Resolved", channelRef, "with action", action, "to signal", sigs[action]);
         return Number(sigs[action]);
       }
       if (sigs && typeof sigs.value === "number") {
@@ -6126,13 +6130,110 @@ function Slider(props) {
     }
   );
 }
+function MultiplusControl(props) {
+  const { component } = props;
+  const acInVoltage = useSignal(null);
+  const acOutVoltage = useSignal(null);
+  const acOutCurrent = useSignal(null);
+  const currentMode = useSignal("off");
+  const handleModeClick = function(mode) {
+    const ws = getWebSocketAdapter();
+    if (!ws || !ws.isConnected() || !component.bindings) {
+      console.warn("[MultiplusControl] WebSocket not available");
+      return;
+    }
+    let binding;
+    if (mode === "off" && component.bindings.modeOff) {
+      binding = component.bindings.modeOff;
+    } else if (mode === "on" && component.bindings.modeOn) {
+      binding = component.bindings.modeOn;
+    } else if (mode === "charger-only" && component.bindings.modeChargerOnly) {
+      binding = component.bindings.modeChargerOnly;
+    }
+    if (!binding) {
+      console.warn("[MultiplusControl] No binding for mode:", mode);
+      return;
+    }
+    const channelId = resolveBindingToChannelId(binding, "momentary");
+    if (channelId === null) {
+      console.warn("[MultiplusControl] Could not resolve binding to channel ID");
+      return;
+    }
+    const pressMessage = createToggleMessage(channelId, true);
+    ws.send(pressMessage);
+    console.log("[MultiplusControl] Mode:", mode, "Press (1) ChannelID:", channelId);
+    setTimeout(function() {
+      const releaseMessage = createToggleMessage(channelId, false);
+      ws.send(releaseMessage);
+      console.log("[MultiplusControl] Mode:", mode, "Release (0) ChannelID:", channelId);
+    }, 100);
+    currentMode.value = mode;
+  };
+  const leg = component.leg || 1;
+  return /* @__PURE__ */ u("div", { className: "gcg-component-wrapper", children: /* @__PURE__ */ u("div", { className: "gcg-multiplus-control", children: [
+    /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__header", children: /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__label", children: component.label || "Multiplus L" + leg }) }),
+    /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__readings", children: [
+      /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__reading", children: [
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-label", children: "AC IN" }),
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-value", children: acInVoltage.value !== null ? acInVoltage.value.toFixed(0) + "V" : "--" })
+      ] }),
+      /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__reading", children: [
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-label", children: "AC OUT" }),
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-value", children: acOutVoltage.value !== null ? acOutVoltage.value.toFixed(0) + "V" : "--" })
+      ] }),
+      /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__reading gcg-multiplus-control__reading--wide", children: [
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-label", children: "CURRENT" }),
+        /* @__PURE__ */ u("span", { className: "gcg-multiplus-control__reading-value", children: acOutCurrent.value !== null ? acOutCurrent.value.toFixed(1) + "A" : "--" })
+      ] })
+    ] }),
+    /* @__PURE__ */ u("div", { className: "gcg-multiplus-control__modes", children: [
+      /* @__PURE__ */ u(
+        "button",
+        {
+          type: "button",
+          className: "gcg-multiplus-control__mode-button" + (currentMode.value === "off" ? " gcg-multiplus-control__mode-button--active" : ""),
+          onClick: function() {
+            handleModeClick("off");
+          },
+          "aria-label": "Turn Multiplus Off",
+          children: "OFF"
+        }
+      ),
+      /* @__PURE__ */ u(
+        "button",
+        {
+          type: "button",
+          className: "gcg-multiplus-control__mode-button" + (currentMode.value === "on" ? " gcg-multiplus-control__mode-button--active" : ""),
+          onClick: function() {
+            handleModeClick("on");
+          },
+          "aria-label": "Turn Multiplus On",
+          children: "ON"
+        }
+      ),
+      /* @__PURE__ */ u(
+        "button",
+        {
+          type: "button",
+          className: "gcg-multiplus-control__mode-button" + (currentMode.value === "charger-only" ? " gcg-multiplus-control__mode-button--active" : ""),
+          onClick: function() {
+            handleModeClick("charger-only");
+          },
+          "aria-label": "Charger Only Mode",
+          children: "CHARGER"
+        }
+      )
+    ] })
+  ] }) });
+}
 const COMPONENT_REGISTRY = {
   toggle: Toggle,
   button: Button,
   dimmer: Dimmer,
   gauge: Gauge,
   indicator: Indicator,
-  slider: Slider
+  slider: Slider,
+  "multiplus-control": MultiplusControl
 };
 function Section(props) {
   const { section, hideTitle } = props;

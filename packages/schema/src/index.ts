@@ -85,3 +85,4 @@ export * from './types';
 
 // Export validators (for custom validation)
 export * from './validators';
+export * from './defaults';
